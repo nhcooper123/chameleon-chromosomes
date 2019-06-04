@@ -14,9 +14,9 @@ library(rgeos)
 
 #IUCN_REDLIST_KEY = '2745adcf154b3539fae004c16f1bd9a6ea3a5138cf466a00e33b0beac666f8c2')
 
-mykey <- '2745adcf154b3539fae004c16f1bd9a6ea3a5138cf466a00e33b0beac666f8c2'
+# mykey <- '2745adcf154b3539fae004c16f1bd9a6ea3a5138cf466a00e33b0beac666f8c2'
 # If copying this code note that you need **your own API key**
-# ***Do not use my API key***
+# ***Do not use my API key*** I will find you.
 #---------------------------------------
 # Read in data
 #---------------------------------------
@@ -136,3 +136,4 @@ habitats
 
 areas
 iucn
+climate

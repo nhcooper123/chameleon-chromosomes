@@ -91,7 +91,7 @@ for(i in 1:19){
                     na.rm = TRUE)
   
   # Export
-  output[ , i+1] <- mapsX[ , 1]
+  output[ , i+1] <- mapsX[ , 2]
 }
 
 # Wrangle metadata to get means per species

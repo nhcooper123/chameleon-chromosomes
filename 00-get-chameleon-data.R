@@ -51,7 +51,6 @@ bioclim <- getData("worldclim", var = "bio", res = 5)
 #BIO18	Precipitation of Warmest Quarter
 #BIO19	Precipitation of Coldest Quarter
 
-
 #-------------------------------
 # Extract geographic range areas
 #-------------------------------
@@ -104,23 +103,57 @@ climate <-
   group_by(binomial) %>%
   summarise_all(mean) 
 
-write_csv(climate, path = "climate-interim.csv")
+#-------------------------------------------
+# Extract latitudes - centroids, min and max
+#-------------------------------------------
+# Extract coordinates of all polygons
+coords <- data.frame(st_coordinates((maps)))
+centroids <- data.frame(st_coordinates(st_centroid(maps)))
+centroids$sf <- as.numeric(rownames(centroids))
+
+# Extract metadata only and make row name a column of sf numbers
+cham <- maps
+st_geometry(cham) <- NULL
+cham$sf <- as.numeric(rownames(cham))
+
+# Merge coordinates with metadata
+locations <- left_join(cham, coords, by = c("sf" = "L3")) 
+centres <- left_join(cham, centroids, by = "sf") 
+  
+# Get max and min
+latitude_maxmin <- 
+  locations %>%
+  group_by(binomial) %>%
+  summarise(min = min(Y),
+            max = max(Y),
+            mean = mean(Y))
+
+# Get centroid means
+latitude_centroids <- 
+  centres %>%
+  group_by(binomial) %>%
+  summarise(centroidY = mean(Y),
+            centroidX = mean(X))
 
 #---------------------------------------
-# Extra IUCN data
+# Extra IUCN RedList data
 #---------------------------------------
 # Extract IUCN categories from IUCN
 categories <- rl_comp_groups('chameleons', key = mykey)
 
 # Tidy the output
 iucn <- categories$result %>%
-  select(scientific_name, category) %>%
+  dplyr::select(scientific_name, category) %>%
   rename(binomial = scientific_name)
 
+#---------------------------------------
+# Extra IUCN habitats data
+#---------------------------------------
 # Extract habitats - this has to be done one species at a time
 # This is made more difficuly by some species appearing in > 1 habitat
 habitats <- data.frame(array(dim = c(10, 6)))
-names(habitats) <- c("binomial", "habitat_code", "habitat", "suitability", "major_importantance")
+names(habitats) <- c("binomial", "habitat_code", "habitat", "suitability", 
+                     "season", "major_importantance")
 z <- 1
 
 for(i in 1:length(unique(cham$binomial))) {
@@ -152,8 +185,48 @@ for(i in 1:length(unique(cham$binomial))) {
 # Combine data
 #---------------------------------------
 
-taxonomy
-areas
-iucn
-climate
-habitats 
+all <- 
+  taxonomy %>%
+  full_join(areas) %>%
+  full_join(climate) %>%
+  full_join(latitude_centroids) %>%
+  full_join(latitude_maxmin) %>%
+  full_join(iucn) %>%
+  full_join(habitats)
+
+write_csv(path = "data/chameleon-iucn-data.csv", all)
+
+# Binomial (from Uetz)
+# Genus
+# Taxonomic authority
+# Sum of the area of IUCN range polygons
+# BIO1	Annual Mean Temperature * 10 [BioCLim data - all temps * 10]
+# BIO2	Mean Diurnal Range (Mean of monthly (max temp – min temp)) * 10
+# BIO3	Isothermality (BIO2/BIO7) (* 100)
+# BIO4	Temperature Seasonality (standard deviation *100) * 10
+# BIO5	Max Temperature of Warmest Month * 10
+# BIO6	Min Temperature of Coldest Month * 10
+# BIO7	Temperature Annual Range (BIO5-BIO6) * 10
+# BIO8	Mean Temperature of Wettest Quarter * 10
+# BIO9	Mean Temperature of Driest Quarter * 10
+# BIO10	Mean Temperature of Warmest Quarter * 10
+# BIO11	Mean Temperature of Coldest Quarter * 10
+# BIO12	Annual Precipitation
+# BIO13	Precipitation of Wettest Month
+# BIO14	Precipitation of Driest Month
+# BIO15	Precipitation Seasonality (Coefficient of Variation)
+# BIO16	Precipitation of Wettest Quarter
+# BIO17	Precipitation of Driest Quarter
+# BIO18	Precipitation of Warmest Quarter
+# BIO19	Precipitation of Coldest Quarter
+# Latitude of range centroid (mean of mutliple centroids where > 1 per species)
+# Longitude of range centroid (mean of mutliple centroids where > 1 per species)
+# Min Latitude across range
+# Max Latitude across range
+# Mean Latitude across range
+# IUCN Red List status
+# Habitat code
+# Habitat
+# Suitability
+# Season
+# Major importance

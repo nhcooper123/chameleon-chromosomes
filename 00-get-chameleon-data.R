@@ -119,7 +119,7 @@ iucn <- categories$result %>%
 
 # Extract habitats - this has to be done one species at a time
 # This is made more difficuly by some species appearing in > 1 habitat
-habitats <- data.frame(array(dim = c(1000, 6)))
+habitats <- data.frame(array(dim = c(10, 6)))
 names(habitats) <- c("binomial", "habitat_code", "habitat", "suitability", "major_importantance")
 z <- 1
 
@@ -135,12 +135,12 @@ for(i in 1:length(unique(cham$binomial))) {
     # Create counter to get results in correct slots
     k <- j - 1
   
-    habitats2[z+k, 1] <- xx$name
-    habitats2[z+k, 2] <- xx$result$code[[j]]
-    habitats2[z+k, 3] <- xx$result$habitat[[j]]
-    habitats2[z+k, 4] <- xx$result$suitability[[j]]
-    habitats2[z+k, 5] <- xx$result$season[[j]]
-    habitats2[z+k, 6] <- xx$result$majorimportance[[j]]
+    habitats[z+k, 1] <- xx$name
+    habitats[z+k, 2] <- xx$result$code[[j]]
+    habitats[z+k, 3] <- xx$result$habitat[[j]]
+    habitats[z+k, 4] <- xx$result$suitability[[j]]
+    habitats[z+k, 5] <- xx$result$season[[j]]
+    habitats[z+k, 6] <- xx$result$majorimportance[[j]]
     
   }
 

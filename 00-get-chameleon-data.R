@@ -27,9 +27,11 @@ maps <- st_read("raw-data/CHAMELEONS/")
 taxonomy <- read.csv("raw-data/Chameleonidae-Uetz.csv")
 
 # Read in climate data
-bioclim <- getData("worldclim", var = "bio", res = 10)
+# Valid resolutions are 0.5, 2.5, 5, and 10 (minutes of a degree)
+# Although sata is made at 30 sec this is probably overly detailed
+bioclim <- getData("worldclim", var = "bio", res = 5)
 
-#BIO1	Annual Mean Temperature
+#BIO1	Annual Mean Temperature * 10
 #BIO2	Mean Diurnal Range (Mean of monthly (max temp – min temp))
 #BIO3	Isothermality (BIO2/BIO7) (* 100)
 #BIO4	Temperature Seasonality (standard deviation *100)
@@ -48,7 +50,7 @@ bioclim <- getData("worldclim", var = "bio", res = 10)
 #BIO17	Precipitation of Driest Quarter
 #BIO18	Precipitation of Warmest Quarter
 #BIO19	Precipitation of Coldest Quarter
-# Valid resolutions are 0.5, 2.5, 5, and 10 (minutes of a degree)
+
 
 #-------------------------------
 # Extract geographic range areas
@@ -81,13 +83,15 @@ output$binomial <- cham$binomial
 maps2 <- as(maps, 'Spatial')
 
 # Run for all 19 bioclim variables
-for(i in 1:19){
+for(i in 2:19){
   mapsX <- 
-    raster::extract(x = climate[[i]],
+    raster::extract(x = bioclim[[i]],
                     y = maps2,
                     fun = mean,
                     df = TRUE, 
+                    # Do we want to use values where the polygons are small?
                     small = TRUE,
+                    # Remove NAs when calculating means?
                     na.rm = TRUE)
   
   # Export
@@ -98,7 +102,9 @@ for(i in 1:19){
 climate <- 
   output %>%
   group_by(binomial) %>%
-  summarise_all(list(mean, max, min)) 
+  summarise_all(mean) 
+
+write_csv(climate, path = "climate-interim.csv")
 
 #---------------------------------------
 # Extra IUCN data
@@ -111,29 +117,43 @@ iucn <- categories$result %>%
   select(scientific_name, category) %>%
   rename(binomial = scientific_name)
 
+# Extract habitats - this has to be done one species at a time
+# This is made more difficuly by some species appearing in > 1 habitat
+habitats <- data.frame(array(dim = c(1000, 6)))
+names(habitats) <- c("binomial", "habitat_code", "habitat", "suitability", "major_importantance")
+z <- 1
 
-habitats <- as.data.frame(NULL)
+for(i in 1:length(unique(cham$binomial))) {
+  
+  xx <- rl_habitats(as.character(unique(cham$binomial)[i]), 
+                    key = mykey, 
+                    parse = TRUE)
+  
+  # Output one line at a time to deal with species in > 1 habitat
+  for (j in 1:length(xx$result$code)){
+    
+    # Create counter to get results in correct slots
+    k <- j - 1
+  
+    habitats2[z+k, 1] <- xx$name
+    habitats2[z+k, 2] <- xx$result$code[[j]]
+    habitats2[z+k, 3] <- xx$result$habitat[[j]]
+    habitats2[z+k, 4] <- xx$result$suitability[[j]]
+    habitats2[z+k, 5] <- xx$result$season[[j]]
+    habitats2[z+k, 6] <- xx$result$majorimportance[[j]]
+    
+  }
 
-for(i in 1:201) {
-  
-  rl_habitats(as.character(cham1$binomial[i]), 
-                          key = mykey, 
-                          parse = TRUE)
-  
-  habitats[i, 2] <- xx$result$code
-  habitats[i, 2] <- xx$result$code
-  habitats[i, 2] <- xx$result$code
-  habitats[i, 2] <- xx$result$code
-  habitats[i, 2] <- xx$result$code
+  # Make sure next species goes onto correct line of output
+  z <- z + k + 1
 }
-habitats
-
 
 #---------------------------------------
 # Combine data
 #---------------------------------------
 
-
+taxonomy
 areas
 iucn
 climate
+habitats 

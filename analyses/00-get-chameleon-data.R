@@ -21,14 +21,19 @@ library(rgeos)
 # Read in data
 #---------------------------------------
 # Read in the maps
+# These are downloaded from the IUCN spatial webpages
+# It's a folder that contains ~6 files that together are read in to form
+# the polygons.
 maps <- st_read("raw-data/CHAMELEONS/")
 
 # Read in the taxonomic data from Uetz 
+# This is downloaded from the reptile database website
 taxonomy <- read.csv("raw-data/Chameleonidae-Uetz.csv")
 
 # Read in climate data
+# This is built into the R package raster
 # Valid resolutions are 0.5, 2.5, 5, and 10 (minutes of a degree)
-# Although sata is made at 30 sec this is probably overly detailed
+# Although data is made at 30 sec this is probably overly detailed
 bioclim <- getData("worldclim", var = "bio", res = 5)
 
 #BIO1	Annual Mean Temperature * 10
@@ -82,7 +87,7 @@ output$binomial <- cham$binomial
 maps2 <- as(maps, 'Spatial')
 
 # Run for all 19 bioclim variables
-for(i in 2:19){
+for(i in 1:19){
   mapsX <- 
     raster::extract(x = bioclim[[i]],
                     y = maps2,

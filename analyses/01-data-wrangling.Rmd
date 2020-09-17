@@ -1,0 +1,160 @@
+---
+title: "Preparing the data and tree for analysis"
+author: "Natalie Cooper"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r, echo = FALSE}
+# If you need treeplyr as it is not on CRAN
+#library(devtools)
+#remotes::install_github("uyedaj/treeplyr")
+```
+
+## Preparation
+
+```{r, message = FALSE}
+# Load libraries
+library(tidyverse)
+library(here)
+library(ape)
+library(phytools)
+library(treeplyr)
+library(Hmisc)
+```
+
+Read in the data. 
+```{r, message = FALSE}
+ds <- read_csv(here("data/chromosomes/CHROMO_STATES_2020-09-10.csv"))
+```
+
+Take a look at the dataset
+```{r}
+#glimpse(ds)
+head(ds)
+```
+
+Add the haploid number of chromosomes which is needed for some later analyses
+```{r}
+ds <-
+  ds %>%
+  mutate(haploidn = chromon/2)
+```
+
+Fix up species names in our data to match them to the ecological data. Note that this will give a warning saying that some of the species names have more than two words in them, this is fine as we don't need the extra bits.
+```{r, message = FALSE}
+ds <- ds %>%
+  # capitalise genus column
+  mutate(genus = capitalize(genus)) %>%
+  # split the species column into Genus and Species
+  separate(species, into = c("Genus", "Species"), sep = "_", remove = FALSE) %>%
+  # capitalise Genus column
+  mutate(Genus = capitalize(Genus)) %>%
+  # stick Genus and Species together as Binomial
+  unite("Binomial", Genus, Species, sep = " ") %>%
+  # Correct the taxonomy so it matches teh ecology dataset
+  mutate(Binomial = case_when(Binomial == "Brookesia thieli1" ~ "Brookesia thieli",
+                              Binomial == "Brookesia thieli2" ~ "Brookesia thieli",
+                              Binomial == "Brookesia ramantsoai" ~ "Brookesia ramanantsoai",
+                              Binomial == "Brookesia tubercolata" ~ "Brookesia tuberculata",
+                              Binomial == "Furcifer verrucosus1" ~ "Furcifer verrucosus",
+                              Binomial == "Furcifer verrucosus2" ~ "Furcifer verrucosus",
+                              Binomial == "Furcifer belalandensis" ~ "Furcifer belalandaensis",
+                              Binomial == "Furcifer wilsii" ~ "Furcifer willsii",
+                              Binomial == "Calumma malthae" ~ "Calumma malthe",
+                              Binomial == "Calumma brevicorne1" ~ "Calumma brevicorne",
+                              Binomial == "Calumma brevicorne2" ~ "Calumma brevicorne",
+                              Binomial == "Calumma gastrotaenia2" ~ "Brookesia ramanantsoai",
+                              Binomial == "Calumma emelinae" ~ "Brookesia tuberculata",
+                              Binomial == "Calumma fallax1" ~ "Calumma fallax",
+                              Binomial == "Calumma fallax2" ~ "Calumma fallax",
+                              Binomial == "Calumma gallus1" ~ "Calumma gallus",
+                              Binomial == "Calumma gallus2" ~ "Calumma gallus",
+                              Binomial == "Calumma gallus3" ~ "Calumma gallus",
+                              Binomial == "Calumma boettegeri" ~ "Calumma boettgeri",
+                              Binomial == "Bradypodion pumilium" ~ "Bradypodion pumilum",
+                              Binomial == "Tioceros hoehnelii" ~ "Trioceros hoehnelii",
+                              Binomial == "Trioceros jacksoni" ~ "Trioceros jacksonii",
+                              Binomial == "Brookesia superciliaris2" ~ "Brookesia superciliaris",
+                              TRUE ~ as.character(Binomial)))
+
+```
+
+Add the ecological data from Meiri 2018 and match up to the chromosome data. This prints out the species there are no matching data for in Meiri 2018 (should be 6 species). These species remain in the dataset, but don't have matching ecological data.
+```{r, message = FALSE}
+# Read in the Meiri data
+eco <- read_csv(here("data/other/Meiri2018_AppendixS1.csv"))
+#head(eco)
+
+# Extract only chameleons and only relevant columns
+eco <- eco %>%
+  filter(Family == "Chamaeleonidae") %>%
+  select(Binomial, Realm = `main biogeographic Realm`,
+         Latitude = `Latitude centroid (from Roll et al. 2017)`, 
+         Longitude = `Longitude centroid (from Roll et al. 2017)`, 
+         maxSVL = `maximum SVL`,     
+         Substrate = substrate, 
+         Repromode = `reproductive mode`, 
+         minClutchSize = `smallest clutch`, 
+         maxClutchSize =  `largest clutch`, 
+         minBreedingAge = `youngest age at first breeding (months)`, 
+         maxBreedingAge =  `oldest age at first breeding (months)`)
+
+# What species are missing?
+setdiff(ds$Binomial, eco$Binomial)
+
+# Merge
+ds <- left_join(ds, eco)
+```
+
+Read in the tree, then look at the tree structure and check a few features
+```{r}
+tree <- read.tree(here("data/trees/RAxML_chameleon_constrained_dated_v3.tre"))
+```
+
+```{r}
+# Look at tree structure
+str(tree)
+
+# Check tree is binary
+is.binary.tree(tree) # TRUE
+# Check tree is rooted
+is.rooted(tree) # TRUE
+
+# Check tree is ultrametric
+is.ultrametric(tree) # TRUE
+```
+
+Match tree and dataset. We'll use the function `make.treedata` to combine the tree and the dataset into one object. We need to provide the name of the tree, the name of the data, and specify which column our species names are in. 
+```{r, echo = FALSE}
+# Combine and match the tree and data
+all <- make.treedata(tree = tree,  data = ds, 
+                     name_column = "sample")
+
+# Make a new column called sample with the tip labels in it
+# because make.treedata removes them, and ensure it is the first column
+all$dat <- 
+  all$dat %>%
+  mutate(tips = all$phy$tip.label) %>%
+  select(tips, Binomial, chromon, haploidn, everything())
+
+# Save tree as mytree
+mytree <- all$phy
+# Save data as mydata and as a dataframe
+mydata <- as.data.frame(all$dat)
+
+# Check contents as are expected: 137 species in each
+# str(mytree)
+# glimpse(mydata)
+```
+
+Finally write these cleaned data out for use in later analyses.
+```{r}
+write_csv(mydata, path = here("data/chromosome-data.csv"))
+write.tree(mytree, file = here("data/ML-tree.tre"))
+```
+
+

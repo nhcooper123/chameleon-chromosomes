@@ -1,0 +1,272 @@
+---
+title: "Visualising the data on the phylogeny"
+author: "Natalie Cooper"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r, message = FALSE}
+# Load libraries
+library(tidyverse)
+library(here)
+library(phytools)
+library(ggtree)
+library(ggnewscale)
+```
+
+## Prepare data and tree
+
+Read in the data
+```{r, message = FALSE}
+# Read in the data
+ds <- read_csv(here("data/chromosome-data.csv"))
+
+# Look at it
+# head(ds)
+```
+
+Read in the tree, check it is ultrametric
+```{r}
+# Read in the tree
+tree <- read.tree(here("data/ML-tree.tre"))
+# Tree is not ultrametric due to weird rounding issues
+# Fix this
+tree <- force.ultrametric(tree)
+# Check tree is now ultrametric
+is.ultrametric(tree) # TRUE
+# Look at it
+# plot(tree, cex = 0.6)
+```
+
+Extract some subsets of the data for the plotting
+```{r}
+# 1. Just the basic chromosome properties
+basic <-
+  mydata %>%
+  select(chromon:microp)
+# Add rownames as tip names  
+rownames(basic) <- mydata$tips
+
+# 2. NOR data
+nor <-
+  mydata %>%
+  select(norpos:norpair)
+# Add rownames as tip names  
+rownames(nor) <- mydata$tips
+
+# 3. Morphology per pair
+morph <-
+  mydata %>%
+  select(pair1:pair14)
+# Add rownames as tip names  
+rownames(morph) <- mydata$tips
+
+# 4. Morphology of the macrochromosome per pair
+macro <-
+  mydata %>%
+  select(i1:i14)
+# Add rownames as tip names  
+rownames(macro) <- mydata$tips
+
+# 5. Biogeographic realm
+realm <-
+  mydata %>%
+  select(Realm)
+# Add rownames as tip names  
+rownames(realm) <- mydata$tips
+
+# 6. size
+svl <-
+  mydata %>%
+  select(maxSVL)
+# Add rownames as tip names  
+rownames(svl) <- mydata$tips
+
+# 7. Reproductive stuff
+repro <-
+  mydata %>%
+  select(minClutchSize:maxBreedingAge)
+# Add rownames as tip names  
+rownames(repro) <- mydata$tips
+
+# 8. Misc
+misc <-
+  mydata %>%
+  select(Substrate, Repromode)
+# Add rownames as tip names  
+rownames(misc) <- mydata$tips
+```
+
+Extract the MRCA (most recent common ancestor) for each genus so we can label the phylogeny easily with genera names
+```{r}
+brady <- findMRCA(mytree, 
+                  tips = mydata$tips[mydata$genus == "bradypodion"])
+brook  <- findMRCA(mytree, 
+                    tips = mydata$tips[mydata$genus == "brookesia"])
+cal <- findMRCA(mytree, 
+                  tips = mydata$tips[mydata$genus == "calumma"])
+cham <- findMRCA(mytree, 
+                    tips = mydata$tips[mydata$genus == "chamaeleo"])
+furc <- findMRCA(mytree, 
+                    tips = mydata$tips[mydata$genus == "furcifer"])
+kiny <- findMRCA(mytree, 
+                  tips = mydata$tips[mydata$genus == "kinyongia"])
+pall <- findMRCA(mytree, 
+                    tips = mydata$tips[mydata$genus == "palleon"])
+rhamp <- findMRCA(mytree, 
+                  tips = mydata$tips[mydata$genus == "rhampholeon"])
+trio <- findMRCA(mytree, 
+                    tips = mydata$tips[mydata$genus == "trioceros"])
+
+# There's only one species of Rieppeleon 
+# so just need to know its name
+# mydata$tips[mydata$genus == "rieppeleon"]
+# "Riebrev"
+```
+
+## Visualising data on the tree
+
+First let's look at the tree and add some labels for the genera
+```{r, warning = FALSE, echo = FALSE, fig.height = 10}
+# Create base tree to add stuff to
+base_tree <-
+  ggtree(mytree) + 
+  theme_tree() +
+  xlim(0,150) + 
+  ylim(0,150) +
+  # Add tip labels as text, slightly offset from the tips and aligned
+  geom_tiplab(geom = "text", align = TRUE, size = 2,
+              offset = 0.5, linetype = NA)
+
+# Add labels for genera
+genus_tree <-
+  base_tree +
+  geom_cladelabel(node = brady, label = expression(italic("Bradypodion")), 
+                align = TRUE,offset = 10, fontsize = 5) +
+  geom_cladelabel(node = brook, label = expression(italic("Brookesia")), 
+                align = TRUE,offset = 10, fontsize = 5) +
+  geom_cladelabel(node = cal, label = expression(italic("Calumma")), 
+                align = TRUE,offset = 10, fontsize = 5) +
+  geom_cladelabel(node = cham, label = expression(italic("Chamaeleo")), 
+                align = TRUE,offset = 10, fontsize = 5) +
+  geom_cladelabel(node = furc, label = expression(italic("Furcifer")), 
+                align = TRUE, offset = 10, fontsize = 5) +
+  geom_cladelabel(node = kiny, label = expression(italic("Kinyongia")), 
+                align = TRUE,offset = 10, fontsize = 5) +
+  geom_cladelabel(node = pall, label = expression(italic("Palleon")), 
+                align = TRUE,offset = 10, fontsize = 5) +
+  geom_cladelabel(node = rhamp, label = expression(italic("Rhampholeon")), 
+                align = TRUE,offset = 10, fontsize = 5) +
+  geom_cladelabel(node = trio, label = expression(italic("Trioceros")), 
+                align = TRUE, offset = 10, fontsize = 5) +
+  # There's only one species of Rieppeleon so needs a slightly different setup
+  geom_tiplab(aes(
+      subset=(grepl('Riebrev',label,fixed=TRUE)==TRUE), label = "Rieppeleon"),
+      fontface = "italic", offset = 12, size = 5, hjust = 0)
+
+genus_tree
+
+genus_tree2 <-
+  base_tree +
+  geom_cladelabel(node = brady, label = expression(italic("Bradypodion")), 
+                align = TRUE,offset = 35, fontsize = 5) +
+  geom_cladelabel(node = brook, label = expression(italic("Brookesia")), 
+                align = TRUE,offset = 35, fontsize = 5) +
+  geom_cladelabel(node = cal, label = expression(italic("Calumma")), 
+                align = TRUE,offset = 35, fontsize = 5) +
+  geom_cladelabel(node = cham, label = expression(italic("Chamaeleo")), 
+                align = TRUE,offset = 35, fontsize = 5) +
+  geom_cladelabel(node = furc, label = expression(italic("Furcifer")), 
+                align = TRUE, offset = 35, fontsize = 5) +
+  geom_cladelabel(node = kiny, label = expression(italic("Kinyongia")), 
+                align = TRUE,offset = 35, fontsize = 5) +
+  geom_cladelabel(node = pall, label = expression(italic("Palleon")), 
+                align = TRUE,offset = 35, fontsize = 5) +
+  geom_cladelabel(node = rhamp, label = expression(italic("Rhampholeon")), 
+                align = TRUE,offset = 35, fontsize = 5) +
+  geom_cladelabel(node = trio, label = expression(italic("Trioceros")), 
+                align = TRUE, offset = 35, fontsize = 5) +
+  # There's only one species of Rieppeleon so needs a slightly different setup
+  geom_tiplab(aes(
+      subset=(grepl('Riebrev',label,fixed=TRUE)==TRUE), label = "Rieppeleon"),
+      fontface = "italic", offset = 37, size = 5, hjust = 0)
+```
+
+### What does the distribution of chromosome properties look like on the tree?
+
+```{r basic, warning = FALSE, message = FALSE, fig.height = 10, fig.cap= "Basic chromosome data. chromon = total (diploid) chromosome number in the karyotype; armn = arm number (a derived value from the overall karyotype morphology); macrop = number of macrochromosome pairs in the karyotype; microp = number of microchromosome pairs in the karyotype", echo = FALSE}
+gheatmap(genus_tree2, basic, offset = 10, width = 0.25, font.size = 5, 
+        colnames_angle = 45, colnames_position = "top", hjust = 0,
+        colnames_offset_x = 0, colnames_offset_y = 1, 
+        legend_title = "number") +
+    scale_fill_viridis_c()
+```
+
+
+```{r nor, warning = FALSE, message = FALSE, fig.height = 10, fig.cap= "NOR data. norpos = position of NOR loci (coded as state M = on macrochromosome; m = on microchromosome) norpair = NOR position on macrochromosomes coded as state (roman numbers stand for the different chromosome pairs starting from the largest)", echo = FALSE}
+
+gheatmap(genus_tree2, nor, offset = 8, width = 0.25, font.size = 5, 
+        colnames_angle = 45, colnames_position = "top", hjust = 0,
+        colnames_offset_x = 0, colnames_offset_y = 1) +
+    scale_fill_viridis_d(na.value = "grey90", option = "plasma")
+```
+
+```{r morph, warning = FALSE, message = FALSE, fig.height = 10, fig.cap= "Morphology of each macrochromosome pair in the karyotype, coded as a state based on the traditional classification of the chromosome morphology (metacentric, submetacentric, subtelocentric and telocentric)", echo = FALSE}
+
+gheatmap(genus_tree2, morph, offset = 8, width = 0.3, font.size = 4, 
+        colnames_angle = 45, colnames_position = "top", hjust = 0,
+        colnames_offset_x = 0, colnames_offset_y = 1, 
+        legend_title = "morphology") +
+    scale_fill_viridis_d(na.value = "grey90", option = "magma")
+```
+
+```{r macro, warning = FALSE, message = FALSE, fig.height = 10, fig.cap= "Morphology of the macrochromosome pair in the karyotype expressed as a simplified numeric value derived from the morphological classification of each pair (metacentric = 0.4, submetacentric = 0.3, subtelocentric = 0.2 and telocentric = 0.1)", echo = FALSE}
+
+gheatmap(genus_tree2, macro, offset = 8, width = 0.3, font.size = 3, 
+        colnames_angle = 45, colnames_position = "top", hjust = 0,
+        colnames_offset_x = 0, colnames_offset_y = 1, 
+        legend_title = "morphology") +
+    scale_fill_viridis_c(na.value = "grey90", option = "plasma")
+```
+
+
+### What about the ecological variables
+
+```{r svl, warning = FALSE, message = FALSE, fig.height = 10, fig.cap= "Body size as max SVL", echo = FALSE}
+
+gheatmap(genus_tree2, svl, offset = 10, width = 0.2, font.size = 6, 
+        colnames_angle = 45, colnames_position = "top", hjust = 0,
+        colnames_offset_x = 0, colnames_offset_y = 1, 
+        legend_title = "SVL") +
+    scale_fill_viridis_c(na.value = "grey90", option = "plasma")
+```
+
+```{r realm, warning = FALSE, message = FALSE, fig.height = 10, fig.cap= "Biogeographic realm", echo = FALSE}
+
+gheatmap(genus_tree2, realm, offset = 8, width = 0.2, font.size = 6, 
+        colnames_angle = 45, colnames_position = "top", hjust = 0,
+        colnames_offset_x = 0, colnames_offset_y = 1, 
+        legend_title = "Realm") +
+    scale_fill_viridis_d(na.value = "grey90", option = "magma")
+```
+
+```{r misc, warning = FALSE, message = FALSE, fig.height = 10, fig.cap= "substrate use and reproductive mode", echo = FALSE}
+
+gheatmap(genus_tree2, misc, offset = 8, width = 0.2, font.size = 6, 
+        colnames_angle = 45, colnames_position = "top", hjust = 0,
+        colnames_offset_x = 0, colnames_offset_y = 1, 
+        legend_title = "misc") +
+    scale_fill_viridis_d(na.value = "grey90", option = "plasma")
+```
+
+```{r repro, warning = FALSE, message = FALSE, fig.height = 10, fig.cap= "Reproductive variables, max and min clutch size, youngest and oldest breeding age in months", echo = FALSE}
+
+gheatmap(genus_tree2, repro, offset = 8, width = 0.2, font.size = 5, 
+        colnames_angle = 45, colnames_position = "top", hjust = 0,
+        colnames_offset_x = 0, colnames_offset_y = 1, 
+        legend_title = "repro") +
+    scale_fill_viridis_c(na.value = "grey90", option = "plasma")
+```

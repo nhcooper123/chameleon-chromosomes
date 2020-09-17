@@ -1,6 +1,9 @@
 # Large datasets
 raw-data/*
 
+# Messy code
+draft-analyses/*
+
 # History files
 .Rhistory
 .Rapp.history

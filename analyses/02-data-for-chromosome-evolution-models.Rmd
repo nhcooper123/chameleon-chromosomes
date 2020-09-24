@@ -68,7 +68,7 @@ chromo <- as.data.frame(chromo)
 Save the tree and data for use in ChromEvol
 ```{r}
 # Save tree
-write.tree(mytree, here("chromEvol/tree_for_chromevol.tre"))
+write.tree(tree, here("chromEvol/tree_for_chromevol"))
 # Save data
 write_csv(chromo, col_names =  FALSE, 
           path = here("chromEvol/data_for_chromevol"))

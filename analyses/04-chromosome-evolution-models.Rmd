@@ -1,0 +1,116 @@
+---
+title: "Analysing the outputs of ChromEvol"
+author: "Natalie Cooper"
+output: html_document
+---
+
+## Analysing outputs from ChromEvol
+
+```{r, message = FALSE}
+# Load libraries
+library(tidyverse)
+library(here)
+library(phytools)
+library(treeplyr)
+library(ChromEvol) #install this from source
+library(here)
+```
+
+### Model fitting
+First look at the models and choose the best using AIC
+```{r, message = FALSE}
+# Read in the model summary data
+summary <- read_delim(here("chromEvol/chromEvol_out_scaled/models_summary.txt"), delim = "\t")
+# Add AIC weights
+summary <-
+  summary %>%
+  mutate(AICw = round(aic.w(AIC), digits = 3))
+# Select the best model
+best_model <- 
+  summary %>%
+  filter(AICw == max(AICw)) %>%
+  pull(MODEL)
+
+# What is the best model?
+best_model
+```
+
+What are the AIC values and AIC weights for each model?
+```{r}
+summary
+```
+
+Now read in the results for the best model by specifying the path to that folder
+```{r}
+# Read in the results by specifying the path to the folder
+# containing them
+results <- read.ce(here(paste0("chromEvol/chromEvol_out_scaled/", best_model)))
+```
+
+What are the parameters of the best model? Note that due to the rescaling of the tree, we need to multiply these values by the scaling constant to get the true values. This is specified in the `chromEvol.res` outfile, but doesn't seem to be automatically extractable so I've done this by hand.
+```{r}
+table <-
+  data.frame(parameter = c("loss", "gain", "duplication", "demiduplication"),
+             value = c(results$Parameters$rate_lossC * 0.00371357,
+                       results$Parameters$rate_gainC * 0.00371357,
+                       results$Parameters$rate_dupl * 0.00371357,
+                        results$Parameters$rate_demi * 0.00371357))
+table
+```
+
+Now we can look at the results on the tree...
+This works best as a separate plot that you then zoom to look at, rather than in Rmd.
+```{r, fig.height=20}
+# Create list of colours (TBC)
+mycolours <- c(rep(NA, 9), rainbow(10), rep(NA, 11), "red")
+# Read in haploid number data
+nn <- read_csv(here("data/chromosome-data.csv"))
+
+# Plot using bespoke function from ChromEvol R package with some tweaks   
+# This adds the pies and the node chromosome estimate with the highest posterior probability
+# Note that the legend is hard coded in, but can be moved off the plot using a silly value for y
+# I have also removed the tip pies and I am adding them using tiplabels so I can adjust their
+# position more easily.
+plot.anc(results, adj.tip.pie = 0.5, node.No = "PP", chroCOL = mycolours, type = "fan",
+         cex.node.pie = 0.6, cut.tipNo = TRUE, tip.pie = FALSE, label.offset = 0.05, y = -10,
+         no.margin = TRUE)
+# Add tip labels using standard ape code
+tiplabels(pch = 16, col = mycolours[nn$haploidn], cex = 2, offset = 0.03)
+```
+
+### Ancestral state estimations
+What is the best fitting ancestral state?
+```{r}
+# Read in the model summary data
+res08 <- read.ce(here(paste0("chromEvol/chromEvol_out_root_08")))
+res09 <- read.ce(here(paste0("chromEvol/chromEvol_out_root_09")))
+res10 <- read.ce(here(paste0("chromEvol/chromEvol_out_root_10")))
+res11 <- read.ce(here(paste0("chromEvol/chromEvol_out_root_11")))
+res12 <- read.ce(here(paste0("chromEvol/chromEvol_out_root_12")))
+res13 <- read.ce(here(paste0("chromEvol/chromEvol_out_root_13")))
+res14 <- read.ce(here(paste0("chromEvol/chromEvol_out_root_14")))
+res15 <- read.ce(here(paste0("chromEvol/chromEvol_out_root_15")))
+res16 <- read.ce(here(paste0("chromEvol/chromEvol_out_root_16")))
+res17 <- read.ce(here(paste0("chromEvol/chromEvol_out_root_17")))
+res18 <- read.ce(here(paste0("chromEvol/chromEvol_out_root_18")))
+res19 <- read.ce(here(paste0("chromEvol/chromEvol_out_root_19")))
+res20 <- read.ce(here(paste0("chromEvol/chromEvol_out_root_20")))
+
+res_all <- data.frame(n = c(8:20), 
+                      AIC = c(res08$Parameters$AIC, res09$Parameters$AIC,
+                              res10$Parameters$AIC, res11$Parameters$AIC,
+                              res12$Parameters$AIC, res13$Parameters$AIC,
+                              res14$Parameters$AIC, res15$Parameters$AIC,
+                              res16$Parameters$AIC, res17$Parameters$AIC,
+                              res18$Parameters$AIC, res19$Parameters$AIC,
+                              res20$Parameters$AIC))
+
+# Add AIC weights
+summary <-
+  res_all %>%
+  mutate(AICw = round(aic.w(AIC), digits = 3))
+
+summary
+```
+
+

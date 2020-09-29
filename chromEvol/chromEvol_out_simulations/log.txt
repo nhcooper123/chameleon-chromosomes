@@ -1,0 +1,7065 @@
+START OF LOG FILE
+chromEvol Version: 2.0. Last updated May 2020
+_bOptBaseNumber	(Int)	0
+_baseNumber	(Int)	-999
+_baseNumberR	(Float)	-999
+_baseTransitionProbs	(Str)	
+_branchModelType	(Str)	GRADUAL
+_branchMul	(Float)	1
+_dataFile	(Str)	
+_demiPloidyR	(Float)	0.00371357
+_duplConstR	(Float)	6.73619e-13
+_epsR	(Float)	-999
+_epsilonLLimprovement	(Float)	0.1
+_freqFile	(Str)	root_freq/root_freq_sims.txt
+_gainConstR	(Float)	0.0079099
+_gainLinearR	(Float)	-999
+_inferTreeFile	(Str)	mlAncestors.tree
+_logFile	(Str)	log.txt
+_logValue	(Int)	5
+_lossConstR	(Float)	0.0119577
+_lossLinearR	(Float)	-999
+_mainType	(Str)	mainSimulate
+_maxBaseTransition	(Int)	0
+_maxChrNum	(Int)	-10
+_maxChrNumForSimulations	(Int)	41
+_maxOptimizationIterations	(Int)	-1
+_minBaseTransition	(Int)	3
+_minChrNum	(Int)	1
+_modelType	(Str)	GENERAL_CHR_MODEL
+_optimizeIterNum	(Str)	0,2,5
+_optimizePointsNum	(Str)	10,3,1
+_outDir	(Str)	chromEvol_out_simulations
+_outFile	(Str)	chromEvol.res
+_pow2Scale	(Int)	1
+_rootAt	(Str)	
+_rootFreqType	(Str)	ROOT_LL
+_scaleBranch	(Float)	-999
+_simDemiTypes	(Str)	-999,-999,-2
+_simModels	(Str)	CONST_RATE_NO_DUPL,CONST_RATE,CONST_RATE
+_simulationsIter	(Int)	1000
+_simulationsJumpsStats	(Str)	expStats.txt
+_simulationsNum	(Int)	10000
+_simulationsTreeDir	(Str)	
+_simulationsTreeLength	(Float)	6
+_smIter	(Int)	0
+_startSimulationsIter	(Int)	0
+_tolParamOptimization	(Float)	0.01
+_treeFile	(Str)	tree_for_chromevol
+
+ ---------------------- THE PARAMETERS ----------------------------
+main type: mainSimulate
+tree file: tree_for_chromevol
+output file: chromEvol.res
+model Type: GENERAL_CHR_MODEL
+ max chromosome number allowed: -10
+ _gainConstR: 0.0079099
+ _lossConstR: 0.0119577
+ _duplConstR: 6.73619e-13
+ _demiPloidyR: 0.00371357
+ _baseNumber: -999
+ _baseNumberR: -999
+
+ -----------------------------------------------------------------
+simulation iter = 0
+Directory chromEvol_out_simulations//0 already exists  
+
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 1
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 2
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 3
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 4
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 5
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 6
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 7
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 8
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 9
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 10
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 11
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 12
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 13
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 14
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 15
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 16
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 17
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 18
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 19
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 20
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 21
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 22
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 23
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 24
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 25
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 26
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 27
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 28
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 29
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 30
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 31
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 32
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 33
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 34
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 35
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 36
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 37
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 38
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 39
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 40
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 41
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 42
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 43
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 44
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 45
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 46
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 47
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 48
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 49
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 50
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 51
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 52
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 53
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 54
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 55
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 56
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 57
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 58
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 59
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 60
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 61
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 62
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 63
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 64
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 65
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 66
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 67
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 68
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 69
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 70
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 71
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 72
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 73
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 74
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 75
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 76
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 77
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 78
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 79
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 80
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 81
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 82
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 83
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 84
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 85
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 86
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 87
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 88
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 89
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 90
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 91
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 92
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 93
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 94
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 95
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 96
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 97
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 98
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 99
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 100
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 101
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 102
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 103
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 104
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 105
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 106
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 107
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 108
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 109
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 110
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 111
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 112
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 113
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 114
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 115
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 116
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 117
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 118
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 119
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 120
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 121
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 122
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 123
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 124
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 125
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 126
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 127
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 128
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 129
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 130
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 131
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 132
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 133
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 134
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 135
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 136
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 137
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 138
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 139
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 140
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 141
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 142
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 143
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 144
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 145
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 146
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 147
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 148
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 149
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 150
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 151
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 152
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 153
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 154
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 155
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 156
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 157
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 158
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 159
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 160
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 161
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 162
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 163
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 164
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 165
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 166
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 167
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 168
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 169
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 170
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 171
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 172
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 173
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 174
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 175
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 176
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 177
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 178
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 179
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 180
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 181
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 182
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 183
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 184
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 185
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 186
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 187
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 188
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 189
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 190
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 191
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 192
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 193
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 194
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 195
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 196
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 197
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 198
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 199
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 200
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 201
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 202
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 203
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 204
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 205
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 206
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 207
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 208
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 209
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 210
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 211
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 212
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 213
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 214
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 215
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 216
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 217
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 218
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 219
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 220
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 221
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 222
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 223
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 224
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 225
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 226
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 227
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 228
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 229
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 230
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 231
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 232
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 233
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 234
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 235
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 236
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 237
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 238
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 239
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 240
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 241
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 242
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 243
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 244
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 245
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 246
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 247
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 248
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 249
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 250
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 251
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 252
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 253
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 254
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 255
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 256
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 257
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 258
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 259
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 260
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 261
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 262
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 263
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 264
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 265
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 266
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 267
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 268
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 269
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 270
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 271
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 272
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 273
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 274
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 275
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 276
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 277
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 278
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 279
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 280
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 281
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 282
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 283
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 284
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 285
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 286
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 287
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 288
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 289
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 290
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 291
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 292
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 293
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 294
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 295
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 296
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 297
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 298
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 299
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 300
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 301
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 302
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 303
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 304
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 305
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 306
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 307
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 308
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 309
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 310
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 311
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 312
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 313
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 314
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 315
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 316
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 317
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 318
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 319
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 320
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 321
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 322
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 323
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 324
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 325
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 326
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 327
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 328
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 329
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 330
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 331
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 332
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 333
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 334
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 335
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 336
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 337
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 338
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 339
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 340
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 341
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 342
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 343
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 344
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 345
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 346
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 347
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 348
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 349
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 350
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 351
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 352
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 353
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 354
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 355
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 356
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 357
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 358
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 359
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 360
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 361
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 362
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 363
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 364
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 365
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 366
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 367
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 368
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 369
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 370
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 371
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 372
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 373
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 374
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 375
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 376
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 377
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 378
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 379
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 380
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 381
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 382
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 383
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 384
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 385
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 386
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 387
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 388
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 389
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 390
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 391
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 392
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 393
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 394
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 395
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 396
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 397
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 398
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 399
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 400
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 401
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 402
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 403
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 404
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 405
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 406
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 407
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 408
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 409
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 410
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 411
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 412
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 413
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 414
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 415
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 416
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 417
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 418
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 419
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 420
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 421
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 422
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 423
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 424
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 425
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 426
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 427
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 428
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 429
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 430
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 431
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 432
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 433
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 434
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 435
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 436
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 437
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 438
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 439
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 440
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 441
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 442
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 443
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 444
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 445
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 446
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 447
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 448
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 449
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 450
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 451
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 452
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 453
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 454
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 455
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 456
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 457
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 458
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 459
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 460
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 461
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 462
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 463
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 464
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 465
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 466
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 467
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 468
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 469
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 470
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 471
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 472
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 473
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 474
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 475
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 476
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 477
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 478
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 479
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 480
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 481
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 482
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 483
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 484
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 485
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 486
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 487
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 488
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 489
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 490
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 491
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 492
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 493
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 494
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 495
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 496
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 497
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 498
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 499
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 500
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 501
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 502
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 503
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 504
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 505
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 506
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 507
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 508
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 509
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 510
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 511
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 512
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 513
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 514
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 515
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 516
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 517
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 518
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 519
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 520
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 521
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 522
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 523
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 524
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 525
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 526
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 527
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 528
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 529
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 530
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 531
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 532
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 533
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 534
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 535
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 536
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 537
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 538
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 539
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 540
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 541
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 542
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 543
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 544
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 545
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 546
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 547
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 548
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 549
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 550
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 551
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 552
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 553
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 554
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 555
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 556
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 557
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 558
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 559
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 560
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 561
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 562
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 563
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 564
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 565
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 566
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 567
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 568
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 569
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 570
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 571
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 572
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 573
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 574
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 575
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 576
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 577
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 578
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 579
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 580
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 581
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 582
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 583
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 584
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 585
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 586
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 587
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 588
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 589
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 590
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 591
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 592
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 593
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 594
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 595
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 596
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 597
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 598
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 599
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 600
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 601
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 602
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 603
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 604
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 605
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 606
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 607
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 608
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 609
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 610
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 611
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 612
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 613
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 614
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 615
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 616
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 617
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 618
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 619
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 620
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 621
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 622
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 623
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 624
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 625
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 626
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 627
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 628
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 629
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 630
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 631
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 632
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 633
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 634
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 635
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 636
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 637
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 638
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 639
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 640
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 641
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 642
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 643
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 644
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 645
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 646
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 647
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 648
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 649
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 650
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 651
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 652
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 653
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 654
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 655
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 656
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 657
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 658
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 659
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 660
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 661
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 662
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 663
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 664
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 665
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 666
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 667
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 668
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 669
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 670
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 671
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 672
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 673
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 674
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 675
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 676
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 677
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 678
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 679
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 680
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 681
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 682
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 683
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 684
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 685
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 686
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 687
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 688
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 689
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 690
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 691
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 692
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 693
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 694
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 695
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 696
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 697
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 698
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 699
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 700
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 701
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 702
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 703
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 704
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 705
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 706
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 707
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 708
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 709
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 710
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 711
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 712
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 713
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 714
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 715
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 716
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 717
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 718
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 719
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 720
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 721
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 722
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 723
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 724
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 725
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 726
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 727
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 728
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 729
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 730
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 731
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 732
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 733
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 734
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 735
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 736
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 737
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 738
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 739
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 740
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 741
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 742
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 743
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 744
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 745
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 746
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 747
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 748
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 749
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 750
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 751
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 752
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 753
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 754
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 755
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 756
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 757
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 758
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 759
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 760
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 761
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 762
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 763
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 764
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 765
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 766
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 767
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 768
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 769
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 770
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 771
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 772
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 773
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 774
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 775
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 776
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 777
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 778
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 779
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 780
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 781
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 782
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 783
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 784
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 785
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 786
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 787
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 788
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 789
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 790
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 791
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 792
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 793
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 794
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 795
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 796
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 797
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 798
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 799
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 800
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 801
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 802
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 803
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 804
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 805
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 806
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 807
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 808
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 809
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 810
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 811
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 812
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 813
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 814
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 815
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 816
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 817
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 818
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 819
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 820
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 821
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 822
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 823
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 824
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 825
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 826
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 827
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 828
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 829
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 830
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 831
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 832
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 833
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 834
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 835
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 836
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 837
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 838
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 839
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 840
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 841
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 842
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 843
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 844
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 845
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 846
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 847
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 848
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 849
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 850
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 851
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 852
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 853
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 854
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 855
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 856
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 857
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 858
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 859
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 860
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 861
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 862
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 863
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 864
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 865
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 866
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 867
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 868
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 869
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 870
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 871
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 872
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 873
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 874
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 875
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 876
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 877
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 878
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 879
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 880
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 881
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 882
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 883
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 884
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 885
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 886
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 887
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 888
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 889
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 890
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 891
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 892
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 893
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 894
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 895
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 896
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 897
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 898
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 899
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 900
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 901
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 902
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 903
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 904
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 905
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 906
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 907
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 908
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 909
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 910
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 911
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 912
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 913
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 914
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 915
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 916
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 917
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 918
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 919
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 920
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 921
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 922
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 923
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 924
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 925
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 926
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 927
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 928
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 929
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 930
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 931
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 932
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 933
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 934
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 935
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 936
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 937
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 938
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 939
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 940
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 941
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 942
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 943
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 944
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 945
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 946
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 947
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 948
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 949
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 950
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 951
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 952
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 953
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 954
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 955
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 956
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 957
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 958
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 959
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 960
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 961
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 962
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 963
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 964
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 965
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 966
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 967
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 968
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 969
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 970
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 971
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 972
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 973
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 974
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 975
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 976
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 977
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 978
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 979
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 980
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 981
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 982
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 983
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 984
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 985
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 986
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 987
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 988
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 989
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 990
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 991
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 992
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 993
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 994
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 995
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 996
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 997
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 998
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6
+simulation iter = 999
+tree rooted at N1 id, 0
+sons of root are: 
+Leiolep
+N2
+Original total tree length = 2962.11
+total tree length = 6

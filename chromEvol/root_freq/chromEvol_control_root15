@@ -1,0 +1,12 @@
+_mainType Run_Fix_Param
+_lossConstR 3.21796
+_gainConstR 2.13422
+_duplConstR	1.81394e-10
+_demiPloidyR 1
+_outDir chromEvol_out_root_15
+_dataFile data_for_chromevol
+_treeFile tree_for_chromevol
+_maxChrNum -10
+_minChrNum -10
+_rootFreqType FIXED 
+_freqFile root_freq/root_freq_15.txt

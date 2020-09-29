@@ -26,7 +26,7 @@ mydata <- read_csv(here("data/chromosome-data.csv"))
 mytree <- read.tree(here("data/ML-tree.tre"))
 ```
 
-Take a look at the dataset
+Take a look at the dataset and tree
 ```{r}
 #str(mytree)
 #head(mydata)

@@ -12,6 +12,7 @@ library(tidyverse)
 library(here)
 library(phytools)
 library(ChromEvol) #install this from source
+library(patchwork)
 ```
 
 Read in all the simulations outputs, wrangle into a useable format, and combine.
@@ -33,7 +34,7 @@ for (i in 0:999) {
   group_by(ind) %>%
   mutate(id = row_number()) %>%
   spread(ind, X1) %>%
-  select(-id) %>%
+  dplyr::select(-id) %>%
   mutate(tips = gsub(">", "", tips)) %>%
   mutate(sim = rep(i+1, length(tips)))
   
@@ -42,52 +43,34 @@ for (i in 0:999) {
 }
 
 sim_output$sim <- sim_output$sim+1
+
+#write_csv(sim_output, path = here("data/chromevol-simulations-outputs.csv"))
 ```
 
-Add the observed data to the simulations data, then work out the differences between observed numbers and simulation numbers of chromosomes
+Add the observed data to the simulations data, then work out the differences between observed numbers and simulation numbers of chromosomes.
 ```{r}
+# Read in observed data
 mydata <- read_csv(here("data/chromosome-data.csv"))
 
+# Rename the haploidn column
+# Select only tip names, genus and observed haploidn
 mydata <-
   mydata %>%
   rename(obs_haploidn = haploidn) %>%
-  select(tips, obs_haploidn, genus)
+  dplyr::select(tips, obs_haploidn, genus)
 
+# Join data by tip names
 sim_output2 <- 
   full_join(sim_output, mydata, by = "tips")
 
+# Calculate differences
 results <- 
   sim_output2 %>%
   mutate(haploidn = as.numeric(haploidn)) %>%
   mutate(diff = obs_haploidn - haploidn)
 
-# Plot with differences in numbers of chromosomes
-ggplot(results, aes(x = diff)) +
-  geom_density() +
-  geom_vline(xintercept = 0, linetype = "dotted") +
-  facet_wrap(~genus) +
-  theme_bw(base_size = 14) +
-  theme(strip.background = element_rect(fill="white"), 
-        strip.text = element_text(face = "italic"),
-        axis.text.x = element_text(angle = 45, hjust = 1)) +
-  xlab(expression(n[observed] - n[simulated]))
-
-#ggsave(filename = here("outputs/chromevol-simulations-differences.png"))  
-
-# Plot using numbers of chromosomes
-ggplot(results, aes(x = haploidn)) +
-  geom_histogram(bins = 20) +
-  geom_histogram(aes(x = obs_haploidn), 
-                 fill = "red", bins = 20, alpha = 0.5) +
-  facet_wrap(~genus, scales = "free_y") +
-  theme_bw(base_size = 14) +
-  theme(strip.background = element_rect(fill="white"), 
-        strip.text = element_text(face = "italic"),
-        axis.text.x = element_text(angle = 45, hjust = 1)) +
-  xlab("chromosomes (n)")
-
-#ggsave(filename = here("outputs/chromevol-simulations-numbers.png"))  
-
+# Remove the outgroup
+results <- filter(results, genus != "Leiolepis")
 ```
 
 ## Null model simulations
@@ -105,21 +88,29 @@ for (j in 1:1000){
   sims_output_null <- rbind(sims_output_null, newdata)
 }
 
+#write_csv(sims_output_null, path = here("data/null-simulations-outputs.csv"))
 ```
 
-Plot the observed versus the simulations...
-
+Add the data so the differences between observed and simualted chromosome numbers can be calculated.
 ```{r}
+# Join data by tip names
 sim_output_null2 <- 
   full_join(sims_output_null, mydata, by = "tips")
 
+# Calculate differences
 results_null <- 
   sim_output_null2 %>%
   mutate(diff = obs_haploidn - sim_haploidn)
 
-# Plot with differences in numbers of chromosomes
-ggplot(results_null, aes(x = diff)) +
-  geom_density() +
+# Remove the outgroup
+results_null <- filter(results_null, genus != "Leiolepis")
+```
+
+## Plot the observed versus the simulations for both sets
+```{r}
+ggplot(results, aes(x = diff)) +
+  geom_density(colour = "cornflowerblue") +
+  geom_density(data = results_null, colour = "grey") +
   geom_vline(xintercept = 0, linetype = "dotted") +
   facet_wrap(~genus) +
   theme_bw(base_size = 14) +
@@ -128,62 +119,20 @@ ggplot(results_null, aes(x = diff)) +
         axis.text.x = element_text(angle = 45, hjust = 1)) +
   xlab(expression(n[observed] - n[simulated]))
 
-#ggsave(filename = here("outputs/null-simulations-differences.png"))  
+#ggsave(filename = here("outputs/all-simulations-differences.png"))  
 
-# Plot using numbers of chromosomes
-ggplot(results_null, aes(x = sim_haploidn)) +
-  geom_histogram(bins = 20) +
-  geom_histogram(aes(x = obs_haploidn), 
-                 fill = "cornflowerblue", bins = 20, alpha = 0.5) +
-  facet_wrap(~genus, scales = "free_y") +
-  theme_bw(base_size = 14) +
-  theme(strip.background = element_rect(fill="white"), 
-        strip.text = element_text(face = "italic"),
-        axis.text.x = element_text(angle = 45, hjust = 1)) +
-  xlab("chromosomes (n)")
-
-#ggsave(filename = here("outputs/null-simulations-numbers.png"))  
 ```
-
-## Compare % correct simulations
-
-This is for the phylo model simulations and for the null simulations.
+Plot number of chromosomes predicted using chromosome evolution models
 ```{r}
-# For the chromEvol simulations
-# Get % correctly assigned haploid numbers
-# Plus those within 2 of being correct
-percent_correct <-
-  results %>%
-  group_by(tips, obs_haploidn, genus) %>%
-  summarise(count = sum(diff == 0),
-            count2 = sum(diff < 2 & diff > -2)) %>%
-  mutate(percent = (count/1000)*100) %>%
-  mutate(percent2 = (count2/1000)*100)
-
-# Same for the null simulations
-percent_correct_null <-
-  results_null %>%
-  group_by(tips, obs_haploidn, genus) %>%
-  summarise(count = sum(diff == 0),
-            count2 = sum(diff < 2 & diff > -2)) %>%
-  mutate(percent = (count/1000)*100) %>%
-  mutate(percent2 = (count2/1000)*100)
-
-# Plot both on the same graph
-ggplot(percent_correct, aes(x = percent)) +
-  geom_histogram(bins = 20,
-                 fill = "grey50", alpha = 0.5) +
-  geom_histogram(data = percent_correct_null, aes(x = percent), bins = 20,
-                 fill = "cornflowerblue", alpha = 0.5) +
-  facet_wrap(~genus, scales = "free_y") +
+  ggplot(results_null, aes(x = sim_haploidn)) +
+  # Add null as this is the true distribution
+  geom_histogram(binwidth = 1, alpha = 0.5) +
+  # Add simulations in blue
+  geom_histogram(data = results, aes(x = haploidn), 
+                 fill = "cornflowerblue", binwidth = 1, alpha = 0.5) +
   theme_bw(base_size = 14) +
-  theme(strip.background = element_rect(fill="white"), 
-        strip.text = element_text(face = "italic"),
-        axis.text.x = element_text(angle = 45, hjust = 1)) +
-  xlab("% simulations with correct n") +
-  coord_cartesian(xlim = c(0, 100))
+  xlab("chromosomes (n)") +
+  coord_cartesian(xlim = c(0, 45), ylim = c(0,60000))
 
-# Save plot
-# blue = random, grey = chromEvol
-#ggsave(filename = here("outputs/all-sims-expected-numbers.png"))  
+#ggsave(filename = here("outputs/chromevol-simulations-numbers.png"))  
 ```

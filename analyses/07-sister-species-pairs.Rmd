@@ -1,0 +1,82 @@
+---
+title: "Sister species pairs analyses"
+author: "Natalie Cooper"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r, message = FALSE}
+# Load libraries
+library(tidyverse)
+library(here)
+library(ape)
+library(phangorn)
+```
+
+Read in the data and the tree
+```{r, message = FALSE, echo = FALSE}
+mydata <- read_csv(here("data/chromosome-data.csv"))
+mytree <- read.tree(here("data/ML-tree.tre"))
+```
+
+Take a look at the dataset and tree
+```{r}
+#str(mytree)
+#head(mydata)
+```
+
+Extract sister species pairs
+```{r}
+# Get siblings for each node as a list
+siblings <- Siblings(mytree)
+
+# Convert to character and back to numeric
+# to remove any NULLs and make them NAs instead
+# This will cause a warning telling you it has created the NA
+siblings <- as.numeric(as.character(siblings))
+
+# Now convert the list into a dataframe
+# with tip and sister numbers
+sisters <- data.frame(tip = 1:length(siblings), sister = unlist(siblings))
+
+# Remove any nodes
+# Node numbers start after all tips have been labelled
+# so anything higher than the total number of tips is a node
+sisters <- 
+  sisters %>% 
+  filter(tip <= length(mytree$tip.label) & sister <= length(mytree$tip.label))
+
+# Now add the names of the species back in
+# to match up with the numbers
+for (i in 1:length(sisters$tip)){
+  sisters$tip.name[i] <- mytree$tip.label[sisters$tip[i]]
+  sisters$sister.name[i] <- mytree$tip.label[sisters$sister[i]]
+}
+
+# This results in each pair appearing twice as 1,2 or 2,1.
+# Add a number to the pairs then exclude the second instance
+# Then drop non needed columns and rename tips and sisters
+# to sister1 and sister2
+sisters <-
+  sisters %>%
+  mutate(rep = rep(c(1,2), length(sisters$tip)/2)) %>%
+  filter(rep != 2) %>%
+  dplyr::select(tip.name, sister.name) %>%
+  rename(sister1 = tip.name) %>%
+  rename(sister2 = sister.name)
+```
+
+Combine with the chromosome data...
+
+```{r}
+
+```
+
+
+1. 
+```{r}
+
+```

@@ -104,7 +104,7 @@ tree$node.label <- NULL
 # Look at it
 # plot(tree, cex = 0.6)
 
-# Remove Brookesia from treee
+# Remove Brookesia from tree
 remove <- filter(ds, genus == "Brookesia")
 remove <- pull(remove, tips)
 tree <- drop.tip(tree, remove)
@@ -140,6 +140,8 @@ write.tree(tree, here("chromEvol/tree_for_chromevol_noBrookesia"))
 write_csv(chromo, col_names =  FALSE, 
           path = here("chromEvol/data_for_chromevol_noBrookesia"))
 ```
+
+> Now go to ChromEvol package in the terminal and run it...
 
 ## For models at species level
 
@@ -207,3 +209,5 @@ write.tree(speciestree, here("chromEvol/tree_for_chromevol_species"))
 write_csv(chromo, col_names =  FALSE, 
           path = here("chromEvol/data_for_chromevol_species"))
 ```
+
+> Now go to ChromEvol package in the terminal and run it...

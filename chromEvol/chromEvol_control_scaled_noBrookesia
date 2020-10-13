@@ -1,0 +1,6 @@
+_mainType All_Models
+_outDir chromEvol_out_scaled_noBrookesia
+_dataFile data_for_chromevol_noBrookesia
+_treeFile tree_for_chromevol_noBrookesia
+_maxChrNum -10
+_minChrNum -10

@@ -28,6 +28,10 @@ Take a look at the dataset and tree
 #head(mydata)
 ```
 
+The aim in these analyses is to see whether there are correlations among various traits and differences in haploid chromosome number. To deal with phylogenetic non-independence we chose to look at sister taxa pairs from the phylogeny. Initially we use the phylogeny as is, and use OTUs which are often within the same species. As a test, we correlated the difference in haploid chromosome number with phylogenetic distance.
+
+1. Using all tips
+
 Extract sister species pairs
 ```{r}
 # Get siblings for each node as a list
@@ -70,13 +74,313 @@ sisters <-
 ```
 
 Combine with the chromosome data...
-
 ```{r}
-
+sister.data <- left_join(sisters, mydata, by = c("sister1" = "tips"))
+sister.data  <- left_join(sister.data, mydata, by = c("sister2" = "tips"))
 ```
 
+Get phylogenetic distances for sister species pairs
+```{r, warning = FALSE}
+# Remove species from the tree that are not in the 
+remove <- setdiff(mytree$tip.label, c(sister.data$sister1, sister.data$sister2))
+sistertree <- drop.tip(mytree, remove)
 
-1. 
+# Find cophenetic distances
+phylo_matrix <- cophenetic.phylo(sistertree)
+
+# Flatten matrix
+phylo.dist <- 
+  data.frame(expand.grid(sister1 = dimnames(phylo_matrix)[[1]],
+	                       sister2 = dimnames(phylo_matrix)[[2]]),
+             phylodist = c(phylo_matrix))
+
+# Add to sister pairs data
+# warns about adding vectors and factors - this is fine here
+sister.data <- left_join(sister.data, phylo.dist, by = c("sister1","sister2"))
+```
+
+Now work out the differences in chromosome numbers
 ```{r}
+sister.data2 <-
+  sister.data %>%
+  mutate(haploid_diff = abs(haploidn.x - haploidn.y))
+```
 
+Finally plot...
+```{r}
+ggplot(sister.data2, aes(x = phylodist, y = haploid_diff)) +
+  geom_point() +
+  theme_bw()
+```
+
+Annoyingly, for almost all pairs the difference in haploid chromosome number is 0! This lack of variation limits the utility of working with the data in this way.
+
+2. Simplify to species
+
+We can do the same thing but collapsing the OTUs down into species.
+
+First remove excess data from my data, selecting just the first time each species appears and using these tip taxa only.
+```{r}
+mydata_species <-
+  mydata %>% 
+  mutate(dup = duplicated(mydata$Binomial)) %>%
+  filter(dup != TRUE)
+
+# Remove species from the tree that are not in mydata_species
+remove <- setdiff(mytree$tip.label, mydata_species$tips)
+speciestree <- drop.tip(mytree, remove)
+```
+
+Extract sister species pairs
+```{r}
+# Get siblings for each node as a list
+siblings <- Siblings(speciestree)
+
+# Convert to character and back to numeric
+# to remove any NULLs and make them NAs instead
+# This will cause a warning telling you it has created the NA
+siblings <- as.numeric(as.character(siblings))
+
+# Now convert the list into a dataframe
+# with tip and sister numbers
+sisters <- data.frame(tip = 1:length(siblings), sister = unlist(siblings))
+
+# Remove any nodes
+# Node numbers start after all tips have been labelled
+# so anything higher than the total number of tips is a node
+sisters <- 
+  sisters %>% 
+  filter(tip <= length(speciestree$tip.label) & sister <= length(speciestree$tip.label))
+
+# Now add the names of the species back in
+# to match up with the numbers
+for (i in 1:length(sisters$tip)){
+  sisters$tip.name[i] <- speciestree$tip.label[sisters$tip[i]]
+  sisters$sister.name[i] <- speciestree$tip.label[sisters$sister[i]]
+}
+
+# This results in each pair appearing twice as 1,2 or 2,1.
+# Add a number to the pairs then exclude the second instance
+# Then drop non needed columns and rename tips and sisters
+# to sister1 and sister2
+sisters <-
+  sisters %>%
+  mutate(rep = rep(c(1,2), length(sisters$tip)/2)) %>%
+  filter(rep != 2) %>%
+  dplyr::select(tip.name, sister.name) %>%
+  rename(sister1 = tip.name) %>%
+  rename(sister2 = sister.name)
+```
+
+Combine with the chromosome data...
+```{r}
+sister.data <- left_join(sisters, mydata_species, by = c("sister1" = "tips"))
+sister.data  <- left_join(sister.data, mydata_species, by = c("sister2" = "tips"))
+```
+
+Get phylogenetic distances for sister species pairs
+```{r, warning = FALSE}
+# Find cophenetic distances
+phylo_matrix <- cophenetic.phylo(speciestree)
+
+# Flatten matrix
+phylo.dist <- 
+  data.frame(expand.grid(sister1 = dimnames(phylo_matrix)[[1]],
+	                       sister2 = dimnames(phylo_matrix)[[2]]),
+             phylodist = c(phylo_matrix))
+
+# Add to sister pairs data
+# warns about adding vectors and factors - this is fine here
+sister.data <- left_join(sister.data, phylo.dist, by = c("sister1","sister2"))
+```
+
+Now work out the differences in chromosome numbers
+```{r}
+sister.data2 <-
+  sister.data %>%
+  mutate(haploid_diff = abs(haploidn.x - haploidn.y))
+```
+
+Finally plot...
+```{r}
+ggplot(sister.data2, aes(x = phylodist, y = haploid_diff)) +
+  geom_point() +
+  theme_bw()
+```
+
+3. Look at all pairs of taxa at the tips. 
+
+This is the simplest solution in many ways, but does introduce a large amount of pseudoreplication as each tip taxon appears a huge number of times.
+```{r}
+# Get species pairs
+all.pairs <- expand.grid(tip1 = mydata$tips,
+	                       tip2 = mydata$tips)
+
+# Combine with the chromosome data...
+all.pairs  <- left_join(all.pairs, mydata, by = c("tip1" = "tips"))
+all.pairs  <- left_join(all.pairs, mydata, by = c("tip2" = "tips"))
+
+# Find cophenetic distances for whole tree
+phylo_matrix <- cophenetic.phylo(mytree)
+
+# Flatten matrix
+phylo.dist.all <- 
+  data.frame(expand.grid(tip1 = dimnames(phylo_matrix)[[1]],
+	                       tip2 = dimnames(phylo_matrix)[[2]]),
+             phylodist = c(phylo_matrix))
+
+# Add to pairs data
+# warns about adding vectors and factors - this is fine here
+pairs.data <- 
+  left_join(phylo.dist.all, all.pairs, by = c("tip1","tip2")) %>% 
+  filter(phylodist > 0)
+
+# Exclude outgroup
+pairs.data <-
+  pairs.data %>%
+  filter(tip1 != "Leiolep" & tip2 != "Leiolep")
+```
+
+Now work out the differences in chromosome numbers
+```{r}
+pairs.data2 <-
+  pairs.data %>%
+  mutate(haploid_diff = abs(haploidn.x - haploidn.y))
+```
+
+And plot...
+```{r}
+ggplot(pairs.data2, aes(x = phylodist, y = haploid_diff)) +
+  geom_point(alpha = 0.5) +
+  theme_bw()
+
+# Or hex plot  
+ggplot(pairs.data2, aes(x = phylodist, y = haploid_diff)) +
+  geom_hex(alpha = 0.8, bins = 20) +
+  theme_bw(base_size = 14) +
+  scale_fill_viridis_c(trans = "log10") +
+  theme(legend.title = element_blank(),
+        strip.background = element_rect(fill = "white")) +
+  xlab("phylogenetic distance") +
+  ylab("difference in chromosome number (n)")
+```
+
+4. Look at all pairs of species at the tips. 
+
+This is the simplest solution in many ways, but does introduce a large amount of pseudoreplication as each tip taxon appears a huge number of times.
+```{r}
+# Get species pairs
+all.pairs_species <- expand.grid(tip1 = mydata_species$tips,
+	                       tip2 = mydata_species$tips)
+
+# Combine with the chromosome data...
+all.pairs_species  <- left_join(all.pairs_species, mydata_species, by = c("tip1" = "tips"))
+all.pairs_species  <- left_join(all.pairs_species, mydata_species, by = c("tip2" = "tips"))
+
+# Find cophenetic distances for whole tree
+phylo_matrix_species <- cophenetic.phylo(speciestree)
+
+# Flatten matrix
+phylo.dist.all_species <- 
+  data.frame(expand.grid(tip1 = dimnames(phylo_matrix_species)[[1]],
+	                       tip2 = dimnames(phylo_matrix_species)[[2]]),
+             phylodist = c(phylo_matrix_species))
+
+# Add to pairs data
+# warns about adding vectors and factors - this is fine here
+pairs.data_species <- 
+  left_join(phylo.dist.all_species, all.pairs_species, by = c("tip1","tip2")) %>% 
+  filter(phylodist > 0)
+
+# Exclude outgroup
+pairs.data_species <-
+  pairs.data_species %>%
+  filter(tip1 != "Leiolep" & tip2 != "Leiolep")
+```
+
+Now work out the differences in chromosome numbers
+```{r}
+pairs.data2_species <-
+  pairs.data_species %>%
+  mutate(haploid_diff = abs(haploidn.x - haploidn.y))
+```
+
+And plot...
+```{r}
+ggplot(pairs.data2_species, aes(x = phylodist, y = haploid_diff)) +
+  geom_point(alpha = 0.5) +
+  theme_bw()
+  
+# Or hex plot
+ggplot(pairs.data2_species, aes(x = phylodist, y = haploid_diff)) +
+  geom_hex(alpha = 0.8, bins = 20) +
+  theme_bw(base_size = 14) +
+  scale_fill_viridis_c(trans = "log10") +
+  theme(legend.title = element_blank(),
+        strip.background = element_rect(fill = "white")) +
+  xlab("phylogenetic distance") +
+  ylab("difference in chromosome number (n)")
+```
+
+4. Look at all pairs of genera. 
+
+```{r}
+mydata_genus <-
+  mydata %>% 
+  mutate(dup = duplicated(mydata$genus)) %>%
+  filter(dup != TRUE)
+
+# Remove genus from the tree that are not in mydata_genus
+remove <- setdiff(mytree$tip.label, mydata_genus$tips)
+genustree <- drop.tip(mytree, remove)
+plot(genustree)
+```
+
+```{r}
+# Get genus pairs
+all.pairs_genus <- expand.grid(tip1 = mydata_genus$tips,
+	                       tip2 = mydata_genus$tips)
+
+# Combine with the chromosome data...
+all.pairs_genus  <- left_join(all.pairs_genus, mydata_genus, by = c("tip1" = "tips"))
+all.pairs_genus  <- left_join(all.pairs_genus, mydata_genus, by = c("tip2" = "tips"))
+
+# Find cophenetic distances for whole tree
+phylo_matrix_genus <- cophenetic.phylo(genustree)
+
+# Flatten matrix
+phylo.dist.all_genus <- 
+  data.frame(expand.grid(tip1 = dimnames(phylo_matrix_genus)[[1]],
+	                       tip2 = dimnames(phylo_matrix_genus)[[2]]),
+             phylodist = c(phylo_matrix_genus))
+
+# Add to pairs data
+# warns about adding vectors and factors - this is fine here
+pairs.data_genus <- 
+  left_join(phylo.dist.all_genus, all.pairs_genus, by = c("tip1","tip2")) %>% 
+  filter(phylodist > 0)
+
+# Exclude outgroup
+pairs.data_genus <-
+  pairs.data_genus %>%
+  filter(tip1 != "Leiolep" & tip2 != "Leiolep")
+```
+
+Now work out the differences in chromosome numbers
+```{r}
+pairs.data2_genus <-
+  pairs.data_genus %>%
+  mutate(haploid_diff = abs(haploidn.x - haploidn.y))
+```
+
+And plot...
+```{r}
+ggplot(pairs.data2_genus, aes(x = phylodist, y = haploid_diff)) +
+  geom_point(alpha = 0.5) +
+  theme_bw()
+  
+# Or hex plot
+#ggplot(pairs.data2_genus, aes(x = phylodist, y = haploid_diff)) +
+#  geom_hex(alpha = 0.5, bins = 10) +
+#  theme_bw()
 ```

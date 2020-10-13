@@ -75,3 +75,68 @@ write_csv(chromo, col_names =  FALSE,
 ```
 
 > Now go to ChromEvol package in the terminal and run it...
+
+## For models without Brookesia
+
+```{r}
+# Exclude Brookesia
+ds2 <- filter(ds, genus != "Brookesia")
+
+# Retain only species names and haploid chromosome numbers
+mysample <- ds2 %>%
+  select(tips, haploidn)
+
+# Look at it
+# mysample
+```
+
+Read in the tree, check it is ultrametric and remove node labels
+```{r}
+# Read in the tree
+tree <- read.tree(here("data/ML-tree.tre"))
+# Tree is not ultrametric due to weird rounding issues
+# Fix this
+tree <- force.ultrametric(tree)
+# Check tree is now ultrametric
+is.ultrametric(tree) # TRUE
+# Remove node labels
+tree$node.label <- NULL
+# Look at it
+# plot(tree, cex = 0.6)
+
+# Remove Brookesia from treee
+remove <- filter(ds, genus == "Brookesia")
+remove <- pull(remove, tips)
+tree <- drop.tip(tree, remove)
+```
+
+Change the data structure so it can be used in ChromEvol
+```{r}
+# ChromEvol requires data in this format (where numbers are chromosome counts as haploid number):
+# >SpeciesA
+# 14
+# >SpeciesB
+# 28
+
+# Add > in front of each species name
+chromo <- mysample %>%
+  mutate(tips = paste0(">", tips))
+
+# Transpose the data so it is all in one column
+chromo <- as.vector(t(chromo))
+
+# Make the vectore back into a dataframe
+chromo <- as.data.frame(chromo)
+
+# Check it
+#chromo
+```
+
+Save the tree and data for use in ChromEvol
+```{r}
+# Save tree
+write.tree(tree, here("chromEvol/tree_for_chromevol_noBrookesia"))
+# Save data
+write_csv(chromo, col_names =  FALSE, 
+          path = here("chromEvol/data_for_chromevol_noBrookesia"))
+```

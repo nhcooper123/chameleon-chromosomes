@@ -250,19 +250,16 @@ pairs.data2 <-
 
 And plot...
 ```{r}
-ggplot(pairs.data2, aes(x = phylodist, y = haploid_diff)) +
-  geom_point(alpha = 0.5) +
-  theme_bw()
-
-# Or hex plot  
+# hex plot  
 ggplot(pairs.data2, aes(x = phylodist, y = haploid_diff)) +
   geom_hex(alpha = 0.8, bins = 20) +
   theme_bw(base_size = 14) +
-  scale_fill_viridis_c(trans = "log10") +
-  theme(legend.title = element_blank(),
-        strip.background = element_rect(fill = "white")) +
-  xlab("phylogenetic distance") +
+  scale_fill_viridis_c(trans = "log10", option = "plasma") +
+  theme(strip.background = element_rect(fill = "white")) +
+  xlab("phylogenetic distance (Ma)") +
   ylab("difference in chromosome number (n)")
+
+#ggsave(filename = here("outputs/taxon-pairs-distances.png"))
 ```
 
 4. Look at all pairs of species at the tips. 
@@ -307,80 +304,15 @@ pairs.data2_species <-
 
 And plot...
 ```{r}
-ggplot(pairs.data2_species, aes(x = phylodist, y = haploid_diff)) +
-  geom_point(alpha = 0.5) +
-  theme_bw()
-  
-# Or hex plot
+# hex plot
 ggplot(pairs.data2_species, aes(x = phylodist, y = haploid_diff)) +
   geom_hex(alpha = 0.8, bins = 20) +
   theme_bw(base_size = 14) +
-  scale_fill_viridis_c(trans = "log10") +
-  theme(legend.title = element_blank(),
-        strip.background = element_rect(fill = "white")) +
-  xlab("phylogenetic distance") +
+  scale_fill_viridis_c(trans = "log10", option = "plasma") +
+  theme(strip.background = element_rect(fill = "white")) +
+  xlab("phylogenetic distance (Ma)") +
   ylab("difference in chromosome number (n)")
+
+#ggsave(filename = here("outputs/species-pairs-distances.png"))
 ```
 
-4. Look at all pairs of genera. 
-
-```{r}
-mydata_genus <-
-  mydata %>% 
-  mutate(dup = duplicated(mydata$genus)) %>%
-  filter(dup != TRUE)
-
-# Remove genus from the tree that are not in mydata_genus
-remove <- setdiff(mytree$tip.label, mydata_genus$tips)
-genustree <- drop.tip(mytree, remove)
-plot(genustree)
-```
-
-```{r}
-# Get genus pairs
-all.pairs_genus <- expand.grid(tip1 = mydata_genus$tips,
-	                       tip2 = mydata_genus$tips)
-
-# Combine with the chromosome data...
-all.pairs_genus  <- left_join(all.pairs_genus, mydata_genus, by = c("tip1" = "tips"))
-all.pairs_genus  <- left_join(all.pairs_genus, mydata_genus, by = c("tip2" = "tips"))
-
-# Find cophenetic distances for whole tree
-phylo_matrix_genus <- cophenetic.phylo(genustree)
-
-# Flatten matrix
-phylo.dist.all_genus <- 
-  data.frame(expand.grid(tip1 = dimnames(phylo_matrix_genus)[[1]],
-	                       tip2 = dimnames(phylo_matrix_genus)[[2]]),
-             phylodist = c(phylo_matrix_genus))
-
-# Add to pairs data
-# warns about adding vectors and factors - this is fine here
-pairs.data_genus <- 
-  left_join(phylo.dist.all_genus, all.pairs_genus, by = c("tip1","tip2")) %>% 
-  filter(phylodist > 0)
-
-# Exclude outgroup
-pairs.data_genus <-
-  pairs.data_genus %>%
-  filter(tip1 != "Leiolep" & tip2 != "Leiolep")
-```
-
-Now work out the differences in chromosome numbers
-```{r}
-pairs.data2_genus <-
-  pairs.data_genus %>%
-  mutate(haploid_diff = abs(haploidn.x - haploidn.y))
-```
-
-And plot...
-```{r}
-ggplot(pairs.data2_genus, aes(x = phylodist, y = haploid_diff)) +
-  geom_point(alpha = 0.5) +
-  theme_bw()
-  
-# Or hex plot
-#ggplot(pairs.data2_genus, aes(x = phylodist, y = haploid_diff)) +
-#  geom_hex(alpha = 0.5, bins = 10) +
-#  theme_bw()
-```

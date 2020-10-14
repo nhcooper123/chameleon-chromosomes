@@ -8,24 +8,34 @@ output: html_document
 # Load libraries
 library(tidyverse)
 library(here)
-library(phytools)
-library(treeplyr)
-library(ChromEvol) #install this from source
+library(ape)
 ```
 
-## Prepare data and tree for ChromEvol analyses
+## Prepare data and trees for ChromEvol analyses
 
 Read in the data and extract species names and n
 ```{r, message = FALSE}
 # Read in the data
 ds <- read_csv(here("data/chromosome-data.csv"))
 
+# Exclude Leiolepsis
+ds <- ds %>% 
+  filter(tips != "Leiolep")
+
+# Exclude Rieppeleon
+ds_exclude <- ds %>% 
+  filter(tips != "Riebrev")
+
 # Retain only species names and haploid chromosome numbers
 mysample <- ds %>%
   select(tips, haploidn)
 
+mysample_exclude <- ds_exclude %>%
+  select(tips, haploidn)
+
 # Look at it
 # mysample
+# mysample_exclude
 ```
 
 Read in the tree, check it is ultrametric and remove node labels
@@ -39,8 +49,14 @@ tree <- force.ultrametric(tree)
 is.ultrametric(tree) # TRUE
 # Remove node labels
 tree$node.label <- NULL
+# Remove "Leiolep" from the tree
+tree <- drop.tip(tree, "Leiolep")
+# Remove "Riebrev" from the tree
+tree_exclude <- drop.tip(tree, "Riebrev")
+
 # Look at it
 # plot(tree, cex = 0.6)
+# plot(tree_exclude, cex = 0.6)
 ```
 
 Change the data structure so it can be used in ChromEvol
@@ -55,90 +71,32 @@ Change the data structure so it can be used in ChromEvol
 chromo <- mysample %>%
   mutate(tips = paste0(">", tips))
 
+chromo_exclude <- mysample_exclude %>%
+  mutate(tips = paste0(">", tips))
+
 # Transpose the data so it is all in one column
 chromo <- as.vector(t(chromo))
+chromo_exclude <- as.vector(t(chromo_exclude))
 
 # Make the vectore back into a dataframe
 chromo <- as.data.frame(chromo)
+chromo_exclude <- as.data.frame(chromo_exclude)
 
 # Check it
 #chromo
+#chromo_exclude
 ```
 
 Save the tree and data for use in ChromEvol
 ```{r}
 # Save tree
 write.tree(tree, here("chromEvol/tree_for_chromevol"))
+write.tree(tree_exclude, here("chromEvol/tree_for_chromevol_exclude"))
 # Save data
 write_csv(chromo, col_names =  FALSE, 
           path = here("chromEvol/data_for_chromevol"))
-```
-
-> Now go to ChromEvol package in the terminal and run it...
-
-## For models without Brookesia
-
-```{r}
-# Exclude Brookesia
-ds2 <- filter(ds, genus != "Brookesia")
-
-# Retain only species names and haploid chromosome numbers
-mysample <- ds2 %>%
-  select(tips, haploidn)
-
-# Look at it
-# mysample
-```
-
-Read in the tree, check it is ultrametric and remove node labels
-```{r}
-# Read in the tree
-tree <- read.tree(here("data/ML-tree.tre"))
-# Tree is not ultrametric due to weird rounding issues
-# Fix this
-tree <- force.ultrametric(tree)
-# Check tree is now ultrametric
-is.ultrametric(tree) # TRUE
-# Remove node labels
-tree$node.label <- NULL
-# Look at it
-# plot(tree, cex = 0.6)
-
-# Remove Brookesia from tree
-remove <- filter(ds, genus == "Brookesia")
-remove <- pull(remove, tips)
-tree <- drop.tip(tree, remove)
-```
-
-Change the data structure so it can be used in ChromEvol
-```{r}
-# ChromEvol requires data in this format (where numbers are chromosome counts as haploid number):
-# >SpeciesA
-# 14
-# >SpeciesB
-# 28
-
-# Add > in front of each species name
-chromo <- mysample %>%
-  mutate(tips = paste0(">", tips))
-
-# Transpose the data so it is all in one column
-chromo <- as.vector(t(chromo))
-
-# Make the vectore back into a dataframe
-chromo <- as.data.frame(chromo)
-
-# Check it
-#chromo
-```
-
-Save the tree and data for use in ChromEvol
-```{r}
-# Save tree
-write.tree(tree, here("chromEvol/tree_for_chromevol_noBrookesia"))
-# Save data
-write_csv(chromo, col_names =  FALSE, 
-          path = here("chromEvol/data_for_chromevol_noBrookesia"))
+write_csv(chromo_exclude, col_names =  FALSE, 
+          path = here("chromEvol/data_for_chromevol_exclude"))
 ```
 
 > Now go to ChromEvol package in the terminal and run it...
@@ -152,31 +110,29 @@ ds_species <-
   mutate(dup = duplicated(ds$Binomial)) %>%
   filter(dup != TRUE)
 
+ds_exclude_species <-
+  ds_exclude %>% 
+  mutate(dup = duplicated(ds_exclude$Binomial)) %>%
+  filter(dup != TRUE)
+
 # Retain only species names and haploid chromosome numbers
 mysample <- ds_species %>%
   select(tips, haploidn)
 
+mysample_exclude <- ds_exclude_species %>%
+  select(tips, haploidn)
+
 # Look at it
 # mysample
+# mysample_exclude
 ```
 
-Read in the tree, check it is ultrametric and remove node labels
+Remove excess species from tree
 ```{r}
-# Read in the tree
-tree <- read.tree(here("data/ML-tree.tre"))
-# Tree is not ultrametric due to weird rounding issues
-# Fix this
-tree <- force.ultrametric(tree)
-# Check tree is now ultrametric
-is.ultrametric(tree) # TRUE
-# Remove node labels
-tree$node.label <- NULL
-# Look at it
-# plot(tree, cex = 0.6)
-
-# Remove species from the tree that are not in mydata_species
+# Remove species from the tree that are not in ds_species
 remove <- setdiff(tree$tip.label, ds_species$tips)
 speciestree <- drop.tip(tree, remove)
+speciestree_exclude <- drop.tip(tree_exclude, remove)
 ```
 
 Change the data structure so it can be used in ChromEvol
@@ -191,23 +147,32 @@ Change the data structure so it can be used in ChromEvol
 chromo <- mysample %>%
   mutate(tips = paste0(">", tips))
 
+chromo_exclude <- mysample_exclude %>%
+  mutate(tips = paste0(">", tips))
+
 # Transpose the data so it is all in one column
 chromo <- as.vector(t(chromo))
+chromo_exclude <- as.vector(t(chromo_exclude))
 
 # Make the vectore back into a dataframe
 chromo <- as.data.frame(chromo)
+chromo_exclude <- as.data.frame(chromo_exclude)
 
 # Check it
 #chromo
+#chromo_exclude
 ```
 
 Save the tree and data for use in ChromEvol
 ```{r}
 # Save tree
 write.tree(speciestree, here("chromEvol/tree_for_chromevol_species"))
+write.tree(speciestree_exclude, here("chromEvol/tree_for_chromevol_exclude_species"))
 # Save data
 write_csv(chromo, col_names =  FALSE, 
           path = here("chromEvol/data_for_chromevol_species"))
+write_csv(chromo_exclude, col_names =  FALSE, 
+          path = here("chromEvol/data_for_chromevol_exclude_species"))
 ```
 
 > Now go to ChromEvol package in the terminal and run it...

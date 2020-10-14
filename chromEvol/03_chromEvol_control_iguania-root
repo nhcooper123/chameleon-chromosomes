@@ -1,0 +1,8 @@
+_mainType All_Models
+_outDir 03_chromEvol_out_iguania-root
+_dataFile data_for_chromevol
+_treeFile tree_for_chromevol
+_maxChrNum -10
+_minChrNum -10
+_rootFreqType FIXED
+_freqFile root_freq/root_freq_iguania.txt

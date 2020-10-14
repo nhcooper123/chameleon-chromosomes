@@ -17,28 +17,16 @@ library(ggtree)
 library(ggnewscale)
 ```
 
-## Prepare data and tree
-
-Read in the data
-```{r, message = FALSE}
-# Read in the data
-ds <- read_csv(here("data/chromosome-data.csv"))
-
-# Look at it
-# head(ds)
+Read in the data and the tree
+```{r, message = FALSE, echo = FALSE}
+mydata <- read_csv(here("data/chromosome-data.csv"))
+mytree <- read.tree(here("data/ML-tree.tre"))
 ```
 
-Read in the tree, check it is ultrametric
+Take a look at the dataset and tree
 ```{r}
-# Read in the tree
-tree <- read.tree(here("data/ML-tree.tre"))
-# Tree is not ultrametric due to weird rounding issues
-# Fix this
-tree <- force.ultrametric(tree)
-# Check tree is now ultrametric
-is.ultrametric(tree) # TRUE
-# Look at it
-# plot(tree, cex = 0.6)
+#str(mytree)
+#head(mydata)
 ```
 
 Extract some subsets of the data for the plotting

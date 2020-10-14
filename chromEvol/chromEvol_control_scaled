@@ -1,6 +1,0 @@
-_mainType All_Models
-_outDir chromEvol_out_scaled
-_dataFile data_for_chromevol
-_treeFile tree_for_chromevol
-_maxChrNum -10
-_minChrNum -10

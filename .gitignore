@@ -5,6 +5,7 @@ chromEvol/README_Running chromEvol
 
 #Large ChromEvol outputs
 chromEvol/chromEvol_out_scaled*
+extra-chromEvol-models/*
 
 # Large datasets
 raw-data/*

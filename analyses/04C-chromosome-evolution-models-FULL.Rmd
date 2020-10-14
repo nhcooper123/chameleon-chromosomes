@@ -21,12 +21,6 @@ First look at the models and choose the best using AIC
 ```{r, message = FALSE}
 # Read in the model summary data
 summary <- read_delim(here("chromEvol/chromEvol_out_scaled/models_summary.txt"), delim = "\t")
-
-# Select only the two models we want
-summary <-
-  summary %>%
-  filter(MODEL == "CONST_RATE_NO_DUPL" | MODEL == "LINEAR_RATE_NO_DUPL")
-
 # Add AIC weights
 summary <-
   summary %>%
@@ -56,11 +50,11 @@ results <- read.ce(here(paste0("chromEvol/chromEvol_out_scaled/", best_model)))
 What are the parameters of the best model? Note that due to the rescaling of the tree, we need to multiply these values by the scaling constant to get the true values. This is specified in the `chromEvol.res` outfile, but doesn't seem to be automatically extractable so I've done this by hand.
 ```{r}
 table <-
-  data.frame(parameter = c("loss", "gain", "lossL", "gainL"),
+  data.frame(parameter = c("loss", "gain", "duplication", "demiduplication"),
              value = c(results$Parameters$rate_lossC * 0.00371357,
                        results$Parameters$rate_gainC * 0.00371357,
-                       results$Parameters$rate_lossL * 0.00371357,
-                        results$Parameters$rate_gainL * 0.00371357))
+                       results$Parameters$rate_dupl * 0.00371357,
+                        results$Parameters$rate_demi * 0.00371357))
 table
 ```
 

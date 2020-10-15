@@ -1,10 +1,10 @@
 ---
-title: "Analysing the outputs of ChromEvol"
+title: "Extracting the outputs of ChromEvol"
 author: "Natalie Cooper"
 output: html_document
 ---
 
-## Analysing outputs from ChromEvol
+## Extracting outputs from ChromEvol
 
 ```{r, message = FALSE}
 # Load libraries
@@ -16,107 +16,59 @@ library(ChromEvol) #install this from source
 library(here)
 ```
 
-### Model fitting
-First look at the models and choose the best using AIC
+### Model comparison
+First look at the models and choose the best using AIC, and also extract the model parameters. 
+
+Note that due to the rescaling of the tree, we need to multiply these values by the scaling constant to get the true values. This is specified in the `chromEvol.res` outfile, but doesn't seem to be automatically extractable so I've done this by hand to create the vector below. Note that it refers to the tree, so there are only four repeated values, one for the taxon tree minus Riepelleon, one for the taxon tree with Riepelleon, one for the species tree minus Riepelleon, and one for the species tree with Riepelleon.
+
+```{r}
+rescale_param <- rep(c(0.0037069, 0.0038924, 0.00397248, 0.00416591), 3)
+```
+
+Now loop through the 12 sets of models
 ```{r, message = FALSE}
-# Read in the model summary data
-summary <- read_delim(here("chromEvol/chromEvol_out_scaled/models_summary.txt"), delim = "\t")
+# Get a list of the output folder names
+output_names <- list.files(path = here("chromEvol"), pattern = "_out")
+output <- NULL
 
-# Select only the two models we want
-summary <-
-  summary %>%
-  filter(MODEL == "CONST_RATE_NO_DUPL" | MODEL == "LINEAR_RATE_NO_DUPL")
+# Loop through all 12 folders of outputs
+for (i in 1:12) {
+  # Read in the model summary data
+  summary <- read_delim(here(paste0("chromEvol/", output_names[i], "/models_summary.txt")), 
+                        delim = "\t")
 
-# Add AIC weights
-summary <-
-  summary %>%
-  mutate(AICw = round(aic.w(AIC), digits = 3))
-# Select the best model
-best_model <- 
-  summary %>%
-  filter(AICw == max(AICw)) %>%
-  pull(MODEL)
+  # Select only the two models we want
+  summary <-
+    summary %>%
+    filter(MODEL == "CONST_RATE_NO_DUPL" | MODEL == "LINEAR_RATE_NO_DUPL") %>%
+    # Add model set name
+    mutate(name = output_names[i]) %>%
+    # reorder
+    dplyr::select(name, everything())
 
-# What is the best model?
-best_model
+  # Add parameter values
+  # Read in the parameter results by specifying the path to the folder for each model
+  # This throws a lot of warnings about NAs because of the strange ways these outputs are
+  # contructed. But it works fine
+  resultsC <- read.ce(here(paste0("chromEvol/", output_names[i], "/CONST_RATE_NO_DUPL")))
+  resultsL <- read.ce(here(paste0("chromEvol/", output_names[i], "/LINEAR_RATE_NO_DUPL")))
+  
+  # Add the parameters to the summary
+  # Note these will end up doubled up due to the results here being for each model
+  # and the results in the summary having a line per model
+  summary <-
+    summary %>%
+    mutate(CR_lossC = resultsC$Parameters$rate_lossC * rescale_param[i]) %>%
+    mutate(CR_gainC = resultsC$Parameters$rate_gainC * rescale_param[i]) %>%
+    mutate(LR_lossC = resultsL$Parameters$rate_lossC * rescale_param[i]) %>%
+    mutate(LR_gainC = resultsL$Parameters$rate_gainC * rescale_param[i]) %>%
+    mutate(LR_lossL = resultsL$Parameters$rate_lossL * rescale_param[i]) %>%
+    mutate(LR_gainL = resultsL$Parameters$rate_gainL * rescale_param[i])  
+  
+  output <- rbind(output, summary)
+}
+
+# Look and save at the outputs
+output
+#write_csv(output, path = here("outputs/chromEvol-model-summaries.csv"))
 ```
-
-What are the AIC values and AIC weights for each model?
-```{r}
-summary
-```
-
-Now read in the results for the best model by specifying the path to that folder
-```{r}
-# Read in the results by specifying the path to the folder
-# containing them
-results <- read.ce(here(paste0("chromEvol/chromEvol_out_scaled/", best_model)))
-```
-
-What are the parameters of the best model? Note that due to the rescaling of the tree, we need to multiply these values by the scaling constant to get the true values. This is specified in the `chromEvol.res` outfile, but doesn't seem to be automatically extractable so I've done this by hand.
-```{r}
-table <-
-  data.frame(parameter = c("loss", "gain", "lossL", "gainL"),
-             value = c(results$Parameters$rate_lossC * 0.00371357,
-                       results$Parameters$rate_gainC * 0.00371357,
-                       results$Parameters$rate_lossL * 0.00371357,
-                        results$Parameters$rate_gainL * 0.00371357))
-table
-```
-
-Now we can look at the results on the tree...
-This works best as a separate plot that you then zoom to look at, rather than in Rmd.
-```{r, fig.height=20}
-# Create list of colours (TBC)
-mycolours <- c(rep(NA, 9), rainbow(10), rep(NA, 11), "red")
-# Read in haploid number data
-nn <- read_csv(here("data/chromosome-data.csv"))
-
-# Plot using bespoke function from ChromEvol R package with some tweaks   
-# This adds the pies and the node chromosome estimate with the highest posterior probability
-# Note that the legend is hard coded in, but can be moved off the plot using a silly value for y
-# I have also removed the tip pies and I am adding them using tiplabels so I can adjust their
-# position more easily.
-plot.anc(results, adj.tip.pie = 0.5, node.No = "PP", chroCOL = mycolours, type = "fan",
-         cex.node.pie = 0.6, cut.tipNo = TRUE, tip.pie = FALSE, label.offset = 0.05, y = -10,
-         no.margin = TRUE)
-# Add tip labels using standard ape code
-tiplabels(pch = 16, col = mycolours[nn$haploidn], cex = 2, offset = 0.03)
-```
-
-### Ancestral state estimations
-What is the best fitting ancestral state?
-```{r}
-# Read in the model summary data
-res08 <- read.ce(here(paste0("chromEvol/chromEvol_out_root_08")))
-res09 <- read.ce(here(paste0("chromEvol/chromEvol_out_root_09")))
-res10 <- read.ce(here(paste0("chromEvol/chromEvol_out_root_10")))
-res11 <- read.ce(here(paste0("chromEvol/chromEvol_out_root_11")))
-res12 <- read.ce(here(paste0("chromEvol/chromEvol_out_root_12")))
-res13 <- read.ce(here(paste0("chromEvol/chromEvol_out_root_13")))
-res14 <- read.ce(here(paste0("chromEvol/chromEvol_out_root_14")))
-res15 <- read.ce(here(paste0("chromEvol/chromEvol_out_root_15")))
-res16 <- read.ce(here(paste0("chromEvol/chromEvol_out_root_16")))
-res17 <- read.ce(here(paste0("chromEvol/chromEvol_out_root_17")))
-res18 <- read.ce(here(paste0("chromEvol/chromEvol_out_root_18")))
-res19 <- read.ce(here(paste0("chromEvol/chromEvol_out_root_19")))
-res20 <- read.ce(here(paste0("chromEvol/chromEvol_out_root_20")))
-
-res_all <- data.frame(n = c(8:20), 
-                      AIC = c(res08$Parameters$AIC, res09$Parameters$AIC,
-                              res10$Parameters$AIC, res11$Parameters$AIC,
-                              res12$Parameters$AIC, res13$Parameters$AIC,
-                              res14$Parameters$AIC, res15$Parameters$AIC,
-                              res16$Parameters$AIC, res17$Parameters$AIC,
-                              res18$Parameters$AIC, res19$Parameters$AIC,
-                              res20$Parameters$AIC))
-
-# Add AIC weights
-summary <-
-  res_all %>%
-  mutate(AICw = round(aic.w(AIC), digits = 3))
-
-summary
-```
-
-

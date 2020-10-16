@@ -88,8 +88,8 @@ Make trees using ggtree. Note that this code will throw lots of warnings about s
 circ <- ggtree(mytree, layout = "circular")
 # circ
 
-circ <-
-  rotate_tree(circ, 90)
+#circ <-
+ # rotate_tree(circ, 90)
 
 genus_tree <-
   circ +
@@ -136,6 +136,7 @@ grp2 <- list(Bradypodion = c(mydata$tips[mydata$genus == "Bradypodion"]),
             Trioceros = c(mydata$tips[mydata$genus == "Trioceros"])) 
 
 groupOTU(genus_tree, grp2, 'Genus') + aes(color = Genus) +
+  scale_colour_manual(values = mycolours) +
   theme(legend.position="none")
 
 # Save tree
@@ -155,7 +156,8 @@ groupOTU(circ, grp2, 'Genus') + aes(color = Genus) +
                                  expression(italic("Palleon")),
                                  expression(italic("Rhampholeon")),
                                  expression(italic("Rieppeleon")),
-                                 expression(italic("Trioceros")))) +   theme(legend.text.align = 0)
+                                 expression(italic("Trioceros")))) +   theme(legend.text.align = 0)+
+theme_void(base_size = 14)
 
 # Save tree
 # ggsave(filename = here("outputs/trees-genera-colour-legend.png"), height = 5)

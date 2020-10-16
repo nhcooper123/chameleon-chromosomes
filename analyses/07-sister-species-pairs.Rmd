@@ -1,5 +1,5 @@
 ---
-title: "Sister species pairs analyses"
+title: "Taxa and species pairs analyses"
 author: "Natalie Cooper"
 output: html_document
 ---
@@ -28,187 +28,9 @@ Take a look at the dataset and tree
 #head(mydata)
 ```
 
-The aim in these analyses is to see whether there are correlations among various traits and differences in haploid chromosome number. To deal with phylogenetic non-independence we chose to look at sister taxa pairs from the phylogeny. Initially we use the phylogeny as is, and use OTUs which are often within the same species. As a test, we correlated the difference in haploid chromosome number with phylogenetic distance.
+Initially we use the phylogeny as is, and use OTUs which are often within the same species. As a test, we correlated the difference in haploid chromosome number with phylogenetic distance.
 
-1. Using all tips
-
-Extract sister species pairs
-```{r}
-# Get siblings for each node as a list
-siblings <- Siblings(mytree)
-
-# Convert to character and back to numeric
-# to remove any NULLs and make them NAs instead
-# This will cause a warning telling you it has created the NA
-siblings <- as.numeric(as.character(siblings))
-
-# Now convert the list into a dataframe
-# with tip and sister numbers
-sisters <- data.frame(tip = 1:length(siblings), sister = unlist(siblings))
-
-# Remove any nodes
-# Node numbers start after all tips have been labelled
-# so anything higher than the total number of tips is a node
-sisters <- 
-  sisters %>% 
-  filter(tip <= length(mytree$tip.label) & sister <= length(mytree$tip.label))
-
-# Now add the names of the species back in
-# to match up with the numbers
-for (i in 1:length(sisters$tip)){
-  sisters$tip.name[i] <- mytree$tip.label[sisters$tip[i]]
-  sisters$sister.name[i] <- mytree$tip.label[sisters$sister[i]]
-}
-
-# This results in each pair appearing twice as 1,2 or 2,1.
-# Add a number to the pairs then exclude the second instance
-# Then drop non needed columns and rename tips and sisters
-# to sister1 and sister2
-sisters <-
-  sisters %>%
-  mutate(rep = rep(c(1,2), length(sisters$tip)/2)) %>%
-  filter(rep != 2) %>%
-  dplyr::select(tip.name, sister.name) %>%
-  rename(sister1 = tip.name) %>%
-  rename(sister2 = sister.name)
-```
-
-Combine with the chromosome data...
-```{r}
-sister.data <- left_join(sisters, mydata, by = c("sister1" = "tips"))
-sister.data  <- left_join(sister.data, mydata, by = c("sister2" = "tips"))
-```
-
-Get phylogenetic distances for sister species pairs
-```{r, warning = FALSE}
-# Remove species from the tree that are not in the 
-remove <- setdiff(mytree$tip.label, c(sister.data$sister1, sister.data$sister2))
-sistertree <- drop.tip(mytree, remove)
-
-# Find cophenetic distances
-phylo_matrix <- cophenetic.phylo(sistertree)
-
-# Flatten matrix
-phylo.dist <- 
-  data.frame(expand.grid(sister1 = dimnames(phylo_matrix)[[1]],
-	                       sister2 = dimnames(phylo_matrix)[[2]]),
-             phylodist = c(phylo_matrix))
-
-# Add to sister pairs data
-# warns about adding vectors and factors - this is fine here
-sister.data <- left_join(sister.data, phylo.dist, by = c("sister1","sister2"))
-```
-
-Now work out the differences in chromosome numbers
-```{r}
-sister.data2 <-
-  sister.data %>%
-  mutate(haploid_diff = abs(haploidn.x - haploidn.y))
-```
-
-Finally plot...
-```{r}
-ggplot(sister.data2, aes(x = phylodist, y = haploid_diff)) +
-  geom_point() +
-  theme_bw()
-```
-
-Annoyingly, for almost all pairs the difference in haploid chromosome number is 0! This lack of variation limits the utility of working with the data in this way.
-
-2. Simplify to species
-
-We can do the same thing but collapsing the OTUs down into species.
-
-First remove excess data from my data, selecting just the first time each species appears and using these tip taxa only.
-```{r}
-mydata_species <-
-  mydata %>% 
-  mutate(dup = duplicated(mydata$Binomial)) %>%
-  filter(dup != TRUE)
-
-# Remove species from the tree that are not in mydata_species
-remove <- setdiff(mytree$tip.label, mydata_species$tips)
-speciestree <- drop.tip(mytree, remove)
-```
-
-Extract sister species pairs
-```{r}
-# Get siblings for each node as a list
-siblings <- Siblings(speciestree)
-
-# Convert to character and back to numeric
-# to remove any NULLs and make them NAs instead
-# This will cause a warning telling you it has created the NA
-siblings <- as.numeric(as.character(siblings))
-
-# Now convert the list into a dataframe
-# with tip and sister numbers
-sisters <- data.frame(tip = 1:length(siblings), sister = unlist(siblings))
-
-# Remove any nodes
-# Node numbers start after all tips have been labelled
-# so anything higher than the total number of tips is a node
-sisters <- 
-  sisters %>% 
-  filter(tip <= length(speciestree$tip.label) & sister <= length(speciestree$tip.label))
-
-# Now add the names of the species back in
-# to match up with the numbers
-for (i in 1:length(sisters$tip)){
-  sisters$tip.name[i] <- speciestree$tip.label[sisters$tip[i]]
-  sisters$sister.name[i] <- speciestree$tip.label[sisters$sister[i]]
-}
-
-# This results in each pair appearing twice as 1,2 or 2,1.
-# Add a number to the pairs then exclude the second instance
-# Then drop non needed columns and rename tips and sisters
-# to sister1 and sister2
-sisters <-
-  sisters %>%
-  mutate(rep = rep(c(1,2), length(sisters$tip)/2)) %>%
-  filter(rep != 2) %>%
-  dplyr::select(tip.name, sister.name) %>%
-  rename(sister1 = tip.name) %>%
-  rename(sister2 = sister.name)
-```
-
-Combine with the chromosome data...
-```{r}
-sister.data <- left_join(sisters, mydata_species, by = c("sister1" = "tips"))
-sister.data  <- left_join(sister.data, mydata_species, by = c("sister2" = "tips"))
-```
-
-Get phylogenetic distances for sister species pairs
-```{r, warning = FALSE}
-# Find cophenetic distances
-phylo_matrix <- cophenetic.phylo(speciestree)
-
-# Flatten matrix
-phylo.dist <- 
-  data.frame(expand.grid(sister1 = dimnames(phylo_matrix)[[1]],
-	                       sister2 = dimnames(phylo_matrix)[[2]]),
-             phylodist = c(phylo_matrix))
-
-# Add to sister pairs data
-# warns about adding vectors and factors - this is fine here
-sister.data <- left_join(sister.data, phylo.dist, by = c("sister1","sister2"))
-```
-
-Now work out the differences in chromosome numbers
-```{r}
-sister.data2 <-
-  sister.data %>%
-  mutate(haploid_diff = abs(haploidn.x - haploidn.y))
-```
-
-Finally plot...
-```{r}
-ggplot(sister.data2, aes(x = phylodist, y = haploid_diff)) +
-  geom_point() +
-  theme_bw()
-```
-
-3. Look at all pairs of taxa at the tips. 
+1. Look at all pairs of taxa at the tips. 
 
 This is the simplest solution in many ways, but does introduce a large amount of pseudoreplication as each tip taxon appears a huge number of times.
 ```{r}
@@ -259,12 +81,25 @@ ggplot(pairs.data2, aes(x = phylodist, y = haploid_diff)) +
   xlab("phylogenetic distance (Ma)") +
   ylab("difference in chromosome number (n)")
 
-#ggsave(filename = here("outputs/taxon-pairs-distances.png"))
+#ggsave(filename = here("outputs/taxon-pairs-distances.png"), height = 5)
 ```
 
-4. Look at all pairs of species at the tips. 
+2. Look at all pairs of species at the tips. 
 
-This is the simplest solution in many ways, but does introduce a large amount of pseudoreplication as each tip taxon appears a huge number of times.
+We can do the same thing but collapsing the OTUs down into species.
+
+First remove excess data from my data, selecting just the first time each species appears and using these tip taxa only.
+```{r}
+mydata_species <-
+  mydata %>% 
+  mutate(dup = duplicated(mydata$Binomial)) %>%
+  filter(dup != TRUE)
+
+# Remove species from the tree that are not in mydata_species
+remove <- setdiff(mytree$tip.label, mydata_species$tips)
+speciestree <- drop.tip(mytree, remove)
+```
+
 ```{r}
 # Get species pairs
 all.pairs_species <- expand.grid(tip1 = mydata_species$tips,
@@ -313,6 +148,6 @@ ggplot(pairs.data2_species, aes(x = phylodist, y = haploid_diff)) +
   xlab("phylogenetic distance (Ma)") +
   ylab("difference in chromosome number (n)")
 
-#ggsave(filename = here("outputs/species-pairs-distances.png"))
+#ggsave(filename = here("outputs/species-pairs-distances.png"), height = 5)
 ```
 

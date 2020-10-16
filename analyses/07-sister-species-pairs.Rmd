@@ -28,7 +28,7 @@ Take a look at the dataset and tree
 #head(mydata)
 ```
 
-Initially we use the phylogeny as is, and use OTUs which are often within the same species. As a test, we correlated the difference in haploid chromosome number with phylogenetic distance.
+Initially we use the phylogeny as is, and use OTUs which are often within the same species. As a test, we correlated the difference in chromosome number with phylogenetic distance.
 
 1. Look at all pairs of taxa at the tips. 
 
@@ -67,13 +67,13 @@ Now work out the differences in chromosome numbers
 ```{r}
 pairs.data2 <-
   pairs.data %>%
-  mutate(haploid_diff = abs(haploidn.x - haploidn.y))
+  mutate(chromon_diff = abs(chromon.x - chromon.y))
 ```
 
 And plot...
 ```{r}
 # hex plot  
-ggplot(pairs.data2, aes(x = phylodist, y = haploid_diff)) +
+ggplot(pairs.data2, aes(x = phylodist, y = chromon_diff)) +
   geom_hex(alpha = 0.8, bins = 20) +
   theme_bw(base_size = 14) +
   scale_fill_viridis_c(trans = "log10", option = "plasma") +
@@ -134,13 +134,13 @@ Now work out the differences in chromosome numbers
 ```{r}
 pairs.data2_species <-
   pairs.data_species %>%
-  mutate(haploid_diff = abs(haploidn.x - haploidn.y))
+  mutate(chromon_diff = abs(chromon.x - chromon.y))
 ```
 
 And plot...
 ```{r}
 # hex plot
-ggplot(pairs.data2_species, aes(x = phylodist, y = haploid_diff)) +
+ggplot(pairs.data2_species, aes(x = phylodist, y = chromon_diff)) +
   geom_hex(alpha = 0.8, bins = 20) +
   theme_bw(base_size = 14) +
   scale_fill_viridis_c(trans = "log10", option = "plasma") +

@@ -1,6 +1,0 @@
-_mainType All_Models
-_outDir 12_chromEvol_out_species
-_dataFile data_for_chromevol_species
-_treeFile tree_for_chromevol_species
-_maxChrNum -10
-_minChrNum -10

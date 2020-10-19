@@ -1,0 +1,301 @@
+START OF LOG FILE
+chromEvol Version: 2.0. Last updated May 2020
+_bOptBaseNumber	(Int)	0
+_baseNumber	(Int)	-999
+_baseNumberR	(Float)	-999
+_baseTransitionProbs	(Str)	
+_branchModelType	(Str)	GRADUAL
+_branchMul	(Float)	999
+_dataFile	(Str)	data_for_chromevol_exclude_species
+_demiPloidyR	(Float)	-999
+_duplConstR	(Float)	-999
+_epsR	(Float)	-999
+_epsilonLLimprovement	(Float)	0.1
+_freqFile	(Str)	
+_gainConstR	(Float)	-999
+_gainLinearR	(Float)	-999
+_inferTreeFile	(Str)	mlAncestors.tree
+_logFile	(Str)	log.txt
+_logValue	(Int)	5
+_lossConstR	(Float)	-999
+_lossLinearR	(Float)	-999
+_mainType	(Str)	All_Models
+_maxBaseTransition	(Int)	0
+_maxChrNum	(Int)	-10
+_maxChrNumForSimulations	(Int)	0
+_maxOptimizationIterations	(Int)	5
+_minBaseTransition	(Int)	3
+_minChrNum	(Int)	-10
+_modelType	(Str)	GENERAL_CHR_MODEL
+_optimizeIterNum	(Str)	0,2,5
+_optimizePointsNum	(Str)	10,3,1
+_outDir	(Str)	10_chromEvol_out_exclude_species
+_outFile	(Str)	chromEvol.res
+_pow2Scale	(Int)	1
+_rootAt	(Str)	
+_rootFreqType	(Str)	ROOT_LL
+_scaleBranch	(Float)	-999
+_simDemiTypes	(Str)	-999,-999,-2
+_simModels	(Str)	CONST_RATE_NO_DUPL,CONST_RATE,CONST_RATE
+_simulationsIter	(Int)	50
+_simulationsJumpsStats	(Str)	
+_simulationsNum	(Int)	10000
+_simulationsTreeDir	(Str)	
+_simulationsTreeLength	(Float)	0
+_smIter	(Int)	0
+_startSimulationsIter	(Int)	0
+_tolParamOptimization	(Float)	0.01
+_treeFile	(Str)	tree_for_chromevol_exclude_species
+
+ ---------------------- THE PARAMETERS ----------------------------
+main type: Optimize_Model
+tree file: tree_for_chromevol_exclude_species
+data file: data_for_chromevol_exclude_species
+output file: chromEvol.res
+model Type: GENERAL_CHR_MODEL
+ max chromosome number allowed: -10
+ _gainConstR: 0.5
+ _lossConstR: 0.5
+ _duplConstR: 0.5
+ _demiPloidyR: 1
+ _baseNumber: -999
+ _baseNumberR: -999
+
+ -----------------------------------------------------------------
+max count = 19 min count = 10
+max count allowed= 29 min count allowed = 1
+tree rooted at N1 id, 0
+sons of root are: 
+N2
+N13
+Original total tree length = 2569.11
+total tree length = 10
+Optimizing parameters
+=====Cycle======= 0
+=====optimizing point======= 0
+starting optimization:
+model params:
+LOSS_CONST=0.5	GAIN_CONST=0.5	DUPL=0.5	LOSS_LINEAR=0.5	GAIN_LINEAR=0.5	HALF_DUPL=1	
+ll before optimization = -158.206
+point: 0  likelihood = -158.206
+
+=====optimizing point======= 1
+starting optimization:
+model params:
+LOSS_CONST=37.0068	GAIN_CONST=47.738	DUPL=55.8376	LOSS_LINEAR=1.38777	GAIN_LINEAR=-1.05203	HALF_DUPL=45.3674	
+ll before optimization = -641.461
+point: 1  likelihood = -641.461
+
+=====optimizing point======= 2
+starting optimization:
+model params:
+LOSS_CONST=41.0882	GAIN_CONST=12.7183	DUPL=26.204	LOSS_LINEAR=-0.408495	GAIN_LINEAR=1.51267	HALF_DUPL=4.39389	
+ll before optimization = -338.977
+point: 2  likelihood = -338.977
+
+=====optimizing point======= 3
+starting optimization:
+model params:
+LOSS_CONST=68.1699	GAIN_CONST=32.1001	DUPL=33.1364	LOSS_LINEAR=-0.209311	GAIN_LINEAR=3.05064	HALF_DUPL=18.1229	
+ll before optimization = -395.156
+point: 3  likelihood = -395.156
+
+=====optimizing point======= 4
+starting optimization:
+model params:
+LOSS_CONST=42.5571	GAIN_CONST=89.6115	DUPL=7.27075	LOSS_LINEAR=3.11825	GAIN_LINEAR=-0.547394	HALF_DUPL=19.9445	
+ll before optimization = -314.036
+point: 4  likelihood = -314.036
+
+=====optimizing point======= 5
+starting optimization:
+model params:
+LOSS_CONST=99.5221	GAIN_CONST=44.5063	DUPL=95.7164	LOSS_LINEAR=4.78274	GAIN_LINEAR=-0.209384	HALF_DUPL=17.4244	
+ll before optimization = -521.775
+point: 5  likelihood = -521.775
+
+=====optimizing point======= 6
+starting optimization:
+model params:
+LOSS_CONST=79.3049	GAIN_CONST=89.5633	DUPL=62.7865	LOSS_LINEAR=0.0491407	GAIN_LINEAR=4.19437	HALF_DUPL=93.527	
+ll before optimization = -949.172
+point: 6  likelihood = -949.172
+
+=====optimizing point======= 7
+starting optimization:
+model params:
+LOSS_CONST=15.2029	GAIN_CONST=47.4371	DUPL=24.7329	LOSS_LINEAR=-0.114047	GAIN_LINEAR=0.860045	HALF_DUPL=41.0255	
+ll before optimization = -543.762
+point: 7  likelihood = -543.762
+
+=====optimizing point======= 8
+starting optimization:
+model params:
+LOSS_CONST=94.2887	GAIN_CONST=79.7981	DUPL=27.6918	LOSS_LINEAR=-2.69513	GAIN_LINEAR=2.38928	HALF_DUPL=20.8471	
+ll before optimization = -417.473
+point: 8  likelihood = -417.473
+
+=====optimizing point======= 9
+starting optimization:
+model params:
+LOSS_CONST=90.977	GAIN_CONST=38.1934	DUPL=54.4103	LOSS_LINEAR=3.5541	GAIN_LINEAR=2.92261	HALF_DUPL=59.1245	
+ll before optimization = -537.111
+point: 9  likelihood = -537.111
+
+=====Cycle======= 1
+=====optimizing point======= 0
+starting optimization:
+model params:
+LOSS_CONST=0.5	GAIN_CONST=0.5	DUPL=0.5	LOSS_LINEAR=0.5	GAIN_LINEAR=0.5	HALF_DUPL=1	
+ll before optimization = -158.206
+iteration: 0 begin
+optmizing DUPL
+ LL= -153.334 new = 3.1266e-10 old=0.5
+optmizing LOSS_CONST
+ LL= -152.75 new = 3.1266e-10 old=0.5
+optmizing GAIN_CONST
+ LL= -151.947 new = 3.1266e-10 old=0.5
+optmizing LOSS_LINEAR
+ LL= -147.125 new = 0.141641 old=0.5
+optmizing GAIN_LINEAR
+ LL= -142.369 new = 0.118034 old=0.5
+optmizing HALF_DUPL
+ LL= -142.332 new = 0.8 old=1
+iteration: 1 begin
+optmizing DUPL
+ LL= -142.332 new = 3.1266e-10 old=3.1266e-10
+optmizing LOSS_CONST
+ LL= -139.603 new = 1.36232 old=3.1266e-10
+optmizing GAIN_CONST
+ LL= -139.517 new = 0.20841 old=3.1266e-10
+optmizing LOSS_LINEAR
+ LL= -139.517 new = 0.141641 old=0.141641
+optmizing GAIN_LINEAR
+ LL= -139.515 new = 0.0944272 old=0.118034
+optmizing HALF_DUPL
+ LL= -139.515 new = 0.8 old=0.8
+point: 0  likelihood = -139.515
+
+=====optimizing point======= 1
+starting optimization:
+model params:
+LOSS_CONST=41.0882	GAIN_CONST=12.7183	DUPL=26.204	LOSS_LINEAR=-0.408495	GAIN_LINEAR=1.51267	HALF_DUPL=4.39389	
+ll before optimization = -338.977
+iteration: 0 begin
+optmizing DUPL
+ LL= -220.076 new = 1.84512e-10 old=26.204
+optmizing LOSS_CONST
+ LL= -205.849 new = 18.2106 old=41.0882
+optmizing GAIN_CONST
+ LL= -199.451 new = 2.61523e-10 old=12.7183
+optmizing LOSS_LINEAR
+ LL= -198.74 new = -0.500886 old=-0.408495
+optmizing GAIN_LINEAR
+ LL= -175.025 new = 0.0842985 old=1.51267
+optmizing HALF_DUPL
+ LL= -148.097 new = 2.26989e-10 old=4.39389
+iteration: 1 begin
+optmizing DUPL
+ LL= -148.097 new = 1.84512e-10 old=1.84512e-10
+optmizing LOSS_CONST
+ LL= -148.097 new = 18.2106 old=18.2106
+optmizing GAIN_CONST
+ LL= -147.579 new = 1.00472 old=2.61523e-10
+optmizing LOSS_LINEAR
+ LL= -147.579 new = -0.500886 old=-0.500886
+optmizing GAIN_LINEAR
+ LL= -147.57 new = 0.0674388 old=0.0842985
+optmizing HALF_DUPL
+ LL= -147.57 new = 2.26989e-10 old=2.26989e-10
+point: 1  likelihood = -147.57
+
+=====optimizing point======= 2
+starting optimization:
+model params:
+LOSS_CONST=42.5571	GAIN_CONST=89.6115	DUPL=7.27075	LOSS_LINEAR=3.11825	GAIN_LINEAR=-0.547394	HALF_DUPL=19.9445	
+ll before optimization = -314.036
+iteration: 0 begin
+optmizing DUPL
+ LL= -272.055 new = 2.34407e-10 old=7.27075
+optmizing LOSS_CONST
+ LL= -269.473 new = 64.4983 old=42.5571
+optmizing GAIN_CONST
+ LL= -269.473 new = 89.6115 old=89.6115
+optmizing LOSS_LINEAR
+ LL= -266.733 new = 3.83702 old=3.11825
+optmizing GAIN_LINEAR
+ LL= -255.924 new = -2.62446 old=-0.547394
+optmizing HALF_DUPL
+ LL= -223.24 new = 5.6499 old=19.9445
+iteration: 1 begin
+optmizing DUPL
+ LL= -223.24 new = 2.34407e-10 old=2.34407e-10
+optmizing LOSS_CONST
+ LL= -204.955 new = 2.39748e-10 old=64.4983
+optmizing GAIN_CONST
+ LL= -204.955 new = 89.6115 old=89.6115
+optmizing LOSS_LINEAR
+ LL= -204.955 new = 3.83702 old=3.83702
+optmizing GAIN_LINEAR
+ LL= -204.955 new = -2.62446 old=-2.62446
+optmizing HALF_DUPL
+ LL= -179.842 new = 3.2046e-10 old=5.6499
+point: 2  likelihood = -179.842
+
+=====Cycle======= 2
+=====optimizing point======= 0
+starting optimization:
+model params:
+LOSS_CONST=1.36232	GAIN_CONST=0.20841	DUPL=3.1266e-10	LOSS_LINEAR=0.141641	GAIN_LINEAR=0.0944272	HALF_DUPL=0.8	
+ll before optimization = -139.515
+iteration: 0 begin
+optmizing DUPL
+ LL= -139.515 new = 1.81394e-10 old=3.1266e-10
+optmizing LOSS_CONST
+ LL= -139.515 new = 1.36232 old=1.36232
+optmizing GAIN_CONST
+ LL= -139.352 new = 0.492697 old=0.20841
+optmizing LOSS_LINEAR
+ LL= -139.352 new = 0.141641 old=0.141641
+optmizing GAIN_LINEAR
+ LL= -139.318 new = 0.0849845 old=0.0944272
+optmizing HALF_DUPL
+ LL= -139.302 new = 0.88 old=0.8
+iteration: 1 begin
+optmizing DUPL
+ LL= -139.302 new = 1.81394e-10 old=1.81394e-10
+optmizing LOSS_CONST
+ LL= -139.302 new = 1.36232 old=1.36232
+optmizing GAIN_CONST
+ LL= -139.274 new = 0.601531 old=0.492697
+optmizing LOSS_LINEAR
+ LL= -139.274 new = 0.141641 old=0.141641
+optmizing GAIN_LINEAR
+ LL= -139.244 new = 0.076486 old=0.0849845
+optmizing HALF_DUPL
+ LL= -139.244 new = 0.88 old=0.88
+point: 0  likelihood = -139.244
+
+
+FINAL LIKELIHOODS++++++++++++++
+point 0 likelihood = -139.244
+after optmizations
+Inferring ancestral states
+Computing expectations
+
+running 10000 simulations
+simulaing state 0simulaing state 1simulaing state 2simulaing state 3simulaing state 4simulaing state 5simulaing state 6simulaing state 7simulaing state 8simulaing state 9simulaing state 10simulaing state 11simulaing state 12simulaing state 13simulaing state 14simulaing state 15simulaing state 16simulaing state 17simulaing state 18simulaing state 19simulaing state 20simulaing state 21simulaing state 22simulaing state 23simulaing state 24simulaing state 25simulaing state 26simulaing state 27simulaing state 28finished simulations
+
+total expectations
+dupl=1.27028e-31
+gain=16.7948
+loss=32.8478
+halFDupl=8.62144
+baseNumber=0
+toMaxChr=3.44494e-19
+Printing results
+
+TOTAL RUNNING TIME = 2787
+Directory 10_chromEvol_out_exclude_species//LINEAR_RATE_NO_DUPL already exists  
+
+END OF LOG FILE

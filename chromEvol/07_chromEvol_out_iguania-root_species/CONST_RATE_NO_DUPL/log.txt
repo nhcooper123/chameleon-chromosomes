@@ -1,0 +1,237 @@
+START OF LOG FILE
+chromEvol Version: 2.0. Last updated May 2020
+_bOptBaseNumber	(Int)	0
+_baseNumber	(Int)	-999
+_baseNumberR	(Float)	-999
+_baseTransitionProbs	(Str)	
+_branchModelType	(Str)	GRADUAL
+_branchMul	(Float)	999
+_dataFile	(Str)	data_for_chromevol_species
+_demiPloidyR	(Float)	-999
+_duplConstR	(Float)	-999
+_epsR	(Float)	-999
+_epsilonLLimprovement	(Float)	0.1
+_freqFile	(Str)	root_freq/root_freq_iguania.txt
+_gainConstR	(Float)	-999
+_gainLinearR	(Float)	-999
+_inferTreeFile	(Str)	mlAncestors.tree
+_logFile	(Str)	log.txt
+_logValue	(Int)	5
+_lossConstR	(Float)	-999
+_lossLinearR	(Float)	-999
+_mainType	(Str)	All_Models
+_maxBaseTransition	(Int)	0
+_maxChrNum	(Int)	-10
+_maxChrNumForSimulations	(Int)	0
+_maxOptimizationIterations	(Int)	5
+_minBaseTransition	(Int)	3
+_minChrNum	(Int)	-10
+_modelType	(Str)	GENERAL_CHR_MODEL
+_optimizeIterNum	(Str)	0,2,5
+_optimizePointsNum	(Str)	10,3,1
+_outDir	(Str)	04_chromEvol_out_iguania-root_species
+_outFile	(Str)	chromEvol.res
+_pow2Scale	(Int)	1
+_rootAt	(Str)	
+_rootFreqType	(Str)	FIXED
+_scaleBranch	(Float)	-999
+_simDemiTypes	(Str)	-999,-999,-2
+_simModels	(Str)	CONST_RATE_NO_DUPL,CONST_RATE,CONST_RATE
+_simulationsIter	(Int)	50
+_simulationsJumpsStats	(Str)	
+_simulationsNum	(Int)	10000
+_simulationsTreeDir	(Str)	
+_simulationsTreeLength	(Float)	0
+_smIter	(Int)	0
+_startSimulationsIter	(Int)	0
+_tolParamOptimization	(Float)	0.01
+_treeFile	(Str)	tree_for_chromevol_species
+
+ ---------------------- THE PARAMETERS ----------------------------
+main type: Optimize_Model
+tree file: tree_for_chromevol_species
+data file: data_for_chromevol_species
+output file: chromEvol.res
+model Type: GENERAL_CHR_MODEL
+ max chromosome number allowed: -10
+ _gainConstR: 0.5
+ _lossConstR: 0.5
+ _duplConstR: -999
+ _demiPloidyR: -999
+ _baseNumber: -999
+ _baseNumberR: -999
+
+ -----------------------------------------------------------------
+max count = 31 min count = 10
+max count allowed= 41 min count allowed = 1
+tree rooted at N1 id, 0
+sons of root are: 
+N2
+N13
+Original total tree length = 2640.48
+total tree length = 11
+Optimizing parameters
+=====Cycle======= 0
+=====optimizing point======= 0
+starting optimization:
+model params:
+LOSS_CONST=0.5	GAIN_CONST=0.5	
+ll before optimization = -289
+point: 0  likelihood = -289
+
+=====optimizing point======= 1
+starting optimization:
+model params:
+LOSS_CONST=3.92583	GAIN_CONST=0.579885	
+ll before optimization = -211.202
+point: 1  likelihood = -211.202
+
+=====optimizing point======= 2
+starting optimization:
+model params:
+LOSS_CONST=60.3191	GAIN_CONST=81.8425	
+ll before optimization = -217.136
+point: 2  likelihood = -217.136
+
+=====optimizing point======= 3
+starting optimization:
+model params:
+LOSS_CONST=71.3118	GAIN_CONST=8.35764	
+ll before optimization = -215.86
+point: 3  likelihood = -215.86
+
+=====optimizing point======= 4
+starting optimization:
+model params:
+LOSS_CONST=63.0011	GAIN_CONST=88.2569	
+ll before optimization = -220.668
+point: 4  likelihood = -220.668
+
+=====optimizing point======= 5
+starting optimization:
+model params:
+LOSS_CONST=88.8148	GAIN_CONST=54.8148	
+ll before optimization = -221.903
+point: 5  likelihood = -221.903
+
+=====optimizing point======= 6
+starting optimization:
+model params:
+LOSS_CONST=19.91	GAIN_CONST=62.8398	
+ll before optimization = -215.847
+point: 6  likelihood = -215.847
+
+=====optimizing point======= 7
+starting optimization:
+model params:
+LOSS_CONST=68.8818	GAIN_CONST=75.15	
+ll before optimization = -213.339
+point: 7  likelihood = -213.339
+
+=====optimizing point======= 8
+starting optimization:
+model params:
+LOSS_CONST=21.9532	GAIN_CONST=12.6445	
+ll before optimization = -176.042
+point: 8  likelihood = -176.042
+
+=====optimizing point======= 9
+starting optimization:
+model params:
+LOSS_CONST=10.0892	GAIN_CONST=74.0983	
+ll before optimization = -229.216
+point: 9  likelihood = -229.216
+
+=====Cycle======= 1
+=====optimizing point======= 0
+starting optimization:
+model params:
+LOSS_CONST=3.92583	GAIN_CONST=0.579885	
+ll before optimization = -211.202
+iteration: 0 begin
+optmizing LOSS_CONST
+ LL= -205.553 new = 40.6229 old=3.92583
+optmizing GAIN_CONST
+ LL= -191.011 new = 30.2379 old=0.579885
+iteration: 1 begin
+optmizing LOSS_CONST
+ LL= -183.834 new = 20.0851 old=40.6229
+optmizing GAIN_CONST
+ LL= -174.431 new = 13.8598 old=30.2379
+point: 0  likelihood = -174.431
+
+=====optimizing point======= 1
+starting optimization:
+model params:
+LOSS_CONST=68.8818	GAIN_CONST=75.15	
+ll before optimization = -213.339
+iteration: 0 begin
+optmizing LOSS_CONST
+ LL= -213.339 new = 68.8818 old=68.8818
+optmizing GAIN_CONST
+ LL= -208.983 new = 56.2239 old=75.15
+iteration: 1 begin
+optmizing LOSS_CONST
+ LL= -202.815 new = 42.5713 old=68.8818
+optmizing GAIN_CONST
+ LL= -192.86 new = 34.7483 old=56.2239
+point: 1  likelihood = -192.86
+
+=====optimizing point======= 2
+starting optimization:
+model params:
+LOSS_CONST=21.9532	GAIN_CONST=12.6445	
+ll before optimization = -176.042
+iteration: 0 begin
+optmizing LOSS_CONST
+ LL= -170.09 new = 10.8543 old=21.9532
+optmizing GAIN_CONST
+ LL= -170.09 new = 12.6445 old=12.6445
+iteration: 1 begin
+optmizing LOSS_CONST
+ LL= -170.09 new = 10.8543 old=10.8543
+optmizing GAIN_CONST
+ LL= -170.09 new = 12.6445 old=12.6445
+point: 2  likelihood = -170.09
+
+=====Cycle======= 2
+=====optimizing point======= 0
+starting optimization:
+model params:
+LOSS_CONST=10.8543	GAIN_CONST=12.6445	
+ll before optimization = -170.09
+iteration: 0 begin
+optmizing LOSS_CONST
+ LL= -170.09 new = 10.8543 old=10.8543
+optmizing GAIN_CONST
+ LL= -169.592 new = 10.0182 old=12.6445
+iteration: 1 begin
+optmizing LOSS_CONST
+ LL= -169.563 new = 9.76883 old=10.8543
+optmizing GAIN_CONST
+ LL= -169.563 new = 10.0182 old=10.0182
+point: 0  likelihood = -169.563
+
+
+FINAL LIKELIHOODS++++++++++++++
+point 0 likelihood = -169.563
+after optmizations
+Inferring ancestral states
+Computing expectations
+
+running 10000 simulations
+simulaing state 0simulaing state 1simulaing state 2simulaing state 3simulaing state 4simulaing state 5simulaing state 6simulaing state 7simulaing state 8simulaing state 9simulaing state 10simulaing state 11simulaing state 12simulaing state 13simulaing state 14simulaing state 15simulaing state 16simulaing state 17simulaing state 18simulaing state 19simulaing state 20simulaing state 21simulaing state 22simulaing state 23simulaing state 24simulaing state 25simulaing state 26simulaing state 27simulaing state 28simulaing state 29simulaing state 30simulaing state 31simulaing state 32simulaing state 33simulaing state 34simulaing state 35simulaing state 36simulaing state 37simulaing state 38simulaing state 39simulaing state 40finished simulations
+
+total expectations
+dupl=2.5963e-20
+gain=95.2228
+loss=107.606
+halFDupl=0
+baseNumber=0
+toMaxChr=2.74575e-27
+Printing results
+
+TOTAL RUNNING TIME = 1084
+Directory 04_chromEvol_out_iguania-root_species//LINEAR_RATE already exists  
+
+END OF LOG FILE

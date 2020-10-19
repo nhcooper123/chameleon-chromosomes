@@ -1,0 +1,293 @@
+START OF LOG FILE
+chromEvol Version: 2.0. Last updated May 2020
+_bOptBaseNumber	(Int)	0
+_baseNumber	(Int)	-999
+_baseNumberR	(Float)	-999
+_baseTransitionProbs	(Str)	
+_branchModelType	(Str)	GRADUAL
+_branchMul	(Float)	999
+_dataFile	(Str)	data_for_chromevol_exclude_species
+_demiPloidyR	(Float)	-999
+_duplConstR	(Float)	-999
+_epsR	(Float)	-999
+_epsilonLLimprovement	(Float)	0.1
+_freqFile	(Str)	root_freq/root_freq_18.txt
+_gainConstR	(Float)	-999
+_gainLinearR	(Float)	-999
+_inferTreeFile	(Str)	mlAncestors.tree
+_logFile	(Str)	log.txt
+_logValue	(Int)	5
+_lossConstR	(Float)	-999
+_lossLinearR	(Float)	-999
+_mainType	(Str)	All_Models
+_maxBaseTransition	(Int)	0
+_maxChrNum	(Int)	-10
+_maxChrNumForSimulations	(Int)	0
+_maxOptimizationIterations	(Int)	5
+_minBaseTransition	(Int)	3
+_minChrNum	(Int)	-10
+_modelType	(Str)	GENERAL_CHR_MODEL
+_optimizeIterNum	(Str)	0,2,5
+_optimizePointsNum	(Str)	10,3,1
+_outDir	(Str)	06_chromEvol_out_18-root_exclude_species
+_outFile	(Str)	chromEvol.res
+_pow2Scale	(Int)	1
+_rootAt	(Str)	
+_rootFreqType	(Str)	FIXED
+_scaleBranch	(Float)	-999
+_simDemiTypes	(Str)	-999,-999,-2
+_simModels	(Str)	CONST_RATE_NO_DUPL,CONST_RATE,CONST_RATE
+_simulationsIter	(Int)	50
+_simulationsJumpsStats	(Str)	
+_simulationsNum	(Int)	10000
+_simulationsTreeDir	(Str)	
+_simulationsTreeLength	(Float)	0
+_smIter	(Int)	0
+_startSimulationsIter	(Int)	0
+_tolParamOptimization	(Float)	0.01
+_treeFile	(Str)	tree_for_chromevol_exclude_species
+
+ ---------------------- THE PARAMETERS ----------------------------
+main type: Optimize_Model
+tree file: tree_for_chromevol_exclude_species
+data file: data_for_chromevol_exclude_species
+output file: chromEvol.res
+model Type: GENERAL_CHR_MODEL
+ max chromosome number allowed: -10
+ _gainConstR: 0.5
+ _lossConstR: 0.5
+ _duplConstR: -999
+ _demiPloidyR: -999
+ _baseNumber: -999
+ _baseNumberR: -999
+
+ -----------------------------------------------------------------
+max count = 19 min count = 10
+max count allowed= 29 min count allowed = 1
+tree rooted at N1 id, 0
+sons of root are: 
+N2
+N13
+Original total tree length = 2569.11
+total tree length = 10
+Optimizing parameters
+=====Cycle======= 0
+=====optimizing point======= 0
+starting optimization:
+model params:
+LOSS_CONST=0.5	GAIN_CONST=0.5	LOSS_LINEAR=0.5	GAIN_LINEAR=0.5	
+ll before optimization = -153.91
+point: 0  likelihood = -153.91
+
+=====optimizing point======= 1
+starting optimization:
+model params:
+LOSS_CONST=36.4821	GAIN_CONST=66.6078	LOSS_LINEAR=3.25827	GAIN_LINEAR=1.72141	
+ll before optimization = -205.789
+point: 1  likelihood = -205.789
+
+=====optimizing point======= 2
+starting optimization:
+model params:
+LOSS_CONST=48.0349	GAIN_CONST=99.0452	LOSS_LINEAR=3.85937	GAIN_LINEAR=3.81029	
+ll before optimization = -239.415
+point: 2  likelihood = -239.415
+
+=====optimizing point======= 3
+starting optimization:
+model params:
+LOSS_CONST=20.1753	GAIN_CONST=27.0852	LOSS_LINEAR=-0.431437	GAIN_LINEAR=4.80175	
+ll before optimization = -235.673
+point: 3  likelihood = -235.673
+
+=====optimizing point======= 4
+starting optimization:
+model params:
+LOSS_CONST=27.0345	GAIN_CONST=65.782	LOSS_LINEAR=-0.681477	GAIN_LINEAR=-1.37128	
+ll before optimization = -196.649
+point: 4  likelihood = -196.649
+
+=====optimizing point======= 5
+starting optimization:
+model params:
+LOSS_CONST=18.4085	GAIN_CONST=96.8517	LOSS_LINEAR=3.0193	GAIN_LINEAR=-0.793295	
+ll before optimization = -201.758
+point: 5  likelihood = -201.758
+
+=====optimizing point======= 6
+starting optimization:
+model params:
+LOSS_CONST=35.2727	GAIN_CONST=44.8321	LOSS_LINEAR=3.90852	GAIN_LINEAR=3.29416	
+ll before optimization = -210.817
+point: 6  likelihood = -210.817
+
+=====optimizing point======= 7
+starting optimization:
+model params:
+LOSS_CONST=1.6647	GAIN_CONST=74.9214	LOSS_LINEAR=4.47913	GAIN_LINEAR=-1.74243	
+ll before optimization = -187.556
+point: 7  likelihood = -187.556
+
+=====optimizing point======= 8
+starting optimization:
+model params:
+LOSS_CONST=64.8085	GAIN_CONST=9.37308	LOSS_LINEAR=0.161707	GAIN_LINEAR=0.0750402	
+ll before optimization = -211.391
+point: 8  likelihood = -211.391
+
+=====optimizing point======= 9
+starting optimization:
+model params:
+LOSS_CONST=5.35614	GAIN_CONST=9.31919	LOSS_LINEAR=-0.177551	GAIN_LINEAR=4.42279	
+ll before optimization = -215.568
+point: 9  likelihood = -215.568
+
+=====Cycle======= 1
+=====optimizing point======= 0
+starting optimization:
+model params:
+LOSS_CONST=0.5	GAIN_CONST=0.5	LOSS_LINEAR=0.5	GAIN_LINEAR=0.5	
+ll before optimization = -153.91
+iteration: 0 begin
+optmizing LOSS_CONST
+ LL= -151.673 new = 4.19483 old=0.5
+optmizing GAIN_CONST
+ LL= -151.373 new = 3.1266e-10 old=0.5
+optmizing LOSS_LINEAR
+ LL= -151.373 new = 0.5 old=0.5
+optmizing GAIN_LINEAR
+ LL= -150.677 new = 0.37082 old=0.5
+iteration: 1 begin
+optmizing LOSS_CONST
+ LL= -150.669 new = 3.17284 old=4.19483
+optmizing GAIN_CONST
+ LL= -150.669 new = 3.1266e-10 old=3.1266e-10
+optmizing LOSS_LINEAR
+ LL= -150.669 new = 0.5 old=0.5
+optmizing GAIN_LINEAR
+ LL= -150.664 new = 0.296656 old=0.37082
+point: 0  likelihood = -150.664
+
+=====optimizing point======= 1
+starting optimization:
+model params:
+LOSS_CONST=27.0345	GAIN_CONST=65.782	LOSS_LINEAR=-0.681477	GAIN_LINEAR=-1.37128	
+ll before optimization = -196.649
+iteration: 0 begin
+optmizing LOSS_CONST
+ LL= -186.274 new = 54.9049 old=27.0345
+optmizing GAIN_CONST
+ LL= -180.157 new = 52.6256 old=65.782
+optmizing LOSS_LINEAR
+ LL= -178.387 new = -1.34346 old=-0.681477
+optmizing GAIN_LINEAR
+ LL= -178.387 new = -1.37128 old=-1.37128
+iteration: 1 begin
+optmizing LOSS_CONST
+ LL= -178.387 new = 54.9049 old=54.9049
+optmizing GAIN_CONST
+ LL= -178.387 new = 52.6256 old=52.6256
+optmizing LOSS_LINEAR
+ LL= -178.387 new = -1.34346 old=-1.34346
+optmizing GAIN_LINEAR
+ LL= -178.387 new = -1.37128 old=-1.37128
+point: 1  likelihood = -178.387
+
+=====optimizing point======= 2
+starting optimization:
+model params:
+LOSS_CONST=1.6647	GAIN_CONST=74.9214	LOSS_LINEAR=4.47913	GAIN_LINEAR=-1.74243	
+ll before optimization = -187.556
+iteration: 0 begin
+optmizing LOSS_CONST
+ LL= -186.052 new = 2.24337e-10 old=1.6647
+optmizing GAIN_CONST
+ LL= -186.052 new = 74.9214 old=74.9214
+optmizing LOSS_LINEAR
+ LL= -178.524 new = 3.37017 old=4.47913
+optmizing GAIN_LINEAR
+ LL= -177.159 new = -2.09893 old=-1.74243
+iteration: 1 begin
+optmizing LOSS_CONST
+ LL= -177.159 new = 2.24337e-10 old=2.24337e-10
+optmizing GAIN_CONST
+ LL= -177.159 new = 74.9214 old=74.9214
+optmizing LOSS_LINEAR
+ LL= -177.159 new = 3.37017 old=3.37017
+optmizing GAIN_LINEAR
+ LL= -177.159 new = -2.09893 old=-2.09893
+point: 2  likelihood = -177.159
+
+=====Cycle======= 2
+=====optimizing point======= 0
+starting optimization:
+model params:
+LOSS_CONST=3.17284	GAIN_CONST=3.1266e-10	LOSS_LINEAR=0.5	GAIN_LINEAR=0.296656	
+ll before optimization = -150.664
+iteration: 0 begin
+optmizing LOSS_CONST
+ LL= -150.653 new = 3.49012 old=3.17284
+optmizing GAIN_CONST
+ LL= -150.592 new = 0.557309 old=3.1266e-10
+optmizing LOSS_LINEAR
+ LL= -150.518 new = 0.45 old=0.5
+optmizing GAIN_LINEAR
+ LL= -150.518 new = 0.296656 old=0.296656
+iteration: 1 begin
+optmizing LOSS_CONST
+ LL= -150.443 new = 4.08254 old=3.49012
+optmizing GAIN_CONST
+ LL= -150.441 new = 0.470687 old=0.557309
+optmizing LOSS_LINEAR
+ LL= -150.377 new = 0.405 old=0.45
+optmizing GAIN_LINEAR
+ LL= -150.377 new = 0.296656 old=0.296656
+iteration: 2 begin
+optmizing LOSS_CONST
+ LL= -150.32 new = 5.0989 old=4.08254
+optmizing GAIN_CONST
+ LL= -150.32 new = 0.470687 old=0.470687
+optmizing LOSS_LINEAR
+ LL= -150.158 new = 0.340824 old=0.405
+optmizing GAIN_LINEAR
+ LL= -150.14 new = 0.266991 old=0.296656
+iteration: 3 begin
+optmizing LOSS_CONST
+ LL= -150.128 new = 5.86665 old=5.0989
+optmizing GAIN_CONST
+ LL= -150.115 new = 0.718023 old=0.470687
+optmizing LOSS_LINEAR
+ LL= -149.958 new = 0.278542 old=0.340824
+optmizing GAIN_LINEAR
+ LL= -149.945 new = 0.240292 old=0.266991
+iteration: 4 begin
+optmizing LOSS_CONST
+ LL= -149.928 new = 6.6379 old=5.86665
+optmizing GAIN_CONST
+ LL= -149.914 new = 1.05076 old=0.718023
+optmizing LOSS_LINEAR
+ LL= -149.765 new = 0.197313 old=0.278542
+optmizing GAIN_LINEAR
+ LL= -149.729 new = 0.201172 old=0.240292
+point: 0  likelihood = -149.729
+
+
+FINAL LIKELIHOODS++++++++++++++
+point 0 likelihood = -149.729
+after optmizations
+Inferring ancestral states
+Computing expectations
+
+running 10000 simulations
+simulaing state 0simulaing state 1simulaing state 2simulaing state 3simulaing state 4simulaing state 5simulaing state 6simulaing state 7simulaing state 8simulaing state 9simulaing state 10simulaing state 11simulaing state 12simulaing state 13simulaing state 14simulaing state 15simulaing state 16simulaing state 17simulaing state 18simulaing state 19simulaing state 20simulaing state 21simulaing state 22simulaing state 23simulaing state 24simulaing state 25simulaing state 26simulaing state 27simulaing state 28finished simulations
+
+total expectations
+dupl=6.87795e-46
+gain=40.5417
+loss=96.8204
+halFDupl=0
+baseNumber=0
+toMaxChr=1.39841e-23
+Printing results
+
+TOTAL RUNNING TIME = 1213

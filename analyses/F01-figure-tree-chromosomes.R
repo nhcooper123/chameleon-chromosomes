@@ -49,9 +49,6 @@ mycolours <- c("#A4C61A","#208EA3", "#FD817D", "#4178BC", "#7A71F6",
 #"#EA4E9D" = HOT PINK
 #"#37A862" = BLUE GREEN
 
-# Save the plot
-#png(filename = here("outputs/trees-best-model-taxa.png"), height = 700)
-
 plot(mytree, type = "fan",
      show.tip.label = FALSE, no.margin = TRUE)
 #tiplabels(pch = 16, col = tip_col, offset = 0.5)
@@ -61,7 +58,7 @@ tiplabels(text = taxa$haploidn, frame = "none", cex = 0.6,
 nodelabels(pie = taxa_anc, piecol = mycolours, cex = 0.8)
 nodelabels(text = taxa_pp, frame = "circle", bg = "white", cex = 0.6)
 
-#dev.off()
+# Save the plot using the export function once it is the correct size.
 
 #--------------------------------------------------
 # SPECIES LEVEL
@@ -89,3 +86,5 @@ tiplabels(text = species$haploidn, frame = "none", cex = 0.6,
           offset = 5)
 nodelabels(pie = species_anc, piecol = mycolours, cex = 0.8)
 nodelabels(text = species_pp, frame = "circle", bg = "white", cex = 0.6)
+
+# Save the plot using the export function once it is the correct size.

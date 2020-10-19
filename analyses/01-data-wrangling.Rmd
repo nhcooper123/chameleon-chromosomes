@@ -28,7 +28,7 @@ library(Hmisc)
 
 Read in the data. 
 ```{r, message = FALSE}
-ds <- read_csv(here("data/chromosomes/CHROMO_STATES_2020-09-10.csv"))
+ds <- read_csv(here("data/chromosomes/CHROMO_STATES_2020-10-16.csv"))
 ```
 
 Take a look at the dataset

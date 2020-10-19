@@ -86,40 +86,37 @@ Make trees using ggtree. Note that this code will throw lots of warnings about s
 ```{r}
 # Make the circular tree base
 circ <- ggtree(mytree, layout = "circular")
-# circ
 
-#circ <-
- # rotate_tree(circ, 90)
-
+# Add genera
 genus_tree <-
   circ +
   geom_cladelabel(node = MRCA(circ, mydata$tips[mydata$genus == "Bradypodion"]), 
                   label = expression(italic("Bradypodion")), 
-                align =FALSE, offset = 1, fontsize = 4, offset.text = 40) +
+                align =FALSE, offset = 1, fontsize = 4, offset.text = 60) +
   geom_cladelabel(node = MRCA(circ, mydata$tips[mydata$genus == "Brookesia"]),
                   label = expression(italic("Brookesia")), 
-                align = TRUE, offset = 1, fontsize = 4, offset.text = 40) +
+                align = TRUE, offset = 1, fontsize = 4, offset.text = 10) +
   geom_cladelabel(node = MRCA(circ, mydata$tips[mydata$genus == "Calumma"]),
                   label = expression(italic("Calumma")), 
                 align = TRUE, offset = 1, fontsize = 4, offset.text = 10) +
   geom_cladelabel(node = MRCA(circ, mydata$tips[mydata$genus == "Chamaeleo"]),
                   label = expression(italic("Chamaeleo")), 
-                align = TRUE, offset = 1, fontsize = 4, offset.text = 65) +
+                align = TRUE, offset = 1, fontsize = 4, offset.text = 40) +
   geom_cladelabel(node = MRCA(circ, mydata$tips[mydata$genus == "Furcifer"]), 
                   label = expression(italic("Furcifer")), 
-                align = TRUE, offset = 1, fontsize = 4, offset.text = 15) +
+                align = TRUE, offset = 1, fontsize = 4, offset.text = 55) +
   geom_cladelabel(node = MRCA(circ, mydata$tips[mydata$genus == "Kinyongia"]),
                   label = expression(italic("Kinyongia")), 
-                align = TRUE,offset = 1, fontsize = 4, offset.text = 70) +
+                align = TRUE,offset = 1, fontsize = 4, offset.text = 25) +
   geom_cladelabel(node = MRCA(circ, mydata$tips[mydata$genus == "Palleon"]), 
                   label = expression(italic("Palleon")), 
                 align = TRUE,offset = 1, fontsize = 4, offset.text = 10) +
   geom_cladelabel(node = MRCA(circ, mydata$tips[mydata$genus == "Rhampholeon"]),
                   label = expression(italic("Rhampholeon")), 
-                align = TRUE,offset = 1, fontsize = 4, offset.text = 90) +
+                align = TRUE,offset = 1, fontsize = 4, offset.text = 10) +
   geom_cladelabel(node = MRCA(circ, mydata$tips[mydata$genus == "Trioceros"]),
                   label = expression(italic("Trioceros")), 
-                align = TRUE, offset = 1, fontsize = 4, offset.text = 65)
+                align = TRUE, offset = 1, fontsize = 4, offset.text = 45)
 
 # Save tree
 # ggsave(genus_tree, filename = here("outputs/trees-genera-bw.png"), height = 5)

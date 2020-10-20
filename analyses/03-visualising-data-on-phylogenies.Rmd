@@ -28,16 +28,6 @@ mytree <- read.tree(here("data/ML-tree.tre"))
 #head(mydata)
 ```
 
-Remove Leiolepsis
-```{r}
-# Exclude Leiolepsis
-mydata <- mydata %>% 
-  filter(tips != "Leiolep")
-
-# Remove "Leiolep" from the tree
-mytree <- drop.tip(mytree, "Leiolep")
-```
-
 Extract some subsets of the data for the plotting
 ```{r}
 # chromon

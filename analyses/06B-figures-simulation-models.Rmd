@@ -59,15 +59,10 @@ sim_output_null2 <-
 results_null <- 
   sim_output_null2 %>%
   mutate(diff = obs_haploidn - sim_haploidn)
-
-# Remove the outgroup
-results_null <- filter(results_null, genus != "Leiolepis")
 ```
 
 ## Plot the observed versus the simulations for both sets
 ```{r}
-
-results
 ggplot(results, aes(x = diff)) +
   geom_density(colour = "cornflowerblue") +
   geom_density(data = results_null, colour = "grey") +
@@ -84,7 +79,7 @@ ggplot(results, aes(x = diff)) +
 ```
 Plot number of chromosomes predicted using chromosome evolution models
 ```{r}
-  ggplot(results_null, aes(x = sim_haploidn)) +
+ggplot(results_null, aes(x = sim_haploidn)) +
   # Add null as this is the true distribution
   geom_histogram(binwidth = 1, alpha = 0.5) +
   # Add simulations in blue

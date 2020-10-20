@@ -18,10 +18,6 @@ Read in the data and extract species names and n
 # Read in the data
 ds <- read_csv(here("data/chromosome-data.csv"))
 
-# Exclude Leiolepsis
-ds <- ds %>% 
-  filter(tips != "Leiolep")
-
 # Exclude Rieppeleon
 ds_exclude <- ds %>% 
   filter(tips != "Riebrev")
@@ -49,8 +45,6 @@ tree <- force.ultrametric(tree)
 is.ultrametric(tree) # TRUE
 # Remove node labels
 tree$node.label <- NULL
-# Remove "Leiolep" from the tree
-tree <- drop.tip(tree, "Leiolep")
 # Remove "Riebrev" from the tree
 tree_exclude <- drop.tip(tree, "Riebrev")
 
@@ -107,12 +101,12 @@ write_csv(chromo_exclude, col_names =  FALSE,
 # Exclude duplicated species
 ds_species <-
   ds %>% 
-  mutate(dup = duplicated(ds$Binomial)) %>%
+  mutate(dup = duplicated(ds$Binomial_Marcello)) %>%
   filter(dup != TRUE)
 
 ds_exclude_species <-
   ds_exclude %>% 
-  mutate(dup = duplicated(ds_exclude$Binomial)) %>%
+  mutate(dup = duplicated(ds_exclude$Binomial_Marcello)) %>%
   filter(dup != TRUE)
 
 # Retain only species names and haploid chromosome numbers

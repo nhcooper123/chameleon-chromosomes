@@ -47,6 +47,8 @@ ds <-
 Fix up species names in our data to match them to the ecological data. Note that this will give a warning saying that some of the species names have more than two words in them, this is fine as we don't need the extra bits.
 ```{r, message = FALSE}
 ds <- ds %>%
+  # remove outgroup
+  filter(species != "leiolepis_belliana") %>%
   # capitalise genus column
   mutate(genus = capitalize(genus)) %>%
   # split the species column into Genus and Species
@@ -55,7 +57,9 @@ ds <- ds %>%
   mutate(Genus = capitalize(Genus)) %>%
   # stick Genus and Species together as Binomial
   unite("Binomial", Genus, Species, sep = " ") %>%
-  # Correct the taxonomy so it matches teh ecology dataset
+  # Create a new column for the things Marcello thinks are species
+  mutate(Binomial_Marcello = Binomial) %>%
+  # Correct the taxonomy so it matches the ecology dataset
   mutate(Binomial = case_when(Binomial == "Brookesia thieli1" ~ "Brookesia thieli",
                               Binomial == "Brookesia thieli2" ~ "Brookesia thieli",
                               Binomial == "Brookesia ramantsoai" ~ "Brookesia ramanantsoai",
@@ -83,7 +87,7 @@ ds <- ds %>%
 
 ```
 
-Add the ecological data from Meiri 2018 and match up to the chromosome data. This prints out the species there are no matching data for in Meiri 2018 (should be 6 species). These species remain in the dataset, but don't have matching ecological data.
+Add the ecological data from Meiri 2018 and match up to the chromosome data. This prints out the species there are no matching data for in Meiri 2018 (should be 5 species). These species remain in the dataset, but don't have matching ecological data.
 ```{r, message = FALSE}
 # Read in the Meiri data
 eco <- read_csv(here("data/other/Meiri2018_AppendixS1.csv"))
@@ -146,7 +150,7 @@ mytree <- all$phy
 # Save data as mydata and as a dataframe
 mydata <- as.data.frame(all$dat)
 
-# Check contents as are expected: 137 species in each
+# Check contents as are expected: 136 species in each
 # str(mytree)
 # glimpse(mydata)
 ```

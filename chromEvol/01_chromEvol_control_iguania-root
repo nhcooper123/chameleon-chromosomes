@@ -1,5 +1,5 @@
 _mainType All_Models
-_outDir 03_chromEvol_out_iguania-root
+_outDir 01_chromEvol_out_iguania-root
 _dataFile data_for_chromevol
 _treeFile tree_for_chromevol
 _maxChrNum -10

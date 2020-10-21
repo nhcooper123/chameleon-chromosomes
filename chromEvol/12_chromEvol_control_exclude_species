@@ -1,5 +1,5 @@
 _mainType All_Models
-_outDir 10_chromEvol_out_exclude_species
+_outDir 12_chromEvol_out_exclude_species
 _dataFile data_for_chromevol_exclude_species
 _treeFile tree_for_chromevol_exclude_species
 _maxChrNum -10

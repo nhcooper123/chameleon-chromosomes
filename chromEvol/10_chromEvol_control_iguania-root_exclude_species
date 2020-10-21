@@ -1,5 +1,5 @@
 _mainType All_Models
-_outDir 02_chromEvol_out_iguania-root_exclude_species
+_outDir 10_chromEvol_out_iguania-root_exclude_species
 _dataFile data_for_chromevol_exclude_species
 _treeFile tree_for_chromevol_exclude_species
 _maxChrNum -10

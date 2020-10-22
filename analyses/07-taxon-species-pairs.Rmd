@@ -92,7 +92,7 @@ First remove excess data from my data, selecting just the first time each specie
 ```{r}
 mydata_species <-
   mydata %>% 
-  mutate(dup = duplicated(mydata$Binomial)) %>%
+  mutate(dup = duplicated(mydata$Binomial_Marcello)) %>%
   filter(dup != TRUE)
 
 # Remove species from the tree that are not in mydata_species

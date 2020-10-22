@@ -143,8 +143,9 @@ groupOTU(circ, grp2, 'Genus') + aes(color = Genus) +
                                  expression(italic("Palleon")),
                                  expression(italic("Rhampholeon")),
                                  expression(italic("Rieppeleon")),
-                                 expression(italic("Trioceros")))) +   theme(legend.text.align = 0)+
-theme_void(base_size = 14)
+                                 expression(italic("Trioceros")))) +
+  theme_void(base_size = 14) +
+  theme(legend.text.align = 0)
 
 # Save tree
 # ggsave(filename = here("outputs/trees-genera-colour-legend.png"), height = 5)

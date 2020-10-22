@@ -91,3 +91,88 @@ ggplot(results_null, aes(x = sim_haploidn)) +
 
 #ggsave(filename = here("outputs/chromevol-simulations-numbers.png"))  
 ```
+
+## SPECIES LEVEL
+
+Add the observed data to the simulations data, then work out the differences between observed numbers and simulation numbers of chromosomes.
+```{r}
+# Read in simulation output
+sim_output_species <- read_csv(here("data/chromevol-simulations-outputs-species.csv"))
+
+# Read in observed data
+mydata <- read_csv(here("data/chromosome-data.csv"))
+
+# Remove Rieppeleon
+mydata <- 
+  mydata %>% 
+  filter(genus != "Rieppeleon")
+
+# Select one representative per species
+mydata_species <-
+  mydata %>%
+  mutate(dup = duplicated(mydata$Binomial_Marcello)) %>%
+  filter(dup != TRUE)
+
+# Rename the haploidn column
+# Select only tip names, genus and observed haploidn
+mydata_species <-
+  mydata_species %>%
+  rename(obs_haploidn = haploidn) %>%
+  dplyr::select(tips, obs_haploidn, genus)
+
+# Join data by tip names
+sim_output2 <- 
+  full_join(sim_output_species, mydata_species, by = "tips")
+
+# Calculate differences
+results_species <- 
+  sim_output2 %>%
+  mutate(haploidn = as.numeric(haploidn)) %>%
+  mutate(diff = obs_haploidn - haploidn)
+```
+
+Read in null models. Add the data so the differences between observed and simulated chromosome numbers can be calculated.
+```{r}
+# Read in null simulations
+sims_output_null_species <- read_csv(here("data/null-simulations-outputs-species.csv"))
+
+# Join data by tip names
+sim_output_null2 <- 
+  full_join(sims_output_null_species, mydata_species, by = "tips")
+
+# Calculate differences
+results_null_species <- 
+  sim_output_null2 %>%
+  mutate(diff = obs_haploidn - sim_haploidn)
+```
+
+## Plot the observed versus the simulations for both sets
+```{r}
+ggplot(results_species, aes(x = diff)) +
+  geom_density(colour = "cornflowerblue") +
+  geom_density(data = results_null_species, colour = "grey") +
+  geom_vline(xintercept = 0, linetype = "dotted") +
+  facet_wrap(~genus) +
+  theme_bw(base_size = 14) +
+  theme(strip.background = element_rect(fill="white"), 
+        strip.text = element_text(face = "italic"),
+        axis.text.x = element_text(angle = 45, hjust = 1)) +
+  xlab(expression(n[observed] - n[simulated]))
+
+#ggsave(filename = here("outputs/all-simulations-differences-species.png"))  
+
+```
+Plot number of chromosomes predicted using chromosome evolution models
+```{r}
+ggplot(results_null_species, aes(x = sim_haploidn)) +
+  # Add null as this is the true distribution
+  geom_histogram(binwidth = 1, alpha = 0.5) +
+  # Add simulations in blue
+  geom_histogram(data = results_species, aes(x = haploidn), 
+                 fill = "cornflowerblue", binwidth = 1, alpha = 0.5) +
+  theme_bw(base_size = 14) +
+  xlab("chromosomes (n)") +
+  coord_cartesian(xlim = c(5, 25), ylim = c(0,60000))
+
+#ggsave(filename = here("outputs/chromevol-simulations-numbers-species.png"))  
+```

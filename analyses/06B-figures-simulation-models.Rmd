@@ -89,7 +89,7 @@ ggplot(results_null, aes(x = sim_haploidn)) +
   xlab("chromosomes (n)") +
   coord_cartesian(xlim = c(5, 25), ylim = c(0,60000))
 
-#ggsave(filename = here("outputs/chromevol-simulations-numbers.png"))  
+#ggsave(filename = here("outputs/chromevol-simulations-numbers.png"), height = 5)  
 ```
 
 ## SPECIES LEVEL
@@ -172,7 +172,7 @@ ggplot(results_null_species, aes(x = sim_haploidn)) +
                  fill = "cornflowerblue", binwidth = 1, alpha = 0.5) +
   theme_bw(base_size = 14) +
   xlab("chromosomes (n)") +
-  coord_cartesian(xlim = c(5, 25), ylim = c(0,60000))
+  coord_cartesian(xlim = c(5, 25), ylim = c(0,40000))
 
-#ggsave(filename = here("outputs/chromevol-simulations-numbers-species.png"))  
+#ggsave(filename = here("outputs/chromevol-simulations-numbers-species.png"), height = 5)  
 ```

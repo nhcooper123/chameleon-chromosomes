@@ -56,11 +56,6 @@ phylo.dist.all <-
 pairs.data <- 
   left_join(phylo.dist.all, all.pairs, by = c("tip1","tip2")) %>% 
   filter(phylodist > 0)
-
-# Exclude outgroup
-pairs.data <-
-  pairs.data %>%
-  filter(tip1 != "Leiolep" & tip2 != "Leiolep")
 ```
 
 Now work out the differences in chromosome numbers
@@ -123,11 +118,6 @@ phylo.dist.all_species <-
 pairs.data_species <- 
   left_join(phylo.dist.all_species, all.pairs_species, by = c("tip1","tip2")) %>% 
   filter(phylodist > 0)
-
-# Exclude outgroup
-pairs.data_species <-
-  pairs.data_species %>%
-  filter(tip1 != "Leiolep" & tip2 != "Leiolep")
 ```
 
 Now work out the differences in chromosome numbers

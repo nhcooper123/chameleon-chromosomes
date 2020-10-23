@@ -1,0 +1,526 @@
+---
+title: "Ecological correlates analyses - MCMCGLMM"
+author: "Natalie Cooper"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Preparation
+
+```{r, message = FALSE, echo = FALSE}
+# Load libraries
+library(tidyverse)
+library(here)
+library(ape)
+library(broom)
+library(patchwork)
+library(MCMCglmm)
+library(coda)
+library(phytools)
+```
+
+Read in the data and the tree
+```{r, message = FALSE, echo = FALSE}
+mydata <- read_csv(here("data/chromosome-data.csv"))
+mytree <- read.tree(here("data/ML-tree.tre"))
+mytree <- force.ultrametric(mytree)
+```
+
+Collapse data and tree to the species level using Meiri species, and remove the 5 species with no matching data
+```{r}
+spdata <-
+  mydata %>%
+  mutate(dup = duplicated(mydata$Binomial)) %>%
+  filter(dup == FALSE) %>%
+  filter(!is.na(Realm))
+
+# Remove extra tips
+remove <- setdiff(mytree$tip.label, spdata$tips)
+sptree <- drop.tip(mytree, remove)
+
+# Remove node labels
+sptree$node.label <-NULL
+
+# Check both have 80 species
+#spdata
+#sptree
+```
+Modify some variables to make plotting/analyses easier
+
+Remove complex levels from Substrate and relevel so multiple is last in the plots
+```{r}
+spdata <-
+  spdata %>%
+  mutate(substrate2 = case_when(Substrate == "Arboreal&Terrestrial" ~ "Multiple",
+                                Substrate == "Arboreal&Saxicolous&Terrestrial" ~ "Multiple",
+                                TRUE ~ as.character(Substrate))) %>%
+  mutate(substrate2 = factor(substrate2, levels = c("Arboreal", "Terrestrial", "Multiple"))) %>%
+  as.data.frame()
+```
+
+Rescale numeric variables so they are mean centered and scaled to unit variance
+```{r}
+spdata <-
+  spdata %>%
+  mutate(maxSVL_Z = scale(log(spdata$maxSVL))) %>%
+  mutate(lat_Z = scale(abs(spdata$Latitude))) %>%
+  mutate(minClutchSize_Z = scale(spdata$minClutchSize)) %>%
+  mutate(maxClutchSize_Z = scale(spdata$maxClutchSize)) %>%
+  mutate(minBreedingAge_Z = scale(log(spdata$minBreedingAge))) %>%
+  mutate(maxBreedingAge_Z = scale(log(spdata$maxBreedingAge)))
+```
+
+Create subsets of data and tree for analyses without full 80 species
+```{r}
+# Substrate
+spdata_substrate <- 
+  spdata %>%
+  filter(!is.na(Substrate))
+
+sptree_substrate <- drop.tip(sptree, setdiff(sptree$tip.label, spdata_substrate$tips))
+
+# Reproductive mode
+spdata_repro <- 
+  spdata %>%
+  filter(!is.na(Repromode))
+
+sptree_repro <- drop.tip(sptree, setdiff(sptree$tip.label, spdata_repro$tips))
+
+# Clutch size
+spdata_clutch <- 
+  spdata %>%
+  filter(!is.na(minClutchSize))
+
+sptree_clutch <- drop.tip(sptree, setdiff(sptree$tip.label, spdata_clutch$tips))
+
+# Breeding age
+spdata_breed <- 
+  spdata %>%
+  filter(!is.na(minBreedingAge))
+
+sptree_breed <- drop.tip(sptree, setdiff(sptree$tip.label, spdata_breed$tips))
+```
+
+## Fit MCMCglmm models
+
+Set up priors for modelling
+```{r}
+# Priors
+prior <- list(R = list(V = 1, nu = 0.002), 
+               G = list(G1 = list(V = 1, nu = 1, 
+                                  alpha.mu = 0, alpha.V = 25^2)))
+
+# Number of iterations
+nitt <- 1E06
+
+# Sampling interval
+thin <- 1E03
+
+# Burnin
+burnin <- 1E05
+```
+
+Make trees - these will vary depending on variable
+```{r}
+# Inverse tree vcv matrix
+# For 80 species
+inv <- inverseA(sptree, scale = FALSE)$Ainv
+
+# Substrate
+inv_substrate <- inverseA(sptree_substrate, scale = FALSE)$Ainv
+
+# Reproductive mode
+inv_repro <- inverseA(sptree_repro, scale = FALSE)$Ainv
+
+# Clutch size
+inv_clutch <- inverseA(sptree_clutch, scale = FALSE)$Ainv
+
+# Breeding age
+inv_breed <- inverseA(sptree_breed, scale = FALSE)$Ainv
+```
+
+Fit models! These are Bayesian so might take a while to run...
+
+### SVL
+```{r}
+svl_model <- MCMCglmm(haploidn ~ maxSVL_Z, 
+                   data = spdata, random = ~ tips,
+                   ginverse = list(tips = inv), family = "poisson", prior = prior,
+                   nitt = nitt, thin = thin, burnin = burnin, pl = TRUE, verbose = FALSE)
+
+# Plot model diagnostics for MCMCglmm
+# Fixed effects
+plot(svl_model$Sol)  
+
+# For random effects
+plot(svl_model$VCV)
+
+# Look for autocorrelation
+autocorr(svl_model$VCV)
+
+# Calculate ESS
+effectiveSize(svl_model$Sol[, 1:svl_model$Fixed$nfl, 
+                                 drop = FALSE])[[1]]
+
+# Look at summary of fixed effect results
+summary(svl_model)$solutions
+
+# Get lambda
+lambda <- svl_model$VCV[,'tips']/
+          (svl_model$VCV[,'tips'] + svl_model$VCV[,'units'])
+
+# Posterior mode of lambda
+posterior.mode(lambda)
+
+# HPD interval
+HPDinterval(lambda)
+
+max_SVL <- summary(svl_model)$solutions[2,]
+```
+
+### Realm
+```{r}
+realm_model <- MCMCglmm(haploidn ~ Realm, 
+                   data = spdata, random = ~ tips,
+                   ginverse = list(tips = inv), family = "poisson", prior = prior,
+                   nitt = nitt, thin = thin, burnin = burnin, pl = TRUE, verbose = FALSE)
+
+# Plot model diagnostics for MCMCglmm
+# Fixed effects
+plot(realm_model$Sol)  
+
+# For random effects
+plot(realm_model$VCV)
+
+# Look for autocorrelation
+autocorr(realm_model$VCV)
+
+# Calculate ESS
+effectiveSize(realm_model$Sol[, 1:realm_model$Fixed$nfl, 
+                                 drop = FALSE])[[1]]
+
+# Look at summary of fixed effect results
+summary(realm_model)$solutions
+
+# Get lambda
+lambda <- realm_model$VCV[,'tips']/
+          (realm_model$VCV[,'tips'] + realm_model$VCV[,'units'])
+
+# Posterior mode of lambda
+posterior.mode(lambda)
+
+# HPD interval
+HPDinterval(lambda)
+
+RealmMadagascar <- summary(realm_model)$solutions[2,]
+RealmOriental <- summary(realm_model)$solutions[3,] 
+RealmPalearctic <- summary(realm_model)$solutions[4,] 
+```
+
+### Latitude
+```{r}
+lat_model <- MCMCglmm(haploidn ~ lat_Z, 
+                   data = spdata, random = ~ tips,
+                   ginverse = list(tips = inv), family = "poisson", prior = prior,
+                   nitt = nitt, thin = thin, burnin = burnin, pl = TRUE, verbose = FALSE)
+
+# Plot model diagnostics for MCMCglmm
+# Fixed effects
+plot(lat_model$Sol)  
+
+# For random effects
+plot(lat_model$VCV)
+
+# Look for autocorrelation
+autocorr(lat_model$VCV)
+
+# Calculate ESS
+effectiveSize(lat_model$Sol[, 1:lat_model$Fixed$nfl, 
+                                 drop = FALSE])[[1]]
+
+# Look at summary of fixed effect results
+summary(lat_model)$solutions
+
+# Get lambda
+lambda <- lat_model$VCV[,'tips']/
+          (lat_model$VCV[,'tips'] + lat_model$VCV[,'units'])
+
+# Posterior mode of lambda
+posterior.mode(lambda)
+
+# HPD interval
+HPDinterval(lambda)
+
+Latitude <- summary(lat_model)$solutions[2,]
+```
+
+### Substrate
+```{r}
+sub_model <- MCMCglmm(haploidn ~ substrate2, 
+                   data = spdata_substrate, random = ~ tips,
+                   ginverse = list(tips = inv_substrate), family = "poisson", prior = prior,
+                   nitt = nitt, thin = thin, burnin = burnin, pl = TRUE, verbose = FALSE)
+
+# Plot model diagnostics for MCMCglmm
+# Fixed effects
+plot(sub_model$Sol)  
+
+# For random effects
+plot(sub_model$VCV)
+
+# Look for autocorrelation
+autocorr(sub_model$VCV)
+
+# Calculate ESS
+effectiveSize(sub_model$Sol[, 1:sub_model$Fixed$nfl, 
+                                 drop = FALSE])[[1]]
+
+# Look at summary of fixed effect results
+summary(sub_model)$solutions
+
+# Get lambda
+lambda <- sub_model$VCV[,'tips']/
+          (sub_model$VCV[,'tips'] + sub_model$VCV[,'units'])
+
+# Posterior mode of lambda
+posterior.mode(lambda)
+
+# HPD interval
+HPDinterval(lambda)
+
+SubstrateTerrestrial <- summary(sub_model)$solutions[2,]
+SubstrateMultiple <- summary(sub_model)$solutions[3,]
+```
+
+### Reproductive mode
+```{r}
+repro_model <- MCMCglmm(haploidn ~ Repromode, 
+                   data = spdata_repro, random = ~ tips,
+                   ginverse = list(tips = inv_repro), family = "poisson", prior = prior,
+                   nitt = nitt, thin = thin, burnin = burnin, pl = TRUE, verbose = FALSE)
+
+# Plot model diagnostics for MCMCglmm
+# Fixed effects
+plot(repro_model$Sol)  
+
+# For random effects
+plot(repro_model$VCV)
+
+# Look for autocorrelation
+autocorr(repro_model$VCV)
+
+# Calculate ESS
+effectiveSize(repro_model$Sol[, 1:repro_model$Fixed$nfl, 
+                                 drop = FALSE])[[1]]
+
+# Look at summary of fixed effect results
+summary(repro_model)$solutions
+
+# Get lambda
+lambda <- repro_model$VCV[,'tips']/
+          (repro_model$VCV[,'tips'] + repro_model$VCV[,'units'])
+
+# Posterior mode of lambda
+posterior.mode(lambda)
+
+# HPD interval
+HPDinterval(lambda)
+
+ReproductiveMode <- summary(repro_model)$solutions[2,]
+```
+
+### Min clutch size
+```{r}
+clutch1_model <- MCMCglmm(haploidn ~ minClutchSize_Z, 
+                   data = spdata_clutch, random = ~ tips,
+                   ginverse = list(tips = inv_clutch), family = "poisson", prior = prior,
+                   nitt = nitt, thin = thin, burnin = burnin, pl = TRUE, verbose = FALSE)
+
+# Plot model diagnostics for MCMCglmm
+# Fixed effects
+plot(clutch1_model$Sol)  
+
+# For random effects
+plot(clutch1_model$VCV)
+
+# Look for autocorrelation
+autocorr(clutch1_model$VCV)
+
+# Calculate ESS
+effectiveSize(clutch1_model$Sol[, 1:clutch1_model$Fixed$nfl, 
+                                 drop = FALSE])[[1]]
+
+# Look at summary of fixed effect results
+summary(clutch1_model)$solutions
+
+# Get lambda
+lambda <- clutch1_model$VCV[,'tips']/
+          (clutch1_model$VCV[,'tips'] + clutch1_model$VCV[,'units'])
+
+# Posterior mode of lambda
+posterior.mode(lambda)
+
+# HPD interval
+HPDinterval(lambda)
+
+min_ClutchSize <- summary(clutch1_model)$solutions[2,]
+```
+
+### Max clutch size
+```{r}
+clutch2_model <- MCMCglmm(haploidn ~ maxClutchSize_Z, 
+                   data = spdata_clutch, random = ~ tips,
+                   ginverse = list(tips = inv_clutch), family = "poisson", prior = prior,
+                   nitt = nitt, thin = thin, burnin = burnin, pl = TRUE, verbose = FALSE)
+
+# Plot model diagnostics for MCMCglmm
+# Fixed effects
+plot(clutch2_model$Sol)  
+
+# For random effects
+plot(clutch2_model$VCV)
+
+# Look for autocorrelation
+autocorr(clutch2_model$VCV)
+
+# Calculate ESS
+effectiveSize(clutch2_model$Sol[, 1:clutch2_model$Fixed$nfl, 
+                                 drop = FALSE])[[1]]
+
+# Look at summary of fixed effect results
+summary(clutch2_model)$solutions
+
+# Get lambda
+lambda <- clutch2_model$VCV[,'tips']/
+          (clutch2_model$VCV[,'tips'] + clutch2_model$VCV[,'units'])
+
+# Posterior mode of lambda
+posterior.mode(lambda)
+
+# HPD interval
+HPDinterval(lambda)
+
+max_ClutchSize <- summary(clutch2_model)$solutions[2,]
+```
+
+### Min breeding age
+```{r}
+breed1_model <- MCMCglmm(haploidn ~ minBreedingAge_Z, 
+                   data = spdata_breed, random = ~ tips,
+                   ginverse = list(tips = inv_breed), family = "poisson", prior = prior,
+                   nitt = nitt, thin = thin, burnin = burnin, pl = TRUE, verbose = FALSE)
+
+# Plot model diagnostics for MCMCglmm
+# Fixed effects
+plot(breed1_model$Sol)  
+
+# For random effects
+plot(breed1_model$VCV)
+
+# Look for autocorrelation
+autocorr(breed1_model$VCV)
+
+# Calculate ESS
+effectiveSize(breed1_model$Sol[, 1:breed1_model$Fixed$nfl, 
+                                 drop = FALSE])[[1]]
+
+# Look at summary of fixed effect results
+summary(breed1_model)$solutions
+
+# Get lambda
+lambda <- breed1_model$VCV[,'tips']/
+          (breed1_model$VCV[,'tips'] + breed1_model$VCV[,'units'])
+
+# Posterior mode of lambda
+posterior.mode(lambda)
+
+# HPD interval
+HPDinterval(lambda)
+
+min_BreedingAge <- summary(breed1_model)$solutions[2,]
+```
+
+### Max breeding age
+```{r}
+breed2_model <- MCMCglmm(haploidn ~ maxBreedingAge_Z, 
+                   data = spdata_breed, random = ~ tips,
+                   ginverse = list(tips = inv_breed), family = "poisson", prior = prior,
+                   nitt = nitt, thin = thin, burnin = burnin, pl = TRUE, verbose = FALSE)
+
+# Plot model diagnostics for MCMCglmm
+# Fixed effects
+plot(breed2_model$Sol)  
+
+# For random effects
+plot(breed2_model$VCV)
+
+# Look for autocorrelation
+autocorr(breed2_model$VCV)
+
+# Calculate ESS
+effectiveSize(breed2_model$Sol[, 1:breed2_model$Fixed$nfl, 
+                                 drop = FALSE])[[1]]
+
+# Look at summary of fixed effect results
+summary(breed2_model)$solutions
+
+# Get lambda
+lambda <- breed2_model$VCV[,'tips']/
+          (breed2_model$VCV[,'tips'] + breed2_model$VCV[,'units'])
+
+# Posterior mode of lambda
+posterior.mode(lambda)
+
+# HPD interval
+HPDinterval(lambda)
+
+max_BreedingAge <- summary(breed2_model)$solutions[2,]
+```
+
+Combine results
+```{r}
+results <- cbind(max_SVL, SubstrateTerrestrial, SubstrateMultiple, 
+                 ReproductiveMode, min_ClutchSize, 
+                 max_ClutchSize, min_BreedingAge, 
+                 max_BreedingAge, RealmMadagascar, Latitude)
+results <- as.data.frame(t(results))
+
+results <-
+  results %>%
+  mutate(variable = rownames(results)) %>%
+  select(variable, everything())
+
+#write_csv(results, path = here("outputs/models-ecology.csv"))
+```
+
+Plot
+```{r}
+# Read in results
+results <- read_csv(here("outputs/models-ecology.csv"))
+
+# Relevel
+results <- 
+  results %>%
+  mutate(variable = factor(variable, levels = c("max_SVL", "SubstrateTerrestrial",
+                                                "SubstrateMultiple",
+                                                "ReproductiveMode", "min_ClutchSize",
+                                                "max_ClutchSize", "min_BreedingAge", 
+                                                "max_BreedingAge", "RealmMadagascar",
+                                                "Latitude")))
+
+ggplot(results, aes(x = (variable), y = post.mean)) +
+  geom_point() +
+  geom_errorbar(aes(ymin = `l-95% CI`, ymax = `u-95% CI`), width = 0.1) +
+  theme_bw(base_size = 14) +
+  geom_hline(yintercept = 0, linetype = "dotted") +
+  ylab("posterior mean slope estimate") +
+  xlab("") +
+  coord_flip()
+
+#ggsave(filename = here("outputs/mcmcglmm-figure.png"), height = 5)
+```
+
+

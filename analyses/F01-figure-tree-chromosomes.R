@@ -70,7 +70,7 @@ mytree <- read.tree(here("chromEvol/tree_for_chromevol_exclude_species"))
 # Remove excess for species data
 species <- 
   taxa %>% 
-  mutate(dup = duplicated(taxa$Binomial)) %>%
+  mutate(dup = duplicated(taxa$Binomial_Marcello)) %>%
   filter(dup != TRUE)
 
 species_anc <- results_species[[1]][[1]]

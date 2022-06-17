@@ -1,0 +1,223 @@
+---
+title: "Ecological correlates analyses - figures"
+author: "Natalie Cooper"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Preparation
+
+```{r, message = FALSE, echo = FALSE}
+# Load libraries
+library(tidyverse)
+library(here)
+library(ape)
+library(broom)
+library(patchwork)
+```
+
+Read in the data and the tree
+```{r, message = FALSE, echo = FALSE}
+mydata <- read_csv(here("data/chromosome-data.csv"))
+mytree <- read.tree(here("data/ML-tree.tre"))
+```
+
+Collapse data and tree to the species level using Meiri species, and remove the 5 species with no matching data
+```{r}
+spdata <-
+  mydata %>%
+  mutate(dup = duplicated(mydata$Binomial)) %>%
+  filter(dup == FALSE) %>%
+  filter(!is.na(Realm))
+
+# Remove extra tips
+remove <- setdiff(mytree$tip.label, spdata$tips)
+sptree <- drop.tip(mytree, remove)
+
+# Check both have 80 species
+#spdata
+#sptree
+```
+Modify some variables to make plotting/analyses easier
+
+Remove complex levels from Substrate and relevel so multiple is last in the plots
+```{r}
+spdata <-
+  spdata %>%
+  mutate(substrate2 = case_when(Substrate == "Arboreal&Terrestrial" ~ "Multiple",
+                                Substrate == "Arboreal&Saxicolous&Terrestrial" ~ "Multiple",
+                                TRUE ~ as.character(Substrate))) %>%
+  mutate(substrate2 = factor(substrate2, levels = c("Arboreal", "Terrestrial", "Multiple")))
+```
+
+## Plotting relationships 
+
+```{r}
+# Create list of colours to match earlier plots
+mycolours <- c("#208EA3", "#FD817D", "#4178BC", "#EA4E9D", 
+               "#EECC16", "#E8384F","#E37CFF","#37A862", "#A4C61A", "#7A71F6")
+
+#"#E8384F" = RED
+#"#208EA3" = AQUA
+#"#FD817D" = ORANGE
+#"#4178BC" = BLUE
+#"#FDAE33" = YELLOW ORANGE
+#"#7A71F6" = INDIGO
+#"#EECC16" = YELLOW
+#"#AA71FF" = PURPLE
+#"#A4C61A" = YELLOW GREEN
+#"#E37CFF" = MAGENTA
+#"#62BB35" = GREEN
+#"#EA4E9D" = HOT PINK
+#"#37A862" = BLUE GREEN
+```
+
+Make series of plots for the appendix
+
+### Genus
+```{r}
+genus <-
+  ggplot(mydata, aes(y = haploidn, x = genus, colour = genus)) +
+  geom_jitter(alpha = 0.6) +
+  theme_bw(base_size = 14) +
+  theme(axis.text.x = element_text(angle = 45, vjust = 0.6, face = "italic"),
+        legend.position = "none") +
+  ylab("chromosomes (n)") +
+  xlab("Genus") +
+  scale_colour_manual(values = mycolours)
+```
+
+### Realm
+```{r}
+realm <-
+  ggplot(spdata, aes(y = haploidn, x = Realm, colour = genus)) +
+  geom_jitter(alpha = 0.6) +
+  theme_bw(base_size = 14) +
+  theme(axis.text.x = element_text(angle = 45, vjust = 0.6),
+        legend.position = "none") +
+  ylab("chromosomes (n)") +
+  xlab("biogeographic realm") +
+  scale_colour_manual(values = mycolours)
+```
+
+### Absolute latitude
+```{r}
+latitude <- 
+  ggplot(spdata, aes(y = haploidn, x = abs(Latitude), colour = genus)) +
+  geom_point(alpha = 0.6) +
+  theme_bw(base_size = 14) +
+  theme(legend.position = "none") +
+  ylab("chromosomes (n)") +
+  xlab("absolute latitude (DD)") +
+  scale_colour_manual(values = mycolours)
+```
+
+### Max SVL
+```{r}
+svl <-
+  ggplot(spdata, aes(y = haploidn, x = maxSVL, colour = genus)) +
+  geom_point(alpha = 0.6) +
+  theme_bw(base_size = 14) +
+  theme(legend.position = "none") +
+  ylab("chromosomes (n)") +
+  xlab("max SVL (mm)") +
+  scale_colour_manual(values = mycolours)
+```
+
+### Substrate
+```{r}
+substrate <- 
+  ggplot(data = subset(spdata, !is.na(substrate2)), 
+       aes(y = haploidn, x = substrate2, colour = genus)) +
+  geom_jitter(alpha = 0.6) +
+  theme_bw(base_size = 14) +
+  theme(axis.text.x = element_text(angle = 45, vjust = 0.6),
+        legend.position = "none") +
+  ylab("chromosomes (n)") +
+  xlab("substrate") +
+  scale_colour_manual(values = mycolours)
+```
+
+### Reproductive mode
+```{r}
+repro <-
+  ggplot(data = subset(spdata, !is.na(Repromode)), 
+       aes(y = haploidn, x = Repromode, colour = genus)) +
+  geom_jitter(alpha = 0.6) +
+  theme_bw(base_size = 14) +
+  theme(axis.text.x = element_text(angle = 45, vjust = 0.6),
+        legend.position = "none") +
+  ylab("chromosomes (n)") +
+  xlab("reproductive mode") +
+  scale_colour_manual(values = mycolours)
+```
+
+### Min Clutch size
+```{r}
+minclutch <-
+  ggplot(data = subset(spdata, !is.na(minClutchSize)), 
+       aes(y = haploidn, x = minClutchSize, colour = genus)) +
+  geom_point(alpha = 0.6) +
+  theme_bw(base_size = 14) +
+  theme(legend.position = "none") +
+  ylab("chromosomes (n)") +
+  xlab("min clutch size (eggs)") +
+  scale_colour_manual(values = mycolours)
+```
+
+### Max Clutch size
+```{r}
+maxclutch <-
+  ggplot(data = subset(spdata, !is.na(maxClutchSize)), 
+       aes(y = haploidn, x = maxClutchSize, colour = genus)) +
+  geom_point(alpha = 0.6) +
+  theme_bw(base_size = 14) +
+  theme(legend.position = "none") +
+  ylab("chromosomes (n)") +
+  xlab("max clutch size (eggs)") +
+  scale_colour_manual(values = mycolours)
+```
+
+### Min breeding age
+```{r}
+minbreed <-
+  ggplot(data = subset(spdata, !is.na(minBreedingAge)), 
+       aes(y = haploidn, x = minBreedingAge, colour = genus)) +
+  geom_point(alpha = 0.6) +
+  theme_bw(base_size = 14) +
+  theme(legend.position = "none") +
+  ylab("chromosomes (n)") +
+  xlab("min breeding age (months)") +
+  scale_colour_manual(values = mycolours)
+```
+
+### Max Breeding Age
+```{r}
+maxbreed <-
+  ggplot(data = subset(spdata, !is.na(maxBreedingAge)), 
+       aes(y = haploidn, x = maxBreedingAge, colour = genus)) +
+  geom_point(alpha = 0.6) +
+  theme_bw(base_size = 14) +
+  theme(legend.position = "none") +
+  ylab("chromosomes (n)") +
+  xlab("max breeding age (months)") +
+  scale_colour_manual(values = mycolours)
+```
+
+And plot them all!
+```{r}
+(genus)/(realm + latitude) 
+
+#ggsave(filename = here("outputs/ecology-genus-geo.png"), height = 5)   
+   
+(genus)/(svl + substrate + repro)
+
+#ggsave(filename = here("outputs/ecology-genus-svl.png"), height = 5)   
+  
+(minclutch + maxclutch + minbreed + maxbreed)
+
+#ggsave(filename = here("outputs/ecology-breeding.png"), height = 5)  
+```

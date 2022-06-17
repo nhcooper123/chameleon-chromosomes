@@ -1,5 +1,20 @@
+#ChromEvol package
+chromEvol/chromEvol_source-current
+chromEvol/ChromEvol_0.9-1.tar.gz
+chromEvol/README_Running chromEvol
+
+#Large ChromEvol outputs
+chromEvol/chromEvol_out_scaled*
+extra-chromEvol-models/*
+
 # Large datasets
 raw-data/*
+
+# Messy code
+draft-analyses/*
+
+# HTML
+*.html
 
 # History files
 .Rhistory

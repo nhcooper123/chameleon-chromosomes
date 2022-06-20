@@ -4,16 +4,6 @@ author: "Natalie Cooper"
 output: html_document
 ---
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-```
-
-```{r, echo = FALSE}
-# If you need treeplyr as it is not on CRAN
-#library(devtools)
-#remotes::install_github("uyedaj/treeplyr")
-```
-
 ## Preparation
 
 ```{r, message = FALSE}
@@ -22,13 +12,12 @@ library(tidyverse)
 library(here)
 library(ape)
 library(phytools)
-library(treeplyr)
 library(Hmisc)
 ```
 
-Read in the data. 
+Read in the data. This is the data from Marcello
 ```{r, message = FALSE}
-ds <- read_csv(here("data/chromosomes/CHROMO_STATES_2020-10-16.csv"))
+ds <- read_csv(here("raw-data/chromosomes/CHROMO_STATES_2020-10-16.csv"))
 ```
 
 Take a look at the dataset
@@ -48,7 +37,7 @@ Fix up species names in our data to match them to the ecological data. Note that
 ```{r, message = FALSE}
 ds <- ds %>%
   # remove outgroup
-  filter(species != "leiolepis_belliana") %>%
+  # filter(species != "leiolepis_belliana") %>%
   # capitalise genus column
   mutate(genus = capitalize(genus)) %>%
   # split the species column into Genus and Species
@@ -57,9 +46,9 @@ ds <- ds %>%
   mutate(Genus = capitalize(Genus)) %>%
   # stick Genus and Species together as Binomial
   unite("Binomial", Genus, Species, sep = " ") %>%
-  # Create a new column for the things Marcello thinks are species
+  # Create a new column for the things MM uses as OTUs
   mutate(Binomial_Marcello = Binomial) %>%
-  # Correct the taxonomy so it matches the ecology dataset
+  # Correct the taxonomy so it matches Uetz
   mutate(Binomial = case_when(Binomial == "Brookesia thieli1" ~ "Brookesia thieli",
                               Binomial == "Brookesia thieli2" ~ "Brookesia thieli",
                               Binomial == "Brookesia ramantsoai" ~ "Brookesia ramanantsoai",
@@ -71,8 +60,8 @@ ds <- ds %>%
                               Binomial == "Calumma malthae" ~ "Calumma malthe",
                               Binomial == "Calumma brevicorne1" ~ "Calumma brevicorne",
                               Binomial == "Calumma brevicorne2" ~ "Calumma brevicorne",
-                              Binomial == "Calumma gastrotaenia2" ~ "Brookesia ramanantsoai",
-                              Binomial == "Calumma emelinae" ~ "Brookesia tuberculata",
+                              Binomial == "Calumma gastrotaenia2" ~ "Calumma gastrotaenia",
+                              Binomial == "Calumma emelinae" ~ "Calumma emelinae",
                               Binomial == "Calumma fallax1" ~ "Calumma fallax",
                               Binomial == "Calumma fallax2" ~ "Calumma fallax",
                               Binomial == "Calumma gallus1" ~ "Calumma gallus",
@@ -90,7 +79,7 @@ ds <- ds %>%
 Add the ecological data from Meiri 2018 and match up to the chromosome data. This prints out the species there are no matching data for in Meiri 2018 (should be 5 species). These species remain in the dataset, but don't have matching ecological data.
 ```{r, message = FALSE}
 # Read in the Meiri data
-eco <- read_csv(here("data/other/Meiri2018_AppendixS1.csv"))
+eco <- read_csv(here("raw-data/Meiri2018_AppendixS1.csv"))
 #head(eco)
 
 # Extract only chameleons and only relevant columns
@@ -116,7 +105,7 @@ ds <- left_join(ds, eco)
 
 Read in the tree, then look at the tree structure and check a few features
 ```{r}
-tree <- read.tree(here("data/trees/RAxML_chameleon_constrained_dated_v3.tre"))
+tree <- read.tree(here("raw-data/RAxML_chameleon_constrained_dated_v3.tre"))
 ```
 
 ```{r}
@@ -124,7 +113,7 @@ tree <- read.tree(here("data/trees/RAxML_chameleon_constrained_dated_v3.tre"))
 str(tree)
 
 # Check tree is binary
-is.binary.tree(tree) # TRUE
+is.binary(tree) # TRUE
 # Check tree is rooted
 is.rooted(tree) # TRUE
 
@@ -132,25 +121,20 @@ is.rooted(tree) # TRUE
 is.ultrametric(tree) # TRUE
 ```
 
-Match tree and dataset. We'll use the function `make.treedata` to combine the tree and the dataset into one object. We need to provide the name of the tree, the name of the data, and specify which column our species names are in. 
+Match tree and dataset. 
 ```{r, echo = FALSE}
 # Combine and match the tree and data
-all <- make.treedata(tree = tree,  data = ds, 
-                     name_column = "sample")
+# Remove tips not in the data from the tree
+mytree <- drop.tip(tree, setdiff(tree$tip.label, ds$sample))
 
-# Make a new column called sample with the tip labels in it
-# because make.treedata removes them, and ensure it is the first column
-all$dat <- 
-  all$dat %>%
-  mutate(tips = all$phy$tip.label) %>%
-  select(tips, Binomial, chromon, haploidn, everything())
+# Check there are no tips in the data that are not in the tree
+matches <- (match(mytree$tip.label, ds$sample, nomatch = 0))
+length(which(matches == 0)) # Should be zero
 
-# Save tree as mytree
-mytree <- all$phy
-# Save data as mydata and as a dataframe
-mydata <- as.data.frame(all$dat)
+# Rename sample to tips
+mydata <- rename(ds, tips = sample)
 
-# Check contents as are expected: 136 species in each
+# Check contents as are expected: 137 species in each
 # str(mytree)
 # glimpse(mydata)
 ```
@@ -160,5 +144,3 @@ Finally write these cleaned data out for use in later analyses.
 write_csv(mydata, path = here("data/chromosome-data.csv"))
 write.tree(mytree, file = here("data/ML-tree.tre"))
 ```
-
-

@@ -17,7 +17,7 @@ library(Hmisc)
 
 Read in the data. This is the data from Marcello
 ```{r, message = FALSE}
-ds <- read_csv(here("raw-data/chromosomes/CHROMO_STATES_2020-10-16.csv"))
+ds <- read_csv(here("raw-data/CHROMO_STATES_2020-10-16.csv"))
 ```
 
 Take a look at the dataset
@@ -76,7 +76,7 @@ ds <- ds %>%
 
 ```
 
-Add the ecological data from Meiri 2018 and match up to the chromosome data. This prints out the species there are no matching data for in Meiri 2018 (should be 5 species). These species remain in the dataset, but don't have matching ecological data.
+Add the ecological data from Meiri 2018 and match up to the chromosome data. This prints out the species there are no matching data for in Meiri 2018 (should be 7 species). These species remain in the dataset, but don't have matching ecological data.
 ```{r, message = FALSE}
 # Read in the Meiri data
 eco <- read_csv(here("raw-data/Meiri2018_AppendixS1.csv"))
@@ -140,7 +140,7 @@ mydata <- rename(ds, tips = sample)
 ```
 
 Create a species level tree. 
-Three species have OTUs with different numbers of chromosomes, so these should be retained. Otherwise collapse OTUs to species at tips
+Four species have OTUs with different numbers of chromosomes, so these should be retained. Otherwise collapse OTUs to species at tips
 ```{r}
 mydata2 <- mydata %>%
           mutate(Binomial = case_when(species == "calumma_gallus1" ~ "Calumma gallus1",
@@ -165,9 +165,9 @@ mytree2 <- drop.tip(tree, setdiff(tree$tip.label, mydata2$tips))
 
 Finally write these cleaned data out for use in later analyses.
 ```{r}
-write_csv(mydata, path = here("data/chromosome-data.csv"))
+write_csv(mydata, file = here("data/chromosome-data.csv"))
 write.tree(mytree, file = here("data/ML-tree.tre"))
 #Species level
-write_csv(mydata, path = here("data/chromosome-data-species.csv"))
+write_csv(mydata, file = here("data/chromosome-data-species.csv"))
 write.tree(mytree, file = here("data/ML-tree-species.tre"))
 ```

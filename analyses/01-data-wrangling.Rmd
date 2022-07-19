@@ -134,13 +134,13 @@ length(which(matches == 0)) # Should be zero
 # Rename sample to tips
 mydata <- rename(ds, tips = sample)
 
-# Check contents as are expected: 137 species in each
+# Check contents as are expected: 137 taxa in each
 # str(mytree)
 # glimpse(mydata)
 ```
 
 Create a species level tree. 
-Four species have OTUs with different numbers of chromosomes, so these should be retained. Otherwise collapse OTUs to species at tips
+Five species have OTUs with different numbers of chromosomes, so these should be retained. Otherwise collapse OTUs to species at tips
 ```{r}
 mydata2 <- mydata %>%
           mutate(Binomial = case_when(species == "calumma_gallus1" ~ "Calumma gallus1",
@@ -152,6 +152,8 @@ mydata2 <- mydata %>%
                                       species == "furcifer_verrucosus2" ~ "Furcifer verrucosus2",
                                       species == "calumma_brevicorne1" ~ "Calumma brevicorne1",
                                       species == "calumma_brevicorne2" ~ "Calumma brevicorne2",
+                                      species == "calumma_parsonii" ~ "Calumma parsonii1",
+                                      species == "calumma_parsonii_cristifer" ~ "Calumma parsonii2",
                                       TRUE ~ as.character(Binomial)))
 
 # Select the first row for each species
@@ -164,6 +166,8 @@ mytree2 <- drop.tip(tree, setdiff(tree$tip.label, mydata2$tips))
 ```
 
 Finally write these cleaned data out for use in later analyses.
+
+Should be 93 taxa in the "species" analyses
 ```{r}
 write_csv(mydata, file = here("data/chromosome-data.csv"))
 write.tree(mytree, file = here("data/ML-tree.tre"))

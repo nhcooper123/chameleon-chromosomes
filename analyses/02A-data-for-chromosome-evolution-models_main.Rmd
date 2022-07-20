@@ -99,7 +99,7 @@ chromo_noRiepp <- as.vector(t(chromo_noRiepp))
 chromo_noOutgroup <- as.vector(t(chromo_noOutgroup))
 chromo_exclude <- as.vector(t(chromo_exclude))
 
-# Make the vectore back into a dataframe
+# Make the vector back into a dataframe
 chromo <- as.data.frame(chromo)
 chromo_noRiepp <- as.data.frame(chromo_noRiepp)
 chromo_noOutgroup <- as.data.frame(chromo_noOutgroup)

@@ -172,6 +172,6 @@ Should be 93 taxa in the "species" analyses
 write_csv(mydata, file = here("data/chromosome-data.csv"))
 write.tree(mytree, file = here("data/ML-tree.tre"))
 #Species level
-write_csv(mydata, file = here("data/chromosome-data-species.csv"))
-write.tree(mytree, file = here("data/ML-tree-species.tre"))
+write_csv(mydata2, file = here("data/chromosome-data-species.csv"))
+write.tree(mytree2, file = here("data/ML-tree-species.tre"))
 ```

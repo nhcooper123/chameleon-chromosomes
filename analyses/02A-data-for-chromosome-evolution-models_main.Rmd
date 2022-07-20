@@ -1,0 +1,131 @@
+---
+title: "Preparing the data for chromosome evolution models"
+author: "Natalie Cooper"
+output: html_document
+---
+
+```{r, message = FALSE}
+# Load libraries
+library(tidyverse)
+library(here)
+library(ape)
+```
+
+## Prepare data and trees for ChromEvol analyses
+
+Read in the data and extract species names and n
+```{r, message = FALSE}
+# Read in the data
+ds <- read_csv(here("data/chromosome-data-species.csv"))
+
+# Exclude Rieppeleon
+ds_noRiepp <- ds %>% 
+  filter(tips != "Riebrev")
+
+# Exclude outgroup
+ds_noOutgroup <- ds %>% 
+  filter(tips != "Leiolep")
+
+# Exclude Rieppeleon and outgroup
+ds_exclude <- ds %>% 
+  filter(tips != "Riebrev" & tips != "Leiolep")
+
+# Retain only species names and haploid chromosome numbers
+mysample <- ds %>%
+  select(tips, haploidn)
+
+mysample_noRiepp <- ds_noRiepp %>%
+  select(tips, haploidn)
+
+mysample_noOutgroup <- ds_noOutgroup %>%
+  select(tips, haploidn)
+
+mysample_exclude <- ds_exclude %>%
+  select(tips, haploidn)
+
+# Look at them
+# mysample
+# mysample_exclude
+```
+
+Read in the tree, check it is ultrametric and remove node labels
+```{r}
+# Read in the tree
+tree <- read.tree(here("data/ML-tree-species.tre"))
+# Tree is not ultrametric due to weird rounding issues
+# Fix this
+tree <- force.ultrametric(tree)
+# Check tree is now ultrametric
+is.ultrametric(tree) # TRUE
+# Remove node labels
+tree$node.label <- NULL
+
+# Remove "Riebrev" from the tree
+tree_noRiepp <- drop.tip(tree, "Riebrev")
+# Remove outgroup from the tree
+tree_noOutgroup <- drop.tip(tree, "Leiolep")
+# Remove "Riebrev" and outgroup from the tree
+tree_exclude <- drop.tip(tree, c("Riebrev", "Leiolep"))
+
+# Look at them
+# plot(tree, cex = 0.6)
+# plot(tree_exclude, cex = 0.6)
+```
+
+Change the data structure so it can be used in ChromEvol
+```{r}
+# ChromEvol requires data in this format (where numbers are chromosome counts as haploid number):
+# >SpeciesA
+# 14
+# >SpeciesB
+# 28
+
+# Add > in front of each species name
+chromo <- mysample %>%
+  mutate(tips = paste0(">", tips))
+
+chromo_noRiepp <- mysample_noRiepp %>%
+  mutate(tips = paste0(">", tips))
+
+chromo_noOutgroup <- mysample_noOutgroup %>%
+  mutate(tips = paste0(">", tips))
+
+chromo_exclude <- mysample_exclude %>%
+  mutate(tips = paste0(">", tips))
+
+# Transpose the data so it is all in one column
+chromo <- as.vector(t(chromo))
+chromo_noRiepp <- as.vector(t(chromo_noRiepp))
+chromo_noOutgroup <- as.vector(t(chromo_noOutgroup))
+chromo_exclude <- as.vector(t(chromo_exclude))
+
+# Make the vectore back into a dataframe
+chromo <- as.data.frame(chromo)
+chromo_noRiepp <- as.data.frame(chromo_noRiepp)
+chromo_noOutgroup <- as.data.frame(chromo_noOutgroup)
+chromo_exclude <- as.data.frame(chromo_exclude)
+
+# Check them
+#chromo
+#chromo_exclude
+```
+
+Save the tree and data for use in ChromEvol
+```{r}
+# Save tree
+write.tree(tree, here("chromEvol/tree_for_chromevol"))
+write.tree(tree_noRiepp, here("chromEvol/tree_for_chromevol_noRiepp"))
+write.tree(tree_noOutgroup, here("chromEvol/tree_for_chromevol_noOutgroup"))
+write.tree(tree_exclude, here("chromEvol/tree_for_chromevol_exclude"))
+# Save data
+write_csv(chromo, col_names =  FALSE, 
+          file = here("chromEvol/data_for_chromevol"))
+write_csv(chromo_noRiepp, col_names =  FALSE, 
+          file = here("chromEvol/data_for_chromevol_noRiepp"))
+write_csv(chromo_noOutgroup, col_names =  FALSE, 
+          file = here("chromEvol/data_for_chromevol_noOutgroup"))
+write_csv(chromo_exclude, col_names =  FALSE, 
+          file = here("chromEvol/data_for_chromevol_exclude"))
+```
+
+> Now go to ChromEvol package in the terminal and run it...

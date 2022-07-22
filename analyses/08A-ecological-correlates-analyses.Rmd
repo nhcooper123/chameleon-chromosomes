@@ -21,32 +21,20 @@ library(patchwork)
 
 Read in the data and the tree
 ```{r, message = FALSE, echo = FALSE}
-mydata <- read_csv(here("data/chromosome-data.csv"))
-mytree <- read.tree(here("data/ML-tree.tre"))
+mydata <- read_csv(here("data/chromosome-data-species.csv"))
+mytree <- read.tree(here("data/ML-tree-species.tre"))
+
+# Remove outgroup
+mydata <- mydata %>%
+  filter(genus != "Leiolepis")
 ```
 
-Collapse data and tree to the species level using Meiri species, and remove the 5 species with no matching data
-```{r}
-spdata <-
-  mydata %>%
-  mutate(dup = duplicated(mydata$Binomial)) %>%
-  filter(dup == FALSE) %>%
-  filter(!is.na(Realm))
-
-# Remove extra tips
-remove <- setdiff(mytree$tip.label, spdata$tips)
-sptree <- drop.tip(mytree, remove)
-
-# Check both have 80 species
-#spdata
-#sptree
-```
 Modify some variables to make plotting/analyses easier
 
 Remove complex levels from Substrate and relevel so multiple is last in the plots
 ```{r}
 spdata <-
-  spdata %>%
+  mydata %>%
   mutate(substrate2 = case_when(Substrate == "Arboreal&Terrestrial" ~ "Multiple",
                                 Substrate == "Arboreal&Saxicolous&Terrestrial" ~ "Multiple",
                                 TRUE ~ as.character(Substrate))) %>%

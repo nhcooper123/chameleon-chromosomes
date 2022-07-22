@@ -1,0 +1,108 @@
+---
+title: "Extracting the outputs of ChromEvol for all models"
+author: "Natalie Cooper"
+output: html_document
+---
+
+## Extracting outputs from ChromEvol
+
+```{r, message = FALSE}
+# Load libraries
+library(tidyverse)
+library(here)
+library(phytools)
+library(treeplyr)
+library(ChromEvol) #install this from source
+library(here)
+```
+
+### Model comparison
+First look at the models and choose the best using AIC, and also extract the model parameters. 
+
+Note that due to the rescaling of the tree, we need to multiply these values by the scaling constant to get the true values. This is specified in the `chromEvol.res` outfile, but doesn't seem to be automatically extractable so I've done this by hand to create the vector below. Note that it refers to the tree, so there are only four repeated values, one for the taxon tree minus Riepelleon, one for the taxon tree with Riepelleon, one for the species tree minus Riepelleon, and one for the species tree with Riepelleon.
+
+```{r}
+rescale_param <- c(rep(0.00397248, 3), rep(0.0037069, 3),
+                   rep(0.00399906, 3), rep(0.00373236, 3))
+```
+
+Now loop through the 12 sets of models
+```{r, message = FALSE}
+# Get a list of the output folder names
+output_names <- list.files(path = here("chromEvol/OTUs"), pattern = "_out")
+output <- NULL
+
+# Loop through all 12 folders of outputs
+for (i in 1:12) {
+  # Read in the model summary data
+  summary <- read_delim(here(paste0("chromEvol/OTUs/", output_names[i], "/models_summary.txt")), 
+                        delim = "\t")
+
+  # Select only the two models we want
+  summary <-
+    summary %>%
+    # Add model set name
+    mutate(name = output_names[i]) %>%
+    # add aicw
+    mutate(AICw = round(aic.w(summary$AIC), 3)) %>%
+    # reorder
+    dplyr::select(name, MODEL, AICw, everything()) 
+
+  # Add parameter values
+  # Read in the parameter results by specifying the path to the folder for each model
+  # This throws a lot of warnings about NAs because of the strange ways these outputs are
+  # contructed. But it works fine
+  resultsC <- read.ce(here(paste0("chromEvol/OTUs/", output_names[i], "/CONST_RATE_NO_DUPL")))
+  resultsCR <- read.ce(here(paste0("chromEvol/OTUs/", output_names[i], "/CONST_RATE")))
+  resultsCD <- read.ce(here(paste0("chromEvol/OTUs/", output_names[i], "/CONST_RATE_DEMI")))
+  resultsCDE <- read.ce(here(paste0("chromEvol/OTUs/", output_names[i], "/CONST_RATE_DEMI_EST")))
+  resultsL <- read.ce(here(paste0("chromEvol/OTUs/", output_names[i], "/LINEAR_RATE_NO_DUPL")))
+  resultsLR <- read.ce(here(paste0("chromEvol/OTUs/", output_names[i], "/LINEAR_RATE")))
+  resultsLD <- read.ce(here(paste0("chromEvol/OTUs/", output_names[i], "/LINEAR_RATE_DEMI")))
+  resultsLDE <- read.ce(here(paste0("chromEvol/OTUs/", output_names[i], "/LINEAR_RATE_DEMI_EST")))
+  
+  # Add the parameters to the summary
+  # Note these will end up doubled up due to the results here being for each model
+  # and the results in the summary having a line per model
+  summary <-
+    summary %>%
+    mutate(C_lossC = resultsC$Parameters$rate_lossC * rescale_param[i]) %>%
+    mutate(C_gainC = resultsC$Parameters$rate_gainC * rescale_param[i]) %>%
+    mutate(CR_lossC = resultsCR$Parameters$rate_lossC * rescale_param[i]) %>%
+    mutate(CR_gainC = resultsCR$Parameters$rate_gainC * rescale_param[i]) %>%
+    mutate(CR_dup = resultsCR$Parameters$rate_dupl * rescale_param[i]) %>%
+    mutate(CD_lossC = resultsCD$Parameters$rate_lossC * rescale_param[i]) %>%
+    mutate(CD_gainC = resultsCD$Parameters$rate_gainC * rescale_param[i]) %>%
+    mutate(CD_dup = resultsCD$Parameters$rate_dupl * rescale_param[i]) %>%
+    mutate(CDE_lossC = resultsCDE$Parameters$rate_lossC * rescale_param[i]) %>%
+    mutate(CDE_gainC = resultsCDE$Parameters$rate_gainC * rescale_param[i]) %>%
+    mutate(CDE_dup = resultsCDE$Parameters$rate_dupl * rescale_param[i]) %>%
+    mutate(CDE_demi = resultsCDE$Parameters$rate_demi * rescale_param[i]) %>%
+    mutate(L_lossC = resultsL$Parameters$rate_lossC * rescale_param[i]) %>%
+    mutate(L_gainC = resultsL$Parameters$rate_gainC * rescale_param[i]) %>%
+    mutate(L_lossL = resultsL$Parameters$rate_lossL * rescale_param[i]) %>%
+    mutate(L_gainL = resultsL$Parameters$rate_gainL * rescale_param[i]) %>%
+    mutate(LR_lossC = resultsLR$Parameters$rate_lossC * rescale_param[i]) %>%
+    mutate(LR_gainC = resultsLR$Parameters$rate_gainC * rescale_param[i]) %>%
+    mutate(LR_lossL = resultsLR$Parameters$rate_lossL * rescale_param[i]) %>%
+    mutate(LR_gainL = resultsLR$Parameters$rate_gainL * rescale_param[i]) %>%
+    mutate(LR_dup = resultsLR$Parameters$rate_dupl * rescale_param[i]) %>%
+    mutate(LD_lossC = resultsLD$Parameters$rate_lossC * rescale_param[i]) %>%
+    mutate(LD_gainC = resultsLD$Parameters$rate_gainC * rescale_param[i]) %>%
+    mutate(LD_lossL = resultsLD$Parameters$rate_lossL * rescale_param[i]) %>%
+    mutate(LD_gainL = resultsLD$Parameters$rate_gainL * rescale_param[i]) %>%
+    mutate(LD_dup = resultsLD$Parameters$rate_dupl * rescale_param[i]) %>%
+    mutate(LDE_lossC = resultsLDE$Parameters$rate_lossC * rescale_param[i]) %>%
+    mutate(LDE_gainC = resultsLDE$Parameters$rate_gainC * rescale_param[i]) %>%
+    mutate(LDE_lossL = resultsLDE$Parameters$rate_lossL * rescale_param[i]) %>%
+    mutate(LDE_gainL = resultsLDE$Parameters$rate_gainL * rescale_param[i]) %>%
+    mutate(LDE_dup = resultsLDE$Parameters$rate_dupl * rescale_param[i]) %>%
+    mutate(LDE_demi = resultsLDE$Parameters$rate_demi * rescale_param[i])
+    
+    output <- rbind(output, summary)
+}
+
+# Look and save at the outputs
+output
+#write_csv(output, path = here("outputs/OTUs/chromEvol-model-summaries-ALL-MODELS.csv"))
+```

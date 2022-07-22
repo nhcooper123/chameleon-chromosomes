@@ -22,8 +22,7 @@ First look at the models and choose the best using AIC, and also extract the mod
 Note that due to the rescaling of the tree, we need to multiply these values by the scaling constant to get the true values. This is specified in the `chromEvol.res` outfile, but doesn't seem to be automatically extractable so I've done this by hand to create the vector below. Note that it refers to the tree, so there are only four repeated values, one for the taxon tree minus Riepelleon, one for the taxon tree with Riepelleon, one for the species tree minus Riepelleon, and one for the species tree with Riepelleon.
 
 ```{r}
-rescale_param <- c(rep(0.00397248, 3), rep(0.0037069, 3),
-                   rep(0.00399906, 3), rep(0.00373236, 3))
+rescale_param <- rep(c(0.00378279, 0.00352543, 0.00405179, 0.0037829), 3)
 ```
 
 Now loop through the 12 sets of models
@@ -35,7 +34,7 @@ output <- NULL
 # Loop through all 12 folders of outputs
 for (i in 1:12) {
   # Read in the model summary data
-  summary <- read_delim(here(paste0("chromEvol/", output_names[i], "/models_summary.txt")), 
+  summary <- read_delim(here(paste0("chromEvol/results", output_names[i], "/models_summary.txt")), 
                         delim = "\t")
 
   # Select only the two models we want

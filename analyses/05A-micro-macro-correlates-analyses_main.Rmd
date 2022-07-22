@@ -1,0 +1,225 @@
+---
+title: "Micro/macro chromosome and ITS correlates analyses"
+author: "Natalie Cooper"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Preparation
+
+```{r, message = FALSE, echo = FALSE}
+# Load libraries
+library(tidyverse)
+library(here)
+library(ape)
+library(broom)
+library(patchwork)
+library(ggfortify)
+```
+
+Read in the data and the tree
+```{r, message = FALSE, echo = FALSE}
+mydata <- read_csv(here("data/chromosome-data-species.csv"))
+mytree <- read.tree(here("data/ML-tree-species.tre"))
+```
+
+Take a look at the dataset and tree
+```{r}
+#str(mytree)
+#head(mydata)
+```
+
+
+## Micro versus macro chromosomes models 
+```{r}
+# n versus macro
+m1 <- glm(haploidn ~ macrop, data = mydata, family = "poisson")
+# Model diagnostics
+# autoplot(m1)
+# Check for overdispersion
+# summary(m1)$deviance / summary(m1)$df.resid 
+tidy(anova(m1, test = "Chisq"))
+
+# Create predict line for graphs
+newX1 <- data.frame(macrop = seq(min(mydata$macrop), 
+                                max(mydata$macrop), length = 50))
+newY1 <- predict.glm(m1, newdata = newX1, type = "response", se.fit = TRUE)
+add1 <- data.frame(newX1, newY1)
+add1 <- add1 %>% rename(haploidn = fit)
+```
+
+```{r}
+# n versus micro
+m2 <- glm(haploidn ~ microp, data = mydata, family = "poisson")
+# Model diagnostics
+# autoplot(m2)
+# Check for overdispersion
+# summary(m2)$deviance / summary(m2)$df.resid 
+tidy(anova(m2, test = "Chisq"))
+
+# Create predict line for graphs
+newX2 <- data.frame(microp = seq(min(mydata$microp), 
+                                max(mydata$microp), length = 50))
+newY2 <- predict.glm(m2, newdata = newX2, type = "response", se.fit = TRUE)
+add2 <- data.frame(newX2, newY2)
+add2 <- add2 %>% rename(haploidn = fit)
+```
+
+
+```{r}
+# macro versus micro
+m3 <- glm(microp ~ macrop, data = mydata, family = "poisson")
+# Model diagnostics
+# autoplot(m3)
+# Check for overdispersion
+# summary(m3)$deviance / summary(m3)$df.resid 
+tidy(anova(m3, test = "Chisq"))
+
+# Create predict line for graphs
+# same X as in m1
+newY3 <- predict.glm(m3, newdata = newX1, type = "response", se.fit = TRUE)
+add3 <- data.frame(newX1, newY3)
+add3 <- add3 %>% rename(microp = fit)
+```
+
+```{r}
+# ITS versus haploidn
+# m4 <- glm(its ~ haploidn, data = mydata, family = "poisson")
+# Model diagnostics
+# autoplot(m4)
+# Check for overdispersion
+# summary(m4)$deviance / summary(m4)$df.resid 
+m4 <- glm(its ~ haploidn, data = mydata, family = "quasipoisson")
+tidy(anova(m4, test = "F"))
+
+# Create predict line for graphs
+newX3 <- data.frame(haploidn = seq(min(mydata$haploidn), 
+                                max(mydata$haploidn), length = 50))
+newY4 <- predict.glm(m4, newdata = newX3, type = "response", se.fit = TRUE)
+add4 <- data.frame(newX3, newY4)
+add4 <- add4 %>% rename(its = fit)
+```
+
+```{r}
+# its versus macro
+# m5 <- glm(its ~ macrop, data = mydata, family = "poisson")
+# Model diagnostics
+# autoplot(m5)
+# Check for overdispersion
+# summary(m5)$deviance / summary(m5)$df.resid 
+m5 <- glm(its ~ macrop, data = mydata, family = "quasipoisson")
+tidy(anova(m5, test = "F"))
+
+# Create predict line for graphs
+# same X as in m1
+newY5 <- predict.glm(m5, newdata = newX1, type = "response", se.fit = TRUE)
+add5 <- data.frame(newX1, newY5)
+add5 <- add5 %>% rename(its = fit)
+```
+
+```{r}
+# its versus micro
+# m6 <- glm(its ~ microp, data = mydata, family = "poisson")
+# Model diagnostics
+# autoplot(m6)
+# Check for overdispersion
+# summary(m6)$deviance / summary(m6)$df.resid 
+m6 <- glm(its ~ microp, data = mydata, family = "quasipoisson")
+tidy(anova(m6, test = "F"))
+
+# Create predict line for graphs
+# same X as in m2
+newY6 <- predict.glm(m6, newdata = newX2, type = "response", se.fit = TRUE)
+add6 <- data.frame(newX2, newY6)
+add6 <- add6 %>% rename(its = fit)
+```
+
+## Micro versus macro chromosomes plots
+
+```{r}
+mac <- 
+  ggplot(mydata, aes(x = macrop, y = haploidn)) +
+  geom_point() +
+  theme_bw() +
+  xlab("macro pairs") +
+  ylab("chromosomes (n)") +
+  geom_line(data = add1, colour = "black") +
+  geom_ribbon(data = add1, 
+              aes(ymin = haploidn + se.fit, ymax = haploidn - se.fit), 
+              alpha = 0.5, fill = "grey50")
+
+mic <- 
+  ggplot(mydata, aes(x = microp, y = haploidn)) +
+  geom_point() +
+  theme_bw() +
+  xlab("micro pairs") +
+  ylab("chromosomes (n)") +
+  geom_line(data = add2, colour = "black") +
+  geom_ribbon(data = add2, 
+              aes(ymin = haploidn + se.fit, ymax = haploidn - se.fit), 
+              alpha = 0.5, fill = "grey50")
+
+both <- 
+  ggplot(mydata, aes(x = macrop, y = microp)) +
+  geom_point() +
+  theme_bw() +
+  xlab("macro pairs") +
+  ylab("micro pairs") +
+  geom_line(data = add3, colour = "black") +
+  geom_ribbon(data = add3, 
+              aes(ymin = microp + se.fit, ymax = microp - se.fit), 
+              alpha = 0.5, fill = "grey50")
+ 
+# Plot
+mac + mic + both
+
+# Save plot
+# ggsave(filename = here("outputs/micro-macro-chromosomes.png"), height = 4)
+```
+
+## ITS versus chromosomes plots
+
+```{r}
+hap <- 
+  ggplot(mydata, aes(x = haploidn, y = its)) +
+  geom_point() +
+  theme_bw() +
+  xlab("chromosomes (n)") +
+  ylab("ITS") +
+  geom_line(data = add4, colour = "black") +
+  geom_ribbon(data = add4, 
+              aes(ymin = its + se.fit, ymax = its - se.fit), 
+              alpha = 0.5, fill = "grey50")
+
+mac <- 
+  ggplot(mydata, aes(x = macrop, y = its)) +
+  geom_point() +
+  theme_bw() +
+  xlab("macro pairs") +
+  ylab("ITS") +
+  geom_line(data = add5, colour = "black") +
+  geom_ribbon(data = add5, 
+              aes(ymin = its + se.fit, ymax = its - se.fit), 
+              alpha = 0.5, fill = "grey50")
+
+mic <- 
+  ggplot(mydata, aes(x = microp, y = its)) +
+  geom_point() +
+  theme_bw() +
+  xlab("micro pairs") +
+  ylab("ITS") +
+  geom_line(data = add6, colour = "black") +
+  geom_ribbon(data = add6, 
+              aes(ymin = its + se.fit, ymax = its - se.fit), 
+              alpha = 0.5, fill = "grey50")
+ 
+# Plot
+hap + mac + mic
+
+# Save plot
+# ggsave(filename = here("outputs/ITS-chromosomes.png"), height = 4)
+
+```

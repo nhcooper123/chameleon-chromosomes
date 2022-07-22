@@ -1,0 +1,208 @@
+#Nodes with GAIN events
+N3: 2
+BGA709: 2
+N10: 1
+BGAA1: 1
+N14: 1
+Rhamar: 1
+Rhatem: 2
+N19: 1
+F3015: 1
+N26: 1
+Furcep: 1
+FGA104: 1
+N48: 1
+C3125: 1
+CGA429: 1
+CGA494: 1
+N55: 1
+C2208: 1
+N60: 1
+N65: 1
+Trimel: 1
+N70: 1
+Kinxen: 1
+Total number of gain events: 26
+#+++++++++++++++++++++++++++++
+
+#Nodes with LOSS events
+B3088: 2
+BGA709: 1
+BGA309: 4
+B11696: 1
+B11609: 1
+B983: 1
+BGA584: 2
+N12: 2
+BGA303: 1
+PGA445: 1
+Rhaspe: 1
+Rhamar: 1
+N17: 1
+FGA379: 1
+N19: 1
+N24: 1
+Furcep: 1
+Furpol: 1
+N30: 1
+F12278: 1
+FGA15: 1
+FGA581: 1
+FGA104: 1
+FGA489: 1
+FGA174: 1
+N40: 1
+CGA763: 1
+CGA236: 1
+CGA429: 2
+CGA365: 1
+C404: 1
+Cl11778: 1
+CGA48: 1
+CGA311: 1
+C3043: 1
+C2208: 1
+CGA453: 2
+CGA501: 1
+N63: 1
+N68: 2
+Trijoh: 2
+Trimel: 2
+N70: 1
+Trihoe: 2
+Tricri: 1
+N73: 2
+Triwie: 1
+Triqua: 2
+N75: 1
+Kinboe: 1
+Kinfis: 2
+Kinxen: 1
+N77: 1
+N79: 1
+Chazey: 1
+Chadil: 2
+Chasen: 1
+Chanam: 2
+N83: 2
+Braset: 1
+Bramel: 1
+Bratha: 1
+N90: 1
+Total number of loss events: 81
+#+++++++++++++++++++++++++++++
+
+#Nodes with duplication events
+Total number of duplication events: 0
+#+++++++++++++++++++++++++++++
+
+#Nodes with demi-duplication events
+Total number of demi-dulications events: 0
+#+++++++++++++++++++++++++++++
+
+#+++++++++++++++++++++++++++++
+
+#Nodes with base number transitions
+
+Total number of base number transitions: 0
+#+++++++++++++++++++++++++++++
+
+#+++++++++++++++++++++++++++++
+
+#Nodes with transitions to max chromosome allowed
+Total number of transitions to max chromosome: 0
+#+++++++++++++++++++++++++++++
+
+#Expected number of events from root to leaf
+LEAF	GAIN	LOSS	DUPLICATION	DEMI-DUPLICATION	BASE-NUMBER
+B3088	2	2	0	0	0
+BGA709	4	1	0	0	0
+BGA309	2	4	0	0	0
+B11696	2	1	0	0	0
+B11609	2	1	0	0	0
+B983	3	1	0	0	0
+B11604	3	0	0	0	0
+BGAA1	3	0	0	0	0
+BGA584	2	2	0	0	0
+BGA303	2	3	0	0	0
+BGAB1	2	2	0	0	0
+PGA445	0	1	0	0	0
+Rhaspe	1	1	0	0	0
+Rhamar	2	1	0	0	0
+Rhatem	3	0	0	0	0
+FGA379	0	2	0	0	0
+F3015	2	2	0	0	0
+F1476	1	3	0	0	0
+Furcep	3	4	0	0	0
+Furpol	2	4	0	0	0
+F2241	2	3	0	0	0
+Furang	2	3	0	0	0
+FGA490	2	3	0	0	0
+FGA456	1	4	0	0	0
+FGA513	1	4	0	0	0
+F12278	1	5	0	0	0
+Furant	1	4	0	0	0
+FGA331	1	4	0	0	0
+FGA465	1	4	0	0	0
+FGA99	1	4	0	0	0
+FGA15	1	5	0	0	0
+FGA581	1	5	0	0	0
+FGA104	2	3	0	0	0
+FGA489	1	3	0	0	0
+FGA174	1	3	0	0	0
+FurbGB	1	2	0	0	0
+CGA312	0	2	0	0	0
+CGA642	0	2	0	0	0
+CGA763	0	3	0	0	0
+C601	0	2	0	0	0
+CGA236	0	3	0	0	0
+Calboe	1	2	0	0	0
+C3125	2	2	0	0	0
+CGA429	1	4	0	0	0
+C984	0	2	0	0	0
+CGA310	0	2	0	0	0
+CGA365	0	3	0	0	0
+CGA494	1	2	0	0	0
+C12265	0	2	0	0	0
+C404	0	3	0	0	0
+Cl11778	1	3	0	0	0
+CGA48	1	3	0	0	0
+C3126	0	2	0	0	0
+CGA311	0	2	0	0	0
+CGA45	0	1	0	0	0
+C3043	0	2	0	0	0
+CGA364	0	1	0	0	0
+C2208	1	2	0	0	0
+CGA453	1	3	0	0	0
+CGA501	1	2	0	0	0
+C3121	1	1	0	0	0
+Calparcri	1	2	0	0	0
+C3118	1	2	0	0	0
+Triowe	1	2	0	0	0
+Trijoh	1	4	0	0	0
+Trimel	2	4	0	0	0
+Trihoe	2	3	0	0	0
+Tribit	2	1	0	0	0
+Trijac	2	1	0	0	0
+Tricri	1	1	0	0	0
+Triwie	1	3	0	0	0
+Triqua	1	4	0	0	0
+Kinboe	1	2	0	0	0
+Kinfis	1	3	0	0	0
+Kinxen	2	1	0	0	0
+Chaafr	0	2	0	0	0
+Chacha	0	2	0	0	0
+Chacaly	0	2	0	0	0
+Chazey	0	3	0	0	0
+Chadil	0	3	0	0	0
+Chasen	0	2	0	0	0
+Chanam	0	3	0	0	0
+Braset	0	3	0	0	0
+Bramel	0	3	0	0	0
+Bratha	0	3	0	0	0
+Bradra	0	2	0	0	0
+Bratra	0	2	0	0	0
+Bragut	0	2	0	0	0
+Braven	0	2	0	0	0
+Brapum	0	3	0	0	0
+Bradam	0	3	0	0	0

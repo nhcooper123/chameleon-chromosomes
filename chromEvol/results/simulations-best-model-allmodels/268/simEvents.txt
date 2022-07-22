@@ -1,0 +1,143 @@
+#Nodes with GAIN events
+N18: 1
+F3015: 1
+FurbGB: 1
+N44: 1
+C601: 1
+CGA494: 1
+N52: 1
+C3126: 1
+CGA45: 1
+N78: 1
+Chacaly: 1
+Total number of gain events: 11
+#+++++++++++++++++++++++++++++
+
+#Nodes with LOSS events
+PGA445: 1
+Rhamar: 1
+FurbGB: 1
+CGA763: 1
+C404: 1
+Cl11778: 1
+C3126: 1
+Calparcri: 1
+Trihoe: 1
+N74: 1
+Total number of loss events: 10
+#+++++++++++++++++++++++++++++
+
+#Nodes with duplication events
+Total number of duplication events: 0
+#+++++++++++++++++++++++++++++
+
+#Nodes with demi-duplication events
+Total number of demi-dulications events: 0
+#+++++++++++++++++++++++++++++
+
+#+++++++++++++++++++++++++++++
+
+#Nodes with base number transitions
+
+Total number of base number transitions: 0
+#+++++++++++++++++++++++++++++
+
+#+++++++++++++++++++++++++++++
+
+#Nodes with transitions to max chromosome allowed
+Total number of transitions to max chromosome: 0
+#+++++++++++++++++++++++++++++
+
+#Expected number of events from root to leaf
+LEAF	GAIN	LOSS	DUPLICATION	DEMI-DUPLICATION	BASE-NUMBER
+B3088	0	0	0	0	0
+BGA709	0	0	0	0	0
+BGA309	0	0	0	0	0
+B11696	0	0	0	0	0
+B11609	0	0	0	0	0
+B983	0	0	0	0	0
+B11604	0	0	0	0	0
+BGAA1	0	0	0	0	0
+BGA584	0	0	0	0	0
+BGA303	0	0	0	0	0
+BGAB1	0	0	0	0	0
+PGA445	0	1	0	0	0
+Rhaspe	0	0	0	0	0
+Rhamar	0	1	0	0	0
+Rhatem	0	0	0	0	0
+FGA379	1	0	0	0	0
+F3015	2	0	0	0	0
+F1476	1	0	0	0	0
+Furcep	1	0	0	0	0
+Furpol	1	0	0	0	0
+F2241	1	0	0	0	0
+Furang	1	0	0	0	0
+FGA490	1	0	0	0	0
+FGA456	1	0	0	0	0
+FGA513	1	0	0	0	0
+F12278	1	0	0	0	0
+Furant	1	0	0	0	0
+FGA331	1	0	0	0	0
+FGA465	1	0	0	0	0
+FGA99	1	0	0	0	0
+FGA15	1	0	0	0	0
+FGA581	1	0	0	0	0
+FGA104	1	0	0	0	0
+FGA489	1	0	0	0	0
+FGA174	1	0	0	0	0
+FurbGB	2	1	0	0	0
+CGA312	0	0	0	0	0
+CGA642	1	0	0	0	0
+CGA763	1	1	0	0	0
+C601	2	0	0	0	0
+CGA236	0	0	0	0	0
+Calboe	0	0	0	0	0
+C3125	0	0	0	0	0
+CGA429	0	0	0	0	0
+C984	0	0	0	0	0
+CGA310	0	0	0	0	0
+CGA365	0	0	0	0	0
+CGA494	1	0	0	0	0
+C12265	1	0	0	0	0
+C404	1	1	0	0	0
+Cl11778	1	1	0	0	0
+CGA48	1	0	0	0	0
+C3126	2	1	0	0	0
+CGA311	0	0	0	0	0
+CGA45	1	0	0	0	0
+C3043	0	0	0	0	0
+CGA364	0	0	0	0	0
+C2208	0	0	0	0	0
+CGA453	0	0	0	0	0
+CGA501	0	0	0	0	0
+C3121	0	0	0	0	0
+Calparcri	0	1	0	0	0
+C3118	0	0	0	0	0
+Triowe	0	0	0	0	0
+Trijoh	0	0	0	0	0
+Trimel	0	0	0	0	0
+Trihoe	0	1	0	0	0
+Tribit	0	0	0	0	0
+Trijac	0	0	0	0	0
+Tricri	0	0	0	0	0
+Triwie	0	0	0	0	0
+Triqua	0	0	0	0	0
+Kinboe	0	1	0	0	0
+Kinfis	0	1	0	0	0
+Kinxen	0	1	0	0	0
+Chaafr	1	0	0	0	0
+Chacha	1	0	0	0	0
+Chacaly	2	0	0	0	0
+Chazey	1	0	0	0	0
+Chadil	1	0	0	0	0
+Chasen	1	0	0	0	0
+Chanam	0	0	0	0	0
+Braset	0	0	0	0	0
+Bramel	0	0	0	0	0
+Bratha	0	0	0	0	0
+Bradra	0	0	0	0	0
+Bratra	0	0	0	0	0
+Bragut	0	0	0	0	0
+Braven	0	0	0	0	0
+Brapum	0	0	0	0	0
+Bradam	0	0	0	0	0

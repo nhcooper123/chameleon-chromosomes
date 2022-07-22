@@ -24,36 +24,24 @@ library(phytools)
 
 Read in the data and the tree
 ```{r, message = FALSE, echo = FALSE}
-mydata <- read_csv(here("data/chromosome-data.csv"))
-mytree <- read.tree(here("data/ML-tree.tre"))
+mydata <- read_csv(here("data/chromosome-data-species.csv"))
+mytree <- read.tree(here("data/ML-tree-species.tre"))
 mytree <- force.ultrametric(mytree)
+mytree$node.label <- NULL
+
+# Remove outgroup
+mydata <- mydata %>%
+  filter(genus != "Leiolepis")
+
+mytree <- drop.tip(mytree, "Leiolep")
 ```
 
-Collapse data and tree to the species level using Meiri species, and remove the 5 species with no matching data
-```{r}
-spdata <-
-  mydata %>%
-  mutate(dup = duplicated(mydata$Binomial)) %>%
-  filter(dup == FALSE) %>%
-  filter(!is.na(Realm))
-
-# Remove extra tips
-remove <- setdiff(mytree$tip.label, spdata$tips)
-sptree <- drop.tip(mytree, remove)
-
-# Remove node labels
-sptree$node.label <-NULL
-
-# Check both have 80 species
-#spdata
-#sptree
-```
 Modify some variables to make plotting/analyses easier
 
 Remove complex levels from Substrate and relevel so multiple is last in the plots
 ```{r}
 spdata <-
-  spdata %>%
+  mydata %>%
   mutate(substrate2 = case_when(Substrate == "Arboreal&Terrestrial" ~ "Multiple",
                                 Substrate == "Arboreal&Saxicolous&Terrestrial" ~ "Multiple",
                                 TRUE ~ as.character(Substrate))) %>%
@@ -73,35 +61,56 @@ spdata <-
   mutate(maxBreedingAge_Z = scale(log(spdata$maxBreedingAge)))
 ```
 
-Create subsets of data and tree for analyses without full 80 species
+Create subsets of data and tree for analyses without full 92 species
 ```{r}
+# SVL
+spdata_svl <- 
+  spdata %>%
+  filter(!is.na(maxSVL))
+
+sptree_svl <- drop.tip(mytree, setdiff(mytree$tip.label, spdata_svl$tips))
+
+# Realm
+spdata_realm <- 
+  spdata %>%
+  filter(!is.na(Realm))
+
+sptree_realm <- drop.tip(mytree, setdiff(mytree$tip.label, spdata_realm$tips))
+
+# Latitude
+spdata_lat <- 
+  spdata %>%
+  filter(!is.na(Latitude))
+
+sptree_lat <- drop.tip(mytree, setdiff(mytree$tip.label, spdata_lat$tips))
+
 # Substrate
 spdata_substrate <- 
   spdata %>%
   filter(!is.na(Substrate))
 
-sptree_substrate <- drop.tip(sptree, setdiff(sptree$tip.label, spdata_substrate$tips))
+sptree_substrate <- drop.tip(mytree, setdiff(mytree$tip.label, spdata_substrate$tips))
 
 # Reproductive mode
 spdata_repro <- 
   spdata %>%
   filter(!is.na(Repromode))
 
-sptree_repro <- drop.tip(sptree, setdiff(sptree$tip.label, spdata_repro$tips))
+sptree_repro <- drop.tip(mytree, setdiff(mytree$tip.label, spdata_repro$tips))
 
 # Clutch size
 spdata_clutch <- 
   spdata %>%
   filter(!is.na(minClutchSize))
 
-sptree_clutch <- drop.tip(sptree, setdiff(sptree$tip.label, spdata_clutch$tips))
+sptree_clutch <- drop.tip(mytree, setdiff(mytree$tip.label, spdata_clutch$tips))
 
 # Breeding age
 spdata_breed <- 
   spdata %>%
   filter(!is.na(minBreedingAge))
 
-sptree_breed <- drop.tip(sptree, setdiff(sptree$tip.label, spdata_breed$tips))
+sptree_breed <- drop.tip(mytree, setdiff(mytree$tip.label, spdata_breed$tips))
 ```
 
 ## Fit MCMCglmm models
@@ -126,8 +135,14 @@ burnin <- 1E05
 Make trees - these will vary depending on variable
 ```{r}
 # Inverse tree vcv matrix
-# For 80 species
-inv <- inverseA(sptree, scale = FALSE)$Ainv
+# SVL
+inv_svl <- inverseA(sptree_svl, scale = FALSE)$Ainv
+
+# Realm
+inv_realm <- inverseA(sptree_realm, scale = FALSE)$Ainv
+
+# Latitude
+inv_lat <- inverseA(sptree_lat, scale = FALSE)$Ainv
 
 # Substrate
 inv_substrate <- inverseA(sptree_substrate, scale = FALSE)$Ainv
@@ -147,8 +162,8 @@ Fit models! These are Bayesian so might take a while to run...
 ### SVL
 ```{r}
 svl_model <- MCMCglmm(haploidn ~ maxSVL_Z, 
-                   data = spdata, random = ~ tips,
-                   ginverse = list(tips = inv), family = "poisson", prior = prior,
+                   data = spdata_svl, random = ~ tips,
+                   ginverse = list(tips = inv_svl), family = "poisson", prior = prior,
                    nitt = nitt, thin = thin, burnin = burnin, pl = TRUE, verbose = FALSE)
 
 # Plot model diagnostics for MCMCglmm
@@ -184,8 +199,8 @@ max_SVL <- summary(svl_model)$solutions[2,]
 ### Realm
 ```{r}
 realm_model <- MCMCglmm(haploidn ~ Realm, 
-                   data = spdata, random = ~ tips,
-                   ginverse = list(tips = inv), family = "poisson", prior = prior,
+                   data = spdata_realm, random = ~ tips,
+                   ginverse = list(tips = inv_realm), family = "poisson", prior = prior,
                    nitt = nitt, thin = thin, burnin = burnin, pl = TRUE, verbose = FALSE)
 
 # Plot model diagnostics for MCMCglmm
@@ -223,8 +238,8 @@ RealmPalearctic <- summary(realm_model)$solutions[4,]
 ### Latitude
 ```{r}
 lat_model <- MCMCglmm(haploidn ~ lat_Z, 
-                   data = spdata, random = ~ tips,
-                   ginverse = list(tips = inv), family = "poisson", prior = prior,
+                   data = spdata_lat, random = ~ tips,
+                   ginverse = list(tips = inv_lat), family = "poisson", prior = prior,
                    nitt = nitt, thin = thin, burnin = burnin, pl = TRUE, verbose = FALSE)
 
 # Plot model diagnostics for MCMCglmm
@@ -493,7 +508,7 @@ results <-
   mutate(variable = rownames(results)) %>%
   select(variable, everything())
 
-#write_csv(results, path = here("outputs/models-ecology.csv"))
+#write_csv(results, file = here("outputs/models-ecology.csv"))
 ```
 
 Plot

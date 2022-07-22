@@ -1,5 +1,5 @@
 ---
-title: "Are all karyotypes taht share n the same morphologically?"
+title: "Are all karyotypes that share n the same morphologically?"
 author: "Natalie Cooper"
 output: html_document
 ---
@@ -12,19 +12,20 @@ knitr::opts_chunk$set(echo = TRUE)
 # Load libraries
 library(tidyverse)
 library(here)
-library(ape)
 library(patchwork)
 ```
 
-Read in the data and the tree
+Read in the data and remove outgroup
 ```{r, message = FALSE, echo = FALSE}
-mydata <- read_csv(here("data/chromosome-data.csv"))
-mytree <- read.tree(here("data/ML-tree.tre"))
+mydata <- read_csv(here("data/chromosome-data-species.csv"))
+
+mydata <- mydata %>%
+  filter(genus != "Leiolepis")
+
 ```
 
-Take a look at the dataset and tree
+Take a look at the dataset
 ```{r}
-#str(mytree)
 #head(mydata)
 ```
 
@@ -32,16 +33,16 @@ Select only species with karytopes common to 10 or more species, then make haplo
 ```{r}
 mydata2 <- 
   mydata %>%
-  filter(haploidn == 11 | haploidn == 12 |
-                 haploidn == 14 | haploidn == 17 |
-                 haploidn == 18) %>%
+  #filter(haploidn == 11 | haploidn == 12 |
+                # haploidn == 14 | haploidn == 17 |
+                # haploidn == 18) %>%
   mutate(haploidn = as.character(haploidn))
 ```
 
 Create list of colours to match earlier plots
 ```{r}
-mycolours <- c("#208EA3", "#FD817D", "#4178BC", "#EA4E9D", 
-               "#EECC16", "#E8384F","#E37CFF","#37A862","#7A71F6")
+mycolours <- c("#208EA3", "#FD817D", "#4178BC", "#EA4E9D",
+                "#EECC16", "#E8384F", "#E37CFF", "#37A862","#A4C61A","#7A71F6")
 ```
 ## Plots
 
@@ -51,7 +52,7 @@ Plotting to see how morphology links to haploid number, coloured by genus to ind
 p1 <- 
   ggplot(mydata2, aes(x = haploidn, y = armn, colour = genus)) +
   geom_jitter(width = 0.1, alpha = 0.8) +
-  scale_colour_manual(values = mycolours) +
+  #scale_colour_manual(values = mycolours) +
   theme_bw(base_size = 14) +
   xlab("chromosome number (n)") +
   ylab("arm number") +
@@ -61,7 +62,7 @@ p1 <-
 
 p2 <- ggplot(mydata2, aes(x = haploidn, y = macrop, colour = genus)) +
   geom_jitter(width = 0.1, alpha = 0.8) +
-  scale_colour_manual(values = mycolours) +
+  #scale_colour_manual(values = mycolours) +
   theme_bw(base_size = 14) +
   xlab("chromosome number (n)") +
   ylab("macro pairs") +
@@ -70,7 +71,7 @@ p2 <- ggplot(mydata2, aes(x = haploidn, y = macrop, colour = genus)) +
 
 p3 <- ggplot(mydata2, aes(x = haploidn, y = microp, colour = genus)) +
   geom_jitter(width = 0.1, alpha = 0.8) +
-  scale_colour_manual(values = mycolours) +
+  #scale_colour_manual(values = mycolours) +
   theme_bw(base_size = 14) +
   xlab("chromosome number (n)") +
   ylab("micro pairs") +
@@ -79,7 +80,7 @@ p3 <- ggplot(mydata2, aes(x = haploidn, y = microp, colour = genus)) +
 
 p4 <- ggplot(mydata2, aes(x = haploidn, y = norpair, colour = genus)) +
   geom_jitter(width = 0.1, alpha = 0.8) +
-  scale_colour_manual(values = mycolours) +
+  #scale_colour_manual(values = mycolours) +
   theme_bw(base_size = 14) +
   xlab("chromosome number (n)") +
   ylab("NOR pair") +
@@ -88,7 +89,7 @@ p4 <- ggplot(mydata2, aes(x = haploidn, y = norpair, colour = genus)) +
 
 p5 <- ggplot(mydata2, aes(x = haploidn, y = its, group = haploidn)) +
   geom_jitter(aes(colour = genus), width = 0.1, alpha = 0.8) +
-  scale_colour_manual(values = mycolours) +
+  #scale_colour_manual(values = mycolours) +
   theme_bw(base_size = 14) +
   xlab("chromosome number (n)") +
   ylab("ITS") +
@@ -97,7 +98,7 @@ p5 <- ggplot(mydata2, aes(x = haploidn, y = its, group = haploidn)) +
 
 p1 / (p2 + p3) / (p4 + p5)
 
-#ggsave(here("outputs/morphology-chromono.png"))
+#ggsave(here("outputs/morphology-chromono.png"), height = 6, width = 8)
 ```
 
 

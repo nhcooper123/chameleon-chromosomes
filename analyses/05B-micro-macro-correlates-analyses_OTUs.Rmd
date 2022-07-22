@@ -177,7 +177,7 @@ both <-
 mac + mic + both
 
 # Save plot
-# ggsave(filename = here("outputs/micro-macro-chromosomes.png"), height = 4)
+# ggsave(filename = here("outputs/OTUs/micro-macro-chromosomes.png"), height = 4)
 ```
 
 ## ITS versus chromosomes plots
@@ -220,6 +220,6 @@ mic <-
 hap + mac + mic
 
 # Save plot
-# ggsave(filename = here("outputs/ITS-chromosomes.png"), height = 4)
+# ggsave(filename = here("outputs/OTUs/ITS-chromosomes.png"), height = 4)
 
 ```

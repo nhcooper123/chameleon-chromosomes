@@ -1,5 +1,5 @@
 _mainType All_Models
-_outDir results/01B_iguania-root-noR
+_outDir results/01B_iguania-root-noR_out
 _dataFile data_for_chromevol_noRiepp
 _treeFile tree_for_chromevol_noRiepp
 _maxChrNum -10

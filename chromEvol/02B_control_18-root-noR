@@ -1,5 +1,5 @@
 _mainType All_Models
-_outDir results/02B_18-root-all-noR
+_outDir results/02B_18-root-all-noR_out
 _dataFile data_for_chromevol_noRiepp
 _treeFile tree_for_chromevol_noRiepp
 _maxChrNum -10

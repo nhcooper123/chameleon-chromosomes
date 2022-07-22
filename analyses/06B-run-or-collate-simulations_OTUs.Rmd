@@ -1,0 +1,85 @@
+---
+title: "Collating simulations of chromosome numbers"
+author: "Natalie Cooper"
+output: html_document
+---
+
+## Collate simulations results and create null simulations
+
+```{r, message = FALSE}
+# Load libraries
+library(tidyverse)
+library(here)
+library(phytools)
+library(patchwork)
+source(here("chromEvol/ChromEvol.R")) #install this from https://www.en.sysbot.bio.lmu.de/people/employees/cusimano/use_r/
+```
+
+Read in all the simulations outputs, wrangle into a useable format, and combine.
+```{r, message = FALSE, warning = FALSE}
+sim_output <- data.frame(haploidn = NULL, tips = NULL, sim = NULL)
+
+# Loop through all 1000 folders of outputs
+for (i in 0:999) {
+  # Choose directory
+  dir <- paste0("chromEvol/OTUs/chromEvol_out_simulations/", i, "/")
+  # Read in counts data
+  counts <- read_delim(here(paste0(dir,"simCounts.txt")), 
+                       delim = "\t", col_names = FALSE)
+
+  # wrangle and add sim number
+  countdata <- 
+  counts %>%
+  mutate(ind = rep(c("tips","haploidn"), length.out = n())) %>%
+  group_by(ind) %>%
+  mutate(id = row_number()) %>%
+  spread(ind, X1) %>%
+  dplyr::select(-id) %>%
+  mutate(tips = gsub(">", "", tips)) %>%
+  mutate(sim = rep(i+1, length(tips)))
+  
+  # add to output
+  sim_output <- rbind(sim_output, countdata)
+}
+
+sim_output$sim <- sim_output$sim+1
+
+write_csv(sim_output, path = here("data/OTUs/chromevol-simulations-outputs.csv"))
+```
+
+## Null model simulations
+
+Create null simulations by randomly assigning chromosome numbers to the tips. The numbers come from the data and sampling is done without replacement.
+
+```{r}
+# Read in observed data
+mydata <- read_csv(here("data/chromosome-data.csv"))
+
+# Remove Rieppeleon
+mydata <- 
+  mydata %>% 
+  filter(genus != "Rieppeleon")
+
+# Rename the haploidn column
+# Select only tip names, genus and observed haploidn
+mydata <-
+  mydata %>%
+  rename(obs_haploidn = haploidn) %>%
+  dplyr::select(tips, obs_haploidn, genus)
+```
+
+Run simulations
+```{r}
+sims_output_null <- data.frame(sim_haploidn = NULL, tips = NULL, sim = NULL)
+  
+for (j in 1:1000){
+  newdata <- data.frame(sim_haploidn = sample(mydata$obs_haploidn, 
+                                              length(mydata$tips)),
+                        tips = mydata$tips, 
+                        sim = rep(j, length(mydata$tips)))
+
+  sims_output_null <- rbind(sims_output_null, newdata)
+}
+
+write_csv(sims_output_null, path = here("data/OTUs/null-simulations-outputs.csv"))
+```

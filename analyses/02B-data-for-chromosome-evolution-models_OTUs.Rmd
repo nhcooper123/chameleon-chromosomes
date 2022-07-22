@@ -88,9 +88,9 @@ write.tree(tree, here("chromEvol/OTUs/tree_for_chromevol"))
 write.tree(tree_exclude, here("chromEvol/OTUs/tree_for_chromevol_exclude"))
 # Save data
 write_csv(chromo, col_names =  FALSE, 
-          path = here("chromEvol/OTUs/data_for_chromevol"))
+          file = here("chromEvol/OTUs/data_for_chromevol"))
 write_csv(chromo_exclude, col_names =  FALSE, 
-          path = here("chromEvol/OTUs/data_for_chromevol_exclude"))
+          file = here("chromEvol/OTUs/data_for_chromevol_exclude"))
 ```
 
 > Now go to ChromEvol package in the terminal and run them...

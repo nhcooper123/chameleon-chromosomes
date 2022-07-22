@@ -11,8 +11,8 @@ output: html_document
 library(tidyverse)
 library(here)
 library(phytools)
-library(ChromEvol) #install this from source
 library(patchwork)
+source(here("chromEvol/ChromEvol.R")) #install this from https://www.en.sysbot.bio.lmu.de/people/employees/cusimano/use_r/
 ```
 
 Read in all the simulations outputs, wrangle into a useable format, and combine.
@@ -22,7 +22,7 @@ sim_output <- data.frame(haploidn = NULL, tips = NULL, sim = NULL)
 # Loop through all 1000 folders of outputs
 for (i in 0:999) {
   # Choose directory
-  dir <- paste0("chromEvol/chromEvol_out_simulations/", i, "/")
+  dir <- paste0("chromEvol/results/simulations-best-model-18/", i, "/")
   # Read in counts data
   counts <- read_delim(here(paste0(dir,"simCounts.txt")), 
                        delim = "\t", col_names = FALSE)
@@ -44,7 +44,7 @@ for (i in 0:999) {
 
 sim_output$sim <- sim_output$sim+1
 
-write_csv(sim_output, path = here("data/chromevol-simulations-outputs.csv"))
+write_csv(sim_output, path = here("data/chromevol-simulations-outputs-best.csv"))
 ```
 
 ## Null model simulations
@@ -53,12 +53,12 @@ Create null simulations by randomly assigning chromosome numbers to the tips. Th
 
 ```{r}
 # Read in observed data
-mydata <- read_csv(here("data/chromosome-data.csv"))
+mydata <- read_csv(here("data/chromosome-data-species.csv"))
 
-# Remove Rieppeleon
+# Remove Rieppeleon and outgroup
 mydata <- 
   mydata %>% 
-  filter(genus != "Rieppeleon")
+  filter(genus != "Rieppeleon" & genus != "Leiolepis")
 
 # Rename the haploidn column
 # Select only tip names, genus and observed haploidn
@@ -82,85 +82,4 @@ for (j in 1:1000){
 }
 
 write_csv(sims_output_null, path = here("data/null-simulations-outputs.csv"))
-```
-
-## SPECIE LEVEL
-
-## Collate simulations results and create null simulations
-
-Read in all the simulations outputs, wrangle into a useable format, and combine.
-```{r, message = FALSE, warning = FALSE}
-sim_output_species <- data.frame(haploidn = NULL, tips = NULL, sim = NULL)
-
-# Loop through all 1000 folders of outputs
-for (i in 0:999) {
-  # Choose directory
-  dir <- paste0("chromEvol/chromEvol_out_simulations_species/", i, "/")
-  # Read in counts data
-  counts <- read_delim(here(paste0(dir,"simCounts.txt")), 
-                       delim = "\t", col_names = FALSE)
-
-  # wrangle and add sim number
-  countdata <- 
-  counts %>%
-  mutate(ind = rep(c("tips","haploidn"), length.out = n())) %>%
-  group_by(ind) %>%
-  mutate(id = row_number()) %>%
-  spread(ind, X1) %>%
-  dplyr::select(-id) %>%
-  mutate(tips = gsub(">", "", tips)) %>%
-  mutate(sim = rep(i+1, length(tips)))
-  
-  # add to output
-  sim_output_species <- rbind(sim_output_species, countdata)
-}
-
-sim_output_species$sim <- sim_output_species$sim+1
-
-write_csv(sim_output_species, 
-          path = here("data/chromevol-simulations-outputs-species.csv"))
-```
-
-## Null model simulations
-
-Create null simulations by randomly assigning chromosome numbers to the tips. The numbers come from the data and sampling is done without replacement.
-
-```{r}
-# Read in observed data
-mydata <- read_csv(here("data/chromosome-data.csv"))
-
-# Remove Rieppeleon
-mydata <- 
-  mydata %>% 
-  filter(genus != "Rieppeleon")
-
-# Select one representative per species
-mydata_species <-
-  mydata %>%
-  mutate(dup = duplicated(mydata$Binomial_Marcello)) %>%
-  filter(dup != TRUE)
-
-# Rename the haploidn column
-# Select only tip names, genus and observed haploidn
-mydata_species <-
-  mydata_species %>%
-  rename(obs_haploidn = haploidn) %>%
-  dplyr::select(tips, obs_haploidn, genus)
-```
-
-Run simulations
-```{r}
-sims_output_null_species <- data.frame(sim_haploidn = NULL, tips = NULL, sim = NULL)
-  
-for (j in 1:1000){
-  newdata <- data.frame(sim_haploidn = sample(mydata_species$obs_haploidn, 
-                                              length(mydata_species$tips)),
-                        tips = mydata_species$tips, 
-                        sim = rep(j, length(mydata_species$tips)))
-
-  sims_output_null_species <- rbind(sims_output_null_species, newdata)
-}
-
-write_csv(sims_output_null_species, 
-          path = here("data/null-simulations-outputs-species.csv"))
 ```

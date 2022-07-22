@@ -1,0 +1,80 @@
+---
+title: "Taxa and species pairs analyses"
+author: "Natalie Cooper"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r, message = FALSE}
+# Load libraries
+library(tidyverse)
+library(here)
+library(ape)
+library(phangorn)
+```
+
+Read in the data and the tree
+```{r, message = FALSE, echo = FALSE}
+mydata <- read_csv(here("data/chromosome-data.csv"))
+mytree <- read.tree(here("data/ML-tree.tre"))
+```
+
+Take a look at the dataset and tree
+```{r}
+#str(mytree)
+#head(mydata)
+```
+
+Initially we use the phylogeny as is, and use OTUs which are often within the same species. As a test, we correlated the difference in chromosome number with phylogenetic distance.
+
+1. Look at all pairs of taxa at the tips. 
+
+This is the simplest solution in many ways, but does introduce a large amount of pseudoreplication as each tip taxon appears a huge number of times.
+```{r}
+# Get species pairs
+all.pairs <- expand.grid(tip1 = mydata$tips,
+	                       tip2 = mydata$tips)
+
+# Combine with the chromosome data...
+all.pairs  <- left_join(all.pairs, mydata, by = c("tip1" = "tips"))
+all.pairs  <- left_join(all.pairs, mydata, by = c("tip2" = "tips"))
+
+# Find cophenetic distances for whole tree
+phylo_matrix <- cophenetic.phylo(mytree)
+
+# Flatten matrix
+phylo.dist.all <- 
+  data.frame(expand.grid(tip1 = dimnames(phylo_matrix)[[1]],
+	                       tip2 = dimnames(phylo_matrix)[[2]]),
+             phylodist = c(phylo_matrix))
+
+# Add to pairs data
+# warns about adding vectors and factors - this is fine here
+pairs.data <- 
+  left_join(phylo.dist.all, all.pairs, by = c("tip1","tip2")) %>% 
+  filter(phylodist > 0)
+```
+
+Now work out the differences in chromosome numbers
+```{r}
+pairs.data2 <-
+  pairs.data %>%
+  mutate(chromon_diff = abs(chromon.x - chromon.y))
+```
+
+And plot...
+```{r}
+# hex plot  
+ggplot(pairs.data2, aes(x = phylodist, y = chromon_diff)) +
+  geom_hex(alpha = 0.8, bins = 20) +
+  theme_bw(base_size = 14) +
+  scale_fill_viridis_c(trans = "log10", option = "plasma") +
+  theme(strip.background = element_rect(fill = "white")) +
+  xlab("phylogenetic distance (Ma)") +
+  ylab("difference in chromosome number (n)")
+
+#ggsave(filename = here("outputs/OTUs/taxon-pairs-distances.png"), height = 5)
+```

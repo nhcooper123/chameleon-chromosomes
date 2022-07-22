@@ -1,0 +1,100 @@
+---
+title: "Are all karyotypes that share n the same morphologically?"
+author: "Natalie Cooper"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r, message = FALSE}
+# Load libraries
+library(tidyverse)
+library(here)
+library(patchwork)
+```
+
+Read in the data
+```{r, message = FALSE, echo = FALSE}
+mydata <- read_csv(here("data/chromosome-data.csv"))
+```
+
+Take a look at the dataset
+```{r}
+#head(mydata)
+```
+
+Select only species with karytopes common to 10 or more species, then make haploidn a character to help with plotting
+```{r}
+mydata2 <- 
+  mydata %>%
+  filter(haploidn == 11 | haploidn == 12 |
+                 haploidn == 14 | haploidn == 17 |
+                 haploidn == 18) %>%
+  mutate(haploidn = as.character(haploidn))
+```
+
+Create list of colours to match earlier plots
+```{r}
+mycolours <- c("#208EA3", "#FD817D", "#4178BC", "#EA4E9D", 
+               "#EECC16", "#E8384F","#E37CFF","#37A862","#7A71F6")
+```
+## Plots
+
+Plotting to see how morphology links to haploid number, coloured by genus to indicate independent origins of n.
+
+```{r}
+p1 <- 
+  ggplot(mydata2, aes(x = haploidn, y = armn, colour = genus)) +
+  geom_jitter(width = 0.1, alpha = 0.8) +
+  scale_colour_manual(values = mycolours) +
+  theme_bw(base_size = 14) +
+  xlab("chromosome number (n)") +
+  ylab("arm number") +
+  theme(legend.position = "top") +
+  labs(tag = "A") +
+  theme(legend.title = element_blank(), legend.text = element_text(face = "italic"))
+
+p2 <- ggplot(mydata2, aes(x = haploidn, y = macrop, colour = genus)) +
+  geom_jitter(width = 0.1, alpha = 0.8) +
+  scale_colour_manual(values = mycolours) +
+  theme_bw(base_size = 14) +
+  xlab("chromosome number (n)") +
+  ylab("macro pairs") +
+  theme(legend.position = "none") +
+  labs(tag = "B")
+
+p3 <- ggplot(mydata2, aes(x = haploidn, y = microp, colour = genus)) +
+  geom_jitter(width = 0.1, alpha = 0.8) +
+  scale_colour_manual(values = mycolours) +
+  theme_bw(base_size = 14) +
+  xlab("chromosome number (n)") +
+  ylab("micro pairs") +
+  theme(legend.position = "none") +
+  labs(tag = "C")
+
+p4 <- ggplot(mydata2, aes(x = haploidn, y = norpair, colour = genus)) +
+  geom_jitter(width = 0.1, alpha = 0.8) +
+  scale_colour_manual(values = mycolours) +
+  theme_bw(base_size = 14) +
+  xlab("chromosome number (n)") +
+  ylab("NOR pair") +
+  theme(legend.position = "none") +
+  labs(tag = "D")
+
+p5 <- ggplot(mydata2, aes(x = haploidn, y = its, group = haploidn)) +
+  geom_jitter(aes(colour = genus), width = 0.1, alpha = 0.8) +
+  scale_colour_manual(values = mycolours) +
+  theme_bw(base_size = 14) +
+  xlab("chromosome number (n)") +
+  ylab("ITS") +
+  theme(legend.position = "none") +
+  labs(tag = "E")
+
+p1 / (p2 + p3) / (p4 + p5)
+
+#ggsave(here("outputs/OTUs/morphology-chromono.png"))
+```
+
+

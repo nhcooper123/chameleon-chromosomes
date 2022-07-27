@@ -174,7 +174,7 @@ both <-
               alpha = 0.5, fill = "grey50")
  
 # Plot
-mac + mic + both
+mac + mic + both + plot_annotation(tag_levels = "A")
 
 # Save plot
 # ggsave(filename = here("outputs/micro-macro-chromosomes.png"), height = 4)
@@ -217,7 +217,7 @@ mic <-
               alpha = 0.5, fill = "grey50")
  
 # Plot
-hap + mac + mic
+hap + mac + mic + plot_annotation(tag_levels = "A")
 
 # Save plot
 # ggsave(filename = here("outputs/ITS-chromosomes.png"), height = 4)

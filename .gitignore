@@ -54,3 +54,13 @@ vignettes/*.pdf
 # Shiny token, see https://shiny.rstudio.com/articles/shinyapps.html
 rsconnect/
 .Rproj.user
+
+# R package not owned by me
+chromEvol/ChromEvol.R
+
+# Random misc file created when plotting
+exp.tab
+
+# defunct analyses
+analyses/defunct*
+

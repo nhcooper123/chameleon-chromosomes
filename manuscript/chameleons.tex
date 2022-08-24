@@ -1,0 +1,373 @@
+%-------------------------------------------------------------------------------
+% Preamble
+%-------------------------------------------------------------------------------
+
+\documentclass[a4paper, 12pt]{article}
+\usepackage{ms}            % load the template
+\usepackage[osf]{mathpazo} % palatino
+%\usepackage[round]{natbib} % author-year citations
+\usepackage[superscript,biblabel]{cite} % for superscript citations
+\usepackage{graphicx}
+\usepackage{subcaption}
+\usepackage{parskip} 
+\usepackage{amsmath}
+\usepackage{longtable}
+\usepackage{pdflscape}
+
+\pagenumbering{arabic}  
+\linespread{1.66}
+
+%-------------------------------------------------------------------------------
+% Title page information
+%-------------------------------------------------------------------------------
+
+\title{Microchromosome fusions underpin convergent evolution of chameleon karyotypes}
+
+\author{
+Marcello Mezzasalma$^{1,2}$, 
+Jeffrey W Streicher$^{1}$, 
+Fabio M. Guarino$^{3}$,\\ 
+Marc EH Jones$^{1,4}$, 
+Simon P Loader$^{1}$, 
+Gaetano Odierna$^{3}$,\\ 
+and Natalie Cooper$^{1*}$
+}
+\date{}
+\affiliation{\noindent{\footnotesize
+  $^1$Science Group, Natural History Museum, Cromwell Road, London, SW7 5BD, UK.\\
+  $^2$Department of Biology, Ecology and Earth Science, University of Calabria, Via P. Bucci 4/B, 87036 Rende, Italy.\\
+  $^3$Department of Biology, University of Naples Federico II, Via Cinthia 26, 80126 Naples, Italy.\\
+  $^4$University College London, Gower Street, London, WC1E 6BT, UK.\\
+  $*$Email address: natalie.cooper@nhm.ac.uk
+}}
+
+\vfill
+
+\runninghead{Chameleon karyotype evolution}
+%\keywords{}
+%}
+
+%-------------------------------------------------------------------------------
+% Begin document
+%-------------------------------------------------------------------------------
+\begin{document}
+\modulolinenumbers[1]   % Line numbering on every line
+
+\mstitlepage
+
+\parindent = 1.5em
+\addtolength{\parskip}{.9em}
+
+\raggedright
+%-------------------------------------------------------------------------------
+% Abstract
+%-------------------------------------------------------------------------------
+
+\section{Abstract}
+
+Evolutionary shifts in chromosome compositions (karyotypes) are major drivers of speciation and genome diversification. 
+The loss of ancestral chromosomes via fusion has been hypothesised as a mechanism for the evolutionary reduction of chromosomes; a frequently implied karyotypic shift. 
+However, empirical phylogenetic tests of this hypothesis are rare as they require model systems with variable karyotypes, known chromosome features, and a robust phylogeny. 
+Here we used chameleons, lizards with exceptionally variable and well-known karyotypes, to test whether chromosomal fusions explain the repeated evolution of smaller-than-ancestral karyotypes. 
+We combined novel data, phylogenetic inference, and literature records to compare karyotypes from 83 species of chameleons. Using a phylogenetic comparative approach, we estimated ancestral states and used generalised linear models (GLMs) to test for associations among chromosomal features. 
+We found that a model of constant loss through time best explained chromosome evolution across the chameleon phylogeny. We tested if fusions of microchromosomes into macrochromosomes explained these evolutionary losses using GLMs of micro- to macro- chromosome counts and the number of interstitial telomeric sequences (ITSs). 
+Multiple comparisons supported microchromosome fusions as the predominant agent of evolutionary loss. We further compared our results to a suite of natural history traits and found no correlations. 
+As such, we infer that the tendency of microchromosomes to fuse was a quality of the ancestral chameleon genome. 
+This conclusion suggests that ancestry (genomic predisposition) has been a more salient determinant of chromosome evolution in chameleons than the ecological, physiological, and biogeographical factors involved in their diversification.
+
+\textbf{Keywords: chromosome evolution, cytogenetics, molecular phylogenetics, ancestral state estimation}
+
+%-------------------------------------------------------------------------------
+% Main text
+%-------------------------------------------------------------------------------
+
+\section{Introduction}\label{main}
+
+Chromosomal evolution is a major driver of biodiversity with inter- and intra-chromosome rearrangements contributing to speciation and lineage diversification\cite{pellestor2020chromoanagenesis} (King 1993). 
+Vertebrate animals have experienced variable patterns of chromosome recombination and change, leading to some animal groups with conserved, evolutionarily static karyotypes and others with diverse, evolutionarily plastic karyotypes (e.g. \cite{graphodatsky2011genome,neto2011extensive,mezzasalma2019changes,degrandi2020distribution,mayrose2021evolution}).
+Why do some animals have conserved karyotypes whilst others divergent chromosome arrangements? 
+The answer is likely complex, but is partially explained by different evolutionary tendencies toward either the maintenance of a particular genomic structure or the acquisition of new chromosomal and genetic characters via chromosome rearrangements (chromosome fissions, fusions and inversions\cite{crombach2007chromosome,amorim2021new}).
+
+The evolutionary dynamics of chromosome rearrangements have been studied for over a century in multiple vertebrate groups\cite{damas2021vertebrate}. 
+Squamate reptiles (lizards and snakes) have been a focus of evolutionary cytogenetics as they have exceptionally diverse karyotypes that can be either ‘asymmetrical’ or ‘symmetrical’ based on the occurrence of chromosomes of distinct dimensional classes\cite{stebbins1950chapter,white1973}. 
+Asymmetrical karyotypes contain chromosomes that can be binned into categories of either large, macrochromosomes or small, dot-shaped microchromosomes.
+In contrast, symmetrical karyotypes contain chromosomes that cannot be binned into size classes as their lengths vary near continuously. 
+Evolutionary transitions between asymmetrical and symmetrical chromosome arrangements are hypothesised to have occurred in both directions, primarily by the mechanisms of fission and fusion (e.g. \cite{olmo2008trends,srikulnath2015karyotype}). 
+While most major squamate groups have only asymmetrical or only symmetrical karyotypes (i.e. one or the other), a handful of squamates exhibit both\cite{mezzasalma2021lizards}, making them valuable models for understanding the evolutionary mechanisms that allow for (or restrict) evolutionary changes in karyotype.    
+
+True chameleons (Squamata: Chamaeleonidae) are karyologically diverse with substantial variability in chromosome number (2n = 20-62), morphology, macro:micro-chromosome ratio, localisation of different chromosome markers and evidence of evolutionary transitions between asymmetrical and symmetrical karyotype structures\cite{rovatsos2017evolution,nielsen2018dynamic}.
+Previous research has speculated that the variability of chameleon karyotypes is explained by a tendency for ancestral chromosome loss via microchromosome fusion\cite{rovatsos2017evolution}, causing the repeated evolution of symmetrical karyotypes from ancestors with asymmetrical arrangements. 
+However, this hypothesis has not been tested within an empirical, phylogenetic framework or using mechanistic expectations of chromosome loss over evolutionary time. 
+Furthermore, changes in the chromosome number lacked evidence from interstitial telomeric sequences (ITSs), whose presence/absence was not considered phylogenetically informative or able to reliably describe past chromosome rearrangements\cite{rovatsos2017evolution}.
+
+Here, we employed a multidisciplinary approach to analyse the evolutionary pathways of chromosome changes in the family Chamaeleonidae, including a combination of cytogenetic analyses and phylogenetic comparative methods. 
+Specifically, we tested whether evolutionary gain or loss of chromosomes via chromosome fission or fusion of microchromosomes into macrochromosomes, best explains karyotype evolution in chameleons. 
+We hypothesised that if chromosome loss via microchromosome fusion has been the most common mode of change in chameleon karyotypes we should observe two patterns. 
+First, we expected that microchromosome number would be positively correlated with the overall number of chromosomes and that macrochromosome number would be negatively correlated with the overall number of chromosomes. 
+We also expected the number of microchromosomes to be negatively correlated with the number of macrochromosomes. 
+Second, given that ITS’s are typically remnants of past fusion events\cite{bolzan2017interstitial}, we expected that the number of ITSs would be positively correlated with the number of macrochromosomes. 
+Similarly, the number of ITSs should be negatively correlated with the overall number of microchromosomes and chromosomes (in general), if microchromosome fusion is common. 
+
+To place our understanding of chromosome evolution in an organismal context, we compared evolutionary and karyotypic divergence directly. 
+We also used Bayesian phylogenetic generalised linear mixed models were used to test for associations with multiple life history traits of chameleons (latitude, geographic realm, maximum breeding age, minimum breeding age, maximum clutch size, minimum clutch size, reproductive mode, substrate preference, and body size). 
+Collectively, an integrative interpretation of our analyses, including multi-locus molecular phylogenetic analysis, both conventional and molecular cytogenetics and phylogenetic comparative methods, supports the idea that a common evolutionary mechanism led to the repeated and independent evolution of karyotypes with a reduced total chromosome number in extant chameleons.
+
+%-------------------------------------------------------------------------------
+\section{Materials and Methods}
+
+We combined novel data from 57 Malagasy chameleon species (32 of which have not previously been karyotyped) with existing molecular and karyotypic data for chameleons (NHM Data Portal\cite{chameleon-data}). 
+The dataset contained 83 described species of Chamaeleonidae, three undescribed \textit{Calumma} species, and one outgroup taxon (\textit{Leiolepis belliana}). 
+Therefore, our sample represents a significant proportion of the ~200 extant chameleon species\cite{uetz2022}. 
+Some species have multiple samples, meaning we have data for 137 operational taxonomic units (OTUs). 
+The majority of these OTUs have conserved karyotypes within species, so we randomly selected one OTU for each species to avoid pseudoreplication.
+\textit{Calumma brevicorne}, \textit{Calumma fallax}, \textit{Calumma parsonii}, and \textit{Furcifer verrucosus} are each represented by two samples with unique karyotypes, and \textit{Calumma gallus} is represented by three samples with unique karyotypes, therefore, we included these OTUs as additional taxa, thus we have 93 taxa in our main analyses. 
+We repeated all analyses below using the full set of 137 OTUs (see Supplementary Materials: Table A4, Figures A6 - A10).
+
+\subsection{Phylogenetic inference}
+For our novel data, we used PCR to amplify the nuclear RAG1, CMOS and PRLR, and the mitochondrial 16S, ND2 and ND4 markers used in Tolley \textit{et al.} \cite{tolley2013large}, and then combined these with homologous sequences from GenBank. 
+All newly generated sequences were deposited in GenBank (accession numbers will be provided after manuscript acceptance). 
+Our final alignment included 5,488 nucleotide positions and 303 sequences including outgroup taxa. 
+We inferred a Maximum Likelihood (ML) phylogeny using RAxML 8.2.12\cite{stamatakis2014raxml} under the GTRCAT model with 1,000 bootstrap replicates. 
+We constrained the monophyly of \textit{Calumma} $+$ \textit{Furcifer} (as in Tolley \textit{et al.}\cite{tolley2013large}), and based on genus-level phylogenetic relationships identified with a wider selection of molecular markers. 
+We also performed unconstrained phylogenetic analyses for comparative purposes. 
+To date our constrained phylogenies, we used the penalised likelihood method implemented in treePL\cite{smith2012treepl}, including 10 calibration points (eight external and two internal) based on available literature (see Supplementary Materials for details), as minimum hard bounds: (1) Lepidosauria - 250 Ma; (2) \textit{Xantusia-Cordylus} - 62.5 Ma; (3) Laterata - 138.7 Ma; (4) Lacertibaenia - 61 Ma; (5) Anguimorpha - 148 Ma; (6) crown Serpentes - 93.9 Ma; (7) Anguioidea - 74.5 Ma; (8) Pleurodonta -70 Ma; (9) \textit{Calumma} - 16 Ma and (10) \textit{Chamaeleo} - 16.6 Ma. 
+Before analysis, we pruned the phylogeny so it contained only the 96 taxa in our karyotype dataset.
+
+\subsection{Cytogenetic analysis}
+Chromosomes for our samples were obtained using the traditional air-drying method (e.g.\cite{sidhom2020karyological}) on cell suspensions preserved in Carnoy’s buffer (methyl alcohol – glacial acetic acid 3:1). 
+One of us (MM) then reconstructed karyotypes using standard Giemsa coloration (5\% at pH 7). 
+The chromosome characters we recorded were (i) haploid chromosome number, (ii) arm number, (iii) macro- and (iv) microchromosome number, (v) position of NOR loci (detected using Ag-NOR staining following Howell and Black\cite{howell1980controlled} and Fluorescence in Situ Hybridization (FISH) of telomeric (TTAGGG)n repeats as in Sidhom \textit{et al.}\cite{sidhom2020karyological}, (vi) number of ITS (considering only interstitial and peritelomeric signals present in both homologs, thus excluding centromeric and standard telomeric positive signals; i.e. “true” ITS \textit{sensu} Bolz\'{a}n\cite{bolzan2012chromosomal,chirino2017chromosomal}), and (vii) and the morphology of each macro-chromosome pair following previous classification based on the centromeric index (metacentric, submetacentric, subtelocentric and telocentric\cite{levan1964nomenclature}). 
+We collated chromosome data for additional chameleon species from the literature. 
+The full dataset along with literature references is available on the NHM Data Portal\cite{chameleon-data}.
+
+\subsection{Analyses}
+All analyses except the chromosome evolutionary models (see below) were carried out in R\cite{R}, and R code to reproduce our analyses is available at github.com/nhcooper123/chameleon-chromosomes (Zenodo DOI will be added on acceptance\cite{coopercode2022}). 
+We visualised karyotype data (chromosome number, arm number, number of macrochromosome pairs, and number of microchromosome pairs) on our phylogeny (Supplementary Materials: Figures A1 and A2) using the ggtree R package\cite{yu2017ggtree}.
+
+\subsubsection{Chromosome evolutionary models}
+Some earlier papers have treated chromosome number as a continuous trait and modelled it using standard phylogenetic comparative methods for continuous data (e.g.\cite{vershinina2017evolutionary}). 
+However, chromosome number is more appropriately modelled as a discrete trait which changes in predictable ways. 
+Chromosome numbers can increase due to single chromosome gains (ascending dysploidy), chromosome fissions, whole genome duplications (polyploidy, leading to a doubling of the chromosome number), or half genome duplications (demi-polyploidy rate, leading to a 1.5 times increase in the chromosome number), and decrease due to single chromosome losses (descending dysploidy), or chromosome fusions. 
+To model chromosome evolution in chameleons we therefore used ChromEvol v.2.0\cite{glick2014chromevol,mayrose2010probabilistic} which fits likelihood models to the evolution of chromosome numbers, using a phylogeny (excluding the outgroup) and the haploid number of chromosomes (n) at each tip as input data. 
+We manipulated outputs from ChromEvol using the ChromEvol R package\cite{chromevol}.
+
+We fitted two different models of chromosome evolution; a Constant Rates model which optimises (i) the rate of gain of a single chromosome; and (ii) the rate of loss of a single chromosome; and a Linear Rates model which additionally optimises (iii) linear dependency between the current haploid number and the rate of gain chromosomes; and (iv) linear dependency between the current haploid number and the rate of loss chromosomes. 
+We focus on models that do not include polyploidization or demi-polyploidization rates because these processes rarely occur in squamates and are unknown in Chamaeleonidae\cite{bogart1980evolutionary,mezzasalma2021lizards}, however, we report the results from these additional models in the supplemental for completeness (Supplementary Materials: Tables A1 - A2). 
+
+ChromEvol requires a phylogeny with branch lengths that represent the expected number of chromosome-number transitions along a branch. We therefore scaled the tree so that the total tree length was equal to the number of unique chromosome counts as suggested in Glick and Mayrose\cite{glick2014chromevol}. 
+We back-transformed all parameter estimates using this scaling parameter before reporting them (see Results). 
+We ran each model 10,000 times, with the maximum and minimum number of chromosomes allowed to be 10 units larger/smaller than the maximum/minimum chromosome number observed in the data (n = 19 and n = 10 respectively). 
+Finally, we used the Akaike Information Criterion (AIC) to identify the best fitting model. 
+
+The model outputs of ChromEvol vary depending on the root frequencies, i.e. the probabilities of each number of chromosomes being the root state for the tree. 
+We either (1) set root frequencies as 0.333 for n = 16, n = 17 and n = 18, because the most common chromosome numbers found in Iguania, the group within which Chamaeleonidae is nested, are 2n = 32–36\cite{olmo2005chromorep}; (2) fixed root frequencies so the root was n = 18, because the hypothesised ancestral karyotype for lizards is 2n = 36\cite{deakin2016anchoring,lisachov2021whole,mezzasalma2021lizards}; or (3) estimated the root frequencies using the model. 
+We also repeated each model excluding \textit{Rieppeleon kerstenii}. 
+This species has an unusually high number of chromosomes for a chameleon of 2n = 62 (the next highest is 2n = 38), so likely represents an unusual instance of karyotypic evolution which may skew our model outputs. 
+
+\subsubsection{Fissions and fusions and ITS}
+Single chromosome gains are predicted to occur due to chromosome fissions, whereas chromosome losses are predicted to occur due to chromosome fusions. 
+To test whether fissions and fusions were likely to have occurred in the evolution of chameleon chromosome numbers, we used generalised linear models (GLMs) with Poisson errors to test for correlation between numbers of macro- and micro-chromosome pairs in each chameleon karyotype. 
+A significant correlation suggests that fission or fusion may explain variation in numbers of chromosomes across chameleons.
+To determine whether fission or fusion was more likely, we used the parameter estimates from the best fitting chromosome evolution model (see above). 
+In addition, we tested for correlations between ITS and haploid number of chromosomes, the number of macrochromosome pairs and the number of microchromosome pairs, also using GLMs but with quasipoisson errors due to overdispersion in these models.
+
+\subsubsection{Phylogenetic patterns}
+To investigate how chromosome number is related to phylogenetic relatedness, we calculated the phylogenetic distance (in millions of years) between each pair of taxa in the phylogeny, and plotted this estimate against their differences in chromosome number. 
+Note that we could not use standard measures of phylogenetic signal (e.g. Pagel's λ\cite{pagel1999inferring}, Blomberg's K\cite{blomberg2003testing}) because chromosome number is a discrete trait with multiple levels, not continuous or binary as required by these methods. 
+
+In addition, we simulated chromosome numbers on the tree with taxa as tips using ChromEvol v.2.0\cite{glick2014chromevol,mayrose2010probabilistic}. 
+We performed 1,000 simulations using the optimised parameters taken from the best fitting model identified in the chromosome evolution analyses above (Constant Rates, removing \textit{Rieppeleon kerstenii}, and using n = 18 as the root node, see Results). 
+We then compared the distribution of simulated chromosome numbers at the tips of the tree to the observed distribution. 
+
+\subsubsection{Relationships among chromosome numbers, ecology and life history}
+
+We tested for correlations between haploid numbers of chromosomes (n) and the following variables; (1) maximum snout vent length (mm; n = 86); (2) substrate (arboreal, terrestrial or multiple; n = 77); (3) reproductive mode (oviparous or viviparous; n = 71); (4) minimum clutch size (eggs; n = 58); (5) maximum clutch size (eggs; n = 58); (6) minimum breeding age (months; n = 43); (7) maximum breeding age (months; n = 43); (8) biogeographic realm (Afrotropical, Madagascar, Oriental or Palearctic; n = 86); (9) absolute latitude (decimal degrees; DD; n = 86). 
+All ecological and life history data were taken from Meiri\cite{meiri2018traits}. 
+Continuous variables were mean-centred and scaled to unit variance prior to analyses.
+
+We used Bayesian phylogenetic generalised mixed models (GLMMs) with Poisson errors in the R package MCMCglmm\cite{hadfield2010mcmc} to test for correlations, including the phylogeny (as the inverse of the phylogenetic variance-covariance matrix) as a random effect to account for phylogenetic autocorrelation. 
+We ran each MCMCglmm model for 1 x 106 iterations sampling at every 1,000 iterations and discarding the first 1 x 105 iterations as burn-in. 
+We used the default priors for MCMCglmm ($μ = 0$ and $V = I × 1010$ for fixed effects and parameter expanded priors, and $V = 1$, $\nu = 1$, $\alpha \mu = 0$, and $\alpha V = 252$ for the phylogenetic random effects). 
+All model parameters had a mean effective sample size (ESS; estimated using the R package coda\cite{plummer2006coda}) of over 800, and traceplots indicated that models had converged.
+
+%-------------------------------------------------------------------------------
+\section{Results}
+
+\subsection{Chromosome evolutionary models}
+When \textit{Rieppeleon kerstenii} was included, the Linear Rates model fitted better than the Constant Rates model (Table \ref{table-models}).
+Although rates of chromosome loss were consistently higher than rates of chromosome gain in these models, rates of linear dependency between the current haploid number and the rate of loss of chromosomes were lower for loss than gain of chromosomes, regardless of root frequency. 
+The Constant Rates model fitted better than the Linear Rates model when \textit{Rieppeleon kerstenii} was excluded from the analyses and rates of chromosome loss were also consistently higher than rates of chromosome gain in these models, regardless of root frequency (Table \ref{table-models}). 
+Overall, the best fitting model was the Constant Rates model where \textit{Rieppeleon kerstenii} was excluded, and the root was set to n = 18 (AIC = 320.5; Table \ref{table-models}; Figure \ref{fig-best}).
+
+
+\subsection{Fissions and fusions and ITS}
+There was a significant negative correlation between the haploid number of chromosomes and the number of macrochromosome pairs (GLM: $\chi^2$ = 4.991, df = 1,91, p = 0.025; Figure \ref{fig-chroms}A), and a significant positive correlation between the haploid number of chromosomes and the number of microchromosome pairs (GLM: $\chi^2$ = 55.32, df = 1,91, p $<$ 0.001; Figure \ref{fig-chroms}B). 
+Additionally, there was a significant relationship between the number of micro- and macro- chromosome pairs (GLM: $\chi^2$ = 97.15, df = 1,91, p $<$ 0.001; Figure \ref{fig-chroms}C). 
+
+There was a significant negative correlation between ITS and the haploid number of chromosomes (GLM: F = 23.91, df = 1,42, p $<$ 0.001; Figure \ref{fig-its}A), a significant positive correlation between ITS and the number of macrochromosome pairs (GLM: F = 5.828, df = 1,42, p = 0.020; Figure \ref{fig-its}B), and a significant relationship between ITS and the number of microchromosome pairs (GLM: F = 25.98, df = 1,42, p $<$ 0.001; Figure \ref{fig-its}C). 
+
+\subsection{Phylogenetic patterns}
+Differences in chromosome number did not increase with phylogenetic distance (Figure \ref{fig-pairwise}); even some of the most distantly related taxa in our phylogeny shared the same chromosome numbers. 
+Large differences in chromosome numbers, however, only occur at moderate to large phylogenetic distances. 
+
+Simulations give a reasonable approximation of observed chromosome numbers at the tips of the phylogeny, however, model predictions do not account well for the large numbers of species with n = 11, n = 12 and n = 18 chromosomes (Figure \ref{fig-predict}).
+
+\subsection{Relationships among chromosome numbers, ecology and life history}
+We found no significant correlations among chromosome numbers and any of our ecology or life history variables (Supplementary Materials: Table A3; Figures A4-A5). 
+
+%-------------------------------------------------------------------------------
+\section{Discussion}
+
+That chromosomal rearrangements have contributed to the evolutionary changes in karyotypes is not controversial or new (e.g.\cite{deakin2016anchoring}), but when, how, and how often they have contributed is less clear. 
+In addition, chromosome rearrangements among closely-related species are usually tracked with molecular cytogenetics\cite{lisachov2021whole}, but the dynamics of chromosome evolutionary changes across vertebrate groups have rarely been tested with macroevolutionary methods. 
+Our study provides strong evidence that in the diverse lineage of Chamaeleonidae, regular evolutionary fusion of microchromosomes has resulted in multiple, independent origins of karyotypes with a reduced number of chromosomes (from 2n =36 to 2n = 24-22; Figure \ref{fig-best}). 
+This intriguing result suggests that in chameleons (and likely other groups) a single process of chromosome evolution was responsible for both convergent and divergent evolution of karyotypes. 
+Below we discuss chromosome loss and karyotypic convergence in relation to previous studies, address some caveats of using ITSs to infer fusion events, the apparent lack of correlation between chameleon karyotypes and natural history traits, and speculate why so many microchromosomes have fused in chameleons.    
+
+\subsection{Reduction, status, and convergence during chromosome evolution}
+Using GLMs, we found a strong negative correlation between the number of macro- and micro-chromosomes (Figure \ref{fig-chroms}C). 
+This result is consistent with a reduction in the number of microchromosomes with an increase in the number of macrochromosomes, as would be expected following fusion events in asymmetrical karyotypes. 
+Even more compellingly, we found a positive correlation between the number of macrochromosomes and ITSs which is clearly consistent with fusion of microchromosomes into macrochromosomes in those species with reduced chromosome numbers (Figure \ref{fig-its}B). 
+We also observed putative convergent reductions in several genera including \textit{Calumma}, \textit{Furcifer}, \textit{Rhampholeon}, and \textit{Triceros}. 
+Our simulation analysis supports that there are more observations of these smaller-than-ancestral karyotypes with a reduced chromosome number (2n = 24-22) than would be expected by chance (Figure \ref{fig-predict}). 
+Collectively, this result is consistent with frequent microchromosome losses during the evolution of chameleons leading to convergence in the number of chromosomes. 
+This is particularly evident in genera such as \textit{Furcifer} and \textit{Trioceros}, which have karyotypes either similar to the hypothesised chameleon ancestral condition of 2n = 36 (2n = 34 in \textit{F. balteatus} and several 2n = 36 in \textit{Trioceros}), and karyotypes with a reduced total chromosome number (2n = 24-22) in other species (Figure \ref{fig-best}). 
+We use the term ``convergence'' in a relative sense related to the number of chromosomes, as karyotypes with lower chromosome numbers showed higher variability in macrochromosome morphology (supp. reference), suggesting the occurrence of different intrachromosomal rearrangements and/or fusion events between microchromosomes. 
+Thus, convergent chameleon chromosome loss occurred via unique pathways of microchromosome fusion in different lineages, a well-established phenomenon of telomeric fusion in higher eukaryotes (e.g.\cite{heacock2004molecular}).  
+Chromosome size convergence is often discussed, particularly in species with differentiated, heteromorphic sex chromosomes \cite{montiel2017discovery,kratochvil2021sex}. 
+However, convergence in chromosome number is a far less frequently reported phenomenon (particularly of fusion-based convergence; see Rens \textit{et al.}\cite{rens2003reversal} for fission-based example), making chameleons a valuable study system for chromosome evolution. 
+Interestingly, our results are consistent with the karyotypic orthoselection model proposed by White\cite{white1973,white1975chromosome}. 
+Following White's model, chromosome changes found in any given group are not random, but characterised by the accumulation of similar chromosome rearrangements, eventually leading to convergent karyotype structures\cite{white1973,white1975chromosome}. 
+White also suggested that different processes such as environmental selection or intrinsic chromosomal properties might explain orthoselection of karyotypes\cite{white1973,white1975chromosome}.
+
+Despite the evidence that chromosome fusion regularly occurred during the evolution of chameleons, this tendency was not true of all lineages we studied. Assuming an ancestral karyotypes of 2n = 36\cite{rovatsos2017evolution} (see Materials and Methods), we observed several chameleon genera with ancestral conservation of karyotypes (chromosomal evolutionary stasis; \textit{Brookesia}, \textit{Bradypodion}, \textit{Kinyongia}, \textit{Chamaeleo}; Figure \ref{fig-best}), highlighting that divergent evolutionary trends such as karyotypic orthoselection and chromosomal evolutionary stasis likely characterise different evolutionary lineages. 
+Furthermore, chromosomes in these groups also had a more conserved morphology than the genera with putative karyotypic reduction consistent with stasis (supp. reference). 
+These genera with conserved karyotypes suggest that the tendency for microchromosomes to fuse may either (i) not always be advantageous or (ii) be a karyotypic trait that is lost (or gained). 
+
+\subsection{Alternative explanations for observed patterns of chromosome fusions}
+In addition to the fusion of chromosomes, the presence of ITSs can also be explained by translocations within chromosomes\cite{bolzan2017interstitial}. 
+However, we think this possibility is unlikely to change the interpretation that many of the ITSs we observed are explained by fusion events. 
+Specifically, if the ITSs we observed were mostly the result of within-chromosome translocations, we should not have observed the positive correlation between number of macrochromosomes and number of microchromosomes (Figure \ref{fig-chroms}C). 
+We recognise that the relationship between number of ITSs and number of macrochromosomes, while significant, is not completely linear (Figure \ref{fig-its}B), which suggests other processes (such as chromosome translocations and/or the amplification of DNA repeats) are likely involved in generating some of the ITSs we observed.
+
+\subsection{What about \textit{Rieppeleon kerstenii}?}
+Our dataset supports chromosome loss and karyotype reduction as having occurred in multiple genera of chameleons. 
+Most genera with higher numbers of chromosomes are matched to the putative ancestral karyotype (2n = 36), with one glaring exception; the species \textit{Rieppeleon kerstenii} which has a karyotype of 2n = 62. 
+It is also worth noting that two additional species (\textit{Calumma amber} and \textit{Calumma tarzan}) in our dataset have a larger-than-ancestral karyotype of 2n = 38. 
+This is not surprising considering that our chromosome analyses and macroevolutionary models did not reject the occurrence of chromosome fissions in chameleon karyotypes, which likely generated a higher number of chromosomes in these taxa.
+
+\subsection{Why has microchromosome fusion happened so frequently in chameleons?}
+Microchromosome fusion is widespread in vertebrate animals\cite{waters2021microchromosomes}. 
+If chromosome reduction via fusion is so common, is that because it is beneficial? In other words, what potential benefits are there to having a symmetrical (versus asymmetrical) karyotype? 
+One clear benefit would be to reinforce reproductive isolation. 
+Chromosome fusions may select against introgression between diverging populations, because the potential for viable offspring is decreased between individuals with divergent karyotypes\cite{cicconardi2021chromosome}.
+This incompatibility might serve to initiate or hasten speciation through rapid evolution of key traits in reproductively-isolated populations. If this hypothesis were the case in chameleons, we might expect to observe correlates between natural history traits and karyotypes, which we did not (Supplementary Materials Table A3; Figures A4-A5). 
+However, it is also possible that we did not measure the relevant traits associated with speciation in chameleons, and/or that these traits are genus or population specific.
+Perhaps larger chromosomes achieved through fusions may be beneficial in terms of genome structure and function? Evidence for this possibility is mixed. In some insects, there is a positive correlation between chromosome size and the functional gene conservation\cite{cicconardi2021chromosome}. 
+However, in other groups like birds (and importantly some non-avian reptiles) microchromosomes tend to be higher in gene content\cite{waters2021microchromosomes}.
+The types of microchromosome fusions observed in chameleons have also occurred in other squamates\cite{deakin2016anchoring}; including in lacertids (\textit{Lacerta agilis}\cite{srikulnath2014identification}) and notably geckos where repeated fusions have ostensibly eliminated microchromosomes altogether (\textit{Gekko hokuensis}; \cite{srikulnath2015karyotype}). 
+Thus, a broader phylogenetic sampling of squamates with an evolutionary history of chromosome fusion would provide valuable insights for future research.
+
+\subsection{Conclusions}
+Collectively, our results suggest that the fusion of microchromosomes into macrochromosomes has been a common occurrence during the evolution of true chameleons. 
+While this phenomenon has resulted in convergent evolution of chromosome number in several genera and species, it is not found to be related to the ecological, physiological, or biogeographical variables here considered. 
+This result could indicate that variability in chromosome number, morphology, and patterns of convergent evolution through chromosome loss (i.e. orthoselection\cite{white1973}) is mostly due to intrinsic properties of the genome, as initially hypothesised by White\cite{white1975chromosome}. 
+As such, our study provides additional support that the genomic predisposition of ancestors may be the most substantive predictor of chromosome change; a key driver of biological and genomic diversification.
+
+%-------------------------------------------------------------------------------
+\section{Acknowledgments}
+We thank Gennaro Aprea, Frank Glaw and Franco Andreone for providing us the tissue samples and cell suspensions, and Malagasy authorities for granting research and export permits. We thank Tony Gamble and Peter Olson for discussions on chromosome evolution and Angelica Crottini for taxonomic insights.
+
+\section{Ethics}
+For this study we used samples already collected for other research with the approval of institutional committees. No further sampling was performed
+
+\section{Data accessibility}\label{data-code-and-materials}
+All of the data are available on the NHM Data Portal\cite{chameleon-data}. 
+R code to reproduce our analyses is available at github.com/nhcooper123/chameleon-chromosomes (Zenodo DOI will be added on acceptance\cite{coopercode2022}). 
+The sequences generated in this study are available from GenBank with the primary accession codes XXX to be added on acceptance.
+
+\section{Funding}
+MM was funded by the European Union’s Horizon 2020 research and innovation programme under the Marie Sk\l{}odowska-Curie grant agreement No 797027.
+
+\section{Author contributions}
+MM collated data and performed molecular and karyotypic analyses. GO and FMG provided the samples. MM, JWS, MEHJ and SPL and NC conceptualised the study. NC ran the statistical analyses. MM, JWS and NC wrote the first draft. All authors reviewed and edited drafts and approved the final version for publication.
+
+\section{Conflict of interest declaration}
+We declare we have no competing interests.
+
+%-------------------------------------------------------------------------------
+% References
+\bibliographystyle{bibstyle}
+\bibliography{chameleons}
+
+%-------------------------------------------------------------------------------
+\section{Figures and Tables}
+
+\input{figures/table-results}
+
+% figure 1 
+\newpage
+\begin{figure}[h]
+ \centering
+  \includegraphics[width = \linewidth]{figures/new-tree-plot4.png}
+  \caption{Best fitting model, removing \textit{Rieppeleon kerstenii} and using n = 18 as the root frequency. Numbers at the nodes are the most frequent values obtained from 1,000 simulations; numbers at the tips are the observed values. Colours represent the haploid number of chromosomes at the tips, or the proportion of simulations with each number of chromosomes as pie charts at the nodes.
+}
+  \label{fig-best}
+\end{figure}
+
+% figure 2
+\newpage
+\begin{figure}[h]
+ \centering
+  \includegraphics[width = \linewidth]{figures/micro-macro-chromosomes.png}
+  \caption{Correlations among the haploid number of chromosomes (n), numbers of macrochromosome pairs and numbers of microchromosome pairs in chameleons. Fitted lines and standard errors are the outputs from generalised linear models with Poisson errors. The outlier at n = 31 is \textit{Rieppeleon kerstenii}.
+}
+  \label{fig-chroms}
+\end{figure}
+
+% figure 3
+\newpage
+\begin{figure}[h]
+ \centering
+  \includegraphics[width = \linewidth]{figures/ITS-chromosomes.png}
+  \caption{Correlations among ITS and the haploid number of chromosomes (n), numbers of macrochromosome pairs and numbers of microchromosome pairs in chameleons. Fitted lines and standard errors are the outputs from generalised linear models with quasipoisson errors. Note that we only have ITS data for 44 species.
+}
+  \label{fig-its}
+\end{figure}
+
+% figure 4
+\newpage
+\begin{figure}[h]
+ \centering
+  \includegraphics[width = \linewidth]{figures/species-pairs-distances.png}
+  \caption{Phylogenetic distance (in millions of years) in relation to differences in chromosome numbers (2n) for each pair of taxa in the chameleon tree. Note that the cluster of values with chromosome differences greater than 20 are comparisons of various taxa with \textit{Rieppeleon kerstenii} (2n = 62).}
+  \label{fig-pairwise}
+\end{figure}
+
+% figure 5
+\newpage
+\begin{figure}[h]
+ \centering
+  \includegraphics[width = \linewidth]{figures/chromevol-simulations-numbers-best.png}
+  \caption{Distribution of observed (grey) and predicted (blue) haploid numbers of chromosomes in chameleons, excluding \textit{Rieppeleon kerstenii}. Predicted values are based on 1,000 simulations using the optimised parameters taken from the best fitting model identified in the chromosome evolution analyses above (Constant Rates, removing \textit{Rieppeleon kerstenii}, and using n = 18 as the root frequency). Observed values were multiplied by 1,000 to aid comparisons.
+}
+  \label{fig-predict}
+\end{figure} 
+
+%-------------------------------------------------------------------------------
+\newpage
+\section{Table and figure legends}
+
+Table 1: Results from Constant Rates and Linear Rates chromosome evolution models. root = Root frequency (see text). AIC = Akaike Information Criterion. AIC values for the best fitting model in each model set are in bold. loss = rate of chromosome loss; gain = rate of chromosome gain; lossL = linear dependency between the current haploid number and the rate of loss chromosomes; gainL = linear dependency between the current haploid number and the rate of gain chromosomes.
+
+Figure 1: Best fitting model, removing \textit{Rieppeleon kerstenii} and using n = 18 as the root frequency. Numbers at the nodes are the most frequent values obtained from 1,000 simulations; numbers at the tips are the observed values. Colours represent the haploid number of chromosomes at the tips, or the proportion of simulations with each number of chromosomes as pie charts at the nodes.
+
+Figure 2: Correlations among the haploid number of chromosomes (n), numbers of macrochromosome pairs and numbers of microchromosome pairs in chameleons. Fitted lines and standard errors are the outputs from generalised linear models with Poisson errors. The outlier at n = 31 is \textit{Rieppeleon kerstenii}.
+
+Figure 3: Correlations among ITS and the haploid number of chromosomes (n), numbers of macrochromosome pairs and numbers of microchromosome pairs in chameleons. Fitted lines and standard errors are the outputs from generalised linear models with quasipoisson errors. Note that we only have ITS data for 44 species.
+
+Figure 4: Phylogenetic distance (in millions of years) in relation to differences in chromosome numbers (2n) for each pair of taxa in the chameleon tree. Note that the cluster of values with chromosome differences greater than 20 are comparisons of various taxa with \textit{Rieppeleon kerstenii} (2n = 62).
+
+Figure 5: Distribution of observed (grey) and predicted (blue) haploid numbers of chromosomes in chameleons, excluding \textit{Rieppeleon kerstenii}. Predicted values are based on 1,000 simulations using the optimised parameters taken from the best fitting model identified in the chromosome evolution analyses above (Constant Rates, removing \textit{Rieppeleon kerstenii}, and using n = 18 as the root frequency). Observed values were multiplied by 1,000 to aid comparisons.
+
+\end{document}

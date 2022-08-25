@@ -64,3 +64,14 @@ exp.tab
 # defunct analyses
 analyses/defunct*
 
+# Latex junk
+*.aux
+*.bbl
+*.toc
+*.blg
+*.fdb_latexmk
+*.fls
+*.log
+*.pdf
+*.synctex.gz
+

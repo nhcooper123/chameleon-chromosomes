@@ -6,7 +6,7 @@
 \usepackage[margin=2cm]{geometry}
 \usepackage[osf]{mathpazo} % palatino
 %\usepackage[round]{natbib} % author-year citations
-\usepackage[superscript,biblabel]{cite} % for superscript citations
+\usepackage[superscript,biblabel,nomove]{cite} % for superscript citations
 \usepackage{graphicx}
 \usepackage{subcaption}
 \usepackage{parskip} 
@@ -16,6 +16,7 @@
 \usepackage{array}
 \usepackage{float}
 \usepackage{url}
+\usepackage{array}
 
 \pagenumbering{arabic}  
 \linespread{1.3}
@@ -30,8 +31,8 @@
 
 \title{Supplementary Materials from: \textit{Microchromosome fusions underpin convergent evolution of chameleon karyotypes}; journal}
 
-\author{Marcello Mezzasalma, Jeffrey W Streicher, Fabio M. Guarino, Marc EH Jones,\\ 
-Simon P Loader, Gaetano Odierna and Natalie Cooper}
+\author{Marcello Mezzasalma, Jeffrey W. Streicher, Fabio M. Guarino, Marc E.H. Jones,\\ 
+Simon P. Loader, Gaetano Odierna and Natalie Cooper}
 
 \date{}
 
@@ -213,6 +214,19 @@ Differences in chromosome number did not increase with phylogenetic distance (Fi
   \label{fig-otus-predicted}
 \end{figure} 
 
+%-------------------
+\newpage
+\section{Correlations among haploid chromosome number (n) chromosome morphology}
+
+% figure
+\begin{figure}[H]
+ \centering
+  \includegraphics[width = \linewidth]{figures/morphology-chromono.png}
+  \caption{Correlations among haploid chromosome number (n) and various morphological features of chromosomes including A) arm number; B) macrochromosome pairs; C) number of microchromosome pairs; D) position of NOR loci; and E) number of interstitial telomeric sequences (ITS). Colours indicate genera.
+}
+  \label{fig-morph}
+\end{figure} 
+
 %-------------------------------------------------------------------------------
 \newpage
 \section{Calibration points for phylogeny}
@@ -223,7 +237,7 @@ Please note that our constraints differ from those used by Tolley \textit{et al.
 \subsection{External points}
  
 \subsubsection*{Node 1. (Lepidosauria) – 250 Ma}
-For Lepidosauria we used a point fix of 250 Ma. Note that this node by definition also equates to both total group Squamata and total group Rhynchocephalia\cite{evans2003feet}. The oldest known fossil material representing total-group Squamata is currently considered to be \textit{Megachirella wachtleri} from the Anisian of Italy\cite{renesto2003new,simoes2018origin}. If this taxon is indeed a stem squamate it provides a hard minimum of 242 Ma for total group Squamata and thus also Lepidosauria. The oldest known fossil material representing total group Rhynchocephalia is not much younger and is represented by partial skull and jaw bones from the Ladinian of Germany\cite{jones2013integration,schoch2018tetrapod}. This material has not been fully described but probably includes at least three different genera which illustrated that Rhynchocephalia must have diversified by the Middle Triassic. Fossils representing stem lepidosaurs are known from both the Early and Middle Triassic\cite{evans2009small,schoch2018tetrapod}. Previous molecular divergence estimates for Lepidosauria have differed greatly with median estimates as deep as the Early Permian (e.g. 281 Ma) and as shallow as the Late Triassic (e.g. 227 Ma\cite{jones2013integration}) and associated confidence intervals can exceed 20 million years. Estimates shallower than the Middle Triassic can be rejected with empirical evidence from the fossil record\cite{jones2013integration,simoes2018origin}. Much older origin times deep within the Permian are possible (e.g.\cite{simoes2018origin}) but there are currently no convincing crown-group lepidosaurs known from this time period.  
+For Lepidosauria we used a point fix of 250 Ma. Note that this node by definition also applies to both total group Squamata and total group Rhynchocephalia\cite{evans2003feet}. The oldest known fossil material representing total-group Squamata is currently considered to be \textit{Megachirella wachtleri} from the Anisian of Italy\cite{renesto2003new,simoes2018origin}. If this taxon is indeed a stem squamate it provides a hard minimum of 242 Ma for total group Squamata and thus also Lepidosauria. The oldest known fossil material representing total group Rhynchocephalia is not much younger and is represented by partial skull and jaw bones from the Ladinian of Germany\cite{jones2013integration,schoch2018tetrapod}. This material has not been fully described but probably includes at least three different genera which illustrated that Rhynchocephalia must have diversified by the Middle Triassic. Fossils representing stem lepidosaurs are known from both the Early and Middle Triassic\cite{evans2009small,schoch2018tetrapod}. Previous molecular divergence estimates for Lepidosauria have differed greatly\cite{jones2013integration} with median estimates as deep as the Early Permian (e.g. 281 Ma) and as shallow as the Late Triassic (e.g. 227 Ma) and associated confidence intervals can exceed 20 million years. Estimates shallower than the Middle Triassic can be rejected with empirical evidence from the fossil record\cite{jones2013integration,simoes2018origin}. Much older origin times deep within the Permian are possible (e.g.\cite{simoes2018origin}) but there are currently no convincing crown-group lepidosaurs known from this time period.  
 
 \subsubsection*{Node S (Squamata) – not constrained}
 We did not constrain the node for crown group Squamata. For the origin and divergence of crown group Squamata, molecular analyses have suggested a wide range of possible dates spanning the Permian, Triassic, and Jurassic (see\cite{jones2013integration}). However, most studies suggest a median date within 15 Ma of the Triassic-Jurassic boundary\cite{jones2013integration,simoes2018origin,burbrink2020interrogating}. The early history of crown-group lizards is poorly known but fossil material is known from the Middle Jurassic (e.g.\cite{evans1998crown,evans2003feet,evans2008skull}). 
@@ -232,10 +246,10 @@ We did not constrain the node for crown group Squamata. For the origin and diver
 We did not constrain the node for crown group Unidentata.
  
 \subsubsection*{Node 2. (Xantusia-Cordylus) – 62.5 Ma (min) 100 Ma (max)}
-We constrain the divergence between cordylids and xantusiids to 61 Ma based on \textit{Palaeoxantusia fera} from the Palaeocene rocks of the Gidley and Silberling quarries of USA\cite{smith2009eocene}. The material exhibits several traits suggestive of a close affinity to xantusiids\cite{smith2009eocene,smith2011long}. The Gidley and Silberling rocks are suspected to be correlated with magnetic polarity chron C27r\cite{butler1987magnetic} now inferred to be 63.5 and 62.5 Mya\cite{gradstein2012geologic}. Therefore, we infer a hard minimum of 62.5 Ma.
+We constrain the divergence between cordylids and xantusiids to 61 Ma based on \textit{Palaeoxantusia fera} from the Palaeocene rocks of the Gidley and Silberling quarries of USA\cite{hecht1956new,sullivan1991paleocene}. The material exhibits several traits suggestive of a close affinity to xantusiids\cite{smith2009eocene,smith2011long}. The Gidley and Silberling rocks are suspected to be correlated with magnetic polarity chron C27r\cite{butler1987magnetic} now inferred to be 63.5 and 62.5 Mya\cite{gradstein2012geologic,dinares2014astronomical,ogg2020geomagnetic}. Therefore, we apply a hard minimum of 62.5 Ma.
 
 \subsubsection*{Node 3. (Laterata) – 138.7 Ma (min) 140.1 (max)}
-The node defining Laterata (Teiioidea, Amphisbaenia, and Lacertidae) was constrained to 138.7 Ma. The oldest known fossil material that can be referred to Lacertidae or Teiiodea is \textit{Purbicella ragei} from the Cherty Freshwater Beds of the Lulworth Formation of the Purbeck Group, England UK\cite{evans2012new}. Key morphological characters present in the material include the presence of a pterygoid lappet on the quadrate, a narrow pyriform recess, a jugal located dorsal to the maxilla, and a parietal with anterior tabs that slot into the underside of the frontal\cite{conrad2008phylogeny,evans2003feet}. The Cherty Freshwater Beds are part of the Purbeck Group and considered to be Berriasian in age, Lower Cretaceous\cite{radley2012wealden}. The upper boundary of the Berriasian is considered to be 139.4 $\pm$ 0.7 Ma\cite{gradstein2012geologic}therefore, providing a hard minimum of 138.7. This constraint is older than the date of 122 $\pm$ 1.0 Ma based on \textit{Ptilodon}\cite{nydam2002lizards,winkler1990early} used in Tolley \textit{et al.}\cite{tolley2013large}.
+The node defining Laterata (Teiioidea, Amphisbaenia, and Lacertidae) was constrained to 138.7 Ma. The oldest known fossil material that can be referred to Lacertidae or Teiiodea is \textit{Purbicella ragei} from the Cherty Freshwater Beds of the Lulworth Formation of the Purbeck Group, England UK\cite{evans2012new}. Key morphological characters present in the material include the presence of a pterygoid lappet on the quadrate, a narrow pyriform recess, a jugal located dorsal to the maxilla, and a parietal with anterior tabs that slot into the underside of the frontal\cite{conrad2008phylogeny,evans2008skull}. The Cherty Freshwater Beds are part of the Purbeck Group and considered to be Berriasian in age, Lower Cretaceous\cite{radley2012wealden}. The upper boundary of the Berriasian is considered to be 139.4 $\pm$ 0.7 Ma\cite{gradstein2012geologic} therefore, providing a hard minimum of 138.7. This constraint is older than the date of 122 $\pm$ 1.0 Ma based on \textit{Ptilodon}\cite{nydam2002lizards,winkler1990early} used in Tolley \textit{et al.}\cite{tolley2013large}.
   
 \subsubsection*{Node 4. (Lacertibaenia) – 61 Ma (min) 100 (max)}
 We constrain the node representing the divergence of Lacertibaenia (Amphisbaenia and Lacertidae) to 61 Ma based on \textit{Plesiorhineura tsentasi} from the Palaeocene of USA\cite{sullivan1985new}. Older fossil material named \textit{Hodzhakulia} (112 $\pm$ 1.0 Ma) used in Tolley \textit{et al.}\cite{tolley2013large} is less certainly amphisbaenian and may therefore be a problematic calibration point\cite{hipsley2009integration}.
@@ -246,18 +260,18 @@ Anguimorpha 148 Ma, minimum hard bound based on \textit{Dorsetisaurus} sp. from 
 \subsubsection*{Node 6. (crown Serpentes) – 93.9 Ma (min) 100.5 Ma (max)}
 The divergence between \textit{Liotyphlops} and \textit{Dinodon} (crown Serpentes) was constrained to a hard minimum of 93.9 Ma and maximum of 100.5 Ma based on \textit{Haasiophis terrasanctus} from the Late Cretaceous of the Middle East\cite{tchernov2000fossil,rieppel2003anatomy}. This date is the same as used elsewhere (e.g. 93.9 Ma used by\cite{head2015fossil,hsiang2015origin})
  
-\subsubsection*{Node I. (Iguania) – not constrained}
-The oldest stem iguanians are uncertain\cite{bolet2013fossil}. Fossils from the Early Jurassic previously referred to iguanians may belong to another clade (e.g.\cite{jones2013integration}).
+\subsubsection*{Node G. (Iguania) – not constrained}
+The oldest stem iguanians are uncertain\cite{bolet2013fossil}. Fossils from the Early Jurassic previously referred to iguanians\cite{evans2002fossil} may belong to another clade (e.g.\cite{jones2013integration}).
  
 \subsubsection*{Node 7. (Anguioidea) – 74.5 Ma (min) 76.6 (max)}
-The node representing the most recent common ancestor (MRCA) of Xenosauridae and Anguidae was constrained to a minimum of 74.5 Ma. The oldest known fossil material representing Anguidae is \textit{Odaxosaurus}\cite{nydam2013lizards} from the Kaiparowits Formation, locality OMNH V5, of Garfield County, Utah, USA. An integrated analysis using morphological and molecular data recovers \textit{Odaxosaurus piger} as the sister taxon to Glyptosaurinae\cite{conrad2011combined}. Extensive stratigraphic and isotope analyses of the Kaiparowits Formation indicate an age range of 74.5–76.6 Myr\cite{roberts200540ar,roberts2013kaiparowits}. Therefore providing a hard minimum estimate of 74.5. 
+The node representing the most recent common ancestor (MRCA) of Xenosauridae and Anguidae was constrained to a minimum of 74.5 Ma. The oldest known fossil material representing Anguidae is \textit{Odaxosaurus}\cite{nydam2013lizards} from the Kaiparowits Formation, locality OMNH V5, of Garfield County, Utah, USA. An integrated analysis using morphological and molecular data recovers \textit{Odaxosaurus piger} as the sister taxon to Glyptosaurinae\cite{conrad2011combined}. Extensive stratigraphic and isotope analyses of the Kaiparowits Formation indicate an age range of 74.5 - 76.6 Ma\cite{roberts200540ar,roberts2013kaiparowits}. Therefore providing a hard minimum estimate of 74.5 Ma. 
  
 \subsubsection*{Node 8. (Pleurodonta) – 70 Ma (min) 71.2 (max)}
-Crown-group pleurodont Iguania is constrained to a minimum date of 70 Ma. The earliest certain representative of crown-group pleurodont iguanians is \textit{Saichangurvel}\cite{conrad2007complete} from the Late Campanian (72.5 $\pm$ 2.5 Ma) of Mongolia. This constraint was also used by Tolley \textit{et al.}\cite{tolley2013large} with a date of 70.6 $\pm$ 0.6 Mya.
+Crown-group pleurodont Iguania is constrained to a minimum date of 70 Ma. The earliest certain representative of crown-group pleurodont iguanians is \textit{Saichangurvel}\cite{conrad2007complete} from the Late Campanian (72.5 $\pm$ 2.5 Ma) of Mongolia. This constraint was also used by Tolley \textit{et al.}\cite{tolley2013large} with a date of 70.6 $\pm$ 0.6 Ma.
  
 \subsection{Internal points}
 \subsubsection*{Node C. (stem Chamaeleonidae) – not constrained}
-We do not constrain this node. Although a fossil skeleton (specimen JZC Bu154) from the Cretaceous of Myanmar (99 Ma) has been referred to the stem of Chamaeleonidae\cite{daza2016mid}, and previously used to constrain analyses (e.g.\cite{skawinski2017evolution}), this material is currently in the process of a more detailed study and is almost certainly not even a lepidosaur (Susan Evans \textit{pers comm.} 2022).
+We do not constrain this node. Although a fossil skeleton (specimen JZC Bu154) from the Cretaceous of Myanmar (99 Ma) has been referred to the stem of Chamaeleonidae\cite{daza2016mid}, and previously used to constrain analyses (e.g.\cite{skawinski2017evolution}), this material represents an abanerpetontid and is not even a lepidosaur\cite{daza2020enigmatic}.
  
 \subsubsection*{Node 9. (\textit{Calumma}) – 16 Ma (min) 20 Ma (max)}
 The genus \textit{Calumma} is constrained to a hard minimum date of 16 Ma. The earliest known representative of this genus is a nearly complete articulated skull, \textit{Calumma benovskyi}, from the Early Miocene Hiwegi Formation of Rusinga Island Kenya\cite{vcervnansky2020only}. Detailed morphological comparisons and phylogenetic analyses confidently place this specimen within \textit{Calumma}\cite{vcervnansky2020only}.

@@ -66,7 +66,7 @@ and Natalie Cooper$^{1*}$
 \section{Abstract}
 
 Evolutionary shifts in chromosome compositions (karyotypes) are major drivers of speciation and genome diversification. 
-The loss of ancestral chromosomes via fusion has been hypothesised as a mechanism for the evolutionary reduction of chromosomes; a frequently implied karyotypic shift. 
+Fusion of ancestral chromosomes via fusion has been hypothesised as a mechanism for the evolutionary reduction of the total chromosome number; a frequently implied karyotypic shift. 
 However, empirical phylogenetic tests of this hypothesis are rare as they require model systems with variable karyotypes, known chromosome features, and a robust phylogeny. 
 Here we used chameleons, lizards with exceptionally variable and well-known karyotypes, to test whether chromosomal fusions explain the repeated evolution of smaller-than-ancestral karyotypes. 
 We combined novel data, phylogenetic inference, and literature records to compare karyotypes from 83 species of chameleons. Using a phylogenetic comparative approach, we estimated ancestral states and used generalised linear models (GLMs) to test for associations among chromosomal features. 
@@ -90,13 +90,13 @@ The answer is likely complex, but is partially explained by different evolutiona
 
 The evolutionary dynamics of chromosome rearrangements have been studied for over a century in multiple vertebrate groups\cite{damas2021vertebrate}. 
 Squamate reptiles (lizards and snakes) have been a focus of evolutionary cytogenetics as they have exceptionally diverse karyotypes that can be either ‘asymmetrical’ or ‘symmetrical’ based on the occurrence of chromosomes of distinct dimensional classes\cite{stebbins1950chapter,white1973}. 
-Asymmetrical karyotypes contain chromosomes that can be binned into categories of either large, macrochromosomes or small, dot-shaped microchromosomes.
+Asymmetrical karyotypes contain chromosomes that can be binned into categories of either large macrochromosomes or small, dot-shaped microchromosomes.
 In contrast, symmetrical karyotypes contain chromosomes that cannot be binned into size classes as their lengths vary near continuously. 
 Evolutionary transitions between asymmetrical and symmetrical chromosome arrangements are hypothesised to have occurred in both directions, primarily by the mechanisms of fission and fusion (e.g. \cite{olmo2008trends,srikulnath2015karyotype}). 
 While most major squamate groups have only asymmetrical or only symmetrical karyotypes (i.e. one or the other), a handful of squamates exhibit both\cite{mezzasalma2021lizards}, making them valuable models for understanding the evolutionary mechanisms that allow for (or restrict) evolutionary changes in karyotype.    
 
 True chameleons (Squamata: Chamaeleonidae) are karyologically diverse with substantial variability in chromosome number (2n = 20-62), morphology, macro:micro-chromosome ratio, localisation of different chromosome markers and evidence of evolutionary transitions between asymmetrical and symmetrical karyotype structures\cite{rovatsos2017evolution,nielsen2018dynamic}.
-Previous research has speculated that the variability of chameleon karyotypes is explained by a tendency for ancestral chromosome loss via microchromosome fusion\cite{rovatsos2017evolution}, causing the repeated evolution of symmetrical karyotypes from ancestors with asymmetrical arrangements. 
+Previous research has speculated that the variability of chameleon karyotypes is explained by a tendency for ancestral chromosome disappearance via microchromosome fusion\cite{rovatsos2017evolution}, causing the repeated evolution of symmetrical karyotypes from ancestors with asymmetrical arrangements. 
 However, this hypothesis has not been tested within an empirical, phylogenetic framework or using mechanistic expectations of chromosome loss over evolutionary time. 
 Furthermore, changes in the chromosome number lacked evidence from interstitial telomeric sequences (ITSs), whose presence/absence was not considered phylogenetically informative or able to reliably describe past chromosome rearrangements\cite{rovatsos2017evolution}.
 
@@ -139,6 +139,7 @@ One of us (MM) then reconstructed karyotypes using standard Giemsa coloration (5
 The chromosome characters we recorded were (i) haploid chromosome number, (ii) arm number, (iii) macro- and (iv) microchromosome number, (v) position of NOR loci (detected using Ag-NOR staining following Howell and Black\cite{howell1980controlled} and Fluorescence in Situ Hybridization (FISH) of telomeric (TTAGGG)n repeats as in Sidhom \textit{et al.}\cite{sidhom2020karyological}, (vi) number of ITS (considering only interstitial and peritelomeric signals present in both homologs, thus excluding centromeric and standard telomeric positive signals; i.e. “true” ITS \textit{sensu} Bolz\'{a}n\cite{bolzan2012chromosomal,chirino2017chromosomal}), and (vii) and the morphology of each macro-chromosome pair following previous classification based on the centromeric index (metacentric, submetacentric, subtelocentric and telocentric\cite{levan1964nomenclature}). 
 We collated chromosome data for additional chameleon species from the literature. 
 The full dataset along with literature references is available on the NHM Data Portal\cite{chameleon-data}.
+Detailed results of the cytogenetic analyses are in the Supplementary Materials (Figures A12 - A17).
 
 \subsection{Analyses}
 All analyses except the chromosome evolutionary models (see below) were carried out in R\cite{R}, and R code to reproduce our analyses is available at github.com/nhcooper123/chameleon-chromosomes (Zenodo DOI will be added on acceptance\cite{coopercode2022}). 
@@ -221,7 +222,7 @@ We found no significant correlations among chromosome numbers and any of our eco
 That chromosomal rearrangements have contributed to the evolutionary changes in karyotypes is not controversial or new (e.g.\cite{deakin2016anchoring}), but when, how, and how often they have contributed is less clear. 
 In addition, chromosome rearrangements among closely-related species are usually tracked with molecular cytogenetics\cite{lisachov2021whole}, but the dynamics of chromosome evolutionary changes across vertebrate groups have rarely been tested with macroevolutionary methods. 
 Our study provides strong evidence that in the diverse lineage of Chamaeleonidae, regular evolutionary fusion of microchromosomes has resulted in multiple, independent origins of karyotypes with a reduced number of chromosomes (from 2n =36 to 2n = 24-22; Figure \ref{fig-best}). 
-This intriguing result suggests that in chameleons (and likely other groups) a single process of chromosome evolution was responsible for both convergent and divergent evolution of karyotypes. 
+This intriguing result suggests that in chameleons a single dynamic of chromosome evolution was responsible for both convergent and divergent evolution of karyotypes. 
 Below we discuss chromosome loss and karyotypic convergence in relation to previous studies, address some caveats of using ITSs to infer fusion events, the apparent lack of correlation between chameleon karyotypes and natural history traits, and speculate why so many microchromosomes have fused in chameleons.    
 
 \subsection{Reduction, status, and convergence during chromosome evolution}
@@ -229,12 +230,12 @@ Using GLMs, we found a strong negative correlation between the number of macro- 
 This result is consistent with a reduction in the number of microchromosomes with an increase in the number of macrochromosomes, as would be expected following fusion events in asymmetrical karyotypes. 
 Even more compellingly, we found a positive correlation between the number of macrochromosomes and ITSs which is clearly consistent with fusion of microchromosomes into macrochromosomes in those species with reduced chromosome numbers (Figure \ref{fig-its}B). 
 We also observed putative convergent reductions in several genera including \textit{Calumma}, \textit{Furcifer}, \textit{Rhampholeon}, and \textit{Triceros}. 
-Our simulation analysis supports that there are more observations of these smaller-than-ancestral karyotypes with a reduced chromosome number (2n = 24-22) than would be expected by chance (Figure \ref{fig-predict}). 
+Our simulation analysis supports that, compared to the hypothesised chameleon ancestral condition (2n = 36), there are more observations of these with a reduced chromosome number (2n = 24-22) than would be expected by chance (Figure \ref{fig-predict}). 
 Collectively, this result is consistent with frequent microchromosome losses during the evolution of chameleons leading to convergence in the number of chromosomes. 
-This is particularly evident in genera such as \textit{Furcifer} and \textit{Trioceros}, which have karyotypes either similar to the hypothesised chameleon ancestral condition of 2n = 36 (2n = 34 in \textit{F. balteatus} and several 2n = 36 in \textit{Trioceros}), and karyotypes with a reduced total chromosome number (2n = 24-22) in other species (Figure \ref{fig-best}). 
+This is particularly evident in different genera such as \textit{Furcifer} and \textit{Trioceros}, which have karyotypes either similar to the hypothesised chameleon ancestral condition of 2n = 36 (2n = 34 in \textit{F. balteatus} and several 2n = 36 in \textit{Trioceros}), and karyotypes with a reduced total chromosome number (2n = 24-22) in other species (Figure \ref{fig-best}). 
 We use the term ``convergence'' in a relative sense related to the number of chromosomes, as karyotypes with lower chromosome numbers showed higher variability in macrochromosome morphology (Supplementary Materials: Figure A11), suggesting the occurrence of different intrachromosomal rearrangements and/or fusion events between microchromosomes. 
 Thus, convergent chameleon chromosome loss occurred via unique pathways of microchromosome fusion in different lineages, a well-established phenomenon of telomeric fusion in higher eukaryotes (e.g.\cite{heacock2004molecular}).  
-Chromosome size convergence is often discussed, particularly in species with differentiated, heteromorphic sex chromosomes \cite{montiel2017discovery,kratochvil2021sex}. 
+Chromosome size convergence is often discussed, particularly in species with differentiated, heteromorphic sex chromosomes\cite{montiel2017discovery,kratochvil2021sex}. 
 However, convergence in chromosome number is a far less frequently reported phenomenon (particularly of fusion-based convergence; see Rens \textit{et al.}\cite{rens2003reversal} for fission-based example), making chameleons a valuable study system for chromosome evolution. 
 Interestingly, our results are consistent with the karyotypic orthoselection model proposed by White\cite{white1973,white1975chromosome}. 
 Following White's model, chromosome changes found in any given group are not random, but characterised by the accumulation of similar chromosome rearrangements, eventually leading to convergent karyotype structures\cite{white1973,white1975chromosome}. 
@@ -245,28 +246,29 @@ Furthermore, chromosomes in these groups also had a more conserved morphology th
 These genera with conserved karyotypes suggest that the tendency for microchromosomes to fuse may either (i) not always be advantageous or (ii) be a karyotypic trait that is lost (or gained). 
 
 \subsection{Alternative explanations for observed patterns of chromosome fusions}
-In addition to the fusion of chromosomes, the presence of ITSs can also be explained by translocations within chromosomes\cite{bolzan2017interstitial}. 
+In addition to the fusion of chromosomes, the presence of ITSs can also be explained by chromosome inversions\cite{bolzan2017interstitial}. 
 However, we think this possibility is unlikely to change the interpretation that many of the ITSs we observed are explained by fusion events. 
-Specifically, if the ITSs we observed were mostly the result of within-chromosome translocations, we should not have observed the positive correlation between number of macrochromosomes and number of microchromosomes (Figure \ref{fig-chroms}C). 
-We recognise that the relationship between number of ITSs and number of macrochromosomes, while significant, is not completely linear (Figure \ref{fig-its}B), which suggests other processes (such as chromosome translocations and/or the amplification of DNA repeats) are likely involved in generating some of the ITSs we observed.
+Specifically, if the ITSs we observed were mostly the result of chromosome inversions, we should not have observed the positive correlation between number of macrochromosomes and number of microchromosomes (Figure \ref{fig-chroms}C). 
+We recognise that the relationship between number of ITSs and number of macrochromosomes, while significant, is not completely linear (Figure \ref{fig-its}B), which suggests other processes (such as chromosome inversions and/or the amplification of DNA repeats) are likely involved in generating some of the ITSs we observed.
 
 \subsection{What about \textit{Rieppeleon kerstenii}?}
-Our dataset supports chromosome loss and karyotype reduction as having occurred in multiple genera of chameleons. 
+Our dataset supports chromosome loss via chromosome fusions and reduction of the total chromosome number as having occurred independently in multiple genera of chameleons. 
 Most genera with higher numbers of chromosomes are matched to the putative ancestral karyotype (2n = 36), with one glaring exception; the species \textit{Rieppeleon kerstenii} which has a karyotype of 2n = 62. 
 It is also worth noting that two additional species (\textit{Calumma amber} and \textit{Calumma tarzan}) in our dataset have a larger-than-ancestral karyotype of 2n = 38. 
 This is not surprising considering that our chromosome analyses and macroevolutionary models did not reject the occurrence of chromosome fissions in chameleon karyotypes, which likely generated a higher number of chromosomes in these taxa.
 
 \subsection{Why has microchromosome fusion happened so frequently in chameleons?}
 Microchromosome fusion is widespread in vertebrate animals\cite{waters2021microchromosomes}. 
-If chromosome reduction via fusion is so common, is that because it is beneficial? In other words, what potential benefits are there to having a symmetrical (versus asymmetrical) karyotype? 
+If the reduction of the total chromosome number via fusion is so common, is that because it is beneficial? In other words, what potential benefits are there to having a symmetrical (versus asymmetrical) karyotype? 
 One clear benefit would be to reinforce reproductive isolation. 
 Chromosome fusions may select against introgression between diverging populations, because the potential for viable offspring is decreased between individuals with divergent karyotypes\cite{cicconardi2021chromosome}.
 This incompatibility might serve to initiate or hasten speciation through rapid evolution of key traits in reproductively-isolated populations. If this hypothesis were the case in chameleons, we might expect to observe correlates between natural history traits and karyotypes, which we did not (Supplementary Materials Table A3; Figures A4-A5). 
 However, it is also possible that we did not measure the relevant traits associated with speciation in chameleons, and/or that these traits are genus or population specific.
 Perhaps larger chromosomes achieved through fusions may be beneficial in terms of genome structure and function? Evidence for this possibility is mixed. In some insects, there is a positive correlation between chromosome size and the functional gene conservation\cite{cicconardi2021chromosome}. 
 However, in other groups like birds (and importantly some non-avian reptiles) microchromosomes tend to be higher in gene content\cite{waters2021microchromosomes}.
-The types of microchromosome fusions observed in chameleons have also occurred in other squamates\cite{deakin2016anchoring}; including in lacertids (\textit{Lacerta agilis}\cite{srikulnath2014identification}) and notably geckos where repeated fusions have ostensibly eliminated microchromosomes altogether (\textit{Gekko hokuensis}; \cite{srikulnath2015karyotype}). 
-Thus, a broader phylogenetic sampling of squamates with an evolutionary history of chromosome fusion would provide valuable insights for future research.
+The types of microchromosome fusions observed in chameleons have also occurred in other squamates\cite{deakin2016anchoring}; including in lacertids (\textit{Lacerta agilis}\cite{srikulnath2014identification}) and notably geckos where repeated fusions have ostensibly eliminated microchromosomes altogether (\textit{Gekko hokuensis}\cite{srikulnath2015karyotype}). 
+Thus, a broader phylogenetic sampling of squamates with an evolutionary history of chromosome fusion would provide valuable insights for future research. 
+The current lack of any obvious correlation between the reduction of the total chromosome number and life history traits in seems to support White's\cite{white1973,white1975chromosome} view on intrinsic chromosome/genome properties as the most robust explanation for orthoselection of chameleon karyotypes.
 
 \subsection{Conclusions}
 Collectively, our results suggest that the fusion of microchromosomes into macrochromosomes has been a common occurrence during the evolution of true chameleons. 
@@ -290,7 +292,7 @@ The sequences generated in this study are available from GenBank with the primar
 MM was funded by the European Union’s Horizon 2020 research and innovation programme under the Marie Sk\l{}odowska-Curie grant agreement No 797027.
 
 \section{Author contributions}
-MM collated data and performed molecular and karyotypic analyses. GO and FMG provided the samples. MM, JWS, MEHJ and SPL and NC conceptualised the study. NC ran the statistical analyses. MM, JWS and NC wrote the first draft. All authors reviewed and edited drafts and approved the final version for publication.
+MM, JWS, MEHJ and SPL and NC conceptualised the study. MM collated data and performed molecular and cytogenetic analyses. MM, GO and FMG critically evaluated the cytogenetic results. NC ran the statistical analyses. MM, JWS and NC wrote the first draft. All authors reviewed and edited drafts and approved the final version for publication.
 
 \section{Conflict of interest declaration}
 We declare we have no competing interests.

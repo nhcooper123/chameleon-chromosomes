@@ -1,5 +1,5 @@
 ---
-title: "Extracting the outputs of ChromEvol"
+title: "Extracting the outputs of ChromEvol - OTUs"
 author: "Natalie Cooper"
 output: html_document
 ---
@@ -11,7 +11,6 @@ output: html_document
 library(tidyverse)
 library(here)
 library(phytools)
-library(treeplyr)
 library(ChromEvol) #install this from source
 library(here)
 ```
@@ -19,21 +18,20 @@ library(here)
 ### Model comparison
 First look at the models and choose the best using AIC, and also extract the model parameters. 
 
-Note that due to the rescaling of the tree, we need to multiply these values by the scaling constant to get the true values. This is specified in the `chromEvol.res` outfile, but doesn't seem to be automatically extractable so I've done this by hand to create the vector below. Note that it refers to the tree, so there are only four repeated values, one for the taxon tree minus Riepelleon, one for the taxon tree with Riepelleon, one for the species tree minus Riepelleon, and one for the species tree with Riepelleon.
+Note that due to the rescaling of the tree, we need to multiply these values by the scaling constant to get the true values. This is specified in the `chromEvol.res` outfile, but doesn't seem to be automatically extractable so I've done this by hand to create the vector below. Note that it refers to the tree, so there are only two repeated values, one for the taxon tree with Riepelleon, one for the taxon tree without Riepelleon.
 
 ```{r}
-rescale_param <- c(rep(0.00397248, 3), rep(0.0037069, 3),
-                   rep(0.00399906, 3), rep(0.00373236, 3))
+rescale_param <- rep(c(0.00888284, 0.00826847), 3)
 ```
 
-Now loop through the 12 sets of models
+Now loop through the 6 sets of models
 ```{r, message = FALSE}
 # Get a list of the output folder names
 output_names <- list.files(path = here("chromEvol/OTUs"), pattern = "_out")
 output <- NULL
 
-# Loop through all 12 folders of outputs
-for (i in 1:12) {
+# Loop through all 6 folders of outputs
+for (i in 1:6) {
   # Read in the model summary data
   summary <- read_delim(here(paste0("chromEvol/OTUs/", output_names[i], "/models_summary.txt")), 
                         delim = "\t")
@@ -71,5 +69,5 @@ for (i in 1:12) {
 
 # Look and save at the outputs
 output
-#write_csv(output, path = here("outputs/OTUs/chromEvol-model-summaries.csv"))
+#write_csv(output, file = here("outputs/OTUs/chromEvol-model-summaries.csv"))
 ```

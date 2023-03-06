@@ -1,3 +1,6 @@
+#Old results
+outputs_original/*
+
 #ChromEvol package
 chromEvol/chromEvol_source
 chromEvol/ChromEvol_0.9-1.tar.gz

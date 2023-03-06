@@ -1,0 +1,71 @@
+---
+title: "Preparing the data for ChromoSSE models"
+author: "Natalie Cooper"
+output: html_document
+---
+
+```{r, message = FALSE}
+# Load libraries
+library(tidyverse)
+library(here)
+library(ape)
+library(phytools)
+library(here)
+```
+
+## Prepare data and trees for ChromoSSE analyses
+
+Read in the data and extract species names and n
+```{r, message = FALSE}
+# Read in the data
+ds <- read_csv(here("data/chromosome-data-species.csv"))
+
+# Exclude outgroup
+ds_noOutgroup <- ds %>% 
+  filter(tips != "Leiolep")
+
+# Exclude Rieppeleon and outgroup
+ds_exclude <- ds %>% 
+  filter(tips != "Riebrev" & tips != "Leiolep")
+
+# Retain only species names and haploid chromosome numbers
+chromo_noOutgroup <- ds_noOutgroup %>%
+  select(tips, haploidn)
+
+chromo_exclude <- ds_exclude %>%
+  select(tips, haploidn)
+
+```
+
+Read in the tree, check it is ultrametric and remove node labels
+```{r}
+# Read in the tree
+tree <- read.tree(here("data/Bayesian-tree-species.tre"))
+# Tree is not ultrametric due to weird rounding issues
+# Fix this
+tree <- force.ultrametric(tree)
+# Check tree is now ultrametric
+is.ultrametric(tree) # TRUE
+# Remove node labels
+tree$node.label <- NULL
+
+tree_noOutgroup <- drop.tip(tree, "Leiolep")
+# Remove "Riebrev" and outgroup from the tree
+tree_exclude <- drop.tip(tree, c("Riebrev", "Leiolep"))
+```
+
+Save the trees and data for use in ChromoSSE
+```{r}
+# Save tree
+write.nexus(tree_noOutgroup, file = here("ChromoSSE/data/tree_for_ChromoSSE_noOutgroup.tre"), translate = FALSE)
+write.nexus(tree_exclude, file = here("ChromoSSE/data/tree_for_ChromoSSE_exclude.tre"), translate = FALSE)
+# Save data
+write_delim(chromo_noOutgroup, col_names =  FALSE, 
+          file = here("ChromoSSE/data/data_for_ChromoSSE_noOutgroup.tsv"), 
+          delim = "\t")
+write_delim(chromo_exclude, col_names =  FALSE, 
+          file = here("ChromoSSE/data/data_for_ChromoSSE_exclude.tsv"), 
+          delim = "\t")
+```
+
+> Now go to RevBayes (rb) package in the terminal and run scripts...

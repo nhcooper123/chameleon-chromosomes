@@ -1,11 +1,12 @@
 #ChromEvol package
-chromEvol/chromEvol_source-current
+chromEvol/chromEvol-source
 chromEvol/ChromEvol_0.9-1.tar.gz
 chromEvol/README_Running chromEvol
 
 #Large ChromEvol outputs
 chromEvol/chromEvol_out_scaled*
 extra-chromEvol-models/*
+chromEvol_original/*
 
 # Large datasets
 raw-data/*

@@ -22,7 +22,7 @@ library(patchwork)
 Read in the data and the tree
 ```{r, message = FALSE, echo = FALSE}
 mydata <- read_csv(here("data/chromosome-data-species.csv"))
-mytree <- read.tree(here("data/ML-tree-species.tre"))
+mytree <- read.tree(here("data/Bayesian-tree-species.tre"))
 
 # Remove outgroup
 mydata <- mydata %>%

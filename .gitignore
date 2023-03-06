@@ -4,8 +4,8 @@ chromEvol/ChromEvol_0.9-1.tar.gz
 chromEvol/README_Running chromEvol
 
 #ChromoSSE package
-ChromoSEE/rb
-ChromoSEE/history*
+ChromoSSE/rb
+ChromoSSE/history.txt
 
 #Large ChromEvol outputs
 chromEvol/chromEvol_out_scaled*

@@ -11,7 +11,7 @@ To cite the paper:
 > Marcello Mezzasalma, Jeffrey W. Streicher, Fabio M. Guarino, Marc E.H. Jones, Simon P. Loader, Gaetano Odierna, and Natalie Cooper 2022. Microchromosome fusions underpin convergent evolution of chameleon karyotypes. TBC.
 
 To cite this repo: 
-> Natalie Cooper. 2022. GitHub: nhcooper123/chameleon-chromosomes: code for the paper. Zenodo. DOI: TO ADD.
+> Natalie Cooper. 2023. GitHub: nhcooper123/chameleon-chromosomes: code for the paper. Zenodo. DOI: TO ADD.
 
 ![alt text](https://github.com/nhcooper123/chameleon-chromosomes/raw/master/manuscript/figures/new-tree-plot4.png)
 
@@ -22,11 +22,10 @@ For reproducibility purposes, if you want to rerun the data wrangling steps in s
 
 The cleaned datasets, along rest of the ancillary data required to run all analyses and produce all figures is within the `data` folder.
 
-* *ML-tree-species.tre* - tree needed for the main analyses in the paper
+* *Bayesian-tree-species.tre* - tree needed for the main analyses in the paper
 * *chromosome-data-species.csv* - data needed for the main analyses in the paper
-* *ML-tree.tre* - tree for the all OTUs analyses in the supplementary materials
-* *chromosome-data.csv* - data needed for the main analyses in the paper
-* *ML-tree.tre* - tree for the all OTUs analyses in the supplementary materials
+* *Bayesian-tree.tre* - tree for the all OTUs analyses in the supplementary materials
+* *chromosome-data.csv* - data needed for the all OTUs analyses in the supplementary materials
 * *chromevol-simulations-outputs-best.csv* - outputs from the "best" model of chromosome evolution used in the main text. The equivalent for the all OTUs analyses is in the folder `data/OTUs`.
 * *null-simulations-outputs.csv* - outputs from the null simulations using the best model of chromosome evolution used in the main text. The equivalent for the all OTUs analyses is in the folder `data/OTUs`.
 
@@ -37,25 +36,27 @@ The life-history data all comes from Meiri 2018 so please cite this paper if you
 
 > Meiri, S. Traits of lizards of the world: Variation around a successful evolutionary design. Global Ecol Biogeogr. 2018; 27: 1168– 1172
 
-## ChromEvol analyses (`ChromEvol/` folder)
+## ChromEvol analyses (`chromEvol/` folder)
 
 The majority of analyses run in R, but we also used ChromEvol, a stand alone package available from http://chromevol.tau.ac.il/. The associated paper for the package is:
 
 > Lior Glick, Itay Mayrose, ChromEvol: Assessing the Pattern of Chromosome Number Evolution and the Inference of Polyploidy along a Phylogeny, Molecular Biology and Evolution, Volume 31, Issue 7, July 2014, Pages 1914–1922, https://doi.org/10.1093/molbev/msu122   
 
-To run these analyses you will need to download ChromEvol and save it in the `chromEvol/` folder. This unzips into a folder called `chromEvol_source-current/` that contains the package as an executable called `chromEvol`. I have not uploaded this to the repo because it's not my package. 
+To run these analyses you will need to download ChromEvol and save it in the `chromEvol/` folder. This unzips into a folder called `chromEvol_source/` that contains the package as an executable called `chromEvol`. I have not uploaded this to the repo because it's not my package. 
 
 ChromEvol analyses require a dataset, a tree and a control file. These are within the `chromEvol/` folder preceded by `data_for_chromevol` or `tree_for_chroevol` or with the word `control` somewhere in their name respectively. Several versions exist for the different sensitivity analyses. These analyses save their outputs into the `chromEvol/results` folder, in folders named based on the names of the control files. Full details of how to build control files is in the ChromEvol manual at http://chromevol.tau.ac.il/. We provide code for creating appropriate datasets and trees in `analyses/02-`
 
 Running chromEvol analyses is simple. Just open a Terminal in the `chromEvol` folder and run:
 
-`chromEvol_source-current/chromEvol name-of-control-file`
+`chromEvol_source/chromEvol name-of-control-file`
 
 You can run all analyses from our paper using the shell script: `run_all_models.sh`. 
 
-The `ChromEvol/` folder also includes a folder called `root_freq`. This has the three different root frequency definitions used in the different ChromEvol analyses (see text).
+The `chromEvol/` folder also includes a folder called `root_freq`. This has the three different root frequency definitions used in the different ChromEvol analyses (see text).
 
-Finally the `OTUs` folder within `ChromEvol/` contain the same things but for analyses using all OTUs (found in the supplementary materials of paper).
+Finally the `OTUs` folder within `chromEvol/` contain the same things but for analyses using all OTUs (found in the supplementary materials of paper).
+
+## ChromoSSE analyses (`ChromoSSE/` folder)
 
 -------
 ## R analyses
@@ -63,6 +64,7 @@ The analysis code is divided into `.Rmd` files that run the analyses and plot th
 
 Note that several of these scripts use an R package written by N.Cusimano. You can download this here https://www.en.sysbot.bio.lmu.de/people/employees/cusimano/use_r/. The easiest way to use this is to download the package and save the `ChromEvol.R` file. You can then install these functions in R using `source`. In my repo I kept this within the `chromEvol` folder so used the code `source("chromEvol/ChromEvol.R")` to install the functions.
 
+1. **00-fix-tip-labels-bayesian-tree.R** changes the tip labels of the Bayesian tree to match the dataset.
 1. **01-data-wrangling.Rmd** wrangles the data into a clean format for analyses.
 2. **02A-data-for-chromosome-evolution-models_main.Rmd** creates data and tree files for the ChromEvol analyses.
 3. **02B-data-for-chromosome-evolution-models_OTUs.Rmd** as above but for all OTUs analyses.

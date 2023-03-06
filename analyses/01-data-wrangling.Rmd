@@ -100,11 +100,14 @@ setdiff(ds$Binomial, eco$Binomial)
 
 # Merge
 ds <- left_join(ds, eco)
+
+# Rename sample to tips
+mydata <- rename(ds, tips = sample)
 ```
 
 Read in the tree, then look at the tree structure and check a few features
 ```{r}
-tree <- read.tree(here("raw-data/RAxML_chameleon_constrained_dated_v3.tre"))
+tree <- read.tree(here("data/Bayesian-tree.tre"))
 ```
 
 ```{r}
@@ -118,24 +121,6 @@ is.rooted(tree) # TRUE
 
 # Check tree is ultrametric
 is.ultrametric(tree) # TRUE
-```
-
-Match tree and dataset. 
-```{r, echo = FALSE}
-# Combine and match the tree and data
-# Remove tips not in the data from the tree
-mytree <- drop.tip(tree, setdiff(tree$tip.label, ds$sample))
-
-# Check there are no tips in the data that are not in the tree
-matches <- (match(mytree$tip.label, ds$sample, nomatch = 0))
-length(which(matches == 0)) # Should be zero
-
-# Rename sample to tips
-mydata <- rename(ds, tips = sample)
-
-# Check contents as are expected: 137 taxa in each
-# str(mytree)
-# glimpse(mydata)
 ```
 
 Create a species level tree. 
@@ -169,8 +154,7 @@ Finally write these cleaned data out for use in later analyses.
 Should be 93 taxa in the "species" analyses
 ```{r}
 write_csv(mydata, file = here("data/chromosome-data.csv"))
-write.tree(mytree, file = here("data/ML-tree.tre"))
 #Species level
 write_csv(mydata2, file = here("data/chromosome-data-species.csv"))
-write.tree(mytree2, file = here("data/ML-tree-species.tre"))
+write.tree(mytree2, file = here("data/Bayesian-tree-species.tre"))
 ```

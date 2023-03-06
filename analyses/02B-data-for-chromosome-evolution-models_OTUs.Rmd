@@ -92,11 +92,11 @@ chromo_exclude <- as.data.frame(chromo_exclude)
 Save the tree and data for use in ChromEvol
 ```{r}
 # Save tree
-write.tree(tree_noOutgroup, here("chromEvol/OTUs/tree_for_chromevol_noO"))
+write.tree(tree_noOutgroup, here("chromEvol/OTUs/tree_for_chromevol_noOutgroup"))
 write.tree(tree_exclude, here("chromEvol/OTUs/tree_for_chromevol_exclude"))
 # Save data
 write_csv(chromo_noOutgroup, col_names =  FALSE, 
-          file = here("chromEvol/OTUs/data_for_chromevol_noO"))
+          file = here("chromEvol/OTUs/data_for_chromevol_noOutgroup"))
 write_csv(chromo_exclude, col_names =  FALSE, 
           file = here("chromEvol/OTUs/data_for_chromevol_exclude"))
 ```

@@ -28,6 +28,7 @@ write.tree(tree, file = "data/Bayesian-tree.tre")
 
 ##############################################
 # Extract tree for "species" level analyses
+# Can also do this directly with script 1
 ##############################################
 
 # Read in the species level dataset

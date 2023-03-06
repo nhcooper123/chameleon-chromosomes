@@ -12,7 +12,6 @@ library(tidyverse)
 library(here)
 library(ape)
 library(phytools)
-library(Hmisc)
 ```
 
 Read in the data. This is the data from Marcello

@@ -1,5 +1,8 @@
+# Data wrangling with new tree
+# March 2022
+##############################################
 # Match Bayesian tree with chromosome dataset
-
+##############################################
 # Load packages
 library(ape)
 
@@ -20,4 +23,18 @@ for(i in 1:length(tree$tip.label)){
   tree$tip.label[i] <- tips$tip_name[tips$x == tree$tip.label[i]]
 }
 
+# Save tree
 write.tree(tree, file = "data/Bayesian-tree.tre")
+
+##############################################
+# Extract tree for "species" level analyses
+##############################################
+
+# Read in the species level dataset
+mydata <- read.csv("data/chromosome-data-species.csv")
+
+# Remove taxa not in this dataset
+tree2 <- drop.tip(tree, setdiff(tree$tip.label, mydata$tips))
+
+# Save tree
+write.tree(tree2, file = "data/Bayesian-tree-species.tre")

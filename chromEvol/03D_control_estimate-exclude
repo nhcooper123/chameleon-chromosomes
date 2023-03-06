@@ -1,6 +1,0 @@
-_mainType All_Models
-_outDir results/03D_estimate-exclude_out
-_dataFile data_for_chromevol_exclude
-_treeFile tree_for_chromevol_exclude
-_maxChrNum -10
-_minChrNum -10

@@ -27,13 +27,13 @@ rescale_param <- rep(c(0.00888284, 0.00826847), 3)
 Now loop through the 6 sets of models
 ```{r, message = FALSE}
 # Get a list of the output folder names
-output_names <- list.files(path = here("chromEvol/OTUs"), pattern = "_out")
+output_names <- list.files(path = here("chromEvol/OTUs/results"), pattern = "_out")
 output <- NULL
 
 # Loop through all 6 folders of outputs
 for (i in 1:6) {
   # Read in the model summary data
-  summary <- read_delim(here(paste0("chromEvol/OTUs/", output_names[i], "/models_summary.txt")), 
+  summary <- read_delim(here(paste0("chromEvol/OTUs/results/", output_names[i], "/models_summary.txt")), 
                         delim = "\t")
 
   # Select only the two models we want
@@ -50,14 +50,14 @@ for (i in 1:6) {
   # Read in the parameter results by specifying the path to the folder for each model
   # This throws a lot of warnings about NAs because of the strange ways these outputs are
   # contructed. But it works fine
-  resultsC <- read.ce(here(paste0("chromEvol/OTUs/", output_names[i], "/CONST_RATE_NO_DUPL")))
-  resultsCR <- read.ce(here(paste0("chromEvol/OTUs/", output_names[i], "/CONST_RATE")))
-  resultsCD <- read.ce(here(paste0("chromEvol/OTUs/", output_names[i], "/CONST_RATE_DEMI")))
-  resultsCDE <- read.ce(here(paste0("chromEvol/OTUs/", output_names[i], "/CONST_RATE_DEMI_EST")))
-  resultsL <- read.ce(here(paste0("chromEvol/OTUs/", output_names[i], "/LINEAR_RATE_NO_DUPL")))
-  resultsLR <- read.ce(here(paste0("chromEvol/OTUs/", output_names[i], "/LINEAR_RATE")))
-  resultsLD <- read.ce(here(paste0("chromEvol/OTUs/", output_names[i], "/LINEAR_RATE_DEMI")))
-  resultsLDE <- read.ce(here(paste0("chromEvol/OTUs/", output_names[i], "/LINEAR_RATE_DEMI_EST")))
+  resultsC <- read.ce(here(paste0("chromEvol/OTUs/results/", output_names[i], "/CONST_RATE_NO_DUPL")))
+  resultsCR <- read.ce(here(paste0("chromEvol/OTUs/results/", output_names[i], "/CONST_RATE")))
+  resultsCD <- read.ce(here(paste0("chromEvol/OTUs/results/", output_names[i], "/CONST_RATE_DEMI")))
+  resultsCDE <- read.ce(here(paste0("chromEvol/OTUs/results/", output_names[i], "/CONST_RATE_DEMI_EST")))
+  resultsL <- read.ce(here(paste0("chromEvol/OTUs/results/", output_names[i], "/LINEAR_RATE_NO_DUPL")))
+  resultsLR <- read.ce(here(paste0("chromEvol/OTUs/results/", output_names[i], "/LINEAR_RATE")))
+  resultsLD <- read.ce(here(paste0("chromEvol/OTUs/results/", output_names[i], "/LINEAR_RATE_DEMI")))
+  resultsLDE <- read.ce(here(paste0("chromEvol/OTUs/results/", output_names[i], "/LINEAR_RATE_DEMI_EST")))
   
   # Add the parameters to the summary
   # Note these will end up doubled up due to the results here being for each model

@@ -4,3 +4,5 @@ chromEvol_source/chromEvol 02A_control_18-root-noO
 chromEvol_source/chromEvol 02B_control_18-root-exclude
 chromEvol_source/chromEvol 03A_control_estimate-noO
 chromEvol_source/chromEvol 03B_control_estimate-exclude
+
+chromEvol_source/chromEvol 04_control_simulations

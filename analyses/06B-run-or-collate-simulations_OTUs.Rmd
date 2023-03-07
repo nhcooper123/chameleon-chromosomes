@@ -22,7 +22,7 @@ sim_output <- data.frame(haploidn = NULL, tips = NULL, sim = NULL)
 # Loop through all 1000 folders of outputs
 for (i in 0:999) {
   # Choose directory
-  dir <- paste0("chromEvol/OTUs/chromEvol_out_simulations/", i, "/")
+  dir <- paste0("chromEvol/OTUs/results/04_simulations/", i, "/")
   # Read in counts data
   counts <- read_delim(here(paste0(dir,"simCounts.txt")), 
                        delim = "\t", col_names = FALSE)
@@ -55,10 +55,10 @@ Create null simulations by randomly assigning chromosome numbers to the tips. Th
 # Read in observed data
 mydata <- read_csv(here("data/chromosome-data.csv"))
 
-# Remove Rieppeleon
+# Remove Rieppeleon and outgroup
 mydata <- 
   mydata %>% 
-  filter(genus != "Rieppeleon")
+  filter(genus != "Rieppeleon" & genus != "Leiolepis")
 
 # Rename the haploidn column
 # Select only tip names, genus and observed haploidn

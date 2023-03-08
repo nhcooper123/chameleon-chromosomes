@@ -22,7 +22,7 @@ sim_output <- data.frame(haploidn = NULL, tips = NULL, sim = NULL)
 # Loop through all 1000 folders of outputs
 for (i in 0:999) {
   # Choose directory
-  dir <- paste0("chromEvol/results/simulations-best-model-18/", i, "/")
+  dir <- paste0("chromEvol/results/04_simulations/", i, "/")
   # Read in counts data
   counts <- read_delim(here(paste0(dir,"simCounts.txt")), 
                        delim = "\t", col_names = FALSE)

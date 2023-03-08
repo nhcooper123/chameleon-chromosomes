@@ -1,0 +1,37 @@
+---
+title: "Assessing convergence and extracting parameter estimates from ChromoSSE"
+output: html_document
+---
+
+```{r}
+library(RevGadgets)
+library(coda)
+library(ggplot2)
+library(ggtree)
+library(here)
+```
+
+Read in output from ChromoSSE
+```{r}
+# read the trace and discard burnin
+trace_quant <- readTrace(path = here("ChromoSSE/OTUs/output/ChromoSSE_exclude_n18_model.log"), burnin = 0.1)
+```
+
+Extract ESS
+```{r}
+trace_quant_MCMC <- as.mcmc(trace_quant[[1]])
+effectiveSize(trace_quant_MCMC)
+```
+Plot convergence
+```{r}
+traceplot(trace_quant_MCMC)
+```
+Look at the variable outputs. summariseTrace calculates the mean and 95% credible interval
+```{r}
+summarizeTrace(trace = trace_quant, vars =  c("gamma","delta"))
+
+```
+Plot traces for variables
+```{r}
+plotTrace(trace = trace_quant, vars = c("gamma","delta"))[[1]]
+```

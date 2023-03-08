@@ -1,6 +1,0 @@
-_mainType All_Models
-_outDir results/03B_estimate-noR_out
-_dataFile data_for_chromevol_noRiepp
-_treeFile tree_for_chromevol_noRiepp
-_maxChrNum -10
-_minChrNum -10

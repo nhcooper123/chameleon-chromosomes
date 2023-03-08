@@ -1,0 +1,34 @@
+# Run Revbayes scripts
+
+# Open rb terminal and run code below
+
+#######################
+# Set working directory
+#######################
+# Set working directory so RevBayes knows where to look for the data
+setwd("Documents/Projects/chameleon-chromosomes/ChromoSSE")
+
+# Decide number of iterations
+iterations = 10000
+
+### This is the best fitting model from ChromEvol###
+source("ChromoSSE_exclude_n18.Rev")
+
+#######################
+# Run all scripts
+#######################
+# No outgroup
+source("ChromoSSE_noOutgroup_n18.Rev") x 
+source("ChromoSSE_noOutgroup_estimated.Rev") x but very slow
+source("ChromoSSE_noOutgroup_iguania.Rev") zsh: segmentation faul
+source("ChromoSSE_noOutgroup_linear_n18.Rev") x
+source("ChromoSSE_noOutgroup_linear_estimated.Rev") x but very slow
+source("ChromoSSE_noOutgroup_linear_iguania.Rev") zsh: segmentation faul
+
+# No Outgroup, no Rieppeleon
+source("ChromoSSE_exclude_n18.Rev") x
+source("ChromoSSE_exclude_estimated.Rev")
+source("ChromoSSE_exclude_iguania.Rev") x
+source("ChromoSSE_exclude_linear_n18.Rev")
+source("ChromoSSE_exclude_linear_estimated.Rev")
+source("ChromoSSE_exclude_linear_iguania.Rev")

@@ -11,27 +11,27 @@ output: html_document
 library(tidyverse)
 library(here)
 library(phytools)
-library(treeplyr)
+#library(treeplyr)
 source(here("chromEvol/ChromEvol.R")) #install this from https://www.en.sysbot.bio.lmu.de/people/employees/cusimano/use_r/
 ```
 
 ### Model comparison
 First look at the models and choose the best using AIC, and also extract the model parameters. 
 
-Note that due to the rescaling of the tree, we need to multiply these values by the scaling constant to get the true values. This is specified in the `chromEvol.res` outfile, but doesn't seem to be automatically extractable so I've done this by hand to create the vector below. Note that it refers to the tree, so there are only four repeated values, one for the tree with Riepelleon and the outgroup, one for the tree without Riepelleon, one for the tree without the outgroup, and one for the tree without Riepelleon or the outgroup.
+Note that due to the rescaling of the tree, we need to multiply these values by the scaling constant to get the true values. This is specified in the `chromEvol.res` outfile, but doesn't seem to be automatically extractable so I've done this by hand to create the vector below. Note that it refers to the tree, so there are only two repeated values, one for the tree with Riepelleon and one for the tree without Riepelleon,
 
 ```{r}
-rescale_param <- rep(c(0.00378279, 0.00352543, 0.00405179, 0.0037829), 3)
+rescale_param <- rep(c(0.00903882, 0.00841721), 3)
 ```
 
-Now loop through the 12 sets of models
+Now loop through the 6 sets of models
 ```{r, message = FALSE}
 # Get a list of the output folder names
 output_names <- list.files(path = here("chromEvol/results"), pattern = "_out")
 output <- NULL
 
-# Loop through all 12 folders of outputs
-for (i in 1:12) {
+# Loop through all 6 folders of outputs
+for (i in 1:6) {
   # Read in the model summary data
   summary <- read_delim(here(paste0("chromEvol/results/", output_names[i], "/models_summary.txt")), 
                         delim = "\t")
@@ -102,5 +102,5 @@ for (i in 1:12) {
 
 # Look and save at the outputs
 output
-#write_csv(output, path = here("outputs/chromEvol-model-summaries-ALL-MODELS.csv"))
+#write_csv(output, file = here("outputs/chromEvol-model-summaries-ALL-MODELS.csv"))
 ```

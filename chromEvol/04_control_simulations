@@ -1,0 +1,12 @@
+_mainType mainSimulate
+_outDir results/04_simulations
+_freqFile root_freq/root_freq_18.txt
+_treeFile tree_for_chromevol_exclude
+_lossConstR 10.1461
+_gainConstR 5.34653
+_simulationsIter 1000
+_maxChrNumForSimulations 29
+_maxOptimizationIterations -1
+_branchMul 1
+_simulationsTreeLength 6
+_simulationsJumpsStats expStats.txt

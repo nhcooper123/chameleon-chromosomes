@@ -1,11 +1,19 @@
+#Old results
+outputs_original/*
+
 #ChromEvol package
-chromEvol/chromEvol_source-current
+chromEvol/chromEvol_source
 chromEvol/ChromEvol_0.9-1.tar.gz
 chromEvol/README_Running chromEvol
+
+#ChromoSSE package
+ChromoSSE/rb
+ChromoSSE/history.txt
 
 #Large ChromEvol outputs
 chromEvol/chromEvol_out_scaled*
 extra-chromEvol-models/*
+chromEvol_original/*
 
 # Large datasets
 raw-data/*

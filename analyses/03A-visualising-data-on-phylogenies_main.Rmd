@@ -21,7 +21,7 @@ library(patchwork)
 Read in the data and the tree
 ```{r, message = FALSE, echo = FALSE}
 mydata <- read_csv(here("data/chromosome-data-species.csv"))
-mytree <- read.tree(here("data/ML-tree-species.tre"))
+mytree <- read.tree(here("data/Bayesian-tree-species.tre"))
 
 # look at the dataset and tree
 #str(mytree)
@@ -35,32 +35,32 @@ chromon <-
   mydata %>%
   select(haploidn) %>%
   as.data.frame()
-# Add rownames as tip names  
-rownames(chromon) <- mydata$tips
+# Add rownames as species names  
+rownames(chromon) <- mydata$Binomial
 
 # armn
 arms <-
   mydata %>%
   select(armn) %>%
   as.data.frame()
-# Add rownames as tip names  
-rownames(arms) <- mydata$tips
+# Add rownames as species names  
+rownames(arms) <- mydata$Binomial
 
 # macro pairs
 macropairs <-
   mydata %>%
   select(macrop) %>%
   as.data.frame()
-# Add rownames as tip names  
-rownames(macropairs) <- mydata$tips
+# Add rownames as species names  
+rownames(macropairs) <- mydata$Binomial
 
 # micro pairs
 micropairs <-
   mydata %>%
   select(microp) %>%
   as.data.frame()
-# Add rownames as tip names  
-rownames(micropairs) <- mydata$tips
+# Add rownames as species names  
+rownames(micropairs) <- mydata$Binomial
 ```
 
 Set up colour palettes
@@ -106,6 +106,9 @@ groupOTU(circ, grp2, 'Genus') + aes(color = Genus) +
 
 Add the chromosome data...
 ```{r}
+# Make the circular tree base
+circ <- ggtree(mytree, layout = "circular")
+
 # Plot trees
 p1 <- 
   gheatmap(circ, chromon, offset =.8, width =.2, colnames = FALSE) +

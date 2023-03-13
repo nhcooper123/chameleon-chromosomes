@@ -50,99 +50,6 @@ Simon P. Loader, Gaetano Odierna and Natalie Cooper}
 %-------------------------------------------------------------------------------
 % Supplementary materials
 %-------------------------------------------------------------------------------
-
-%-----------------------------------------------------------------------------------
-% figures 
-%-----------------------------------------------------------------------------------
-\newpage
-\section{Supplementary Figures}
-
-% figure s1
-\begin{figure}[H]
- \centering
-  \includegraphics[width = \linewidth]{figures/trees-genera-colour.png}
-  \caption{Time calibrated chameleon phylogeny used in the analyses. 
-  Branches for each genus have been coloured back to their most recent common ancestor.
-}
-  \label{fig-phylo}
-\end{figure}
-
-% figure s2
-\newpage
-\begin{figure}[H]
- \centering
-  \includegraphics[width = \linewidth]{figures/trees-chromosome-properties.png}
-  \caption{Distribution of chromosome properties (haploid number of chromosomes, arm number, number of macrochromosome pairs and number of microchromosome pairs) across the chameleon phylogeny. Note that the scales are different on each plot. The outlier in each case is \textit{Rieppeleon brevicaudatus} (n = 31). See Figure \ref{fig-phylo} for species identities.
-}
-  \label{fig-properties}
-\end{figure} 
-
-%-----------------------------------------------------------------------------------{}
-% duplication analyses
-%-----------------------------------------------------------------------------------
-\newpage
-\section{Chromosome evolutionary models with duplication events}
-
-\subsection{Methods}
-
-We used six additional models to the Constant Rates and Linear Rates models described in the main text that optimise two or more of the following parameters: (i) rate of gain of a single chromosome; (ii) rate of loss of a single chromosome; (iii) polyploidization rate; (iv) demi-polyploidization rate; (v) linear dependency between the current haploid number and the rate of gain chromosomes; and (vi) linear dependency between the current haploid number and the rate of loss chromosomes. Details of which parameters are fitted in each model are shown in Table \ref{table_A1}. All other analysis details are identical to those presented in the text.
-
-\input{figures/model-list.tex}
-
-\subsection{Results}
-
-For models where duplications and demi-duplications were allowed, if \textit{Rieppeleon brevicaudatus} was included, the Constant Rates with duplications (and demi-duplications for estimated root frequencies) fitted best (Table \ref{table-dup-results}). If \textit{Rieppeleon brevicaudatus} was excluded, the best fitting model was a Constant Rates model for the fixed root frequencies, and a Constant Rates model with duplications and demi-duplications when we estimated the root frequencies (Table \ref{table-dup-results}). Overall, the best fitting model was the Constant Rates model with duplications and demi-duplications where \textit{Rieppeleon brevicaudatus} was excluded, and the root was estimated (AIC = 307.1; Table \ref{table-dup-results}; Figure \ref{fig-dup}).
-
-\input{figures/table-dup-results}
-
-% figure s3 new fig needed here
-%\newpage
-%\begin{figure}[H]
-% \centering
-%  \includegraphics[width = \linewidth]{figures/figure-chromEvol_best-model-all.png}
-%  \caption{Best fitting model allowing duplications, removing \textit{Rieppeleon brevicaudatus} and estimating the root node. Numbers at the nodes are the most frequent values obtained from 1,000 simulations. Colours represent the number of chromosomes at the tip, or the proportion of simulations with each number of chromosomes as pie charts at the nodes.
-%}
-%  \label{fig-dup}
-%\end{figure} 
-
-%-----------------------------------------------------------------------------------
-% ecology 
-%-----------------------------------------------------------------------------------
-\newpage
-\section{Relationships among chromosome numbers, ecology and life history}
-
-\subsection{Methods}
-
-We tested for correlations between haploid numbers of chromosomes (n) and the following variables; (1) maximum snout vent length (mm; n = 86); (2) substrate (arboreal, terrestrial or multiple; n = 77); (3) reproductive mode (oviparous or viviparous; n = 71); (4) minimum clutch size (eggs; n = 58); (5) maximum clutch size (eggs; n = 58); (6) minimum breeding age (months; n = 43); (7) maximum breeding age (months; n = 43); (8) biogeographic realm (Afrotropical, Madagascar, Oriental or Palearctic; n = 86); (9) absolute latitude (decimal degrees; DD; n = 86). All ecological and life history data were taken from Meiri\cite{meiri2018traits}. Continuous variables were mean-centred and scaled to unit variance prior to analyses.
-
-We used Bayesian phylogenetic generalised mixed models (GLMMs) with Poisson errors in the R package MCMCglmm\cite{hadfield2010mcmc} to test for correlations, including the phylogeny (as the inverse of the phylogenetic variance-covariance matrix) as a random effect to account for phylogenetic autocorrelation. We ran each MCMCglmm model for 1 x 106 iterations sampling at every 1,000 iterations and discarding the first 1 x 105 iterations as burn-in. We used the default priors for MCMCglmm ($μ = 0$ and $V = I × 1010$ for fixed effects and parameter expanded priors, and $V = 1$, $\nu = 1$, $\alpha \mu = 0$, and $\alpha V = 252$ for the phylogenetic random effects). All model parameters had a mean effective sample size (ESS; estimated using the R package coda\cite{plummer2006coda}) of over 800, and traceplots indicated that models had converged.
-
-\subsection{Results}
-
-We found no significant correlations among chromosome numbers and any of our ecology or life history variables (Table \ref{table-ecology}; Figures \ref{fig-ecology1} - \ref{fig-ecology2}). 
-
-\input{figures/table-ecology}
-
-% figure
-\begin{figure}[H]
- \centering
-  \includegraphics[width = \linewidth]{figures/ecology-genus-svl.png}
-  \caption{Relationships between genus (n = 92), maximum snout vent length (SVL; n = 86), substrate (n = 83), reproductive mode (n = 77) and haploid chromosome number in chameleons. Points are coloured by genus as shown in the upper panel. The outlier at n = 31 is \textit{Rieppeleon brevicaudatus}.
-}
-  \label{fig-ecology1}
-\end{figure} 
-
-\newpage
-\begin{figure}[H]
- \centering
-  \includegraphics[width = \linewidth]{figures/mcmcglmm-figure.png}
-  \caption{Results from Bayesian phylogenetic generalised linear mixed models with Poisson errors, showing posterior means of each slope estimate for the relationship between haploid chromosome number in chameleons and several explanatory variables. max\_SVL.
-}
-  \label{fig-ecology2}
-\end{figure}
-
-
-
 %-----------------------------------------------------------------------------------
 % otus 
 %-----------------------------------------------------------------------------------
@@ -177,7 +84,7 @@ There was a significant negative correlation between the haploid number of chrom
 \begin{figure}[H]
  \centering
   \includegraphics[width = \linewidth]{figures/micro-macro-chromosomes.png}
-  \caption{Correlations between (A) the haploid number of chromosomes (n) and numbers of macrochromosome pairs; (B) the haploid number of chromosomes (n) and numbers of microchromosome pairs; and (C) numbers of macrochromosome pairs and numbers of microchromosome pairs. Fitted lines and standard errors are the outputs from generalised linear models with Poisson errors. The outlier at n = 31 is \textit{Rieppeleon brevicaudatus}.
+  \caption{Correlations between (A) the haploid number of chromosomes (n) and numbers of macrochromosome pairs; (B) the haploid number of chromosomes (n) and numbers of microchromosome pairs; and (C) numbers of macrochromosome pairs and numbers of microchromosome pairs. Fitted lines and standard errors are the outputs from generalized linear models with Poisson errors. The outlier at n = 31 is \textit{Rieppeleon brevicaudatus}.
 }
   \label{fig-otus-macro}
 \end{figure} 
@@ -188,7 +95,7 @@ There was a significant negative correlation between the haploid number of chrom
 \begin{figure}[H]
  \centering
   \includegraphics[width = \linewidth]{figures/ITS-chromosomes.png}
-  \caption{Correlations between (A) interstitial telomeric sequences (ITS) and the haploid number of chromosomes (n); (B) ITS and numbers of macrochromosome pairs; and (C) ITS and numbers of microchromosome pairs. Fitted lines and standard errors are the outputs from generalised linear models with quasipoisson errors.
+  \caption{Correlations between (A) interstitial telomeric sequences (ITS) and the haploid number of chromosomes (n); (B) ITS and numbers of macrochromosome pairs; and (C) ITS and numbers of microchromosome pairs. Fitted lines and standard errors are the outputs from generalized linear models with quasipoisson errors.
 }
   \label{fig-otus-its}
 \end{figure} 
@@ -212,10 +119,100 @@ Differences in chromosome number did not increase with phylogenetic distance (Fi
 \begin{figure}[H]
  \centering
   \includegraphics[width = \linewidth]{figures/chromevol-simulations-numbers.png}
-  \caption{Distribution of observed (grey) and predicted (blue) haploid numbers of chromosomes in chameleons, excluding \textit{Rieppeleon brevicaudatus}. Predicted values are based on 1,000 simulations using the optimised parameters taken from the best fitting model identified in the chromosome evolution analyses above (Constant Rates, removing \textit{Rieppeleon brevicaudatus}, and using n = 18 as the root node). Observed values were multiplied by 1,000 to aid comparisons.
+  \caption{Distribution of observed (grey) and predicted (blue) haploid numbers of chromosomes in chameleons, excluding \textit{Rieppeleon brevicaudatus}. Predicted values are based on 1,000 simulations using the optimized parameters taken from the best fitting model identified in the chromosome evolution analyses above (Constant Rates, removing \textit{Rieppeleon brevicaudatus}, and using n = 18 as the root node). Observed values were multiplied by 1,000 to aid comparisons.
 }
   \label{fig-otus-predicted}
 \end{figure} 
+
+%-----------------------------------------------------------------------------------
+% figures 
+%-----------------------------------------------------------------------------------
+\newpage
+\section{Supplementary Figures}
+
+% figure s1
+\begin{figure}[H]
+ \centering
+  \includegraphics[width = \linewidth]{figures/trees-genera-colour.png}
+  \caption{Time calibrated chameleon phylogeny used in the analyses. 
+  Branches for each genus have been colored back to their most recent common ancestor.
+}
+  \label{fig-phylo}
+\end{figure}
+
+% figure s2
+\newpage
+\begin{figure}[H]
+ \centering
+  \includegraphics[width = \linewidth]{figures/trees-chromosome-properties.png}
+  \caption{Distribution of chromosome properties (haploid number of chromosomes, arm number, number of macrochromosome pairs and number of microchromosome pairs) across the chameleon phylogeny. Note that the scales are different on each plot. The outlier in each case is \textit{Rieppeleon brevicaudatus} (n = 31). See Figure \ref{fig-phylo} for species identities.
+}
+  \label{fig-properties}
+\end{figure} 
+
+%-----------------------------------------------------------------------------------{}
+% duplication analyses
+%-----------------------------------------------------------------------------------
+\newpage
+\section{Chromosome evolutionary models with duplication events}
+
+\subsection{Methods}
+
+We used six additional models to the Constant Rates and Linear Rates models described in the main text that optimize two or more of the following parameters: (i) rate of gain of a single chromosome; (ii) rate of loss of a single chromosome; (iii) polyploidization rate; (iv) demi-polyploidization rate; (v) linear dependency between the current haploid number and the rate of gain chromosomes; and (vi) linear dependency between the current haploid number and the rate of loss chromosomes. Details of which parameters are fitted in each model are shown in Table \ref{table_A1}. All other analysis details are identical to those presented in the text.
+
+\input{figures/model-list.tex}
+
+\subsection{Results}
+
+For models where duplications and demi-duplications were allowed, if \textit{Rieppeleon brevicaudatus} was included, the Constant Rates with duplications (and demi-duplications for estimated root frequencies) fitted best (Table \ref{table-dup-results}). If \textit{Rieppeleon brevicaudatus} was excluded, the best fitting model was a Constant Rates model for the fixed root frequencies, and a Constant Rates model with duplications and demi-duplications when we estimated the root frequencies (Table \ref{table-dup-results}). Overall, the best fitting model was the Constant Rates model with duplications and demi-duplications where \textit{Rieppeleon brevicaudatus} was excluded, and the root was estimated (AIC = 307.1; Table \ref{table-dup-results}; Figure \ref{fig-dup}).
+
+\input{figures/table-dup-results}
+
+% figure s3 new fig needed here
+%\newpage
+%\begin{figure}[H]
+% \centering
+%  \includegraphics[width = \linewidth]{figures/figure-chromEvol_best-model-all.png}
+%  \caption{Best fitting model allowing duplications, removing \textit{Rieppeleon brevicaudatus} and estimating the root node. Numbers at the nodes are the most frequent values obtained from 1,000 simulations. Colours represent the number of chromosomes at the tip, or the proportion of simulations with each number of chromosomes as pie charts at the nodes.
+%}
+%  \label{fig-dup}
+%\end{figure} 
+
+%-----------------------------------------------------------------------------------
+% ecology 
+%-----------------------------------------------------------------------------------
+\newpage
+\section{Relationships among chromosome numbers, ecology and life history}
+
+\subsection{Methods}
+
+We tested for correlations between haploid numbers of chromosomes (n) and the following variables; (1) maximum snout vent length (mm; n = 86); (2) substrate (arboreal, terrestrial or multiple; n = 77); (3) reproductive mode (oviparous or viviparous; n = 71); (4) minimum clutch size (eggs; n = 58); (5) maximum clutch size (eggs; n = 58); (6) minimum breeding age (months; n = 43); (7) maximum breeding age (months; n = 43); (8) biogeographic realm (Afrotropical, Madagascar, Oriental or Palearctic; n = 86); (9) absolute latitude (decimal degrees; DD; n = 86). All ecological and life history data were taken from Meiri\cite{meiri2018traits}. Continuous variables were mean-centred and scaled to unit variance prior to analyses.
+
+We used Bayesian phylogenetic generalized mixed models (GLMMs) with Poisson errors in the R package MCMCglmm\cite{hadfield2010mcmc} to test for correlations, including the phylogeny (as the inverse of the phylogenetic variance-covariance matrix) as a random effect to account for phylogenetic autocorrelation. We ran each MCMCglmm model for 1 x 106 iterations sampling at every 1,000 iterations and discarding the first 1 x 105 iterations as burn-in. We used the default priors for MCMCglmm ($μ = 0$ and $V = I × 1010$ for fixed effects and parameter expanded priors, and $V = 1$, $\nu = 1$, $\alpha \mu = 0$, and $\alpha V = 252$ for the phylogenetic random effects). All model parameters had a mean effective sample size (ESS; estimated using the R package coda\cite{plummer2006coda}) of over 800, and traceplots indicated that models had converged.
+
+\subsection{Results}
+
+We found no significant correlations among chromosome numbers and any of our ecology or life history variables (Table \ref{table-ecology}; Figures \ref{fig-ecology1} - \ref{fig-ecology2}). 
+
+\input{figures/table-ecology}
+
+% figure
+\begin{figure}[H]
+ \centering
+  \includegraphics[width = \linewidth]{figures/ecology-genus-svl.png}
+  \caption{Relationships between genus (n = 92), maximum snout vent length (SVL; n = 86), substrate (n = 83), reproductive mode (n = 77) and haploid chromosome number in chameleons. Points are colored by genus as shown in the upper panel. The outlier at n = 31 is \textit{Rieppeleon brevicaudatus}.
+}
+  \label{fig-ecology1}
+\end{figure} 
+
+\newpage
+\begin{figure}[H]
+ \centering
+  \includegraphics[width = \linewidth]{figures/mcmcglmm-figure.png}
+  \caption{Results from Bayesian phylogenetic generalized linear mixed models with Poisson errors, showing posterior means of each slope estimate for the relationship between haploid chromosome number in chameleons and several explanatory variables. max\_SVL.
+}
+  \label{fig-ecology2}
+\end{figure}
 
 %-------------------
 \newpage

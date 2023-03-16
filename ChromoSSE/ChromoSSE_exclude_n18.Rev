@@ -95,7 +95,7 @@ for (i in 1:(max_chromo + 1)) {
 # Root frequencies
 #########################
 # Set as n = 18
-root_frequencies := simplex([0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0])
+root_frequencies := simplex([0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0])
 
 #########################
 # Set the probability of sampling species at the present = 100%

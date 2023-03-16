@@ -13,8 +13,8 @@ library(here)
 
 Read in output from ChromoSSE
 ```{r}
-# read the trace and discard burnin
-trace_quant <- readTrace(path = here("ChromoSSE/output/ChromoSSE_exclude_n18_model.log"), burnin = 0.1)
+# read the trace and discard 25% burnin
+trace_quant <- readTrace(path = here("ChromoSSE/output/ChromoSSE_exclude_n18_model.log"), burnin = 0.10)
 ```
 
 Extract ESS
@@ -28,10 +28,10 @@ traceplot(trace_quant_MCMC)
 ```
 Look at the variable outputs. summariseTrace calculates the mean and 95% credible interval
 ```{r}
-summarizeTrace(trace = trace_quant, vars =  c("gamma","delta"))
+summarizeTrace(trace = trace_quant, vars =  c("gamma","delta", "clado_fission", "clado_fusion","clado_no_change"))
 
 ```
 Plot traces for variables
 ```{r}
-plotTrace(trace = trace_quant, vars = c("gamma","delta"))[[1]]
+plotTrace(trace = trace_quant, vars = c("gamma","delta","clado_fission", "clado_fusion","clado_no_change"))[[1]]
 ```

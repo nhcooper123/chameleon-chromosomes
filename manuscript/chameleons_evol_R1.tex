@@ -99,13 +99,15 @@ Therefore, our sample represents a significant proportion of the $\sim$200 extan
 Some species have multiple samples, meaning we have data for 137 operational taxonomic units (OTUs). 
 The majority of these OTUs have conserved karyotypes within species, so we randomly selected one OTU for each species to avoid pseudoreplication.
 \textit{Calumma brevicorne}, \textit{Calumma fallax}, \textit{Calumma parsonii}, and \textit{Furcifer verrucosus} are each represented by two samples with unique karyotypes, and \textit{Calumma gallus} is represented by three samples with unique karyotypes, therefore, we included these OTUs as additional taxa, thus we have 93 taxa in our main analyses. 
-We repeated all analyses below using the full set of 137 OTUs (see Supplementary Materials: Table A1, Figures A1 - AX).
+We repeated all analyses below using the full set of 137 OTUs (see Supplementary Materials: Table A1, Figures A1 - A4).
 
 \subsection{Phylogenetic inference}
 For our novel data, we used PCR to amplify the nuclear RAG1, CMOS and PRLR, and the mitochondrial 16S, ND2 and ND4 markers used in Tolley et al. (\citeyear{tolley2013large}), and then combined these with homologous sequences from GenBank. 
 All newly generated sequences were deposited in GenBank (accession numbers will be provided after manuscript acceptance). 
 Our final alignment included 5,488 nucleotide positions and 303 sequences including outgroup taxa. 
-We inferred a Maximum Likelihood (ML) phylogeny using RAxML 8.2.12 \citep{stamatakis2014raxml} under the GTRCAT model with 1,000 bootstrap replicates. 
+We inferred a Bayesian phylogeny using MrBayes 3.2.7 \citep{ronquist2012mrbayes}.
+To identify the most appropriate model partitioning scheme for our alignment, we used PartionFinder 2.1.1 \citep{lanfear2017partitionfinder}. 
+We ran the analysis for 10 million generations sampling every 1,000 generations to avoid autocorrelation. 
 We constrained the monophyly of \textit{Calumma} $+$ \textit{Furcifer} (as in \citealt{tolley2013large}), and based on genus-level phylogenetic relationships identified with a wider selection of molecular markers. 
 We also performed unconstrained phylogenetic analyses for comparative purposes. 
 To date our constrained phylogenies, we used the penalized likelihood method implemented in treePL \citep{smith2012treepl}, including 10 calibration points (eight external and two internal) based on available literature (see Supplementary Materials for details), as minimum hard bounds: (1) Lepidosauria - 250 Ma; (2) \textit{Xantusia-Cordylus} - 62.5 Ma; (3) Laterata - 138.7 Ma; (4) Lacertibaenia - 61 Ma; (5) Anguimorpha - 148 Ma; (6) crown Serpentes - 93.9 Ma; (7) Anguioidea - 74.5 Ma; (8) Pleurodonta -70 Ma; (9) \textit{Calumma} - 16 Ma and (10) \textit{Chamaeleo} - 16.6 Ma. 
@@ -118,9 +120,15 @@ The chromosome characters we recorded were (i) haploid chromosome number, (ii) a
 We collated chromosome data for additional chameleon species from the literature. 
 The full dataset along with literature references is available [details removed to anonymize submission].
 
+We did not analyse sex chromosome evolution in chameleons for several reasons. 
+Nucleotide and morphological evolution of the heterogametic sex chromosome (Y/W) is independent from autosome evolution and due to the loss of recombination the sex-specific chromosome (Y/W) is considered evolutionary isolated (see e.g. \cite{ezaz2014repetitive,mezzasalma2021lizards}). 
+The rare cases where multiple sex chromosome systems occur due to a sex chromosome-autosome fusion concern intraspecific rearrangement (as in the case of the neo-sex chromosomes in Furcifer reported by \cite{rovatsos2015female,rovatsos2017evolution,rovatsos2019zz}), which would not be relevant in our inter-/intra-generic macroevolutionary analysis. 
+In addition, data on chameleon sex chromosomes are currently available only for \textit{Furcifer} \citep{rovatsos2015female,rovatsos2017evolution,rovatsos2019zz} and \textit{Chameleo} \cite{sidhom2020karyological,tishakova2022identification} (1-2 species with hypothesised sex chromosomes which are morphologically indistinguishable). 
+More data on the other chameleon genera should be gathered to better understand sex chromosome evolution in the family (possibly testing the homology of different sex chromosome systems), which, however, should be treated as a distinct topic.
+
 \subsection{Analyses}
 All analyses except the chromosome evolutionary models (see below) were carried out in R \citep{R}, and R code to reproduce our analyses is available at [details removed to anonymize submission] (Zenodo DOI will be added on acceptance). 
-We visualized karyotype data (chromosome number, arm number, number of macrochromosome pairs, and number of microchromosome pairs) on our phylogeny (Supplementary Materials: Figures AX and AX) using the ggtree R package \citep{yu2017ggtree}.
+We visualized karyotype data (chromosome number, arm number, number of macrochromosome pairs, and number of microchromosome pairs) on our phylogeny (Supplementary Materials: Figures A5 and A6) using the ggtree R package \citep{yu2017ggtree}.
 
 \subsubsection{Chromosome evolutionary models}
 Some earlier papers have treated chromosome number as a continuous trait and modelled it using standard phylogenetic comparative methods for continuous data (e.g. \citealt{vershinina2017evolutionary}). 
@@ -130,7 +138,7 @@ To model chromosome evolution in chameleons we therefore used ChromEvol v.2.0 \c
 We manipulated outputs from ChromEvol using the ChromEvol R package \citep{chromevol}.
 
 We fitted two different models of chromosome evolution; a Constant Rates model which optimizes (i) the rate of gain of a single chromosome; and (ii) the rate of loss of a single chromosome; and a Linear Rates model which additionally optimizes (iii) linear dependency between the current haploid number and the rate of gain chromosomes; and (iv) linear dependency between the current haploid number and the rate of loss chromosomes. 
-We focus on models that do not include polyploidization or demi-polyploidization rates because these processes rarely occur in squamates and are unknown in Chamaeleonidae \citep{bogart1980evolutionary,mezzasalma2021lizards}, however, we report the results from these additional models in the supplemental for completeness (Supplementary Materials: Tables AX - AX). 
+We focus on models that do not include polyploidization or demi-polyploidization rates because these processes rarely occur in squamates and are unknown in Chamaeleonidae \citep{bogart1980evolutionary,mezzasalma2021lizards}, however, we report the results from these additional models in the supplemental for completeness (Supplementary Materials: Tables A2 and A3). 
 
 ChromEvol requires a phylogeny with branch lengths that represent the expected number of chromosome-number transitions along a branch. We therefore scaled the tree so that the total tree length was equal to the number of unique chromosome counts as suggested in Glick and Mayrose (\citeyear{glick2014chromevol}). 
 We back-transformed all parameter estimates using this scaling parameter before reporting them (see Results). 
@@ -142,7 +150,21 @@ We either (1) set root frequencies as 0.333 for n = 16, n = 17 and n = 18, becau
 We also repeated each model excluding \textit{Rieppeleon brevicaudatus}. 
 This species has an unusually high number of chromosomes for a chameleon of 2n = 62 (the next highest is 2n = 38), so likely represents an unusual instance of karyotypic evolution which may skew our model outputs. 
 
-ChromEvol assumes all changes in chromosome numbers occur along branches of the phylogeny, i.e. anagenetically. However, chromosomal rearrangements may also occur at speciation events, i.e. cladogenetically. To incorporate anagenetic and cladogenetic chromosomal changes into our analyses we used the ChromoSSE model \citep{freyman2018cladogenetic} implemented in RevBayes \citep{10.1093/sysbio/syw021}. These models are computationally intensive, so rather than fitting all the models described above, we used the best fitting model identified in the chromEvol chromosome evolution analyses above (Constant Rates, removing \textit{Rieppeleon brevicaudatus}, and using n = 18 as the root node; see Results) to specify our analysis. We fitted three cladogenetic chromosomal change parameters (i) speciation without chromosomal changes, (ii) speciation associated with chromosome gain, and (iii) speciation associated with chromosome loss, and two anagenetic chromosomal change parameters which optimized (i) the rate of gain of a single chromosome; and (ii) the rate of loss of a single chromosome (i.e. the Constant Rates model in chromEvol). We used a single species turnover rate, set the maximum number of chromosomes to n = 29, and used the default ChromoSSE priors except for root frequencies which were fixed at n = 18. We ran the model for 10,000 iterations sampling at every 1,000 iterations and discarding the first 2,500 iterations as burn-in. We assessed convergence using functions within the RevGadgets R package \citep{https://doi.org/10.1111/2041-210X.13750}. All model parameters had a mean effective sample size (ESS) of over 200, and traceplots indicated that models had converged.
+ChromEvol assumes all changes in chromosome numbers occur along branches of the phylogeny, i.e. anagenetically. 
+However, chromosomal rearrangements may also occur at speciation events, i.e. cladogenetically. 
+To incorporate anagenetic and cladogenetic chromosomal changes into our analyses we used the ChromoSSE model \citep{freyman2018cladogenetic} implemented in RevBayes \citep{10.1093/sysbio/syw021}. 
+These models are computationally intensive, so rather than fitting all the models described above, we used the best fitting model identified in the chromEvol chromosome evolution analyses above (Constant Rates, removing \textit{Rieppeleon brevicaudatus}, and using n = 18 as the root node; see Results) to specify our analysis. 
+We fitted three cladogenetic chromosomal change parameters (i) speciation without chromosomal changes, (ii) speciation associated with chromosome gain, and (iii) speciation associated with chromosome loss, and two anagenetic chromosomal change parameters which optimized (i) the rate of gain of a single chromosome; and (ii) the rate of loss of a single chromosome (i.e. the Constant Rates model in chromEvol). 
+We used a single species turnover rate, set the maximum number of chromosomes to n = 29, and used the default ChromoSSE priors except for root frequencies which were fixed at n = 18. 
+We ran the model for 10,000 iterations sampling at every 1,000 iterations and discarding the first 2,500 iterations as burn-in. 
+We assessed convergence using functions within the RevGadgets R package \citep{https://doi.org/10.1111/2041-210X.13750}. 
+All model parameters had a mean effective sample size (ESS) of over 200, and traceplots indicated that models had converged.
+
+\subsubsection{Correlations between chromosome evolutionary change and historical events}
+To investigate whether key events in the biogeographic history of Madagascar and East Africa may be correlated with chromosome evolutionary changes within chameleons, we identified several key dates from the literature. 
+These events were selected as all have been suggested to cause significant faunal change in other taxa. 
+The dates and events selected were (1) Formation of Mayotte volcano, the oldest volcano in the Comoros (7.7 Ma); (2) Miocene Climatic Optimum (18 to 14 Ma); (3) Oligocene–Miocene cooling (23.0 Ma); (4) Oligocene: regional uplift (30.0 Ma); and (5) Oligocene Grande Coupre (32.5 Ma). 
+We plotted these dates onto our phylogeny along with the ancestral state estimates for chromosome numbers taken from the ChromoSSE model (see above) to determine whether there were any correlations. 
 
 \subsubsection{Fissions and fusions and ITS}
 Single chromosome gains are predicted to occur due to chromosome fissions, whereas chromosome losses are predicted to occur due to chromosome fusions. 
@@ -205,7 +227,13 @@ A highly variable number of ITS signals (n = 2-14) were found in 11 species with
 When \textit{Rieppeleon brevicaudatus} was included, the Linear Rates model fitted better than the Constant Rates model (Table \ref{table-models}).
 Although rates of chromosome loss were consistently higher than rates of chromosome gain in these models, rates of linear dependency between the current haploid number and the rate of loss of chromosomes were lower for loss than gain of chromosomes, regardless of root frequency. 
 The Constant Rates model fitted better than the Linear Rates model when \textit{Rieppeleon brevicaudatus} was excluded from the analyses and rates of chromosome loss were also consistently higher than rates of chromosome gain in these models, regardless of root frequency (Table \ref{table-models}). 
-Overall, the best fitting model was the Constant Rates model where \textit{Rieppeleon brevicaudatus} was excluded, and the root was set to n = 18 (AIC = 320.5; Table \ref{table-models}; Figure \ref{fig-best}).
+Overall, the best fitting model was the Constant Rates model where \textit{Rieppeleon brevicaudatus} was excluded, and the root was set to n = 18 (AIC = 320.5; Table \ref{table-models}).
+
+In the ChromoSSE models, the 95\% credible intervals for each parameter were as follows (i) speciation without chromosomal changes: 0.042-0.086 (MAP = 0.067); (ii) speciation associated with chromosome gain: 0.0002-0.020 (MAP = 0.002); (iii) speciation associated with chromosome loss: 0.001-0.029 (MAP = 0.008); (iv) anagenetic rate of gain of a single chromosome: 0.009-0.070 (MAP = 0.029); and (v) anagenetic rate of loss of a single chromosome: 0.044-0.110 (MAP = 0.073). 
+Ancestral states for chromosome numbers estimated from this model are shown in Figure \ref{fig-best}.
+
+\subsection{Correlations between chromosome evolutionary change and historical events}
+A version of Figure 7 with key evolutionary dates highlighted is shown in Supplemental Materials Figure A7. There were no clear correlations between chromosome number evolutionary changes and key geological dates in their evolutionary history.
 
 \subsection{Fissions and fusions and ITS}
 There was a significant negative correlation between the haploid number of chromosomes and the number of macrochromosome pairs (GLM: $\chi^2$ = 4.991, df = 1,91, p = 0.025; Figure \ref{fig-chroms}A), and a significant positive correlation between the haploid number of chromosomes and the number of microchromosome pairs (GLM: $\chi^2$ = 55.32, df = 1,91, p $<$ 0.001; Figure \ref{fig-chroms}B). 
@@ -220,7 +248,7 @@ Large differences in chromosome numbers, however, only occur at moderate to larg
 Simulations give a reasonable approximation of observed chromosome numbers at the tips of the phylogeny, however, model predictions do not account well for the large numbers of species with n = 11, n = 12 and n = 18 chromosomes (Figure \ref{fig-predict}).
 
 \subsection{Relationships among chromosome numbers, ecology and life history}
-We found no significant correlations among chromosome numbers and any of our ecology or life history variables (Supplementary Materials: Table AX; Figures AX-AX). 
+We found no significant correlations among chromosome numbers and any of our ecology or life history variables (Supplementary Materials: Table A4; Figures A8 and A9). 
 
 %-------------------------------------------------------------------------------
 \section{Discussion}
@@ -239,7 +267,7 @@ We also observed putative convergent reductions in several genera including \tex
 Our simulation analysis supports that, compared to the hypothesized chameleon ancestral condition (2n = 36), there are more observations of these with a reduced chromosome number (2n = 24-22) than would be expected by chance (Figure \ref{fig-predict}). 
 Collectively, this result is consistent with frequent microchromosome losses during the evolution of chameleons leading to convergence in the number of chromosomes. 
 This is particularly evident in different genera such as \textit{Furcifer} and \textit{Trioceros}, which have karyotypes either similar to the hypothesized chameleon ancestral condition of 2n = 36 (2n = 34 in \textit{F. balteatus} and several 2n = 36 in \textit{Trioceros}), and karyotypes with a reduced total chromosome number (2n = 24-22) in other species (Figure \ref{fig-best}). 
-We use the term ``convergence'' in a relative sense related to the number of chromosomes, as karyotypes with lower chromosome numbers showed higher variability in macrochromosome morphology (Supplementary Materials: Figure AX), suggesting the occurrence of different intrachromosomal rearrangements and/or fusion events between microchromosomes. 
+We use the term ``convergence'' in a relative sense related to the number of chromosomes, as karyotypes with lower chromosome numbers showed higher variability in macrochromosome morphology (Supplementary Materials: Figure A10), suggesting the occurrence of different intrachromosomal rearrangements and/or fusion events between microchromosomes. 
 Thus, convergent chameleon chromosome loss occurred via unique pathways of microchromosome fusion in different lineages, a well-established phenomenon of telomeric fusion in higher eukaryotes (e.g. \citealt{heacock2004molecular}).  
 Chromosome size convergence is often discussed, particularly in species with differentiated, heteromorphic sex chromosomes \citep{montiel2017discovery,kratochvil2021sex}. 
 However, convergence in chromosome number is a far less frequently reported phenomenon (particularly of fusion-based convergence; see Rens et al. \citeyear{rens2003reversal} for fission-based example), making chameleons a valuable study system for chromosome evolution. 
@@ -248,7 +276,7 @@ Following White's model, chromosome changes found in any given group are not ran
 White also suggested that different processes such as environmental selection or intrinsic chromosomal properties might explain orthoselection of karyotypes \citep{white1973,white1975chromosome}.
 
 Despite the evidence that chromosome fusion regularly occurred during the evolution of chameleons, this tendency was not true of all lineages we studied. Assuming an ancestral karyotypes of 2n = 36 \citep{rovatsos2017evolution} (see Materials and Methods), we observed several chameleon genera with ancestral conservation of karyotypes (chromosomal evolutionary stasis; \textit{Brookesia}, \textit{Bradypodion}, \textit{Kinyongia}, \textit{Chamaeleo}; Figure \ref{fig-best}), highlighting that divergent evolutionary trends such as karyotypic orthoselection and chromosomal evolutionary stasis likely characterize different evolutionary lineages. 
-Furthermore, chromosomes in these groups also had a more conserved morphology than the genera with putative karyotypic reduction consistent with stasis (Supplementary Materials: Figure AX). 
+Furthermore, chromosomes in these groups also had a more conserved morphology than the genera with putative karyotypic reduction consistent with stasis (Supplementary Materials: Figure A10). 
 These genera with conserved karyotypes suggest that the tendency for microchromosomes to fuse may either (i) not always be advantageous or (ii) be a karyotypic trait that is lost (or gained). 
 
 \subsection{Alternative explanations for observed patterns of chromosome fusions}
@@ -256,6 +284,9 @@ In addition to the fusion of chromosomes, the presence of ITSs can also be expla
 However, we think this possibility is unlikely to change the interpretation that many of the ITSs we observed are explained by fusion events. 
 Specifically, if the ITSs we observed were mostly the result of chromosome inversions, we should not have observed the positive correlation between number of macrochromosomes and number of microchromosomes (Figure \ref{fig-chroms}C). 
 We recognize that the relationship between number of ITSs and number of macrochromosomes, while significant, is not completely linear (Figure \ref{fig-its}B), which suggests other processes (such as chromosome inversions and/or the amplification of DNA repeats) are likely involved in generating some of the ITSs we observed.
+Furthermore, in some cases ITSs may not be detectable after fusions. 
+This is likely due to the effect of purifying selection targeting non-essential DNA repeats and resulting in their deletion or to nucleotide substitutions producing degenerate sequences which are no more detectable using the same molecular probes \cite{lin2008endings,aksenova2019beginning}.
+
 
 \subsection{What about \textit{Rieppeleon brevicaudatus}?}
 Our dataset supports chromosome loss via chromosome fusions and reduction of the total chromosome number as having occurred independently in multiple genera of chameleons. 
@@ -268,7 +299,7 @@ Microchromosome fusion is widespread in vertebrate animals \citep{waters2021micr
 If the reduction of the total chromosome number via fusion is so common, is that because it is beneficial? In other words, what potential benefits are there to having a symmetrical (versus asymmetrical) karyotype? 
 One clear benefit would be to reinforce reproductive isolation. 
 Chromosome fusions may select against introgression between diverging populations, because the potential for viable offspring is decreased between individuals with divergent karyotypes \citep{cicconardi2021chromosome}.
-This incompatibility might serve to initiate or hasten speciation through rapid evolution of key traits in reproductively-isolated populations. If this hypothesis were the case in chameleons, we might expect to observe correlates between natural history traits and karyotypes, which we did not (Supplementary Materials Table AX; Figures AX-AX). 
+This incompatibility might serve to initiate or hasten speciation through rapid evolution of key traits in reproductively-isolated populations. If this hypothesis were the case in chameleons, we might expect to observe correlates between natural history traits and karyotypes, which we did not (Supplementary Materials Table A4; Figures A8-A9). 
 However, it is also possible that we did not measure the relevant traits associated with speciation in chameleons, and/or that these traits are genus or population specific.
 Perhaps larger chromosomes achieved through fusions may be beneficial in terms of genome structure and function? Evidence for this possibility is mixed. In some insects, there is a positive correlation between chromosome size and the functional gene conservation \citep{cicconardi2021chromosome}. 
 However, in other groups like birds (and importantly some non-avian reptiles) microchromosomes tend to be higher in gene content \citep{waters2021microchromosomes}.
@@ -359,17 +390,17 @@ We declare we have no competing interests.
   \label{fig-s6}
 \end{figure}
 
-% figure 1 need new figure
+% figure 7
 \newpage
 \begin{figure}[h]
  \centering
-  \includegraphics[width = \linewidth]{figures/micro-macro-chromosomes.png}
-  \caption{Best fitting model, removing \textit{Rieppeleon brevicaudatus} and using n = 18 as the root frequency. Numbers at the nodes are the most frequent values obtained from 1,000 simulations; numbers at the tips are the observed values. Colors represent the haploid number of chromosomes at the tips, or the proportion of simulations with each number of chromosomes as pie charts at the nodes.
+  \includegraphics[width = \linewidth]{figures/ChromoSSE_plot.png}
+  \caption{Ancestral estimates of chromosome numbers from a ChromoSSE model, removing \textit{Rieppeleon brevicaudatus} and using n = 18 as the root frequency. Numbers at the nodes are the states with the highest posterior probability in the ChromoSSE model; numbers at the tips are the observed values. Colours represent the haploid number of chromosomes, and the size of the points at the nodes represents the posterior probability.
 }
   \label{fig-best}
 \end{figure}
 
-% figure 2
+% figure 8
 \newpage
 \begin{figure}[h]
  \centering
@@ -379,7 +410,7 @@ We declare we have no competing interests.
   \label{fig-chroms}
 \end{figure}
 
-% figure 3
+% figure 9
 \newpage
 \begin{figure}[h]
  \centering
@@ -389,7 +420,7 @@ We declare we have no competing interests.
   \label{fig-its}
 \end{figure}
 
-% figure 4
+% figure 10
 \newpage
 \begin{figure}[h]
  \centering
@@ -398,7 +429,7 @@ We declare we have no competing interests.
   \label{fig-pairwise}
 \end{figure}
 
-% figure 5
+% figure 11
 \newpage
 \begin{figure}[h]
  \centering
@@ -426,7 +457,7 @@ Figure 5: Karyotypes of \textit{Furcifer} stained with Giemsa. Squares highlight
 
 Figure 6: Karyotypes of \textit{Furcifer} stained with TELO-FISH.
 
-Figure 7: Best fitting model, removing \textit{Rieppeleon brevicaudatus} and using n = 18 as the root frequency. Numbers at the nodes are the most frequent values obtained from 1,000 simulations; numbers at the tips are the observed values. Colors represent the haploid number of chromosomes at the tips, or the proportion of simulations with each number of chromosomes as pie charts at the nodes.
+Figure 7: Ancestral estimates of chromosome numbers from a ChromoSSE model, removing \textit{Rieppeleon brevicaudatus} and using n = 18 as the root frequency. Numbers at the nodes are the states with the highest posterior probability in the ChromoSSE model; numbers at the tips are the observed values. Colours represent the haploid number of chromosomes, and the size of the points at the nodes represents the posterior probability.
 
 Figure 8: Correlations between (A) the haploid number of chromosomes (n) and numbers of macrochromosome pairs; (B) the haploid number of chromosomes (n) and numbers of microchromosome pairs; and (C) numbers of macrochromosome pairs and numbers of microchromosome pairs. Fitted lines and standard errors are the outputs from generalized linear models with Poisson errors. The outlier at n = 31 is \textit{Rieppeleon brevicaudatus}.
 

@@ -61,7 +61,7 @@ p2 <- p2 +
 
 # let's add a time scale for key dates
 root_age = 43.73925
-p2 <- p2 + scale_x_continuous(breaks=c(root_age-32.5, root_age-30, root_age-23, root_age-18, root_age-14, root_age-7.7))
+p2 <- p2 + scale_x_continuous(breaks=c(root_age-33.9, root_age-30, root_age-23, root_age-18, root_age-14, root_age-10))
 p2 <- p2 + theme(panel.grid.major = element_line(colour = "black", linewidth = 0.5, linetype = "dashed"),
                  panel.grid.major.y = element_blank()) 
 

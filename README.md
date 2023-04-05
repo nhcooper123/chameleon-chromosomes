@@ -3,7 +3,7 @@
 
 Author(s): [Natalie Cooper](mailto:natalie.cooper.@nhm.ac.uk)
 
-THIS IS A WORK IN PROGRESS!
+THIS IS A WORK IN PROGRESS! Session info to add...
 
 This repository contains all the code and some data used in the [paper](TO ADD link). 
 
@@ -13,12 +13,12 @@ To cite the paper:
 To cite this repo: 
 > Natalie Cooper. 2023. GitHub: nhcooper123/chameleon-chromosomes: code for the paper. Zenodo. DOI: TO ADD.
 
-![alt text](https://github.com/nhcooper123/chameleon-chromosomes/raw/master/manuscript/figures/new-tree-plot4.png)
+![alt text](https://github.com/nhcooper123/chameleon-chromosomes/raw/master/manuscript/figures/ChromoSSE_plot.png)
 
 ## Data
-All raw and cleaned data are available from the [NHM Data Portal](TO ADD).
+All raw and cleaned data are available from the [NHM Data Portal](https://doi.org/10.5519/rmaopg7d).
 
-For reproducibility purposes, if you want to rerun the data wrangling steps in script `analyses\01-data-wrangling`, download `CHROMO_STATES_2020-10-16.csv` and place it into a `raw-data/` folder along with the dataset of Meiri 2018: https://onlinelibrary.wiley.com/doi/full/10.1111/geb.12773.
+For reproducibility purposes, if you want to rerun the data wrangling steps in script `analyses\01-data-wrangling`, download `CHROMO_STATES_2020-10-16.csv` and place it into a `raw-data/` folder along with the dataset of [Meiri 2018](https://onlinelibrary.wiley.com/doi/full/10.1111/geb.12773).
 
 The cleaned datasets, along rest of the ancillary data required to run all analyses and produce all figures is within the `data` folder.
 
@@ -58,6 +58,26 @@ Finally the `OTUs` folder within `chromEvol/` contain the same things but for an
 
 ## ChromoSSE analyses (`ChromoSSE/` folder)
 
+The majority of analyses run in R, but we also used [ChromoSSE](https://revbayes.github.io/tutorials/chromo/), which runs within [RevBayes](https://revbayes.github.io/). The associated paper for ChromoSSE is:
+
+> Freyman W.A., Höhna S. 2018. Cladogenetic and anagenetic models of chromosome number evolution: a Bayesian model averaging approach. Systematic Biology. 67:1995–215.
+
+And for RevBayes:
+
+> Höhna, Landis, Heath, Boussau, Lartillot, Moore, Huelsenbeck, Ronquist. 2016. RevBayes: Bayesian phylogenetic inference using graphical models and an interactive model-specification language. Systematic Biology, 65:726-736.
+
+To run these analyses you will need to download RevBayes. This unzips into a folder called `rb` that contains the package as an executable called `chromEvol`. I have not uploaded this to the repo because it's not my package. 
+
+ChromoSSE analyses require a dataset, a tree and a control file. These are within the `chromEvol/` folder preceded by `data_for_chromevol` or `tree_for_chroevol` or with the word `control` somewhere in their name respectively. Several versions exist for the different sensitivity analyses. These analyses save their outputs into the `chromEvol/results` folder, in folders named based on the names of the control files. Full details of how to build control files is in the ChromEvol manual at http://chromevol.tau.ac.il/. We provide code for creating appropriate datasets and trees in `analyses/02-`
+
+To run the ChromoSSE analyses, open `rb` and a Terminal window should open. Next set the working directory so RevBayes knows where to look for the data i.e. `setwd("YOUR_FOLDER/chameleon-chromosomes/ChromoSSE")`. Decide on the number of iterations and then run the code to set this: `iterations = 10000`. Then run your RevBayes control file (files ending in `.Rev`) using source, e.g.
+
+`source("ChromoSSE_exclude_n18.Rev")`
+
+The `ChromoSSE/` folder includes RevBayes control files to replicate all models in the chromEvol model set.
+
+**These analyses take a long time to run! One model is approximately two weeks of run time.**
+
 -------
 ## R analyses
 The analysis code is divided into `.Rmd` files that run the analyses and plot the figures for each section of the paper/supplementary materials. 
@@ -86,8 +106,10 @@ Note that several of these scripts use an R package written by N.Cusimano. You c
 19. **08B-ecological-correlates-analyses.Rmd** MCMCglmm models of haploid chromosome number and a range of ecological, life-history and geographical variable for each species. FYI there are no all OTUs equivalents of these analyses as data are only available at the species level.
 20. **09A-morphology-chromosome-no_main.Rmd** correlations of different aspects of chromosome morphology with haploid number of chromosomes.
 21. **09B-morphology-chromosome-no_OTUs.Rmd** as above but for all OTUs analyses.
-22. **F01-figure-tree-chromosomes.R** - creates figure 1 from ChromEvol outputs.
-23. **figure-tree-chromosomes_main.R** - creates several versions of figure 1 from ChromEvol outputs.
+22. **10A-data-for-chromoSSE-models_main.Rmd** Extracts data for the ChromoSSE models in RevBayes.
+23. **11A-ChromoSSE-assess-convergence-get-parameters_main.Rmd**. Checks the outputs of the ChromoSSE models for convergence (using traceplots and ESS).
+24. **12A-ChromoSEE-plotting.R**. Plots results from ChromoSSE models to create Figure 7 in the main text.
+25. **13A-ChromoSEE-comparisons.R**. Plots correlated evolution plots to create supplemental figure.
 
 -------
 ## Other folders
@@ -103,6 +125,6 @@ For reproducibility purposes, here is the output of `devtools::session_info()` u
 To rerun all the code with packages as they existed on CRAN at time of our analyses we recommend using the `checkpoint` package, and running this code prior to the analysis:
 
 ```{r}
-checkpoint("2022-09-10")
+checkpoint("2023-04-05")
 ```
 

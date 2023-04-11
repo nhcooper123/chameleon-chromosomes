@@ -109,8 +109,12 @@ We inferred a Bayesian phylogeny using MrBayes 3.2.7 \citep{ronquist2012mrbayes}
 To identify the most appropriate model partitioning scheme for our alignment, we used PartionFinder 2.1.1 \citep{lanfear2017partitionfinder}. 
 We ran the analysis for 10 million generations sampling every 1,000 generations to avoid autocorrelation. 
 We constrained the monophyly of \textit{Calumma} $+$ \textit{Furcifer} (as in \citealt{tolley2013large}), and based on genus-level phylogenetic relationships identified with a wider selection of molecular markers. 
-We also performed unconstrained phylogenetic analyses for comparative purposes. 
-To date our constrained phylogenies, we used the penalized likelihood method implemented in treePL \citep{smith2012treepl}, including 10 calibration points (eight external and two internal) based on available literature (see Supplementary Materials for details), as minimum hard bounds: (1) Lepidosauria - 250 Ma; (2) \textit{Xantusia-Cordylus} - 62.5 Ma; (3) Laterata - 138.7 Ma; (4) Lacertibaenia - 61 Ma; (5) Anguimorpha - 148 Ma; (6) crown Serpentes - 93.9 Ma; (7) Anguioidea - 74.5 Ma; (8) Pleurodonta -70 Ma; (9) \textit{Calumma} - 16 Ma and (10) \textit{Chamaeleo} - 16.6 Ma. 
+We also performed unconstrained phylogenetic analyses for comparative purposes.
+To diagnose convergence and mixing in our Bayesian analyses we used RWTY \citep{warren2017rwty} in R \citep{R}. 
+After removing 50 trees from each chain as burnin, we found that the approximate effective sample sizes (ESS) for both chains were $>$380 (constrained analysis) and $>$290 (unconstrained analysis). 
+Split frequency comparisons revealed that the agreement of the two chains was high with significant correlations detected in the constrained (r = 0.98, ASDSF = 0.0097) and unconstrained (r = 0.99, ASDSF = 0.0057) analyses. 
+ 
+Next, to date our constrained phylogenies, we used the penalized likelihood method implemented in treePL \citep{smith2012treepl}, including 10 calibration points (eight external and two internal) based on available literature (see Supplementary Materials for details), as minimum hard bounds: (1) Lepidosauria - 250 Ma; (2) \textit{Xantusia-Cordylus} - 62.5 Ma; (3) Laterata - 138.7 Ma; (4) Lacertibaenia - 61 Ma; (5) Anguimorpha - 148 Ma; (6) crown Serpentes - 93.9 Ma; (7) Anguioidea - 74.5 Ma; (8) Pleurodonta -70 Ma; (9) \textit{Calumma} - 16 Ma and (10) \textit{Chamaeleo} - 16.6 Ma. 
 We ran two optimization phases in treePL \citep{smith2012treepl} using the consensus topology (with branch lengths) from the MrBayes 3.2.7 analysis. 
 The first `priming' step allowed us to determine the optimal search settings (opt = 2, moredetail, optad = 4, moredetailed) which we then implemented in a subsequent `thorough'cross validation analysis that selected an appropriate smoothing parameter. 
 A thorough analysis in treePL ensures that the analysis runs until convergence of log-likelihoods is observed. 

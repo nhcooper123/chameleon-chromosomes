@@ -3,12 +3,10 @@
 
 Author(s): [Natalie Cooper](mailto:natalie.cooper.@nhm.ac.uk)
 
-THIS IS A WORK IN PROGRESS! Session info to add...
-
 This repository contains all the code and some data used in the [paper](TO ADD link). 
 
 To cite the paper: 
-> Marcello Mezzasalma, Jeffrey W. Streicher, Fabio M. Guarino, Marc E.H. Jones, Simon P. Loader, Gaetano Odierna, and Natalie Cooper 2022. Microchromosome fusions underpin convergent evolution of chameleon karyotypes. TBC.
+> Marcello Mezzasalma, Jeffrey W. Streicher, Fabio M. Guarino, Marc E.H. Jones, Simon P. Loader, Gaetano Odierna, and Natalie Cooper 2023. Microchromosome fusions underpin convergent evolution of chameleon karyotypes. Evolution. In press.
 
 To cite this repo: 
 > Natalie Cooper. 2023. GitHub: nhcooper123/chameleon-chromosomes: code for the paper. Zenodo. DOI: TO ADD.
@@ -120,6 +118,143 @@ Note that several of these scripts use an R package written by N.Cusimano. You c
 -------
 ## Session Info
 For reproducibility purposes, here is the output of `devtools::session_info()` used to perform the analyses in the publication.
+
+    ─ Session info ─────────────────────────────────────────────────────────────────────────────
+    setting  value
+    version  R version 4.2.0 (2022-04-22)
+    os       macOS Big Sur 11.4
+    system   x86_64, darwin17.0
+    ui       RStudio
+    language (EN)
+    collate  en_US.UTF-8
+    ctype    en_US.UTF-8
+    tz       Europe/Dublin
+    date     2023-04-19
+    rstudio  2023.03.0+386 Cherry Blossom (desktop)
+    pandoc   2.19.2 @ /Applications/RStudio.app/Contents/Resources/app/quarto/bin/tools/ (via rmarkdown)
+
+   ─ Packages ─────────────────────────────────────────────────────────────────────────────────
+   package           * version    date (UTC) lib source
+   ape               * 5.7-1      2023-03-13 [1] CRAN (R 4.2.0)
+   aplot               0.1.9      2022-11-24 [1] CRAN (R 4.2.0)
+   backports           1.4.1      2021-12-13 [1] CRAN (R 4.2.0)
+   bit                 4.0.5      2022-11-15 [1] CRAN (R 4.2.0)
+   bit64               4.0.5      2020-08-30 [1] CRAN (R 4.2.0)
+   broom             * 1.0.3      2023-01-25 [1] CRAN (R 4.2.0)
+   cachem              1.0.6      2021-08-19 [1] CRAN (R 4.2.0)
+   callr               3.7.3      2022-11-02 [1] CRAN (R 4.2.0)
+   cli                 3.6.0      2023-01-09 [1] CRAN (R 4.2.0)
+   clusterGeneration   1.3.7      2020-12-15 [1] CRAN (R 4.2.0)
+   coda              * 0.19-4     2020-09-30 [1] CRAN (R 4.2.0)
+   codetools           0.2-18     2020-11-04 [1] CRAN (R 4.2.0)
+   colorspace          2.1-0      2023-01-23 [1] CRAN (R 4.2.0)
+   combinat            0.0-8      2012-10-29 [1] CRAN (R 4.2.0)
+   corpcor             1.6.10     2021-09-16 [1] CRAN (R 4.2.0)
+   crayon              1.5.2      2022-09-29 [1] CRAN (R 4.2.0)
+   cubature            2.0.4.4    2022-03-22 [1] CRAN (R 4.2.0)
+   DBI                 1.1.3      2022-06-18 [1] CRAN (R 4.2.0)
+   devtools            2.4.5      2022-10-11 [1] CRAN (R 4.2.0)
+   digest              0.6.31     2022-12-11 [1] CRAN (R 4.2.0)
+   doParallel          1.0.17     2022-02-07 [1] CRAN (R 4.2.0)
+   dplyr             * 1.1.0      2023-01-29 [1] CRAN (R 4.2.0)
+   ellipsis            0.3.2      2021-04-29 [1] CRAN (R 4.2.0)
+   evaluate            0.20       2023-01-17 [1] CRAN (R 4.2.0)
+   expm                0.999-7    2023-01-09 [1] CRAN (R 4.2.0)
+   fansi               1.0.4      2023-01-22 [1] CRAN (R 4.2.0)
+   fastmap             1.1.0      2021-01-25 [1] CRAN (R 4.2.0)
+   fastmatch           1.1-3      2021-07-23 [1] CRAN (R 4.2.0)
+   forcats           * 1.0.0      2023-01-29 [1] CRAN (R 4.2.0)
+   foreach             1.5.2      2022-02-02 [1] CRAN (R 4.2.0)
+   fs                  1.6.1      2023-02-06 [1] CRAN (R 4.2.0)
+   generics            0.1.3      2022-07-05 [1] CRAN (R 4.2.0)
+   ggfortify         * 0.4.14     2022-01-03 [1] CRAN (R 4.2.0)
+   ggfun               0.0.9      2022-11-21 [1] CRAN (R 4.2.0)
+   ggnewscale        * 0.4.8      2022-10-06 [1] CRAN (R 4.2.0)
+   ggplot2           * 3.4.1      2023-02-10 [1] CRAN (R 4.2.0)
+   ggplotify           0.1.0      2021-09-02 [1] CRAN (R 4.2.0)
+   ggtree            * 3.6.2      2022-11-10 [1] Bioconductor
+   glue                1.6.2      2022-02-24 [1] CRAN (R 4.2.0)
+   gridExtra           2.3        2017-09-09 [1] CRAN (R 4.2.0)
+   gridGraphics        0.5-1      2020-12-13 [1] CRAN (R 4.2.0)
+   gtable              0.3.1      2022-09-01 [1] CRAN (R 4.2.0)
+   here              * 1.0.1      2020-12-13 [1] CRAN (R 4.2.0)
+   hms                 1.1.2      2022-08-19 [1] CRAN (R 4.2.0)
+   htmltools           0.5.4      2022-12-07 [1] CRAN (R 4.2.0)
+   htmlwidgets         1.5.4      2021-09-08 [1] CRAN (R 4.2.0)
+   httpuv              1.6.6      2022-09-08 [1] CRAN (R 4.2.0)
+   igraph              1.3.5      2022-09-22 [1] CRAN (R 4.2.0)
+   iterators           1.0.14     2022-02-05 [1] CRAN (R 4.2.0)
+   jsonlite            1.8.4      2022-12-06 [1] CRAN (R 4.2.0)
+   knitr               1.42       2023-01-25 [1] CRAN (R 4.2.0)
+   later               1.3.0      2021-08-18 [1] CRAN (R 4.2.0)
+   lattice             0.20-45    2021-09-22 [1] CRAN (R 4.2.0)
+   lazyeval            0.2.2      2019-03-15 [1] CRAN (R 4.2.0)
+   lifecycle           1.0.3      2022-10-07 [1] CRAN (R 4.2.0)
+   lubridate         * 1.9.2      2023-02-10 [1] CRAN (R 4.2.0)
+   magrittr            2.0.3      2022-03-30 [1] CRAN (R 4.2.0)
+   maps              * 3.4.1      2022-10-30 [1] CRAN (R 4.2.0)
+   MASS                7.3-56     2022-03-23 [1] CRAN (R 4.2.0)
+   Matrix            * 1.4-1      2022-03-23 [1] CRAN (R 4.2.0)
+   MCMCglmm          * 2.34       2022-06-21 [1] CRAN (R 4.2.0)
+   memoise             2.0.1      2021-11-26 [1] CRAN (R 4.2.0)
+   mime                0.12       2021-09-28 [1] CRAN (R 4.2.0)
+   miniUI              0.1.1.1    2018-05-18 [1] CRAN (R 4.2.0)
+   mnormt              2.1.1      2022-09-26 [1] CRAN (R 4.2.0)
+   munsell             0.5.0      2018-06-12 [1] CRAN (R 4.2.0)
+   nlme                3.1-157    2022-03-25 [1] CRAN (R 4.2.0)
+   numDeriv            2016.8-1.1 2019-06-06 [1] CRAN (R 4.2.0)
+   optimParallel       1.0-2      2021-02-11 [1] CRAN (R 4.2.0)
+   patchwork         * 1.1.2      2022-08-19 [1] CRAN (R 4.2.0)
+   phangorn          * 2.11.1     2023-01-23 [1] CRAN (R 4.2.0)
+   phytools          * 1.5-1      2023-02-19 [1] CRAN (R 4.2.0)
+   pillar              1.8.1      2022-08-19 [1] CRAN (R 4.2.0)
+   pkgbuild            1.4.0      2022-11-27 [1] CRAN (R 4.2.0)
+   pkgconfig           2.0.3      2019-09-22 [1] CRAN (R 4.2.0)
+   pkgload             1.3.2      2022-11-16 [1] CRAN (R 4.2.0)
+   plotrix             3.8-2      2021-09-08 [1] CRAN (R 4.2.0)
+   prettyunits         1.1.1      2020-01-24 [1] CRAN (R 4.2.0)
+   processx            3.8.0      2022-10-26 [1] CRAN (R 4.2.0)
+   profvis             0.3.7      2020-11-02 [1] CRAN (R 4.2.0)
+   promises            1.2.0.1    2021-02-11 [1] CRAN (R 4.2.0)
+   ps                  1.7.2      2022-10-26 [1] CRAN (R 4.2.0)
+   purrr             * 1.0.1      2023-01-10 [1] CRAN (R 4.2.0)
+   quadprog            1.5-8      2019-11-20 [1] CRAN (R 4.2.0)
+   R6                  2.5.1      2021-08-19 [1] CRAN (R 4.2.0)
+   Rcpp                1.0.10     2023-01-22 [1] CRAN (R 4.2.0)
+   readr             * 2.1.4      2023-02-10 [1] CRAN (R 4.2.0)
+   remotes             2.4.2      2021-11-30 [1] CRAN (R 4.2.0)
+   RevGadgets        * 1.1.0      2023-02-03 [1] Github (revbayes/RevGadgets@6f8491b)
+   rlang               1.0.6      2022-09-24 [1] CRAN (R 4.2.0)
+   rmarkdown           2.20       2023-01-19 [1] CRAN (R 4.2.0)
+   rprojroot           2.0.3      2022-04-02 [1] CRAN (R 4.2.0)
+   rstudioapi          0.14       2022-08-22 [1] CRAN (R 4.2.0)
+   scales              1.2.1      2022-08-20 [1] CRAN (R 4.2.0)
+   scatterplot3d       0.3-42     2022-09-08 [1] CRAN (R 4.2.0)
+   sessioninfo         1.2.2      2021-12-06 [1] CRAN (R 4.2.0)
+   shiny               1.7.3      2022-10-25 [1] CRAN (R 4.2.0)
+   stringi             1.7.12     2023-01-11 [1] CRAN (R 4.2.0)
+   stringr           * 1.5.0      2022-12-02 [1] CRAN (R 4.2.0)
+   tensorA             0.36.2     2020-11-19 [1] CRAN (R 4.2.0)
+   tibble            * 3.1.8      2022-07-22 [1] CRAN (R 4.2.0)
+   tidyr             * 1.3.0      2023-01-24 [1] CRAN (R 4.2.0)
+   tidyselect          1.2.0      2022-10-10 [1] CRAN (R 4.2.0)
+   tidytree            0.4.2      2022-12-18 [1] CRAN (R 4.2.0)
+   tidyverse         * 2.0.0      2023-02-22 [1] CRAN (R 4.2.0)
+   timechange          0.2.0      2023-01-11 [1] CRAN (R 4.2.0)
+   treeio              1.22.0     2022-11-01 [1] Bioconductor
+   tzdb                0.3.0      2022-03-28 [1] CRAN (R 4.2.0)
+   urlchecker          1.0.1      2021-11-30 [1] CRAN (R 4.2.0)
+   usethis             2.1.6      2022-05-25 [1] CRAN (R 4.2.0)
+   utf8                1.2.3      2023-01-31 [1] CRAN (R 4.2.0)
+   vctrs               0.5.2      2023-01-23 [1] CRAN (R 4.2.0)
+   vroom               1.6.1      2023-01-22 [1] CRAN (R 4.2.0)
+   withr               2.5.0      2022-03-03 [1] CRAN (R 4.2.0)
+   xfun                0.37       2023-01-31 [1] CRAN (R 4.2.0)
+   xtable              1.8-4      2019-04-21 [1] CRAN (R 4.2.0)
+   yaml                2.3.7      2023-01-23 [1] CRAN (R 4.2.0)
+   yulab.utils         0.0.6      2022-12-20 [1] CRAN (R 4.2.0)
+
+   [1] /Library/Frameworks/R.framework/Versions/4.2/Resources/library
 
 ## Checkpoint for reproducibility
 To rerun all the code with packages as they existed on CRAN at time of our analyses we recommend using the `checkpoint` package, and running this code prior to the analysis:

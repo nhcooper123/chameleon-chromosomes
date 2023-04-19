@@ -9,7 +9,9 @@ To cite the paper:
 > Marcello Mezzasalma, Jeffrey W. Streicher, Fabio M. Guarino, Marc E.H. Jones, Simon P. Loader, Gaetano Odierna, and Natalie Cooper 2023. Microchromosome fusions underpin convergent evolution of chameleon karyotypes. Evolution. In press.
 
 To cite this repo: 
-> Natalie Cooper. 2023. GitHub: nhcooper123/chameleon-chromosomes: code for the paper. Zenodo. DOI: TO ADD.
+> Natalie Cooper. 2023. GitHub: nhcooper123/chameleon-chromosomes: code for the paper. Zenodo. DOI: 10.5281/zenodo.7846270.
+
+[![DOI](https://zenodo.org/badge/190219620.svg)](https://zenodo.org/badge/latestdoi/190219620)
 
 ![alt text](https://github.com/nhcooper123/chameleon-chromosomes/raw/master/manuscript/figures/ChromoSSE_plot.png)
 

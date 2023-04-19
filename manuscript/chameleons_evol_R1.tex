@@ -130,8 +130,8 @@ The full dataset along with literature references is available [details removed 
 
 We did not analyse sex chromosome evolution in chameleons for several reasons. 
 Nucleotide and morphological evolution of the heterogametic sex chromosome (Y/W) is independent from autosome evolution and due to the loss of recombination the sex-specific chromosome (Y/W) is considered evolutionary isolated \citep[see e.g.][]{ezaz2014repetitive,mezzasalma2021lizards}. 
-The rare cases where multiple sex chromosome systems occur due to a sex chromosome-autosome fusion concern intraspecific rearrangement \citep[as in the case of the neo-sex chromosomes in Furcifer reported by][]{rovatsos2015female,rovatsos2017evolution,rovatsos2019zz}, which would not be relevant in our inter-/intra-generic macroevolutionary analysis. 
-In addition, data on chameleon sex chromosomes are currently available only for \textit{Furcifer} \citep{rovatsos2015female,rovatsos2017evolution,rovatsos2019zz} and \textit{Chameleo} \citep{sidhom2020karyological,tishakova2022identification} (1-2 species with hypothesised sex chromosomes which are morphologically indistinguishable). 
+The rare cases where multiple sex chromosome systems occur due to a sex chromosome-autosome fusion concern intraspecific rearrangement \citep[as in the case of the neo-sex chromosomes in \textit{Furcifer} reported by][]{rovatsos2015female,rovatsos2017evolution,rovatsos2019zz}, which would not be relevant in our inter-/intra-generic macroevolutionary analysis. 
+In addition, data on chameleon sex chromosomes are currently available only for \textit{Furcifer} \citep{rovatsos2015female,rovatsos2017evolution,rovatsos2019zz} and \textit{Chamaeleo} \citep{sidhom2020karyological,tishakova2022identification} (1-2 species with hypothesised sex chromosomes which are morphologically indistinguishable). 
 More data on the other chameleon genera should be gathered to better understand sex chromosome evolution in the family (possibly testing the homology of different sex chromosome systems), which, however, should be treated as a distinct topic.
 
 \subsection{Analyses}
@@ -198,8 +198,8 @@ All ecological and life history data were taken from Meiri (\citeyear{meiri2018t
 Continuous variables were mean-centred and scaled to unit variance prior to analyses.
 
 We used Bayesian phylogenetic generalized mixed models (GLMMs) with Poisson errors in the R package MCMCglmm \citep{hadfield2010mcmc} to test for correlations, including the phylogeny (as the inverse of the phylogenetic variance-covariance matrix) as a random effect to account for phylogenetic autocorrelation. 
-We ran each MCMCglmm model for 1 x 106 iterations sampling at every 1,000 iterations and discarding the first 1 x 105 iterations as burn-in. 
-We used the default priors for MCMCglmm ($\mu = 0$ and $V = I × 1010$ for fixed effects and parameter expanded priors, and $V = 1$, $\nu = 1$, $\alpha \mu = 0$, and $\alpha V = 252$ for the phylogenetic random effects). 
+We ran each MCMCglmm model for 1 x 10$^6$ iterations sampling at every 1,000 iterations and discarding the first 1 x 10$^5$ iterations as burn-in. 
+We used the default priors for MCMCglmm ($\mu = 0$ and $V$ = $I$ x 10$^{10}$ for fixed effects and parameter expanded priors, and $V = 1$, $\nu = 1$, $\alpha \mu = 0$, and $\alpha V = 252$ for the phylogenetic random effects). 
 All model parameters had a mean effective sample size (ESS; estimated using the R package coda; \citealt{plummer2006coda}) of over 800, and traceplots indicated that models had converged.
 
 %-------------------------------------------------------------------------------
@@ -221,7 +221,7 @@ Karyotype of 2n = 34, 32 and 30 chromosomes were showed by four, three and four 
 A variable number of macro- (6-9) and micro-chromosome pairs (7-13) was also recorded among the studied species of the genus. 
 Chromosome morphology is also variable in \textit{Calumma}, macrochromosome pairs are generally biarmed (from meta- to sub-telocentric pairs), but telocentric elements were observed in \textit{Calumma} sp. 1 (7th pair). 
 
-\noindent A heteromorphic pair was observed in the karyotype of \textit{C. crypticum}. 
+\noindent A heteromorphic pair was observed in the karyotype of \textit{C.crypticum}. 
 NOR bearing pairs were detected in 14 species, on the 1st (three species) or 2nd chromosome pair (11 species). 
 ITS signals (n = 2-4) were found in six species showing karyotypes from 2n = 36 to 2n = 28 (Figure \ref{fig-s4}).
 
@@ -229,7 +229,7 @@ ITS signals (n = 2-4) were found in six species showing karyotypes from 2n = 36 
 Karyotypes of 2n = 28 were showed by two species (\textit{F. wilsii} and \textit{F. labordi}), 2n = 26 by one species (\textit{F. campani}) and 2n = 24 by five species. 
 
 \noindent Macrochromosome pairs ranged from six to 13 pairs, while microchromosomes from one to 11 pairs. 
-Chromosome morphology is mostly biarmed in the genus (meta- and submeta-centric pairs are common in the genus), but 1-2 telocentric pairs are present in the karyotype of \textit{F. belalandensis} and \textit{F. minor}.
+Chromosome morphology is mostly biarmed in the genus (meta- and submeta-centric pairs are common in the genus), but 1-2 telocentric pairs are present in the karyotype of \textit{F.belalandensis} and \textit{F.minor}.
 Heteromorphic chromosome pairs were found in seven species, usually on the last macrochromosome pair. 
 In the species analysed here, loci of NOR are always on macrochromosomes (1st, 2nd, 3rd or 4th pair). 
 A highly variable number of ITS signals (n = 2-14) were found in 11 species with 2n = 34-22 (Figure \ref{fig-s6}).
